@@ -60,12 +60,31 @@ function run(cmd, args, opts = {}) {
   });
 }
 
-// Statik dosyayı kökün dışına çıkmadan çöz
+// Statik dosyayı kökün dışına çıkmadan çöz; nokta ile başlayan parçaları (.git, .env) reddet
 function safeFile(base, urlPath) {
-  const rel = decodeURIComponent(urlPath).replace(/^\/+/, "");
+  let rel;
+  try { rel = decodeURIComponent(urlPath).replace(/^\/+/, ""); } catch { return null; }
+  if (rel.split(/[\\/]/).some((part) => part.startsWith("."))) return null;
   const full = path.resolve(base, rel);
   if (full !== base && !full.startsWith(base + path.sep)) return null;
   return full;
+}
+
+// Önizlemede yalnızca yayımlanan çıktı sunulur: data, src, admin ve .git kapalı
+const PUBLIC_FILES = ["", "index.html", "404.html", "sitemap.xml", "robots.txt"];
+const PUBLIC_DIRS = ["en/", "assets/", "cv/"];
+function isPublic(urlPath) {
+  const rel = urlPath.replace(/^\/+/, "");
+  return PUBLIC_FILES.includes(rel) || PUBLIC_DIRS.some((d) => rel === d.slice(0, -1) || rel.startsWith(d));
+}
+
+// Yüklenen dosyanın gerçek biçimi (ilk baytlar). Yalnızca bu dört biçim kabul edilir.
+function sniffImage(buf) {
+  if (buf.length >= 8 && buf.subarray(0, 8).equals(Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]))) return "png";
+  if (buf.length >= 3 && buf[0] === 0xff && buf[1] === 0xd8 && buf[2] === 0xff) return "jpeg";
+  if (buf.length >= 12 && buf.toString("ascii", 0, 4) === "RIFF" && buf.toString("ascii", 8, 12) === "WEBP") return "webp";
+  if (buf.length >= 6 && /^GIF8[79]a$/.test(buf.toString("ascii", 0, 6))) return "gif";
+  return null;
 }
 
 function serveStatic(res, base, urlPath) {
@@ -127,14 +146,19 @@ function validate(data) {
 async function saveImage(name, buf) {
   const base = (name || "gorsel").toLowerCase().replace(/\.[a-z0-9]+$/, "")
     .normalize("NFKD").replace(/[̀-ͯ]/g, "").replace(/ı/g, "i").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || "gorsel";
+  const format = sniffImage(buf);
+  if (!format) throw new Error("Yalnızca PNG, JPEG, WebP ya da GIF yüklenebilir.");
   let file = `${base}.webp`;
   for (let n = 2; fs.existsSync(path.join(IMG_DIR, file)); n++) file = `${base}-${n}.webp`;
   const tmp = path.join(require("os").tmpdir(), `panel-${crypto.randomBytes(6).toString("hex")}`);
   fs.writeFileSync(tmp, buf);
   try {
-    const conv = await run("magick", [tmp, "-auto-orient", "-strip", "-resize", "1200x1200>", "-quality", "80", path.join(IMG_DIR, file)]);
+    // Biçimi açıkça ver: ImageMagick dosyanın içeriğine bakıp SVG/MVG/MSL gibi başka bir okuyucuya geçmesin.
+    // GIF'te yalnızca ilk kare alınır.
+    const input = `${format}:${tmp}${format === "gif" ? "[0]" : ""}`;
+    const conv = await run("magick", [input, "-auto-orient", "-strip", "-resize", "1200x1200>", "-quality", "80", path.join(IMG_DIR, file)]);
     if (!conv.ok) throw new Error("Görsel çevrilemedi. ImageMagick (magick) kurulu mu? " + conv.out.slice(0, 300));
-    const id = await run("magick", ["identify", "-format", "%w %h", path.join(IMG_DIR, file)]);
+    const id = await run("magick", ["identify", "-format", "%w %h", `webp:${path.join(IMG_DIR, file)}`]);
     const [w, h] = id.out.trim().split(" ").map(Number);
     return { src: file, w, h };
   } finally {
@@ -231,9 +255,10 @@ const server = http.createServer(async (req, res) => {
     if (url.pathname === "/site" ) { res.writeHead(302, { Location: "/site/" }); return res.end(); }
     if (url.pathname.startsWith("/site/")) {
       const rel = url.pathname.slice("/site".length);
-      // Site mutlak yollar kullanıyor (/assets/...): önizlemede bunları kökten de sun
+      if (!isPublic(rel)) return send(res, 403, "Yasak", "text/plain; charset=utf-8");
       return serveStatic(res, ROOT, rel);
     }
+    // Site mutlak yollar kullanıyor (/assets/...): önizlemede bunları kökten de sun
     if (/^\/(assets|cv|en)\//.test(url.pathname)) return serveStatic(res, ROOT, url.pathname);
 
     // Panel arayüzü
