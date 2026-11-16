@@ -123,6 +123,7 @@ Bulanık gölge, cam efekti ve gradyan yok. Tek "parıltı": hero'daki ekran kar
   - Sessiz: yalnızca metin ve `↗`.
   - Odak: 2px `--accent` dış çizgi, 3px boşluk. Devre dışı: `--locked` renk, gölge yok.
 - **Görev kartı (proje)**: `LV.xx` piksel etiket, kategori, tarih; display başlık; tek cümle; "ekran" (görsel ya da çizim); stat bloğu (noktalı çizgili); envanter (teknolojiler kare çipler halinde); bağlantılar. Öne çıkan iki proje geniş, diğerleri ikili ızgara.
+- **Kompakt kart (küçük işler)**: jam oyunları, araçlar ve siteler için. Görsel (16:10), tür ve tarih, display başlık, tek cümle, teknolojiler düz metin, bağlantılar sessiz. Maddeler ve stat bloğu yok. 260px'lik akışkan ızgara.
 - **Görev günlüğü**: durum etiketi (`AKTİF`, `TAMAMLANDI`, `KİLİTLİ`), başlık, kurum, tarih, hedef listesi (☑ işaretli maddeler).
 - **Başarım rozeti**: 16×16 piksel ikon, ad, açılma koşulu. Kilitli rozet gri ve `???`.
 - **Yetenek ağacı**: kökten dallanan sütunlar; düğümler pah kırık küçük kutular, aralarında 2px bağlantı çizgileri. Seviye ya da yüzde yok.
@@ -133,7 +134,9 @@ Bulanık gölge, cam efekti ve gradyan yok. Tek "parıltı": hero'daki ekran kar
 
 - İkonlar elle çizilmiş 16×16 piksel SVG'ler (`shape-rendering: crispEdges`), tek renk, `currentColor`.
 - Proje görselleri gerçek ekran görüntüleri; çerçeve içinde, `--bg-sunken` paspas üzerinde. Metinli tanıtım kartları kullanılmaz, yalnızca ekran bölgesi kırpılır.
-- Oyun içi görseli paylaşılmamış ekip projelerinde (Under the Counter, LAST DAWN) ve şirket onayı beklenen stajda (Parsel) görsel yerine tipografik ya da çizgisel bir "ekran" var.
+- Oyun içi görseli paylaşılmamış ekip projesinde (Under the Counter) ve şirket onayı beklenen stajda (Parsel) görsel yerine çizgisel bir "ekran" var. Ekran görüntüsü alınamayan araçlarda da (Truva arabirimi, YtChatInstaller) aynı çizim dili kullanılır.
+- Kişisel ya da müşteri verisi içeren ekran görüntüsü kullanılmaz; Kafe Finans ve Görevler görselleri yalnızca uydurma demo verisiyle alındı.
+- Projeler `data/projects.json`'da; yerel panel (`node admin/server.js`) görselleri 1200px'e kadar WebP'ye çevirir.
 - Fotoğraf yalnızca kayıt noktasındaki karakter kartında.
 
 ## Hareket

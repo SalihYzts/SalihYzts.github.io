@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="tr" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Proje paneli · Salih Yazıtaş</title>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/css/fonts.css">
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+<div class="offline" id="offline" hidden>
+  <h1>Bu panel yalnızca yerelde çalışır</h1>
+  <p>Repo klasöründe <code>node admin/server.js</code> komutunu çalıştır ve terminalde yazan adresi aç.</p>
+</div>
+
+<div class="app" id="app" hidden>
+  <header class="bar">
+    <p class="bar-title">Proje paneli</p>
+    <p class="git" id="git" aria-live="polite"></p>
+    <div class="bar-actions">
+      <button type="button" class="btn" id="btn-new">Yeni proje</button>
+      <a class="btn" href="/site/" target="_blank" rel="noopener">Siteyi önizle</a>
+      <button type="button" class="btn btn--primary" id="btn-save" disabled>Kaydet ve sayfaları üret</button>
+      <button type="button" class="btn" id="btn-commit">Commit</button>
+      <button type="button" class="btn" id="btn-push">Push</button>
+    </div>
+  </header>
+
+  <div class="layout">
+    <nav class="list" aria-label="Projeler">
+      <p class="list-hint">Sıra, sitede görünen sıradır. Gizli projeler sitede çıkmaz.</p>
+      <div id="list"></div>
+    </nav>
+    <main class="editor" id="editor" tabindex="-1"></main>
+  </div>
+
+  <p class="status" id="status" role="status" aria-live="polite"></p>
+</div>
+
+<dialog id="dlg-commit">
+  <form method="dialog">
+    <h2>Değişiklikleri commit'le</h2>
+    <p class="muted">Yalnızca proje verisi, görseller ve üretilen sayfalar eklenir.</p>
+    <pre id="commit-changes" class="pre"></pre>
+    <label class="field"><span>Commit mesajı</span><input id="commit-msg" required value="Projeleri güncelle"></label>
+    <div class="dlg-actions"><button class="btn" value="cancel">Vazgeç</button><button class="btn btn--primary" value="ok" id="commit-ok">Commit'le</button></div>
+  </form>
+</dialog>
+
+<dialog id="dlg-push">
+  <form method="dialog">
+    <h2>GitHub'a gönder</h2>
+    <p id="push-text"></p>
+    <p class="muted">Bu dal main ise site birkaç dakika içinde yayına girer.</p>
+    <div class="dlg-actions"><button class="btn" value="cancel">Vazgeç</button><button class="btn btn--primary" value="ok">Push et</button></div>
+  </form>
+</dialog>
+
+<dialog id="dlg-result">
+  <form method="dialog">
+    <h2 id="result-title"></h2>
+    <pre id="result-out" class="pre"></pre>
+    <div class="dlg-actions"><button class="btn btn--primary" value="ok">Tamam</button></div>
+  </form>
+</dialog>
+
+<script src="app.js" defer></script>
+</body>
+</html>

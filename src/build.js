@@ -3,6 +3,8 @@
 const fs = require("fs");
 const path = require("path");
 const C = require("./content.js");
+// Projeler panelden düzenlenir: data/projects.json
+const PROJECTS = JSON.parse(fs.readFileSync(path.join(__dirname, "..", "data", "projects.json"), "utf8")).projects;
 const { icon } = require("./icons.js");
 
 const ROOT = path.join(__dirname, "..");
@@ -33,10 +35,11 @@ function page(lang) {
   const headText = (game, code) =>
     `<span data-lens-only="game">${game}</span><span data-lens-only="code" class="h-code" lang="en">${code}</span>`;
 
-  const games = C.projects.filter((p) => p.track === "game");
-  const code = C.projects.filter((p) => p.track === "code");
-  const countGame = games.length + C.minorGames.length;
-  const countCode = code.length + C.minorCode.length;
+  const visible = PROJECTS.filter((p) => !p.hidden);
+  const games = visible.filter((p) => p.track === "game");
+  const code = visible.filter((p) => p.track === "code");
+  const countGame = games.length;
+  const countCode = code.length;
   const achTotal = C.achievements.length + 1;
 
   // ---------- Parçalar ----------
@@ -74,6 +77,34 @@ function page(lang) {
       <g fill="none" stroke="currentColor" stroke-width="2"><path d="M238 120h66v34h-66z"/></g>
       <text x="248" y="143" fill="currentColor" font-family="IBM Plex Mono, monospace" font-size="15">00:10</text>
     </svg>`,
+    pipeline: `<svg class="art" viewBox="0 0 320 200" role="img" aria-label="${esc(lang === "tr" ? "QR menüden kasaya giden sipariş akışı çizimi" : "Drawing of orders flowing from a QR menu to the register")}">
+      <g fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M18 60h56v56H18zM90 76h36M118 70l8 6-8 6M140 52h64v80h-64zM218 76h36M246 70l8 6-8 6M262 56h44v44h-44zM270 100v16h28v-16"/>
+        <path d="M150 66h44M150 80h44M150 94h30"/>
+        <path d="M172 132v28M150 160h44M18 160h56"/>
+      </g>
+      <g fill="currentColor"><path d="M26 68h12v12H26zM54 68h12v12H54zM26 96h12v12H26zM44 86h6v6h-6zM56 96h4v4h-4zM62 104h4v4h-4z"/><path d="M276 66h16v4h-16zM276 76h10v4h-10z"/></g>
+      <text x="140" y="176" fill="currentColor" font-family="IBM Plex Mono, monospace" font-size="11">go · windows</text>
+      <text x="18" y="176" fill="currentColor" font-family="IBM Plex Mono, monospace" font-size="11">QR</text>
+      <text x="258" y="132" fill="currentColor" font-family="IBM Plex Mono, monospace" font-size="11">POS</text>
+    </svg>`,
+    chat: `<svg class="art" viewBox="0 0 320 200" role="img" aria-label="${esc(lang === "tr" ? "Sohbet balonlarından bir tabloya aktarım çizimi" : "Drawing of chat bubbles being exported to a spreadsheet")}">
+      <g fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M20 40h100v30H44l-10 10V70H20zM30 96h90v30H54l-10 10v-10H30zM20 150h80v26H20z"/>
+        <path d="M140 108h34M166 100l8 8-8 8"/>
+        <path d="M190 40h112v128H190zM190 64h112M190 88h112M190 112h112M190 136h112M222 40v128"/>
+      </g>
+      <g fill="currentColor"><path d="M30 50h60v4H30zM30 58h40v4H30zM40 106h60v4H40zM30 158h50v4H30zM198 48h16v8h-16zM198 72h16v8h-16zM198 96h16v8h-16zM198 120h16v8h-16zM198 144h16v8h-16zM230 72h50v4h-50zM230 96h40v4h-40zM230 120h56v4h-56zM230 144h30v4h-30z"/></g>
+      <text x="232" y="56" fill="currentColor" font-family="IBM Plex Mono, monospace" font-size="10">.xlsx</text>
+    </svg>`,
+    tasks: `<svg class="art" viewBox="0 0 320 200" role="img" aria-label="${esc(lang === "tr" ? "Görev listesi ve takvim çizimi" : "Drawing of a task list and a calendar")}">
+      <g fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M20 30h140v140H20zM34 52h14v14H34zM34 84h14v14H34zM34 116h14v14H34zM34 148h14v14H34z"/>
+        <path d="M37 59l4 4 6-8M37 91l4 4 6-8"/>
+        <path d="M180 30h120v140H180zM180 58h120M210 58v112M240 58v112M270 58v112M180 86h120M180 114h120M180 142h120"/>
+      </g>
+      <g fill="currentColor"><path d="M58 56h80v6H58zM58 88h64v6H58zM58 120h88v6H58zM58 152h52v6H58zM214 90h22v20h-22zM244 118h22v20h-22zM190 36h50v10h-50z"/></g>
+    </svg>`,
   };
 
   // Büyük harfe çevirmede "i" → "İ" yalnızca Türkçe adlarda olsun (MyEverythingList → MYEVERYTHINGLIST)
@@ -92,19 +123,19 @@ function page(lang) {
     const screen = p.image
       ? `<img src="/assets/img/${p.image.src}" width="${p.image.w}" height="${p.image.h}" alt="${esc(L(p.image.alt))}" loading="lazy" decoding="async">`
       : art[p.art];
-    const gallery = p.gallery ? `
-        <ul class="qc-gallery">${p.gallery.map((g) => `<li><img src="/assets/img/${g.src}" width="1200" height="675" alt="${esc(L(g.alt))}" loading="lazy" decoding="async"></li>`).join("")}</ul>` : "";
+    const gallery = p.gallery && p.gallery.length ? `
+        <ul class="qc-gallery">${p.gallery.map((g) => `<li><img src="/assets/img/${g.src}" width="${g.w || 1200}" height="${g.h || 675}" alt="${esc(L(g.alt))}" loading="lazy" decoding="async"></li>`).join("")}</ul>` : "";
     const points = L(p.points) || [];
     const linkHtml = p.links.map((l, i) =>
       extLink(l.href, esc(L(C.ui.links[l.label])), i === 0 ? "btn btn--primary" : "btn btn--ghost")).join("");
     return `
-      <article class="qc${p.featured ? " qc--featured" : ""}${p.image ? "" : " qc--art"}" id="${p.id}">
+      <article class="qc${p.tier === "featured" ? " qc--featured" : ""}${p.image ? "" : " qc--art"}" id="${esc(p.id)}">
         <div class="qc-media">
           <div class="qc-screen">${screen}</div>${gallery}
         </div>
         <div class="qc-body">
-          <p class="qc-kind"><span>${esc(L(p.kind))}</span><span class="qc-date">${esc(L(p.date))}</span></p>
-          <h4 class="qc-title" lang="${titleLang(p.title)}">${esc(p.title)}${sub ? ` <span class="qc-sub" lang="en">${esc(sub)}</span>` : ""}</h4>
+          <p class="qc-kind"><span>${esc(L(p.kind))}</span>${L(p.date) ? `<span class="qc-date">${esc(L(p.date))}</span>` : ""}</p>
+          <h4 class="qc-title" lang="${titleLang(p.title)}">${esc(p.title)}${sub ? ` <span class="qc-sub" lang="${titleLang(sub)}">${esc(sub)}</span>` : ""}</h4>
           <p class="qc-pitch">${esc(L(p.pitch))}</p>
           ${points.length ? `<ul class="qc-points">${points.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>` : ""}
           ${statSheet(p.stats)}
@@ -114,23 +145,36 @@ function page(lang) {
       </article>`;
   };
 
-  const minorList = (items, label) => `
-      <div class="minor">
-        <h4 class="minor-title">${label}</h4>
-        <ul class="minor-list">
-          ${items.map((m) => `<li>${m.href ? extLink(m.href, `<span class="minor-name">${esc(m.title)}</span>`) : `<span class="minor-name">${esc(m.title)}</span>`}<span class="minor-note">${esc(L(m.note))}</span></li>`).join("")}
-        </ul>
-      </div>`;
+  // Kompakt kart: küçük işler için görsel, ad, tek cümle ve bağlantılar
+  const compact = (p) => {
+    const screen = p.image
+      ? `<img src="/assets/img/${p.image.src}" width="${p.image.w}" height="${p.image.h}" alt="${esc(L(p.image.alt))}" loading="lazy" decoding="async">`
+      : art[p.art] || "";
+    const sub = L(p.subtitle);
+    return `
+        <li class="mini${p.image ? "" : " qc--art"}" id="${esc(p.id)}">
+          <div class="qc-screen">${screen}</div>
+          <p class="qc-kind"><span>${esc(L(p.kind))}</span>${L(p.date) ? `<span class="qc-date">${esc(L(p.date))}</span>` : ""}</p>
+          <h5 class="mini-title" lang="${titleLang(p.title)}">${esc(p.title)}</h5>
+          ${sub ? `<p class="mini-sub" lang="${titleLang(sub)}">${esc(sub)}</p>` : ""}
+          <p class="mini-pitch">${esc(L(p.pitch))}</p>
+          <p class="mini-tech">${p.tech.map(esc).join(", ")}</p>
+          ${p.links.length ? `<p class="mini-links">${p.links.map((l) => extLink(l.href, esc(L(C.ui.links[l.label])))).join("")}</p>` : ""}
+        </li>`;
+  };
 
-  const track = (id, items, minor, minorLabel, name, iconName) => `
+  const track = (id, items, minorLabel, name, iconName) => `
     <section class="track" id="track-${id}" data-track="${id}" aria-labelledby="track-${id}-h">
       <h3 class="track-head" id="track-${id}-h">
         ${icon(iconName, "px px--lg")}
         <span class="track-name">${name}</span>
         <span class="track-rank" data-rank-for="${id}">${id === "game" ? lensText(T("mainQuest"), T("sideQuest")) : lensText(T("sideQuest"), T("mainQuest"))}</span>
       </h3>
-      <div class="qc-list">${items.map(card).join("")}</div>
-      ${minorList(minor, minorLabel)}
+      <div class="qc-list">${items.filter((p) => p.tier !== "compact").map(card).join("")}</div>
+      ${items.some((p) => p.tier === "compact") ? `
+      <h4 class="minor-title">${minorLabel}</h4>
+      <ul class="mini-grid">${items.filter((p) => p.tier === "compact").map(compact).join("")}
+      </ul>` : ""}
     </section>`;
 
   const statusIcon = { active: "flag", done: "check", locked: "lock" };
@@ -330,8 +374,8 @@ function page(lang) {
     <div class="wrap">
       ${sectionHead("seviyeler", T("levelsTitleGame"), T("levelsTitleCode"), `<p class="section-intro">${lensText(T("levelsIntroGame"), T("levelsIntroCode"))}</p>`)}
       <div class="tracks" data-tracks>
-        ${track("game", games, C.minorGames, T("moreGames"), T("trackGame"), "pad")}
-        ${track("code", code, C.minorCode, T("moreCode"), T("trackCode"), "term")}
+        ${track("game", games, T("moreGames"), T("trackGame"), "pad")}
+        ${track("code", code, T("moreCode"), T("trackCode"), "term")}
       </div>
     </div>
   </section>

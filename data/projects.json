@@ -1,0 +1,1464 @@
+{
+  "projects": [
+    {
+      "id": "kralin-sozu",
+      "track": "game",
+      "tier": "featured",
+      "hidden": false,
+      "title": "Kralın Sözü",
+      "subtitle": {
+        "tr": "",
+        "en": "The King's Promise"
+      },
+      "kind": {
+        "tr": "Tek kişilik oyun",
+        "en": "Solo game"
+      },
+      "date": {
+        "tr": "Ekim 2026",
+        "en": "Oct 2026"
+      },
+      "pitch": {
+        "tr": "Bir halk hikâyesinden uyarlanan, ekranda hiç arayüz olmayan birinci şahıs nöbet oyunu. Kralın unuttuğu nöbetçi sensin; üç kış gecesi boyunca kapıyı tutuyorsun.",
+        "en": "A first-person guard game based on a folk tale, with no on-screen interface. You're the sentry the king forgot, holding the gate for three winter nights."
+      },
+      "points": {
+        "tr": [
+          "Sahnenin tamamı kodla kuruluyor. Kuralları Unity'den bağımsız bir çekirdekte yazdım.",
+          "Oyunu 2000 gecelik bir denge simülasyonuyla ayarladım; ekran açmadan çalışan test botları var."
+        ],
+        "en": [
+          "The whole scene is built in code. The rules live in a core that doesn't depend on Unity.",
+          "Tuned with a 2,000-night balance simulation; automated test bots run without opening a window."
+        ]
+      },
+      "stats": [
+        {
+          "k": {
+            "tr": "Gece",
+            "en": "Nights"
+          },
+          "v": {
+            "tr": "3",
+            "en": "3"
+          }
+        },
+        {
+          "k": {
+            "tr": "Ziyaretçi türü",
+            "en": "Visitor types"
+          },
+          "v": {
+            "tr": "17",
+            "en": "17"
+          }
+        },
+        {
+          "k": {
+            "tr": "Son",
+            "en": "Endings"
+          },
+          "v": {
+            "tr": "10",
+            "en": "10"
+          }
+        },
+        {
+          "k": {
+            "tr": "Denge simülasyonu",
+            "en": "Balance simulation"
+          },
+          "v": {
+            "tr": "2000 gece",
+            "en": "2,000 nights"
+          }
+        },
+        {
+          "k": {
+            "tr": "Kare süresi (RTX 4060, 1080p)",
+            "en": "Frame time (RTX 4060, 1080p)"
+          },
+          "v": {
+            "tr": "1,6 ms",
+            "en": "1.6 ms"
+          }
+        }
+      ],
+      "tech": [
+        "Unity 6",
+        "C#",
+        "Vulkan",
+        "Windows",
+        "Linux"
+      ],
+      "image": {
+        "src": "kralin-sozu-gate_view.webp",
+        "w": 1200,
+        "h": 675,
+        "alt": {
+          "tr": "Kralın Sözü: karlı bir gecede iki nöbet kulesi arasındaki kapı",
+          "en": "Kralın Sözü: the gate between two watchtowers on a snowy night"
+        }
+      },
+      "art": null,
+      "gallery": [
+        {
+          "src": "kralin-sozu-papers.webp",
+          "w": 1200,
+          "h": 675,
+          "alt": {
+            "tr": "Ziyaretçinin belgelerini inceleme",
+            "en": "Checking a visitor's papers"
+          }
+        },
+        {
+          "src": "kralin-sozu-wolves.webp",
+          "w": 1200,
+          "h": 675,
+          "alt": {
+            "tr": "Karanlıkta yaklaşan kurtlar",
+            "en": "Wolves approaching in the dark"
+          }
+        },
+        {
+          "src": "kralin-sozu-king_promise.webp",
+          "w": 1200,
+          "h": 675,
+          "alt": {
+            "tr": "Kralın söz verdiği an",
+            "en": "The moment the king makes his promise"
+          }
+        }
+      ],
+      "links": [
+        {
+          "label": "play",
+          "href": "https://salihyzts.itch.io/kralin-sozu"
+        },
+        {
+          "label": "source",
+          "href": "https://github.com/SalihYzts/kralin-sozu"
+        }
+      ]
+    },
+    {
+      "id": "under-the-counter",
+      "track": "game",
+      "tier": "card",
+      "hidden": false,
+      "title": "Under the Counter",
+      "subtitle": {
+        "tr": "",
+        "en": ""
+      },
+      "kind": {
+        "tr": "Ekip oyunu, baş programcı",
+        "en": "Team game, lead programmer"
+      },
+      "date": {
+        "tr": "Temmuz 2026'dan beri",
+        "en": "Since Jul 2026"
+      },
+      "pitch": {
+        "tr": "2000'lerde korsan CD satan küçük bir dükkânı işlettiğin, kara mizahlı birinci şahıs dükkân simülasyonu. Hedef: Steam Next Fest demosu.",
+        "en": "A dark-humour first-person shop sim: you run a small 2000s shop selling bootleg CDs. Target: a Steam Next Fest demo."
+      },
+      "points": {
+        "tr": [
+          "Ekonomiyi, sabrı tükenen müşterileri, şüphe göstergesine bağlı polis baskınlarını, çökmeye dayanıklı kaydı ve TR/EN yerelleştirmeyi yazdım. Ekipteki commit'lerin çoğu benim."
+        ],
+        "en": [
+          "I wrote the economy, impatient customers, police raids driven by a suspicion meter, crash-safe saving and TR/EN localization. Most of the team's commits are mine."
+        ]
+      },
+      "stats": [
+        {
+          "k": {
+            "tr": "Çalışma zamanı script'i",
+            "en": "Runtime scripts"
+          },
+          "v": {
+            "tr": "88",
+            "en": "88"
+          }
+        },
+        {
+          "k": {
+            "tr": "Editör aracı",
+            "en": "Editor tools"
+          },
+          "v": {
+            "tr": "28",
+            "en": "28"
+          }
+        }
+      ],
+      "tech": [
+        "Unity 6",
+        "URP",
+        "NavMesh",
+        "Input System",
+        "C#"
+      ],
+      "image": null,
+      "art": "counter",
+      "gallery": [],
+      "links": []
+    },
+    {
+      "id": "last-dawn",
+      "track": "game",
+      "tier": "card",
+      "hidden": false,
+      "title": "LAST DAWN",
+      "subtitle": {
+        "tr": "",
+        "en": ""
+      },
+      "kind": {
+        "tr": "Volpen ekip oyunu, yazılım ve pazarlama",
+        "en": "Volpen team game, software & marketing"
+      },
+      "date": {
+        "tr": "Geliştiriliyor",
+        "en": "In development"
+      },
+      "pitch": {
+        "tr": "Kıyamet sonrası bir dünyada gündüz yağmaya çıkıp gece üssünü savunduğun, hayatta kalma ile üs kurmayı birleştiren bir PC oyunu.",
+        "en": "A post-apocalyptic PC game that mixes survival and base building: scavenge by day, defend your base by night."
+      },
+      "points": {
+        "tr": [
+          "Projede yazılım ve pazarlamadan sorumluyum. Gündüz/gece düğmesiyle bütün paleti değiştiren tanıtım sitesini ben yaptım."
+        ],
+        "en": [
+          "I handle software and marketing. I built the promo site, whose day/night switch changes the whole palette."
+        ]
+      },
+      "stats": [],
+      "tech": [
+        "Unity",
+        "C#",
+        "HTML",
+        "CSS"
+      ],
+      "image": {
+        "src": "last-dawn.webp",
+        "w": 960,
+        "h": 600,
+        "alt": {
+          "tr": "LAST DAWN tanıtım sitesinin ana ekranı",
+          "en": "Home screen of the LAST DAWN promo site"
+        }
+      },
+      "art": null,
+      "gallery": [],
+      "links": [
+        {
+          "label": "open",
+          "href": "https://salihyzts.github.io/Last-Down-WEB/"
+        }
+      ]
+    },
+    {
+      "id": "pati-rotasi",
+      "track": "game",
+      "tier": "card",
+      "hidden": false,
+      "title": "Pati Rotası",
+      "subtitle": {
+        "tr": "",
+        "en": ""
+      },
+      "kind": {
+        "tr": "Mobil oyun",
+        "en": "Mobile game"
+      },
+      "date": {
+        "tr": "2026",
+        "en": "2026"
+      },
+      "pitch": {
+        "tr": "Yürüyüşü teşvik eden mobil oyun. Sokak kedilerini fotoğraflayıp koleksiyon yapıyorsun, haritadaki sis yürüdükçe açılıyor, adımların barınaklar için mama puanına dönüşüyor.",
+        "en": "A mobile game that gets you walking. Photograph street cats to build a collection, clear the fog on the map as you walk, and turn your steps into food points for animal shelters."
+      },
+      "points": {
+        "tr": [],
+        "en": []
+      },
+      "stats": [],
+      "tech": [
+        "Expo",
+        "React Native",
+        "Leaflet"
+      ],
+      "image": {
+        "src": "pati-rotasi.webp",
+        "w": 960,
+        "h": 748,
+        "alt": {
+          "tr": "Pati Rotası tanıtım ekranı ve iki telefon görüntüsü",
+          "en": "Pati Rotası promo screen with two phone screenshots"
+        }
+      },
+      "art": null,
+      "gallery": [],
+      "links": [
+        {
+          "label": "source",
+          "href": "https://github.com/SalihYzts/pati-rotasi"
+        }
+      ]
+    },
+    {
+      "id": "lets-cook-a-mask",
+      "track": "game",
+      "tier": "compact",
+      "hidden": false,
+      "title": "Let's Cook a Mask",
+      "subtitle": {
+        "tr": "",
+        "en": ""
+      },
+      "kind": {
+        "tr": "Global Game Jam 2026, ekip oyunu",
+        "en": "Global Game Jam 2026, team game"
+      },
+      "date": {
+        "tr": "2026",
+        "en": "2026"
+      },
+      "pitch": {
+        "tr": "Yüzlerin gizlendiği bir dünyada kimlik ustasısın: müşterilerin fısıltılarını dinleyip istedikleri gücü veren maskeyi pişiriyorsun.",
+        "en": "In a world of hidden faces you craft identities: listen to each customer's whispers and cook the mask that gives them the power they want."
+      },
+      "points": {
+        "tr": [],
+        "en": []
+      },
+      "stats": [],
+      "tech": [
+        "Unity",
+        "C#",
+        "HTML5"
+      ],
+      "image": {
+        "src": "lets-cook-a-mask.webp",
+        "w": 960,
+        "h": 600,
+        "alt": {
+          "tr": "Let's Cook a Mask logosu: tavada iki tiyatro maskesi",
+          "en": "Let's Cook a Mask logo: two theatre masks in a frying pan"
+        }
+      },
+      "art": null,
+      "gallery": [],
+      "links": [
+        {
+          "label": "play",
+          "href": "https://ew0ue.itch.io/lets-cook-a-mask"
+        },
+        {
+          "label": "source",
+          "href": "https://github.com/SalihYzts/GGJ-2026-BUG-Ne-Yapsak-Yahu"
+        }
+      ]
+    },
+    {
+      "id": "the-rolling-pizz",
+      "track": "game",
+      "tier": "compact",
+      "hidden": false,
+      "title": "The Rolling Pizz",
+      "subtitle": {
+        "tr": "",
+        "en": ""
+      },
+      "kind": {
+        "tr": "Yıldız Jam 2026, Unity geliştirici",
+        "en": "Yıldız Jam 2026, Unity developer"
+      },
+      "date": {
+        "tr": "2026",
+        "en": "2026"
+      },
+      "pitch": {
+        "tr": "Masada uyurken ortadan ikiye kesilen bir pizzayı kaçırıyorsun; bazı engelleri bütün, bazılarını iki yarım hâlinde geçmen gerekiyor. Kozalak Çamları ekibinde oyunu Unity'de programladım.",
+        "en": "Help a pizza that got cut in half in its sleep escape the table; some obstacles need the whole pizza, others two halves. I programmed the game in Unity for team Kozalak Çamları."
+      },
+      "points": {
+        "tr": [],
+        "en": []
+      },
+      "stats": [],
+      "tech": [
+        "Unity",
+        "C#"
+      ],
+      "image": {
+        "src": "the-rolling-pizz.webp",
+        "w": 960,
+        "h": 600,
+        "alt": {
+          "tr": "The Rolling Pizz: renkli binalar arasında yuvarlanan pizza",
+          "en": "The Rolling Pizz: a pizza rolling between colourful buildings"
+        }
+      },
+      "art": null,
+      "gallery": [],
+      "links": [
+        {
+          "label": "play",
+          "href": "https://tce81.itch.io/the-rolling-pizz"
+        }
+      ]
+    },
+    {
+      "id": "agaclastirilmis-elma",
+      "track": "game",
+      "tier": "compact",
+      "hidden": false,
+      "title": "Ağaçlaştırılmış Elma",
+      "subtitle": {
+        "tr": "",
+        "en": ""
+      },
+      "kind": {
+        "tr": "Volpen, 2 ay. Kod, proje yönetimi ve hikâye",
+        "en": "Volpen, 2 months. Code, project lead and story"
+      },
+      "date": {
+        "tr": "",
+        "en": ""
+      },
+      "pitch": {
+        "tr": "Tohumdan ağaca bir elmanın macerası: tilki Kiki'ye yardım edip elmayı yetiştiriyorsun. Eğitici bir tıklama oyunu.",
+        "en": "An apple's journey from seed to tree: help Kiki the fox grow it. An educational clicker game."
+      },
+      "points": {
+        "tr": [],
+        "en": []
+      },
+      "stats": [],
+      "tech": [
+        "Unity",
+        "C#"
+      ],
+      "image": {
+        "src": "agaclastirilmis-elma.webp",
+        "w": 960,
+        "h": 600,
+        "alt": {
+          "tr": "Ağaçlaştırılmış Elma: elmalı turta bekleyen tilki ve yaşlı kadın çizimi",
+          "en": "Ağaçlaştırılmış Elma: illustration of a fox and an old woman waiting for an apple pie"
+        }
+      },
+      "art": null,
+      "gallery": [],
+      "links": [
+        {
+          "label": "play",
+          "href": "https://volpentr.itch.io/agaclastirilmiselma"
+        },
+        {
+          "label": "source",
+          "href": "https://github.com/SalihYzts/ElnalistirilmisAgac"
+        }
+      ]
+    },
+    {
+      "id": "colorland",
+      "track": "game",
+      "tier": "compact",
+      "hidden": false,
+      "title": "ColorLand",
+      "subtitle": {
+        "tr": "",
+        "en": ""
+      },
+      "kind": {
+        "tr": "Volpen, 1 hafta. İlk 3D projem",
+        "en": "Volpen, 1 week. My first 3D project"
+      },
+      "date": {
+        "tr": "",
+        "en": ""
+      },
+      "pitch": {
+        "tr": "Dünyanın renkleri çalınmış. İstasyonu keşfedip bulmacaları çözerek ışığı geri getiriyorsun.",
+        "en": "The world's colours have been stolen. Explore the station, solve the puzzles and bring the light back."
+      },
+      "points": {
+        "tr": [],
+        "en": []
+      },
+      "stats": [],
+      "tech": [
+        "Unity",
+        "C#"
+      ],
+      "image": {
+        "src": "colorland.webp",
+        "w": 960,
+        "h": 600,
+        "alt": {
+          "tr": "ColorLand: gri taş bir odada kırmızı kapı",
+          "en": "ColorLand: a grey stone room with a red door"
+        }
+      },
+      "art": null,
+      "gallery": [],
+      "links": [
+        {
+          "label": "play",
+          "href": "https://volpentr.itch.io/colorland"
+        }
+      ]
+    },
+    {
+      "id": "uckkenici",
+      "track": "game",
+      "tier": "compact",
+      "hidden": false,
+      "title": "ÜçKKeNİci",
+      "subtitle": {
+        "tr": "",
+        "en": ""
+      },
+      "kind": {
+        "tr": "Volpen, 2 gün",
+        "en": "Volpen, 2 days"
+      },
+      "date": {
+        "tr": "",
+        "en": ""
+      },
+      "pitch": {
+        "tr": "Matematiği oyunlaştıran sonsuz bir oyun: üçgenin eksik açısını bulup doğru cevabı süre bitmeden seçiyorsun.",
+        "en": "An endless game that turns maths into play: find the triangle's missing angle and pick it before time runs out."
+      },
+      "points": {
+        "tr": [],
+        "en": []
+      },
+      "stats": [],
+      "tech": [
+        "Unity",
+        "C#"
+      ],
+      "image": {
+        "src": "uckkenici.webp",
+        "w": 960,
+        "h": 600,
+        "alt": {
+          "tr": "ÜçKKeNİci: açıları verilen bir üçgen ve dört cevap seçeneği",
+          "en": "ÜçKKeNİci: a triangle with two angles and four answer options"
+        }
+      },
+      "art": null,
+      "gallery": [],
+      "links": [
+        {
+          "label": "play",
+          "href": "https://volpentr.itch.io/uckkenci"
+        },
+        {
+          "label": "source",
+          "href": "https://github.com/SalihYzts/UcgenIci"
+        }
+      ]
+    },
+    {
+      "id": "ecobuddy",
+      "track": "game",
+      "tier": "compact",
+      "hidden": false,
+      "title": "EcoBuddy",
+      "subtitle": {
+        "tr": "",
+        "en": ""
+      },
+      "kind": {
+        "tr": "Ekip oyunu",
+        "en": "Team game"
+      },
+      "date": {
+        "tr": "",
+        "en": ""
+      },
+      "pitch": {
+        "tr": "Çöpleri toplayıp doğru geri dönüşüm kutusuna attığın, çevre bilinci kazandırmayı amaçlayan 3D eğitici oyun.",
+        "en": "A 3D educational game about picking up litter and sorting it into the right recycling bin."
+      },
+      "points": {
+        "tr": [],
+        "en": []
+      },
+      "stats": [],
+      "tech": [
+        "Unity",
+        "C#"
+      ],
+      "image": {
+        "src": "ecobuddy.webp",
+        "w": 960,
+        "h": 600,
+        "alt": {
+          "tr": "EcoBuddy: piknik alanında renkli geri dönüşüm kutuları",
+          "en": "EcoBuddy: colourful recycling bins at a picnic spot"
+        }
+      },
+      "art": null,
+      "gallery": [],
+      "links": [
+        {
+          "label": "play",
+          "href": "https://ew0ue.itch.io/ecobuddy"
+        }
+      ]
+    },
+    {
+      "id": "myeverythinglist",
+      "track": "code",
+      "tier": "featured",
+      "hidden": false,
+      "title": "MyEverythingList",
+      "subtitle": {
+        "tr": "",
+        "en": ""
+      },
+      "kind": {
+        "tr": "Web uygulaması, tek geliştirici",
+        "en": "Web app, solo developer"
+      },
+      "date": {
+        "tr": "Ağustos – Ekim 2026",
+        "en": "Aug – Oct 2026"
+      },
+      "pitch": {
+        "tr": "Anime, manga, dizi, film, oyun, kitap ve müziği tek yerde takip etmeni sağlayan, reklamsız bir web uygulaması. Tek başıma geliştirip 19 dilde yayına aldım.",
+        "en": "An ad-free web app for tracking anime, manga, TV, films, games, books and music in one place. I built it on my own and shipped it in 19 languages."
+      },
+      "points": {
+        "tr": [
+          "Supabase'de satır düzeyi güvenlik ve Edge Function'lar; paylaşılan bağlantıların önizleme kartlarını bir Cloudflare Worker üretiyor.",
+          "Arama birden çok kaynağa soruyor, biri çökünce ötekine geçiyor. Kaynaklar arası eşleştirme Wikidata ile; katalog her gece kendiliğinden büyüyor.",
+          "AniList, Steam, MyAnimeList, Goodreads ve Letterboxd'dan içe aktarma; takip, mesaj, inceleme, rozetler ve mini oyunlar."
+        ],
+        "en": [
+          "Supabase with row-level security and Edge Functions; a Cloudflare Worker renders preview cards for shared links.",
+          "Search queries several sources and falls back when one goes down. IDs are matched across sources with Wikidata; the catalog grows by itself every night.",
+          "Imports from AniList, Steam, MyAnimeList, Goodreads and Letterboxd; follows, messages, reviews, badges and mini-games."
+        ]
+      },
+      "stats": [
+        {
+          "k": {
+            "tr": "Dil",
+            "en": "Languages"
+          },
+          "v": {
+            "tr": "19",
+            "en": "19"
+          }
+        },
+        {
+          "k": {
+            "tr": "Satır TypeScript",
+            "en": "Lines of TypeScript"
+          },
+          "v": {
+            "tr": "~58 bin",
+            "en": "~58k"
+          }
+        },
+        {
+          "k": {
+            "tr": "Commit",
+            "en": "Commit"
+          },
+          "v": {
+            "tr": "261",
+            "en": "261"
+          }
+        },
+        {
+          "k": {
+            "tr": "SQL migration",
+            "en": "SQL migration"
+          },
+          "v": {
+            "tr": "148",
+            "en": "148"
+          }
+        },
+        {
+          "k": {
+            "tr": "Edge Function",
+            "en": "Edge Function"
+          },
+          "v": {
+            "tr": "20",
+            "en": "20"
+          }
+        }
+      ],
+      "tech": [
+        "React 19",
+        "TypeScript",
+        "Vite",
+        "Tailwind",
+        "TanStack Query",
+        "Supabase",
+        "Cloudflare Workers",
+        "Tauri v2"
+      ],
+      "image": {
+        "src": "myeverythinglist.webp",
+        "w": 960,
+        "h": 748,
+        "alt": {
+          "tr": "MyEverythingList ana sayfası",
+          "en": "MyEverythingList home page"
+        }
+      },
+      "art": null,
+      "gallery": [],
+      "links": [
+        {
+          "label": "open",
+          "href": "https://liste-programi.yazitassalih0.workers.dev/"
+        }
+      ]
+    },
+    {
+      "id": "nerobot",
+      "track": "code",
+      "tier": "card",
+      "hidden": false,
+      "title": "NeRoBoT",
+      "subtitle": {
+        "tr": "",
+        "en": ""
+      },
+      "kind": {
+        "tr": "Açık kaynak masaüstü uygulaması",
+        "en": "Open-source desktop app"
+      },
+      "date": {
+        "tr": "2026",
+        "en": "2026"
+      },
+      "pitch": {
+        "tr": "Birden çok WhatsApp ve Telegram hesabında, her biri ayrı çalışan yapay zekâ botları yöneten masaüstü uygulaması.",
+        "en": "A desktop app that runs AI bots on several WhatsApp and Telegram accounts at once, each fully isolated."
+      },
+      "points": {
+        "tr": [
+          "Sağlayıcıdan bağımsız bir AI katmanı yazdım: Ollama, LM Studio, llama.cpp, vLLM, OpenAI, OpenRouter, Groq ve Claude Code, Codex, Gemini CLI gibi ajanlar aynı arayüzle çalışıyor. GitHub Releases ile kendini güncelliyor."
+        ],
+        "en": [
+          "I wrote a provider-agnostic AI layer: Ollama, LM Studio, llama.cpp, vLLM, OpenAI, OpenRouter, Groq and agents like Claude Code, Codex and Gemini CLI all work through one interface. Updates itself through GitHub Releases."
+        ]
+      },
+      "stats": [
+        {
+          "k": {
+            "tr": "GitHub yıldızı",
+            "en": "GitHub stars"
+          },
+          "v": {
+            "tr": "7",
+            "en": "7"
+          }
+        },
+        {
+          "k": {
+            "tr": "Platform",
+            "en": "Platform"
+          },
+          "v": {
+            "tr": "Windows, Linux",
+            "en": "Windows, Linux"
+          }
+        }
+      ],
+      "tech": [
+        "Electron",
+        "Node.js",
+        "whatsapp-web.js",
+        "Telegram"
+      ],
+      "image": {
+        "src": "nerobot.webp",
+        "w": 960,
+        "h": 748,
+        "alt": {
+          "tr": "NeRoBoT sohbet ekranı",
+          "en": "NeRoBoT chat screen"
+        }
+      },
+      "art": null,
+      "gallery": [],
+      "links": [
+        {
+          "label": "source",
+          "href": "https://github.com/SalihYzts/NeRoBoT"
+        }
+      ]
+    },
+    {
+      "id": "raipy",
+      "track": "code",
+      "tier": "card",
+      "hidden": false,
+      "title": "RaiPy",
+      "subtitle": {
+        "tr": "",
+        "en": ""
+      },
+      "kind": {
+        "tr": "AI görsel roman motoru",
+        "en": "AI visual novel engine"
+      },
+      "date": {
+        "tr": "Eylül 2026",
+        "en": "Sep 2026"
+      },
+      "pitch": {
+        "tr": "Tek cümlelik bir fikirden derlenip oynatılabilen bir Ren'Py oyunu çıkaran masaüstü uygulaması. Her aşama kullanıcı onayından geçiyor.",
+        "en": "A desktop app that turns a one-sentence idea into a Ren'Py game that compiles and runs. The user approves every stage."
+      },
+      "points": {
+        "tr": [
+          "Görseller harici sunucu olmadan üretiliyor. Modelleri sırayla belleğe alıp boşaltarak 8 GB ekran kartında VRAM kullanımını 7820 MiB'den 3035 MiB'ye indirdim."
+        ],
+        "en": [
+          "Images are generated with no external server. Loading and unloading models one at a time cut VRAM use on an 8 GB GPU from 7820 MiB to 3035 MiB."
+        ]
+      },
+      "stats": [
+        {
+          "k": {
+            "tr": "Test",
+            "en": "Test"
+          },
+          "v": {
+            "tr": "614",
+            "en": "614"
+          }
+        },
+        {
+          "k": {
+            "tr": "Uçtan uca üretim",
+            "en": "End-to-end run"
+          },
+          "v": {
+            "tr": "150 sn",
+            "en": "150 s"
+          }
+        },
+        {
+          "k": {
+            "tr": "VRAM",
+            "en": "VRAM"
+          },
+          "v": {
+            "tr": "7820 → 3035 MiB",
+            "en": "7820 → 3035 MiB"
+          }
+        },
+        {
+          "k": {
+            "tr": "Uygulama boyutu",
+            "en": "App size"
+          },
+          "v": {
+            "tr": "4,2 MB",
+            "en": "4.2 MB"
+          }
+        }
+      ],
+      "tech": [
+        "Tauri v2",
+        "Rust",
+        "React 19",
+        "TypeScript",
+        "Python",
+        "diffusers",
+        "Ren'Py"
+      ],
+      "image": {
+        "src": "raipy.webp",
+        "w": 960,
+        "h": 748,
+        "alt": {
+          "tr": "RaiPy sahne düzenleyicisi",
+          "en": "RaiPy scene editor"
+        }
+      },
+      "art": null,
+      "gallery": [],
+      "links": []
+    },
+    {
+      "id": "parsel",
+      "track": "code",
+      "tier": "card",
+      "hidden": false,
+      "title": "Parsel",
+      "subtitle": {
+        "tr": "",
+        "en": ""
+      },
+      "kind": {
+        "tr": "Staj projesi, Stoneograph",
+        "en": "Internship project, Stoneograph"
+      },
+      "date": {
+        "tr": "Ağustos 2026",
+        "en": "Aug 2026"
+      },
+      "pitch": {
+        "tr": "Tapu doğrulamalı arsa pazaryeri ve canlı açık artırma platformu.",
+        "en": "A land marketplace with title-deed verification and live auctions."
+      },
+      "points": {
+        "tr": [
+          "Parselleri TKGM üzerinden sorgulayan \"Tapu Doğrulanmış\" rozeti, eğime göre düzeltilmiş alan ve yükseklik analizi.",
+          "Son saniye teklifinde süreyi uzatan anti-sniping, yarış koşullarına karşı güvenli teklif işleme ve WebSocket ile canlı akış.",
+          "3D harita üzerinde seslendirmeli, altyazılı sanal drone videosu üreten bir hat (Playwright, ffmpeg)."
+        ],
+        "en": [
+          "A \"title-verified\" badge that looks parcels up in Turkey's land registry (TKGM), plus slope-corrected area and elevation analysis.",
+          "Anti-sniping (a last-second bid extends the timer), race-safe bid handling and real-time updates over WebSocket.",
+          "A pipeline that renders narrated, subtitled virtual drone videos over a 3D map (Playwright, ffmpeg)."
+        ]
+      },
+      "stats": [
+        {
+          "k": {
+            "tr": "Backend kodu",
+            "en": "Backend code"
+          },
+          "v": {
+            "tr": "~10 bin satır",
+            "en": "~10k lines"
+          }
+        },
+        {
+          "k": {
+            "tr": "Test",
+            "en": "Test"
+          },
+          "v": {
+            "tr": "103",
+            "en": "103"
+          }
+        }
+      ],
+      "tech": [
+        "Python",
+        "FastAPI",
+        "SQLAlchemy",
+        "WebSocket",
+        "Shapely",
+        "pyproj",
+        "JavaScript"
+      ],
+      "image": null,
+      "art": "parcel",
+      "gallery": [],
+      "links": []
+    },
+    {
+      "id": "heren-agent",
+      "track": "code",
+      "tier": "card",
+      "hidden": false,
+      "title": "Heren Agent",
+      "subtitle": {
+        "tr": "",
+        "en": ""
+      },
+      "kind": {
+        "tr": "Ev sunucusu asistanı",
+        "en": "Home-server assistant"
+      },
+      "date": {
+        "tr": "Eylül 2026",
+        "en": "Sep 2026"
+      },
+      "pitch": {
+        "tr": "Telefondan sesle ya da dokunarak ev sunucusunu ve bağlı makineleri yöneten bir panel. Konuşma tanıma ve seslendirme tamamen yerelde çalışıyor.",
+        "en": "A phone-first panel for running a home server and paired machines by voice or touch. Speech recognition and text-to-speech run fully on the local machine."
+      },
+      "points": {
+        "tr": [
+          "Her makinede bir Go ajanı var. Ajanlar mesajlarını ed25519 ile imzalıyor ve tekrar oynatma saldırılarına karşı tek kullanımlık değer kullanıyor. Yüksek riskli komutlar arayüzde onay bekliyor."
+        ],
+        "en": [
+          "Each machine runs a Go agent. Agents sign messages with ed25519 and use a one-time nonce against replay attacks. High-risk commands wait for approval in the UI."
+        ]
+      },
+      "stats": [
+        {
+          "k": {
+            "tr": "İmza",
+            "en": "Signing"
+          },
+          "v": {
+            "tr": "ed25519",
+            "en": "ed25519"
+          }
+        },
+        {
+          "k": {
+            "tr": "Ses",
+            "en": "Voice"
+          },
+          "v": {
+            "tr": "yerel STT + TTS",
+            "en": "local STT + TTS"
+          }
+        }
+      ],
+      "tech": [
+        "Python",
+        "FastAPI",
+        "Go",
+        "TypeScript",
+        "faster-whisper",
+        "Piper TTS"
+      ],
+      "image": {
+        "src": "heren-agent.webp",
+        "w": 960,
+        "h": 748,
+        "alt": {
+          "tr": "Heren Agent ana ekranı",
+          "en": "Heren Agent main screen"
+        }
+      },
+      "art": null,
+      "gallery": [],
+      "links": [
+        {
+          "label": "source",
+          "href": "https://github.com/SalihYzts/heren-agent"
+        }
+      ]
+    },
+    {
+      "id": "kafe-finans",
+      "track": "code",
+      "tier": "card",
+      "hidden": false,
+      "title": "Kafe Finans",
+      "subtitle": {
+        "tr": "",
+        "en": ""
+      },
+      "kind": {
+        "tr": "Petra Cafe işi, masaüstü uygulaması",
+        "en": "Petra Cafe work, desktop app"
+      },
+      "date": {
+        "tr": "2026",
+        "en": "2026"
+      },
+      "pitch": {
+        "tr": "Kafe için gelir-gider ve ciro uygulaması. Elle girilen ciroyu POS'un gün sonu rakamlarıyla gün gün karşılaştırıyor, banka ekstresinden POS yatışlarını ve komisyonu okuyor.",
+        "en": "An income, expense and revenue app for the cafe. It checks hand-entered revenue against the POS end-of-day totals day by day and reads POS deposits and fees from bank statements."
+      },
+      "points": {
+        "tr": [
+          "Kasadaki bilgisayarda çalışıyor; telefondan VPN ve PIN ile bağlanılıyor.",
+          "Görseldeki bütün adlar ve tutarlar uydurma demo verisi."
+        ],
+        "en": [
+          "Runs on the register PC; phones connect over VPN with a PIN.",
+          "Every name and amount in the screenshot is made-up demo data."
+        ]
+      },
+      "stats": [
+        {
+          "k": {
+            "tr": "Test",
+            "en": "Test"
+          },
+          "v": {
+            "tr": "240",
+            "en": "240"
+          }
+        }
+      ],
+      "tech": [
+        "Electron",
+        "React",
+        "TypeScript",
+        "SQLite",
+        "Vitest"
+      ],
+      "image": {
+        "src": "kafe-finans.webp",
+        "w": 960,
+        "h": 600,
+        "alt": {
+          "tr": "Kafe Finans istatistik ekranı, demo verisiyle",
+          "en": "Kafe Finans statistics screen with demo data"
+        }
+      },
+      "art": null,
+      "gallery": [],
+      "links": []
+    },
+    {
+      "id": "truva-arabirimi",
+      "track": "code",
+      "tier": "card",
+      "hidden": false,
+      "title": "Truva–Akınsoft arabirimi",
+      "subtitle": {
+        "tr": "",
+        "en": ""
+      },
+      "kind": {
+        "tr": "Petra Cafe işi, Truva Teknoloji ile ortak",
+        "en": "Petra Cafe work, with Truva Teknoloji"
+      },
+      "date": {
+        "tr": "2026",
+        "en": "2026"
+      },
+      "pitch": {
+        "tr": "Truva'nın QR menüsünden ve garson uygulamasından gelen sipariş, iptal ve masa taşıma işlerini kasadaki Akınsoft Wolvox Restoran'a birkaç saniyede işleyen servis.",
+        "en": "A service that writes orders, cancellations and table moves from Truva's QR menu and waiter app into Akınsoft Wolvox Restaurant at the register within seconds."
+      },
+      "points": {
+        "tr": [
+          "Aynı siparişin iki kez yazılmasını engelleyen iş kaydı; mutfak ve bar fişleri otomatik basılıyor.",
+          "Kasa ya da internet kesildikten sonra kendiliğinden toparlanıyor; dışarıya yalnızca HTTPS ile bağlanıyor."
+        ],
+        "en": [
+          "A job log stops any order from being written twice; kitchen and bar tickets print automatically.",
+          "Recovers by itself after a register or internet outage; connects out over HTTPS only."
+        ]
+      },
+      "stats": [
+        {
+          "k": {
+            "tr": "Go kodu",
+            "en": "Go code"
+          },
+          "v": {
+            "tr": "~3.600 satır",
+            "en": "~3,600 lines"
+          }
+        },
+        {
+          "k": {
+            "tr": "Çalışma biçimi",
+            "en": "Runs as"
+          },
+          "v": {
+            "tr": "tek Windows servisi",
+            "en": "one Windows service"
+          }
+        }
+      ],
+      "tech": [
+        "Go",
+        "Windows Service",
+        "HTTPS",
+        "Akınsoft Wolvox"
+      ],
+      "image": null,
+      "art": "pipeline",
+      "gallery": [],
+      "links": []
+    },
+    {
+      "id": "oyun-vitrini",
+      "track": "code",
+      "tier": "compact",
+      "hidden": false,
+      "title": "Oyun Vitrini",
+      "subtitle": {
+        "tr": "",
+        "en": ""
+      },
+      "kind": {
+        "tr": "Oyun Tasarımı Kulübü sitesi",
+        "en": "Game Design Club site"
+      },
+      "date": {
+        "tr": "2026",
+        "en": "2026"
+      },
+      "pitch": {
+        "tr": "Kulübün 21 oyununu tanıtan site: üye hesapları, etkinlik ve puan tablosu, yönetim paneli ve iki ekranlı stant modu.",
+        "en": "Showcases the club's 21 games: member accounts, events and leaderboard, an admin panel and a two-screen booth mode."
+      },
+      "points": {
+        "tr": [],
+        "en": []
+      },
+      "stats": [],
+      "tech": [
+        "Node.js",
+        "SQLite",
+        "Electron"
+      ],
+      "image": {
+        "src": "oyun-vitrini.webp",
+        "w": 960,
+        "h": 748,
+        "alt": {
+          "tr": "Oyun Vitrini ana sayfası",
+          "en": "Oyun Vitrini home page"
+        }
+      },
+      "art": null,
+      "gallery": [],
+      "links": []
+    },
+    {
+      "id": "gorevler",
+      "track": "code",
+      "tier": "compact",
+      "hidden": false,
+      "title": "Görevler",
+      "subtitle": {
+        "tr": "",
+        "en": ""
+      },
+      "kind": {
+        "tr": "Kişisel üretkenlik uygulaması",
+        "en": "Personal productivity app"
+      },
+      "date": {
+        "tr": "2026",
+        "en": "2026"
+      },
+      "pitch": {
+        "tr": "Görev, proje ve zaman yönetimi: otomatik planlama, odak takibi, alışkanlıklar ve Google Takvim entegrasyonu.",
+        "en": "Tasks, projects and time in one place: auto-scheduling, focus tracking, habits and Google Calendar sync."
+      },
+      "points": {
+        "tr": [],
+        "en": []
+      },
+      "stats": [],
+      "tech": [
+        "pnpm monorepo",
+        "React",
+        "PostgreSQL",
+        "Docker"
+      ],
+      "image": {
+        "src": "gorevler.webp",
+        "w": 960,
+        "h": 600,
+        "alt": {
+          "tr": "Görevler'in Bugün ekranı, demo verisiyle",
+          "en": "Görevler Today screen with demo data"
+        }
+      },
+      "art": null,
+      "gallery": [],
+      "links": []
+    },
+    {
+      "id": "volpen-site",
+      "track": "code",
+      "tier": "compact",
+      "hidden": false,
+      "title": "Volpen",
+      "subtitle": {
+        "tr": "",
+        "en": ""
+      },
+      "kind": {
+        "tr": "Ekibin tanıtım sitesi",
+        "en": "Studio website"
+      },
+      "date": {
+        "tr": "2026",
+        "en": "2026"
+      },
+      "pitch": {
+        "tr": "Çerçeve kullanmadan yazılmış site: PWA, TR/EN, WCAG AA kontrast ve JSON-LD ile SEO.",
+        "en": "Written without a framework: a PWA in TR/EN with WCAG AA contrast and JSON-LD for SEO."
+      },
+      "points": {
+        "tr": [],
+        "en": []
+      },
+      "stats": [],
+      "tech": [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "PWA"
+      ],
+      "image": {
+        "src": "volpen.webp",
+        "w": 960,
+        "h": 748,
+        "alt": {
+          "tr": "Volpen sitesinin ana sayfası",
+          "en": "Volpen website home page"
+        }
+      },
+      "art": null,
+      "gallery": [],
+      "links": [
+        {
+          "label": "open",
+          "href": "https://salihyzts.github.io/VolpenWeb/"
+        }
+      ]
+    },
+    {
+      "id": "gdd-creator",
+      "track": "code",
+      "tier": "compact",
+      "hidden": false,
+      "title": "GDD Creator",
+      "subtitle": {
+        "tr": "",
+        "en": ""
+      },
+      "kind": {
+        "tr": "Oyun tasarım aracı",
+        "en": "Game design tool"
+      },
+      "date": {
+        "tr": "2026",
+        "en": "2026"
+      },
+      "pitch": {
+        "tr": "Oyunun türüne göre soru soran ve oyun tasarım dokümanını 7 biçimde dışa aktaran araç.",
+        "en": "Asks questions based on the game's genre and exports the game design document to 7 formats."
+      },
+      "points": {
+        "tr": [],
+        "en": []
+      },
+      "stats": [],
+      "tech": [
+        "JavaScript",
+        "Supabase"
+      ],
+      "image": {
+        "src": "gdd-creator.webp",
+        "w": 960,
+        "h": 600,
+        "alt": {
+          "tr": "GDD Creator'da Kralın Sözü dokümanı",
+          "en": "GDD Creator editing the Kralın Sözü document"
+        }
+      },
+      "art": null,
+      "gallery": [],
+      "links": [
+        {
+          "label": "source",
+          "href": "https://github.com/SalihYzts/gdd-creator"
+        }
+      ]
+    },
+    {
+      "id": "turkos",
+      "track": "code",
+      "tier": "compact",
+      "hidden": false,
+      "title": "TurkOS",
+      "subtitle": {
+        "tr": "",
+        "en": ""
+      },
+      "kind": {
+        "tr": "Açık kaynak tema",
+        "en": "Open-source theme"
+      },
+      "date": {
+        "tr": "2026",
+        "en": "2026"
+      },
+      "pitch": {
+        "tr": "R36S el konsolları için Türkçe arayüz teması, 711 satırlık çeviri ve Türk bayraklı açılış görselleri.",
+        "en": "Turkish interface theme for R36S handhelds, a 711-string translation and Turkish-flag boot screens."
+      },
+      "points": {
+        "tr": [],
+        "en": []
+      },
+      "stats": [],
+      "tech": [
+        "Bash",
+        "EmulationStation"
+      ],
+      "image": {
+        "src": "turkos.webp",
+        "w": 960,
+        "h": 600,
+        "alt": {
+          "tr": "TurkOS açılış görselleri",
+          "en": "TurkOS boot screens"
+        }
+      },
+      "art": null,
+      "gallery": [],
+      "links": [
+        {
+          "label": "source",
+          "href": "https://github.com/SalihYzts/TurkOS"
+        }
+      ]
+    },
+    {
+      "id": "ytchatinstaller",
+      "track": "code",
+      "tier": "compact",
+      "hidden": false,
+      "title": "YtChatInstaller",
+      "subtitle": {
+        "tr": "",
+        "en": ""
+      },
+      "kind": {
+        "tr": "Açık kaynak araç",
+        "en": "Open-source tool"
+      },
+      "date": {
+        "tr": "2026",
+        "en": "2026"
+      },
+      "pitch": {
+        "tr": "YouTube yayınlarının sohbet kaydını indirip zaman damgası, profil fotoğrafı ve kullanıcı adıyla düzenli bir Excel dosyasına aktaran Python aracı.",
+        "en": "A Python tool that downloads a YouTube stream's chat replay and exports it to a tidy Excel file with timestamps, profile pictures and usernames."
+      },
+      "points": {
+        "tr": [],
+        "en": []
+      },
+      "stats": [],
+      "tech": [
+        "Python",
+        "openpyxl",
+        "yt-dlp"
+      ],
+      "image": null,
+      "art": "chat",
+      "gallery": [],
+      "links": [
+        {
+          "label": "source",
+          "href": "https://github.com/SalihYzts/YtChAtInsTaLLer"
+        }
+      ]
+    }
+  ]
+}

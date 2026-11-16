@@ -105,7 +105,7 @@ img { height: auto; }
 a { color: var(--accent); text-underline-offset: 3px; text-decoration-thickness: 1px; }
 a:hover { text-decoration-thickness: 2px; }
 button { font: inherit; color: inherit; }
-h1, h2, h3, h4, p, ul, ol, dl, dd { margin: 0; }
+h1, h2, h3, h4, h5, p, ul, ol, dl, dd { margin: 0; }
 ul, ol { padding: 0; list-style: none; }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 [tabindex="-1"]:focus { outline: none; }
@@ -403,17 +403,18 @@ ul, ol { padding: 0; list-style: none; }
   background: var(--bg); border: 1px solid var(--line);
 }
 
-/* Küçük işler */
-.minor { margin-top: var(--s-6); }
-.minor-title { font-weight: 600; font-size: var(--fs-md); margin-bottom: var(--s-3); color: var(--text-muted); }
-.minor-list { display: grid; border-top: 1px solid var(--line); }
-@media (min-width: 860px) { .minor-list { grid-template-columns: 1fr 1fr; column-gap: var(--s-6); } }
-.minor-list li { display: flex; flex-direction: column; gap: 2px; padding: var(--s-3) 0; border-bottom: 1px solid var(--line); }
-.minor-list a { text-decoration: none; }
-.minor-list a:hover .minor-name { text-decoration: underline; }
-.minor-name { font-weight: 600; color: var(--text); }
-.minor-list a .minor-name { color: var(--accent); }
-.minor-note { font-size: var(--fs-sm); color: var(--text-muted); }
+/* Küçük işler: kompakt kartlar */
+.minor-title { margin: var(--s-7) 0 var(--s-4); font-weight: 600; font-size: var(--fs-lg); color: var(--text-muted); }
+.mini-grid { display: grid; gap: var(--s-4); grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); }
+.mini { display: flex; flex-direction: column; gap: var(--s-2); padding: var(--s-3) var(--s-3) var(--s-4); background: var(--bg-raised); border: 1px solid var(--line); scroll-margin-top: 90px; }
+.mini .qc-screen { margin-bottom: var(--s-2); }
+.mini .qc-kind { font-size: var(--fs-xs); }
+.mini-title { font: 900 1.625rem/1 var(--font-display); text-transform: uppercase; }
+.mini-sub { font-size: var(--fs-xs); color: var(--text-muted); line-height: 1.35; margin-top: calc(-1 * var(--s-1)); }
+.mini-pitch { font-size: .9375rem; line-height: 1.5; }
+.mini-tech { font: 400 .8125rem/1.4 var(--font-mono); color: var(--text-muted); }
+.mini-links { display: flex; flex-wrap: wrap; gap: var(--s-1) var(--s-4); margin-top: auto; padding-top: var(--s-2); font-weight: 600; font-size: var(--fs-sm); }
+.mini-links a { display: inline-flex; align-items: center; min-height: 32px; }
 
 /* ---------- Görev günlüğü ---------- */
 .quest-log { position: relative; display: grid; gap: var(--s-5); max-width: 880px; }
