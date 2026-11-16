@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://salihyzts.github.io/sitemap.xml
