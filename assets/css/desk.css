@@ -1,0 +1,115 @@
+/* Masa: üç sayının durduğu giriş sahnesi (CSS 3B). Dergilerin kapakları okuyucudaki kapağın aynısıdır.
+   Ölçüler desk.js'ten gelir: --pw/--ph okuyucudaki sayfa boyu, --k masadaki küçültme, --t dergi kalınlığı. */
+:root.is-desk { --pw: 600px; --ph: 750px; --k: .42; --t: 7px; --tilt: 44deg; --desk-wood: #3a2416; }
+.desk-body { background: #120c08; color: #fff; overflow: hidden; }
+
+/* ---------- Sahne ---------- */
+.scene { position: fixed; inset: 0; }
+.viewport { position: absolute; inset: 0; perspective: 1500px; perspective-origin: var(--po-x, 50%) var(--po-y, 46%); overflow: hidden; }
+.camera, .desk, .mags, .slot { transform-style: preserve-3d; }
+.camera { position: absolute; inset: 0; transform-origin: 50% 50%; pointer-events: none; }
+.desk {
+  position: absolute; left: calc(50% - 150vmax); top: calc(50% - 150vmax); width: 300vmax; height: 300vmax;
+  transform-origin: 50% 50%; transform: rotateX(var(--tilt));
+  background-color: var(--desk-wood);
+  background-image:
+    radial-gradient(60vmax 40vmax at 50% 50%, rgb(255 190 120 / .1), transparent 70%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='900'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.0035 0.09' numOctaves='4' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 0.10  0 0 0 0 0.05  0 0 0 0 0.02  0 0 0 1.25 -0.32'/%3E%3C/filter%3E%3Crect width='900' height='900' filter='url(%23g)'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 1  0 0 0 0 .85  0 0 0 0 .7  0 0 0 .06 0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E"),
+    repeating-linear-gradient(90deg, rgb(0 0 0 / .07) 0 1px, transparent 1px 41px);
+  background-size: 100% 100%, 900px 900px, 300px 300px, auto;
+}
+/* Masadaki her nesne masanın ortasına göre yerleşir: ortak dönüş noktası ekranın ortası */
+.mags, .slot { position: absolute; inset: 0; pointer-events: none; }
+.thing { position: absolute; left: 50%; top: 50%; transform-style: preserve-3d; }
+
+/* ---------- Dergi ---------- */
+.mag {
+  width: var(--pw); height: var(--ph); margin: calc(var(--ph) / -2) 0 0 calc(var(--pw) / -2);
+  pointer-events: auto; color: inherit; text-decoration: none; border-radius: 3px;
+  transform: translate3d(var(--x), var(--y), calc(var(--t) + var(--zb, 0px) + var(--lift, 0px))) rotateZ(calc(var(--r) + var(--rh, 0deg))) scale(var(--k));
+  transition: transform .45s var(--ease-out);
+}
+.mag:focus-visible { outline: none; }
+.mag:focus-visible .page { outline: calc(6px / var(--k)) solid var(--yellow); outline-offset: calc(6px / var(--k)); }
+.mag .page { box-shadow: none; overflow: hidden; border-radius: calc(3px / var(--k)); backface-visibility: hidden; pointer-events: none; }
+@media (hover: hover) { .scene:not(.is-busy) .mag:hover { --lift: 34px; --rh: calc(var(--r) * -.35); } }
+.scene:not(.is-busy) .mag:focus-visible, .mag.is-picked { --lift: 34px; --rh: calc(var(--r) * -.35); }
+/* Kâğıt destesi: sağ ve alt kenar, kapağın altına doğru iner */
+.edge { position: absolute; background: repeating-linear-gradient(0deg, #e9e6dc 0 1.2px, #cfcabb 1.2px 2.4px); }
+.edge--r { top: 0; right: 0; width: calc(var(--t) / var(--k)); height: 100%; transform-origin: 100% 50%; transform: rotateY(-90deg); }
+.edge--b { left: 0; bottom: 0; height: calc(var(--t) / var(--k)); width: 100%; transform-origin: 50% 100%; transform: rotateX(90deg); background: repeating-linear-gradient(90deg, #ece9df 0 1.2px, #d2cdbf 1.2px 2.4px); }
+.shade {
+  width: var(--pw); height: var(--ph); margin: calc(var(--ph) / -2) 0 0 calc(var(--pw) / -2);
+  transform: translate3d(calc(var(--x) + var(--lift, 0px) * .5), calc(var(--y) + 14px + var(--lift, 0px) * .6), 1px) rotateZ(calc(var(--r) + var(--rh, 0deg))) scale(var(--k));
+  background: rgb(10 4 0 / .62); border-radius: 8px; filter: blur(calc((10px + var(--lift, 0px) * .9) / var(--k)));
+  opacity: calc(1 - var(--lift, 0px) / 90px); pointer-events: none;
+  transition: transform .45s var(--ease-out), filter .45s var(--ease-out), opacity .45s var(--ease-out);
+}
+@media (hover: hover) { .scene:not(.is-busy) .slot:has(.mag:hover) .shade { --lift: 34px; --rh: calc(var(--r) * -.35); } }
+.slot:has(.mag:focus-visible) .shade, .slot:has(.is-picked) .shade { --lift: 34px; --rh: calc(var(--r) * -.35); }
+
+/* ---------- Masadaki diğer nesneler ---------- */
+.note {
+  width: 190px; height: 180px; margin: -90px 0 0 -95px; padding: 22px 20px;
+  transform: translate3d(var(--x), var(--y), 1px) rotateZ(var(--r)) scale(var(--s, 1));
+  background: linear-gradient(160deg, #fff27a, #ffe14a 60%, #f5d23a); color: #2a2208;
+  box-shadow: 6px 10px 14px -6px rgb(0 0 0 / .55);
+  font-size: 21px; line-height: 1.12; font-weight: 700; font-style: italic; font-stretch: 88%;
+}
+.note small { display: block; font-size: 13px; font-weight: 600; margin-top: 12px; font-style: normal; }
+.pencil {
+  width: 420px; height: 20px; margin: -10px 0 0 -210px;
+  transform: translate3d(var(--x), var(--y), 10px) rotateZ(var(--r)) scale(var(--s, 1));
+  background: linear-gradient(180deg, #ffd85a 0 30%, #e8b21c 30% 66%, #b98a10 66%);
+  clip-path: polygon(0 0, 88% 0, 100% 50%, 88% 100%, 0 100%);
+  filter: drop-shadow(0 14px 6px rgb(0 0 0 / .45));
+}
+.pencil::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 34px; background: linear-gradient(180deg, #f39aa0, #c8626a); box-shadow: 34px 0 0 #b9b9b9; }
+.pencil::after { content: ""; position: absolute; right: 0; top: 0; bottom: 0; width: 12%; background: linear-gradient(90deg, #e9cfa4 0 70%, #2b2b2b 70%); }
+/* Kupa: masaya dik duran gövde, üstte kahve */
+.mug { width: 0; height: 0; transform: translate3d(var(--x), var(--y), 0) scale(var(--s, 1)); }
+.mug-floor { position: absolute; width: 150px; height: 150px; left: -75px; top: -75px; border-radius: 50%; background: radial-gradient(closest-side, rgb(0 0 0 / .55), transparent); transform: translate3d(26px, 30px, 1px); filter: blur(6px); }
+.mug-body {
+  position: absolute; width: 120px; height: 130px; left: -60px; top: -130px;
+  transform-origin: 50% 100%; transform: rotateX(-90deg);
+  background: linear-gradient(90deg, #8f8a80, #f2efe8 28%, #fffdf7 40%, #d9d4c9 70%, #77726a);
+  border-radius: 0 0 16px 16px / 0 0 10px 10px;
+}
+.mug-body::before { content: "VOLPEN"; position: absolute; left: 0; right: 0; top: 44px; text-align: center; font-weight: 900; font-stretch: 125%; font-size: 15px; letter-spacing: .04em; color: #d2131a; opacity: .9; }
+.mug-body::after { content: ""; position: absolute; right: -36px; top: 26px; width: 46px; height: 62px; border: 12px solid #e6e1d6; border-left: 0; border-radius: 0 30px 30px 0; }
+.mug-top { position: absolute; width: 120px; height: 120px; left: -60px; top: -60px; border-radius: 50%; transform: translateZ(130px); background: radial-gradient(closest-side, #2a1408 0 76%, #4a2a16 80%, #f4f1ea 84%, #d8d3c8 100%); }
+/* Basılı CV: tıklanınca PDF iner */
+.cv-sheet {
+  width: 210px; height: 280px; margin: -140px 0 0 -105px; padding: 22px 20px;
+  display: grid; align-content: start; gap: 6px; pointer-events: auto;
+  transform: translate3d(var(--x), var(--y), 2px) rotateZ(var(--r)) scale(var(--s, 1));
+  background: #f6f4ee; color: #161616; text-decoration: none; border-radius: 2px;
+  box-shadow: 8px 12px 18px -8px rgb(0 0 0 / .6);
+  transition: transform .35s var(--ease-out);
+}
+.cv-sheet-h { font-weight: 900; font-stretch: 112%; font-size: 21px; line-height: 1; letter-spacing: -.02em; }
+.cv-sheet-k { font-weight: 700; font-stretch: 78%; font-size: 14px; color: #d2131a; border-bottom: 2px solid #161616; padding-bottom: 8px; }
+.cv-sheet-lines { height: 120px; margin-top: 6px; background: repeating-linear-gradient(180deg, #c9c6bd 0 3px, transparent 3px 14px); opacity: .9; }
+.cv-sheet-tag { justify-self: start; display: inline-flex; align-items: center; gap: 6px; margin-top: 6px; padding: 4px 10px; background: #ffd21f; font-weight: 800; font-stretch: 78%; font-size: 14px; border-radius: 3px; }
+.cv-sheet-tag .px { width: 14px; height: 14px; }
+@media (hover: hover) { .scene:not(.is-busy) .cv-sheet:hover { transform: translate3d(var(--x), var(--y), 18px) rotateZ(calc(var(--r) * .6)) scale(var(--s, 1)); } }
+.cv-sheet:focus-visible { outline: 4px solid var(--yellow); outline-offset: 4px; }
+
+/* ---------- Işık, geçiş katmanı, ipucu ---------- */
+.light { position: absolute; inset: 0; pointer-events: none; transition: opacity .5s; background:
+  radial-gradient(60vmax 50vmax at 30% 18%, rgb(255 200 130 / .2), transparent 62%),
+  radial-gradient(110vmax 80vmax at 50% 46%, transparent 42%, rgb(0 0 0 / .7) 100%); }
+/* Okuyucudaki kapağın yerinde bir delik: dergi yaklaşınca çevresi okuyucunun zeminine döner */
+.dim { position: absolute; pointer-events: none; opacity: 0; box-shadow: 0 0 0 300vmax var(--desk); }
+.hint { position: absolute; left: 0; right: 0; bottom: 22px; text-align: center; font-size: 13px; font-weight: 600; letter-spacing: .02em; color: rgb(255 240 220 / .72); transition: opacity .3s; pointer-events: none; }
+@media (hover: hover) { .only-touch { display: none; } }
+@media (hover: none) { .only-hover { display: none; } }
+.scene.is-busy .hint, .scene.is-busy .light, .scene.is-busy .desk-lang { opacity: 0; }
+.desk-lang {
+  position: absolute; right: 14px; top: 14px; z-index: 5; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%;
+  background: rgb(20 14 10 / .6); color: #f3e9dc; font-weight: 800; font-stretch: 78%; text-decoration: none; transition: opacity .3s, background-color .2s;
+  backdrop-filter: blur(6px);
+}
+.desk-lang:hover { background: rgb(40 28 20 / .85); }
+.desk-lang:focus-visible { outline: 3px solid var(--yellow); outline-offset: 2px; }

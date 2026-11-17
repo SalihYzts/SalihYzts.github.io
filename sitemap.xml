@@ -12,4 +12,40 @@
     <xhtml:link rel="alternate" hreflang="tr" href="https://salihyzts.github.io/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://salihyzts.github.io/en/"/>
   </url>
+  <url>
+    <loc>https://salihyzts.github.io/ben/</loc>
+    <lastmod>2026-11-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://salihyzts.github.io/ben/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salihyzts.github.io/en/about/"/>
+  </url>
+  <url>
+    <loc>https://salihyzts.github.io/en/about/</loc>
+    <lastmod>2026-11-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://salihyzts.github.io/ben/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salihyzts.github.io/en/about/"/>
+  </url>
+  <url>
+    <loc>https://salihyzts.github.io/oyun/</loc>
+    <lastmod>2026-11-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://salihyzts.github.io/oyun/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salihyzts.github.io/en/games/"/>
+  </url>
+  <url>
+    <loc>https://salihyzts.github.io/en/games/</loc>
+    <lastmod>2026-11-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://salihyzts.github.io/oyun/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salihyzts.github.io/en/games/"/>
+  </url>
+  <url>
+    <loc>https://salihyzts.github.io/yazilim/</loc>
+    <lastmod>2026-11-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://salihyzts.github.io/yazilim/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salihyzts.github.io/en/software/"/>
+  </url>
+  <url>
+    <loc>https://salihyzts.github.io/en/software/</loc>
+    <lastmod>2026-11-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://salihyzts.github.io/yazilim/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salihyzts.github.io/en/software/"/>
+  </url>
 </urlset>

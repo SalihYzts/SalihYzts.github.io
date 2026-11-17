@@ -657,3 +657,244 @@ html[lang="en"] .page { --more: "more ↓"; }
 .pull { border-left-color: var(--band); }
 /* Arka kapak: sitenin arayüzü değil, yalnızca orman */
 .back-art img { object-position: 100% 60%; transform: scale(1.7); transform-origin: 100% 60%; }
+
+/* =====================================================================
+   Üç sayı: Ben, Oyun, Yazılım. Masa (giriş) assets/css/desk.css'te.
+   ===================================================================== */
+html[data-issue="ben"] { --issue: var(--ink); }
+html[data-issue="oyun"] { --issue: var(--red); }
+html[data-issue="yazilim"] { --issue: var(--blue); }
+/* Sayılar arası geçiş: tarayıcı destekliyorsa sayfalar yumuşakça birbirine karışır */
+@media (prefers-reduced-motion: no-preference) { @view-transition { navigation: auto; } }
+
+/* ---------- Çubuk: masaya dönüş ve sayı sekmeleri ---------- */
+.desk-link {
+  display: inline-flex; align-items: center; gap: 6px; height: 40px; padding: 0 12px 0 8px; flex: none;
+  border-radius: var(--radius); color: var(--ink); text-decoration: none;
+  font-weight: 800; font-stretch: var(--w-cond); font-size: .95rem;
+}
+.desk-link .px { width: 16px; height: 16px; }
+.desk-link:hover { background: var(--paper-2); }
+.print .desk-link { height: 36px; }
+.print .desk-link:hover { background: rgb(0 0 0 / .08); }
+[data-theme="dark"].print .desk-link:hover { background: rgb(255 255 255 / .08); }
+.topnav.issues-nav li { display: block !important; }
+.issues-nav a { gap: 6px; }
+.in-n { display: inline-grid; place-items: center; width: 20px; height: 20px; border-radius: 50%; font-size: .75rem; font-weight: 900; font-stretch: var(--w-head); }
+.issues-nav li:nth-child(1) .in-n { background: var(--yellow); color: #161616; }
+.issues-nav li:nth-child(2) .in-n { background: #d2131a; color: #fff; }
+.issues-nav li:nth-child(3) .in-n { background: #0062ad; color: #fff; }
+.issues-nav a[aria-current="page"] { background: var(--ink); color: var(--paper); }
+@media (max-width: 1000px) { .issues-nav a:not([aria-current]) .in-name { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; } .issues-nav a:not([aria-current]) { padding: 0 6px; } }
+@media (max-width: 400px) { .desk-link { padding: 0 8px 0 4px; } .topbar { gap: 4px; } }
+
+/* ---------- Kapaklar: her sayının kendi kapağı ---------- */
+.cover-kicker { font-size: max(11px, calc(12 * var(--u))); font-weight: 800; font-stretch: var(--w-cond); letter-spacing: .08em; text-transform: uppercase; color: var(--yellow); }
+.cover-issue-name { margin-left: auto; letter-spacing: .08em; text-transform: uppercase; }
+.cover-lines .cover-line { grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; align-items: end; text-decoration: none; }
+.cover-lines a.cover-line:hover .cl-text { text-decoration: underline; }
+.mag .cover-story, .mag .sticker { cursor: inherit; }
+/* Sayı 1 · Ben: sarı kâğıt, bantla yapıştırılmış fotoğraf */
+.page--cover.cover--ben { background: #ffd21f; color: #161616; }
+.cover--ben .page-inner::after, .cover--yazilim .page-inner::after { display: none; }
+.cover--ben .cover-issue { border-bottom-color: #161616; }
+.cover--ben .cover-issue span:first-child { background: #161616; color: #ffd21f; }
+.cover--ben .masthead-word { color: #161616; text-shadow: none; }
+.cover--ben .cover-kicker { color: #d2131a; }
+.cover--ben .cover-story { max-width: calc(250 * var(--u)); }
+.cover--ben .cover-title { font-size: calc(64 * var(--u)); }
+.cover--ben .cover-deck { text-shadow: none; }
+.cover--ben .cl-big { color: #d2131a; }
+.cover-photo {
+  position: absolute; z-index: 1; right: calc(30 * var(--u)); top: calc(196 * var(--u)); width: calc(285 * var(--u)); aspect-ratio: 1;
+  padding: calc(10 * var(--u)) calc(10 * var(--u)) calc(34 * var(--u)); background: #fbfbf9; transform: rotate(4deg);
+  box-shadow: 0 18px 30px -16px rgb(0 0 0 / .55); box-sizing: content-box;
+}
+.cover-photo img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(.15) contrast(1.05); }
+.cover-tape { position: absolute; left: 38%; top: calc(-12 * var(--u)); width: calc(90 * var(--u)); height: calc(26 * var(--u)); background: rgb(255 255 255 / .55); transform: rotate(-6deg); }
+.cover-photo-cap { position: absolute; left: calc(12 * var(--u)); bottom: calc(9 * var(--u)); font-size: max(11px, calc(12 * var(--u))); font-weight: 600; font-style: italic; color: #4a4a47; }
+.cover--ben .cover-inner { z-index: 2; }
+.cover--ben .sticker { position: absolute; left: calc(250 * var(--u)); top: calc(168 * var(--u)); background: #d2131a; color: #fff; }
+.cover--ben .sticker::before { border-color: rgb(255 255 255 / .7); }
+/* Sayı 3 · Yazılım: mavi, ekran görüntüsü çerçevede */
+.page--cover.cover--yazilim { background: #0062ad; color: #fff; }
+.cover--yazilim .cover-issue span:first-child { background: #fff; color: #0062ad; }
+.cover--yazilim .masthead-word { color: #fff; text-shadow: 0 3px 0 rgb(0 0 0 / .18); }
+.cover--yazilim .cover-title { font-size: calc(48 * var(--u)); }
+.cover--yazilim .cover-deck { text-shadow: none; }
+.cover-screen {
+  position: absolute; left: calc(34 * var(--u)); right: calc(14 * var(--u)); top: calc(178 * var(--u)); aspect-ratio: 16 / 9;
+  border-radius: calc(10 * var(--u)); overflow: hidden; transform: rotate(-3deg);
+  box-shadow: 0 0 0 calc(6 * var(--u)) #0b1424, 0 30px 40px -20px rgb(0 0 0 / .6);
+}
+.cover-screen img { width: 100%; height: 100%; object-fit: cover; object-position: 0 0; }
+.cover--yazilim .sticker { position: absolute; right: calc(26 * var(--u)); top: calc(150 * var(--u)); transform: rotate(10deg); z-index: 2; }
+.cover--yazilim .sticker:hover { transform: rotate(4deg) scale(1.04); }
+/* Telefon kapakları: görsel akışın ortasında, metin altta */
+.app .cover--ben .cover-photo { top: 42%; right: 22px; width: min(48vw, 230px); translate: 0 -50%; }
+.app .cover--ben .sticker { left: 18px; top: auto; bottom: calc(50% - 30px); width: 92px; margin: 0; }
+.app .cover--ben .cover-story { max-width: none; }
+.app .cover--yazilim .cover-screen { left: 18px; right: 10px; top: 38%; translate: 0 -50%; }
+.app .cover--yazilim .sticker { right: 14px; top: 23%; width: 92px; margin: 0; }
+.app .cover--ben .cover-inner, .app .cover--yazilim .cover-inner { grid-template-areas: "issue" "mast" "story" "lines"; }
+
+/* ---------- İçindekiler: sayfa satırları ve masadaki diğer sayılar ---------- */
+.toc-rows { display: grid; }
+.toc-rows a { display: grid; grid-template-columns: calc(46 * var(--u)) minmax(0, 1fr); gap: calc(12 * var(--u)); align-items: baseline; padding: calc(8 * var(--u)) 0; border-bottom: 1px solid var(--rule); text-decoration: none; }
+.toc-rows .toc-pg { margin: 0; font-weight: 900; font-stretch: var(--w-mast); font-size: calc(26 * var(--u)); line-height: .9; letter-spacing: -.03em; color: var(--issue, var(--ink)); }
+.toc-t { display: grid; gap: calc(2 * var(--u)); font-weight: 800; font-stretch: var(--w-head); font-size: max(13px, calc(16.5 * var(--u))); line-height: 1.15; }
+.toc-sub { font-weight: 600; font-stretch: var(--w-cond); font-size: max(11.5px, calc(12 * var(--u))); color: var(--ink-2); line-height: 1.3; }
+.toc-k { font-size: max(11px, calc(11 * var(--u))); font-weight: 800; font-stretch: var(--w-cond); letter-spacing: .06em; text-transform: uppercase; color: var(--issue, var(--red)); }
+.toc-rows a:hover .toc-t > :not(.toc-sub):not(.toc-k), .toc-rows a:hover .toc-t { text-decoration: underline; text-decoration-thickness: 2px; }
+.toc-shelf { margin-top: auto; display: grid; gap: calc(8 * var(--u)); padding-top: calc(10 * var(--u)); }
+.toc-shelf-h { font-weight: 800; font-stretch: var(--w-cond); font-size: max(12px, calc(13 * var(--u))); color: var(--ink-2); }
+.shelf { display: grid; grid-template-columns: 1fr 1fr; gap: calc(10 * var(--u)); }
+.shelf-card { display: grid; gap: calc(4 * var(--u)); align-content: start; height: 100%; min-height: calc(100 * var(--u)); padding: calc(12 * var(--u)) calc(14 * var(--u)); border-radius: var(--radius); text-decoration: none; transition: transform .18s var(--ease-out); }
+.shelf--ben { background: #ffd21f; color: #161616; }
+.shelf--oyun { background: #d2131a; color: #fff; }
+.shelf--yazilim { background: #0062ad; color: #fff; }
+.shelf-n { font-weight: 800; font-stretch: var(--w-cond); font-size: max(11px, calc(12 * var(--u))); }
+.shelf-name { font-weight: 900; font-stretch: var(--w-mast); font-size: calc(34 * var(--u)); line-height: .9; letter-spacing: -.04em; }
+.shelf-deck { font-size: max(12px, calc(12.5 * var(--u))); font-weight: 600; line-height: 1.3; }
+.shelf-card:hover { transform: translateY(-3px); }
+.shelf-card:active { transform: translateY(1px); }
+
+/* ---------- Editörden: rakam kutusu ---------- */
+.editor-nums { margin-top: auto; display: grid; grid-template-columns: 1fr 1fr; gap: calc(12 * var(--u)) calc(18 * var(--u)); padding-top: calc(12 * var(--u)); border-top: calc(3 * var(--u)) solid var(--ink); }
+.editor-nums div { display: grid; gap: calc(3 * var(--u)); align-content: start; }
+.editor-nums dd { order: -1; font-weight: 900; font-stretch: var(--w-mast); font-size: calc(46 * var(--u)); line-height: .85; letter-spacing: -.04em; color: var(--issue, var(--sec)); }
+.editor-nums dt { font-weight: 700; font-stretch: var(--w-cond); font-size: max(12px, calc(13 * var(--u))); color: var(--ink-2); line-height: 1.3; }
+
+/* ---------- Tek sayfalık proje ---------- */
+.page--solo .page-inner { gap: calc(12 * var(--u)); }
+.solo-kicker, .notes-kicker { font-weight: 800; font-stretch: var(--w-cond); font-size: max(11.5px, calc(12.5 * var(--u))); letter-spacing: .05em; text-transform: uppercase; color: var(--sec); }
+.solo-kicker { padding-bottom: calc(8 * var(--u)); border-bottom: calc(4 * var(--u)) solid var(--sec); }
+.page--solo .rv-title { font-size: calc(48 * var(--u)); }
+.page--solo .rv-title--long { font-size: calc(38 * var(--u)); }
+.page--solo .rv-deck { font-size: max(13px, calc(16 * var(--u))); }
+.solo-frame { aspect-ratio: 16 / 9; margin: 0; }
+.solo-cols { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); gap: calc(18 * var(--u)); align-items: start; }
+.page--solo .rv-body { --fs: calc(14 * var(--u)); gap: calc(8 * var(--u)); }
+.solo-side { display: grid; gap: calc(10 * var(--u)); align-content: start; padding-left: calc(16 * var(--u)); border-left: 1px solid var(--rule); }
+.solo-side .duo-stats { flex-direction: column; gap: calc(6 * var(--u)); }
+.solo-side .duo-stats b { display: block; font-stretch: var(--w-mast); font-size: max(17px, calc(26 * var(--u))); line-height: .9; letter-spacing: -.03em; color: var(--sec); }
+.solo-team { font-weight: 800; font-stretch: var(--w-head); font-size: max(12px, calc(13 * var(--u))); }
+.solo-side .btn { --fs: calc(11.5 * var(--u)); min-height: max(36px, calc(32 * var(--u))); padding: calc(6 * var(--u)) calc(12 * var(--u)); }
+.app .solo-cols, html:not(.reader) .solo-cols { grid-template-columns: 1fr; }
+.app .solo-side, html:not(.reader) .solo-side { padding: 10px 0 0; border-left: 0; border-top: 1px solid var(--rule); }
+.app .page--solo .rv-title { font-size: min(calc(46 * var(--u)), 11vw); }
+.app .page--solo .rv-title--long { font-size: min(calc(38 * var(--u)), 8.4vw); }
+
+/* ---------- Ek sayfa: nasıl oynanır, yapım notları ---------- */
+.notes-kicker { margin-bottom: calc(-6 * var(--u)); }
+.notes-nums { display: grid; grid-template-columns: repeat(auto-fit, minmax(calc(100 * var(--u)), 1fr)); gap: calc(8 * var(--u)) calc(14 * var(--u)); padding: calc(10 * var(--u)) 0; border-block: 1px solid var(--rule); }
+.notes-nums div { display: grid; gap: calc(2 * var(--u)); align-content: start; }
+.notes-nums dd { order: -1; font-weight: 900; font-stretch: var(--w-mast); font-size: calc(32 * var(--u)); line-height: .85; letter-spacing: -.04em; color: var(--sec); white-space: nowrap; }
+.notes-nums dt { font-weight: 700; font-stretch: var(--w-cond); font-size: max(11.5px, calc(12 * var(--u))); color: var(--ink-2); line-height: 1.25; }
+.notes-list { display: grid; grid-template-columns: 1fr 1fr; gap: calc(12 * var(--u)) calc(18 * var(--u)); counter-reset: note; }
+.notes-list li { counter-increment: note; display: grid; gap: calc(3 * var(--u)); align-content: start; padding-top: calc(7 * var(--u)); border-top: calc(3 * var(--u)) solid var(--sec); }
+.notes-h { font-weight: 900; font-stretch: var(--w-head); font-size: max(13px, calc(15 * var(--u))); line-height: 1.15; }
+.notes-h::before { content: counter(note, decimal-leading-zero) "  "; color: var(--sec); font-stretch: var(--w-cond); }
+.notes-list p { font-size: max(12.5px, calc(13 * var(--u))); line-height: 1.45; }
+.notes-table { width: 100%; border-collapse: collapse; font-size: max(12.5px, calc(13 * var(--u))); line-height: 1.4; }
+.notes-table caption { text-align: left; font-weight: 900; font-stretch: var(--w-head); font-size: max(14px, calc(18 * var(--u))); padding-bottom: calc(6 * var(--u)); }
+.notes-table th { text-align: left; vertical-align: top; width: 34%; padding: calc(6 * var(--u)) calc(12 * var(--u)) calc(6 * var(--u)) 0; border-top: 1px solid var(--rule); font-weight: 850; font-stretch: var(--w-cond); color: var(--sec); }
+.notes-table td { padding: calc(6 * var(--u)) 0; border-top: 1px solid var(--rule); }
+.notes-figs { margin-top: auto; display: grid; gap: calc(10 * var(--u)); }
+.notes-figs--2 { grid-template-columns: 1fr 1fr; }
+.notes-figs figure { display: grid; gap: calc(4 * var(--u)); margin: 0; }
+.notes-figs img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: var(--radius); }
+.notes-figs--1 img { aspect-ratio: 21 / 9; }
+.notes-figs .fig { margin-top: 0; }
+.page--notes .pull p { font-size: calc(22 * var(--u)); }
+.app .notes-list, html:not(.reader) .notes-list, .app .notes-figs--2, html:not(.reader) .notes-figs--2 { grid-template-columns: 1fr; }
+
+/* ---------- Ben: iş dosyası ---------- */
+.page--work .page-inner { gap: calc(14 * var(--u)); }
+.job { display: grid; gap: calc(5 * var(--u)); padding-top: calc(12 * var(--u)); border-top: calc(4 * var(--u)) solid var(--ink); }
+.job-date { font-weight: 800; font-stretch: var(--w-cond); font-size: max(11.5px, calc(12.5 * var(--u))); color: var(--red); }
+.job-title { font-weight: 900; font-stretch: var(--w-head); font-size: calc(27 * var(--u)); line-height: 1; letter-spacing: -.02em; }
+.job-org { font-weight: 700; font-size: max(13px, calc(14 * var(--u))); color: var(--ink-2); }
+.job-list { display: grid; gap: calc(6 * var(--u)); margin-top: calc(4 * var(--u)); }
+.job-list li { position: relative; padding-left: calc(16 * var(--u)); font-size: max(13px, calc(14 * var(--u))); line-height: 1.45; }
+.job-list li::before { content: ""; position: absolute; left: 0; top: .58em; width: calc(7 * var(--u)); height: calc(7 * var(--u)); min-width: 5px; min-height: 5px; background: var(--red); }
+.job-meta { font-size: max(11.5px, calc(12 * var(--u))); font-weight: 600; font-stretch: var(--w-cond); color: var(--ink-2); }
+.job-more a, .crew-more a { display: inline-flex; align-items: center; min-height: 32px; font-weight: 800; font-stretch: var(--w-head); font-size: max(12px, calc(13 * var(--u))); color: var(--blue); text-decoration: none; }
+.job-more a:hover, .crew-more a:hover { text-decoration: underline; }
+
+/* ---------- Oyun: kulüp ve jamler ---------- */
+.crew { display: grid; grid-template-columns: 1fr 1fr; gap: calc(18 * var(--u)) calc(20 * var(--u)); }
+.crew-item { display: grid; gap: calc(4 * var(--u)); align-content: start; padding-top: calc(10 * var(--u)); border-top: calc(4 * var(--u)) solid var(--sec); }
+.crew-big { font-weight: 900; font-stretch: var(--w-mast); font-size: calc(54 * var(--u)); line-height: .85; letter-spacing: -.045em; color: var(--sec); }
+.crew-title { font-weight: 900; font-stretch: var(--w-head); font-size: max(14px, calc(18 * var(--u))); line-height: 1.1; }
+.crew-role { font-weight: 700; font-stretch: var(--w-cond); font-size: max(11.5px, calc(12.5 * var(--u))); color: var(--ink-2); }
+.crew-text { font-size: max(12.5px, calc(13 * var(--u))); line-height: 1.45; }
+.crew-more a { color: var(--sec); }
+.app .crew, html:not(.reader) .crew { grid-template-columns: 1fr; }
+
+/* ---------- Kısa kısa: dört ya da altı proje ---------- */
+.brief-list--four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.brief-list--four .brief-pitch { --fs: calc(12.5 * var(--u)); }
+.app .brief-list--four, html:not(.reader) .brief-list--four { grid-template-columns: 1fr 1fr; }
+
+/* ---------- Arka kapak: masadaki diğer sayılar ---------- */
+.back-shelf-h { font-weight: 900; font-stretch: var(--w-head); font-size: calc(30 * var(--u)); line-height: 1; letter-spacing: -.02em; margin-top: auto; }
+.page--back .back-next + .back-shelf-h { margin-top: calc(10 * var(--u)); }
+.shelf--back .shelf-card { min-height: calc(150 * var(--u)); }
+.shelf--back .shelf-name { font-size: calc(40 * var(--u)); }
+.back-desk { display: inline-flex; align-items: center; gap: calc(8 * var(--u)); min-height: 40px; color: #f3f2ee; font-weight: 800; font-stretch: var(--w-head); text-decoration: none; }
+.back-desk .px { width: calc(14 * var(--u)); height: calc(14 * var(--u)); min-width: 12px; min-height: 12px; }
+.back-desk:hover span { text-decoration: underline; }
+.back--ben .back-mast, .back--yazilim .back-mast { margin-top: 0; }
+.back--yazilim .back-mast { color: #5cb2ff; }
+.back--ben .back-mast { color: #ffd21f; }
+.app .shelf, html:not(.reader) .shelf { grid-template-columns: 1fr; }
+/* İçindekiler masaüstünde iki sütun; editör sayfası rakamlarla dolar */
+.print .toc-rows { columns: 2; column-gap: calc(22 * var(--u)); }
+.print .toc-rows li { break-inside: avoid; }
+.page--editor:not(:has(.imprint-box)) .editor-text { font-size: calc(18 * var(--u)); }
+.page--editor:not(:has(.imprint-box)) .editor-photo { width: calc(150 * var(--u)); }
+.editor-nums dd { font-size: calc(58 * var(--u)); }
+.back--oyun .back-art { height: 34%; }
+.page--back .shelf-card { min-height: calc(120 * var(--u)); }
+.print .toc-rows { display: block; }
+.job-more a, .crew-more a { display: inline-block; padding: 6px 0; }
+.job-nums { grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: calc(10 * var(--u)); border-top-width: 1px; border-top-color: var(--rule); }
+.job-nums dd { font-size: calc(40 * var(--u)); color: var(--red); }
+.notes-nums { grid-template-columns: repeat(auto-fit, minmax(calc(128 * var(--u)), 1fr)); }
+.notes-nums dd { font-size: calc(30 * var(--u)); }
+/* Görselsiz arka kapak: sayının numarası dev bir rakam */
+.back-num { font-weight: 900; font-stretch: var(--w-mast); font-size: calc(330 * var(--u)); line-height: .78; letter-spacing: -.06em; color: transparent; -webkit-text-stroke: calc(3 * var(--u)) rgb(255 255 255 / .22); margin: calc(-6 * var(--u)) 0 calc(-20 * var(--u)) calc(-10 * var(--u)); }
+.back--ben .back-num { -webkit-text-stroke-color: rgb(255 210 31 / .45); }
+.back--yazilim .back-num { -webkit-text-stroke-color: rgb(92 178 255 / .45); }
+/* Ben kapağı: fotoğraf başlığın sağında, logonun altında */
+.cover-photo { top: calc(218 * var(--u)); right: calc(30 * var(--u)); width: calc(225 * var(--u)); }
+.cover--ben .cover-story { max-width: calc(290 * var(--u)); }
+.cover--ben .cover-title { font-size: calc(56 * var(--u)); }
+.cover--ben .sticker { left: auto; right: calc(212 * var(--u)); top: calc(188 * var(--u)); }
+/* Yazılım kapağı: ekran logonun altında, sağa yaslı */
+.cover-screen { left: calc(118 * var(--u)); right: calc(22 * var(--u)); top: calc(226 * var(--u)); }
+.cover--yazilim .sticker { top: calc(196 * var(--u)); right: auto; left: calc(40 * var(--u)); }
+.cover--yazilim .cover-story { max-width: calc(470 * var(--u)); }
+/* Ben ve Yazılım kapağında çıkartma ızgaranın dışında: logo üstte kalsın, hikâye ve rakamlar altta */
+.cover--ben .cover-inner, .cover--yazilim .cover-inner { grid-template-rows: auto auto minmax(0, 1fr) auto; align-content: stretch; }
+/* Izgara alanı verilmiş mutlak öğe o alana göre konumlanır: kapaktaki serbest çıkartma bütün kapağa göre dursun */
+.cover--ben .sticker, .cover--yazilim .sticker { grid-area: auto; }
+.cover--ben .sticker { right: calc(214 * var(--u)); top: calc(196 * var(--u)); }
+.cover--yazilim .sticker { left: auto; right: calc(30 * var(--u)); top: calc(178 * var(--u)); }
+.page--feature-b .spec, .page--lead-b .spec { font-size: max(11.5px, var(--fs)); }
+.back-desk { font-size: max(13px, calc(15 * var(--u))); }
+.print .solo-frame { aspect-ratio: 2 / 1; }
+.back-price { font-size: max(12px, calc(14 * var(--u))); }
+.app .cover--yazilim .cover-title { font-size: min(calc(48 * var(--u)), 8.6vw); }
+.app .cover--ben .sticker { top: 230px; bottom: auto; left: 20px; }
+/* Küçük kapak etiketleri okunur kontrastta: sarıda koyu kırmızı, mavide beyaz */
+.cover--ben .cover-kicker { color: #a50f14; }
+.cover--yazilim .cover-kicker { color: #fff; }
+.job-nums { grid-template-columns: repeat(3, auto); justify-content: start; column-gap: calc(30 * var(--u)); }
+.job-nums dd { font-size: calc(34 * var(--u)); }
+.job-nums dt { max-width: calc(150 * var(--u)); }
+.app .cover--ben .cover-photo { top: 38%; }
+/* Kısa içindekiler tek sütunda; uzunu (9 satır ve üstü) iki sütunda */
+.print .toc-rows { columns: auto; }
+.print .toc-rows:has(> li:nth-child(9)) { columns: 2; }

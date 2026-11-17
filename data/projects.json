@@ -147,7 +147,237 @@
       "quoteSource": {
         "tr": "Donmuş nöbetçinin yanında bulunan not, oyunun hikâyesinden",
         "en": "The note found by the frozen sentry, from the game's story"
-      }
+      },
+      "pages": [
+        {
+          "id": "kralin-sozu-oyun",
+          "type": "play",
+          "title": {
+            "tr": "Nasıl oynanır",
+            "en": "How it plays"
+          },
+          "deck": {
+            "tr": "Ekranda bar ya da sayı yok. Her şeyi dünyadan okursun.",
+            "en": "No bars or numbers on screen. You read everything from the world."
+          },
+          "items": [
+            {
+              "h": {
+                "tr": "Sorgula",
+                "en": "Question"
+              },
+              "t": {
+                "tr": "Adını, nereden ve neden geldiğini sor. Belgedeki mührü, mum rengini, ay damgasını ve onaylayan kâtibi emir tahtasıyla karşılaştır.",
+                "en": "Ask for a name, where they came from and why. Check the seal, the wax colour, the moon stamp and the approving clerk against the order board."
+              }
+            },
+            {
+              "h": {
+                "tr": "Aç ya da kov",
+                "en": "Open or turn away"
+              },
+              "t": {
+                "tr": "Dürüst bir ulağı geri çevirmek de bir haini içeri almak kadar pahalıya patlar.",
+                "en": "Turning away an honest courier costs as much as letting a traitor in."
+              }
+            },
+            {
+              "h": {
+                "tr": "Isın",
+                "en": "Keep warm"
+              },
+              "t": {
+                "tr": "Soğuğu nefesinin buharından, kenarlara çöken kırağıdan ve kalp atışından anlarsın. Odun az. Hainler şarap ve kürk teklif eder; kabul edersen surdakiler görür.",
+                "en": "You feel the cold in your breath, the frost creeping in at the edges and your heartbeat. Wood is scarce. Traitors offer wine and furs; take them and the men on the walls will see."
+              }
+            },
+            {
+              "h": {
+                "tr": "Karanlığı dinle",
+                "en": "Listen to the dark"
+              },
+              "t": {
+                "tr": "Ormandan uluma gelirse kurtlar, donmuş nehirde meşale görünürse haydutlar geliyordur. Doğru yöne dönüp boruyu öttürürsen okçular ok yağdırır.",
+                "en": "Howling from the forest means wolves; torches on the frozen river mean bandits. Face the right way and sound the horn, and the archers loose their arrows."
+              }
+            },
+            {
+              "h": {
+                "tr": "Güveni koru",
+                "en": "Keep their trust"
+              },
+              "t": {
+                "tr": "Kulelerdeki nöbetçiler sana güvenmemeye başlarsa arbaletlerini sana çevirir.",
+                "en": "If the guards in the towers stop trusting you, they turn their crossbows on you."
+              }
+            }
+          ],
+          "table": {
+            "title": {
+              "tr": "Üç gece",
+              "en": "Three nights"
+            },
+            "rows": [
+              [
+                {
+                  "tr": "I. Gece · Söz",
+                  "en": "Night I · The promise"
+                },
+                {
+                  "tr": "Kral sıcak giysi sözü verir. Kaleden ziyafet sesleri gelir.",
+                  "en": "The king promises warm clothes. Sounds of a feast drift from the castle."
+                }
+              ],
+              [
+                {
+                  "tr": "II. Gece · Yine söz",
+                  "en": "Night II · Another promise"
+                },
+                {
+                  "tr": "“Seni unuttum, değil mi?” Bu kez kendi kürkünü göndereceğine söz verir.",
+                  "en": "“I forgot you, didn't I?” This time he promises his own fur."
+                }
+              ],
+              [
+                {
+                  "tr": "III. Gece · Son söz",
+                  "en": "Night III · The last promise"
+                },
+                {
+                  "tr": "Tipi, sık saldırılar ve iki ipucu taşıyan hainler. Gece yarısından sonra saray hizmetkârı elinde kürkle kapıya gelir…",
+                  "en": "A blizzard, frequent attacks and traitors carrying two clues. After midnight a palace servant comes to the gate holding a fur…"
+                }
+              ]
+            ]
+          }
+        },
+        {
+          "id": "kralin-sozu-yapim",
+          "type": "notes",
+          "title": {
+            "tr": "Yapım notları",
+            "en": "Making of"
+          },
+          "deck": {
+            "tr": "Tek kişilik bir proje: kod, denge ve performans.",
+            "en": "A one-person project: code, balance and performance."
+          },
+          "numbers": [
+            {
+              "v": {
+                "tr": "10 + 2",
+                "en": "10 + 2"
+              },
+              "k": {
+                "tr": "son ve ara şafak",
+                "en": "endings and interim dawns"
+              }
+            },
+            {
+              "v": {
+                "tr": "14",
+                "en": "14"
+              },
+              "k": {
+                "tr": "başarım",
+                "en": "achievements"
+              }
+            },
+            {
+              "v": {
+                "tr": "2000",
+                "en": "2,000"
+              },
+              "k": {
+                "tr": "gecelik denge simülasyonu",
+                "en": "nights of balance simulation"
+              }
+            },
+            {
+              "v": {
+                "tr": "1,6 ms",
+                "en": "1.6 ms"
+              },
+              "k": {
+                "tr": "kare süresi, RTX 4060",
+                "en": "per frame, RTX 4060"
+              }
+            }
+          ],
+          "items": [
+            {
+              "h": {
+                "tr": "Kodla kurulan sahne",
+                "en": "A scene built in code"
+              },
+              "t": {
+                "tr": "Sahnenin tamamı kodla kuruluyor. Oyunun kuralları Unity'den bağımsız bir çekirdekte duruyor.",
+                "en": "The whole scene is built in code. The rules live in a core that doesn't depend on Unity."
+              }
+            },
+            {
+              "h": {
+                "tr": "2000 gecelik denge",
+                "en": "2,000 nights of balance"
+              },
+              "t": {
+                "tr": "Zorluğu 2000 gecelik bir simülasyonla ayarladım. Ekran açmadan çalışan otomatik test botları kurdum.",
+                "en": "I tuned the difficulty with a 2,000-night simulation and built automated test bots that run without opening a window."
+              }
+            },
+            {
+              "h": {
+                "tr": "Saat yok",
+                "en": "No clock"
+              },
+              "t": {
+                "tr": "Zamanı ay gösterir: sağdaki dağların ardından doğar, gece yarısı tepededir. Saat başı uzaktan kale çanı çalar.",
+                "en": "The moon tells the time: it rises behind the mountains on the right and is overhead at midnight. A castle bell rings on the hour."
+              }
+            },
+            {
+              "h": {
+                "tr": "Herkese göre",
+                "en": "Made to adjust"
+              },
+              "t": {
+                "tr": "Üç zorluk seviyesi, tuş atama, oyun kolu desteği ve altyazı boyutu ayarı var. Seslendirme yerine her karakterin kendine özgü bir konuşma sesi var.",
+                "en": "Three difficulty levels, key remapping, controller support and subtitle size. Instead of voice acting, every character has its own speech blip."
+              }
+            },
+            {
+              "h": {
+                "tr": "Hızlı",
+                "en": "Fast"
+              },
+              "t": {
+                "tr": "Vulkan ile derlendi. RTX 4060'ta 1080p ve Yüksek ayarda ortalama kare süresi 1,6 ms.",
+                "en": "Built with Vulkan. Average frame time on an RTX 4060 at 1080p, High: 1.6 ms."
+              }
+            }
+          ],
+          "images": [
+            {
+              "src": "kralin-sozu-volley.webp",
+              "w": 1200,
+              "h": 675,
+              "alt": {
+                "tr": "Boru öttürülünce okçular karanlığa ok yağdırıyor",
+                "en": "Sound the horn and the archers loose arrows into the dark"
+              }
+            },
+            {
+              "src": "kralin-sozu-sky-midnight.webp",
+              "w": 1200,
+              "h": 675,
+              "alt": {
+                "tr": "Gece yarısı: ay kulelerin tam üstünde",
+                "en": "Midnight: the moon right above the towers"
+              }
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "under-the-counter",
@@ -173,10 +403,14 @@
       },
       "points": {
         "tr": [
-          "Ekonomiyi, sabrı tükenen müşterileri, şüphe göstergesine bağlı polis baskınlarını, çökmeye dayanıklı kaydı ve TR/EN yerelleştirmeyi yazdım. Ekipteki commit'lerin çoğu benim."
+          "Oyunun sistemlerini yazıyorum: ekonomi, sabrı tükenen müşteriler, şüphe göstergesine bağlı polis baskınları ve oyun içi bilgisayardan alışveriş.",
+          "Çökmeye dayanıklı bir kayıt sistemi ve TR/EN yerelleştirme kurdum. Ekipteki commit'lerin çoğu benim.",
+          "Oyunda 88 çalışma zamanı script'i ve ekibin işini kolaylaştıran 28 editör aracı var. Hedef, Steam Next Fest'e bir demoyla katılmak."
         ],
         "en": [
-          "I wrote the economy, impatient customers, police raids driven by a suspicion meter, crash-safe saving and TR/EN localization. Most of the team's commits are mine."
+          "I write the game's systems: the economy, impatient customers, police raids driven by a suspicion meter and shopping from an in-game computer.",
+          "I built a crash-safe save system and TR/EN localization. Most of the team's commits are mine.",
+          "The game has 88 runtime scripts and 28 editor tools that speed up the team's work. The goal is a demo at Steam Next Fest."
         ]
       },
       "stats": [
@@ -211,7 +445,11 @@
       "image": null,
       "art": "counter",
       "gallery": [],
-      "links": []
+      "links": [],
+      "team": {
+        "tr": "3 kişilik ekip",
+        "en": "Team of 3"
+      }
     },
     {
       "id": "last-dawn",
@@ -237,10 +475,14 @@
       },
       "points": {
         "tr": [
-          "Projede yazılım ve pazarlamadan sorumluyum. Gündüz/gece düğmesiyle bütün paleti değiştiren tanıtım sitesini ben yaptım."
+          "Projede yazılım ve pazarlama tarafındayım.",
+          "Tanıtım sitesini ben hazırladım: gündüz/gece düğmesi bütün renk paletini değiştiriyor; tanıtım videosu ve motor içi bir galeri var.",
+          "Steam sayfası açıldığında oyun oradan da duyurulacak."
         ],
         "en": [
-          "I handle software and marketing. I built the promo site, whose day/night switch changes the whole palette."
+          "I'm on the software and marketing side of the project.",
+          "I built the promo site: a day/night switch changes the whole palette, and it has a trailer and an in-engine gallery.",
+          "The game will be announced there too once its Steam page opens."
         ]
       },
       "stats": [],
@@ -267,7 +509,11 @@
           "label": "open",
           "href": "https://salihyzts.github.io/Last-Down-WEB/"
         }
-      ]
+      ],
+      "team": {
+        "tr": "5 kişilik ekip, Volpen",
+        "en": "Team of 5, Volpen"
+      }
     },
     {
       "id": "pati-rotasi",
@@ -292,8 +538,16 @@
         "en": "A mobile game that gets you walking. Photograph street cats to build a collection, clear the fog on the map as you walk, and turn your steps into food points for animal shelters."
       },
       "points": {
-        "tr": [],
-        "en": []
+        "tr": [
+          "32 farklı kedi türü, nadirlik seviyeleri ve mahalle albümleri var.",
+          "Adım sayar, seriler, günlük görevler ve rozetler ekledim.",
+          "Oyunlaştırmanın insanları dışarı çıkarmak gibi gerçek bir alışkanlığa yönlendirip yönlendiremeyeceğini denemek istedim. Android APK'sı GitHub'da."
+        ],
+        "en": [
+          "32 cat breeds, rarity levels and neighbourhood albums.",
+          "I added a step counter, streaks, daily quests and badges.",
+          "I wanted to see whether game mechanics can nudge people toward a real habit like getting outside. The Android APK is on GitHub."
+        ]
       },
       "stats": [],
       "tech": [
@@ -323,7 +577,7 @@
     {
       "id": "lets-cook-a-mask",
       "track": "game",
-      "tier": "compact",
+      "tier": "card",
       "hidden": false,
       "title": "Let's Cook a Mask",
       "subtitle": {
@@ -343,8 +597,12 @@
         "en": "In a world of hidden faces you craft identities: listen to each customer's whispers and cook the mask that gives them the power they want."
       },
       "points": {
-        "tr": [],
-        "en": []
+        "tr": [
+          "Global Game Jam 2026'nın İstanbul @BUG ayağında, jam süresi içinde ekiple bitirdik."
+        ],
+        "en": [
+          "We finished it as a team within the jam at Global Game Jam 2026, Istanbul @BUG."
+        ]
       },
       "stats": [],
       "tech": [
@@ -373,12 +631,13 @@
           "label": "source",
           "href": "https://github.com/SalihYzts/GGJ-2026-BUG-Ne-Yapsak-Yahu"
         }
-      ]
+      ],
+      "half": true
     },
     {
       "id": "the-rolling-pizz",
       "track": "game",
-      "tier": "compact",
+      "tier": "card",
       "hidden": false,
       "title": "The Rolling Pizz",
       "subtitle": {
@@ -398,8 +657,12 @@
         "en": "Help a pizza that got cut in half in its sleep escape the table; some obstacles need the whole pizza, others two halves. I programmed the game in Unity for team Kozalak Çamları."
       },
       "points": {
-        "tr": [],
-        "en": []
+        "tr": [
+          "Tek bir mekaniği, bölünüp birleşmeyi, oyunun merkezine koyup bölümleri onun etrafında kurduk."
+        ],
+        "en": [
+          "We put a single mechanic, splitting and merging, at the centre and built every level around it."
+        ]
       },
       "stats": [],
       "tech": [
@@ -422,60 +685,12 @@
           "label": "play",
           "href": "https://tce81.itch.io/the-rolling-pizz"
         }
-      ]
-    },
-    {
-      "id": "agaclastirilmis-elma",
-      "track": "game",
-      "tier": "compact",
-      "hidden": false,
-      "title": "Ağaçlaştırılmış Elma",
-      "subtitle": {
-        "tr": "",
-        "en": ""
-      },
-      "kind": {
-        "tr": "Volpen, 2 ay. Kod, proje yönetimi ve hikâye",
-        "en": "Volpen, 2 months. Code, project lead and story"
-      },
-      "date": {
-        "tr": "",
-        "en": ""
-      },
-      "pitch": {
-        "tr": "Tohumdan ağaca bir elmanın macerası: tilki Kiki'ye yardım edip elmayı yetiştiriyorsun. Eğitici bir tıklama oyunu.",
-        "en": "An apple's journey from seed to tree: help Kiki the fox grow it. An educational clicker game."
-      },
-      "points": {
-        "tr": [],
-        "en": []
-      },
-      "stats": [],
-      "tech": [
-        "Unity",
-        "C#"
       ],
-      "image": {
-        "src": "agaclastirilmis-elma.webp",
-        "w": 960,
-        "h": 600,
-        "alt": {
-          "tr": "Ağaçlaştırılmış Elma: elmalı turta bekleyen tilki ve yaşlı kadın çizimi",
-          "en": "Ağaçlaştırılmış Elma: illustration of a fox and an old woman waiting for an apple pie"
-        }
-      },
-      "art": null,
-      "gallery": [],
-      "links": [
-        {
-          "label": "play",
-          "href": "https://volpentr.itch.io/agaclastirilmiselma"
-        },
-        {
-          "label": "source",
-          "href": "https://github.com/SalihYzts/ElnalistirilmisAgac"
-        }
-      ]
+      "half": true,
+      "team": {
+        "tr": "4 kişilik ekip: Kozalak Çamları",
+        "en": "Team of 4: Kozalak Çamları"
+      }
     },
     {
       "id": "colorland",
@@ -580,6 +795,59 @@
       ]
     },
     {
+      "id": "agaclastirilmis-elma",
+      "track": "game",
+      "tier": "compact",
+      "hidden": false,
+      "title": "Ağaçlaştırılmış Elma",
+      "subtitle": {
+        "tr": "",
+        "en": ""
+      },
+      "kind": {
+        "tr": "Volpen, 2 ay. Kod, proje yönetimi ve hikâye",
+        "en": "Volpen, 2 months. Code, project lead and story"
+      },
+      "date": {
+        "tr": "",
+        "en": ""
+      },
+      "pitch": {
+        "tr": "Tohumdan ağaca bir elmanın macerası: tilki Kiki'ye yardım edip elmayı yetiştiriyorsun. Eğitici bir tıklama oyunu.",
+        "en": "An apple's journey from seed to tree: help Kiki the fox grow it. An educational clicker game."
+      },
+      "points": {
+        "tr": [],
+        "en": []
+      },
+      "stats": [],
+      "tech": [
+        "Unity",
+        "C#"
+      ],
+      "image": {
+        "src": "agaclastirilmis-elma.webp",
+        "w": 960,
+        "h": 600,
+        "alt": {
+          "tr": "Ağaçlaştırılmış Elma: elmalı turta bekleyen tilki ve yaşlı kadın çizimi",
+          "en": "Ağaçlaştırılmış Elma: illustration of a fox and an old woman waiting for an apple pie"
+        }
+      },
+      "art": null,
+      "gallery": [],
+      "links": [
+        {
+          "label": "play",
+          "href": "https://volpentr.itch.io/agaclastirilmiselma"
+        },
+        {
+          "label": "source",
+          "href": "https://github.com/SalihYzts/ElnalistirilmisAgac"
+        }
+      ]
+    },
+    {
       "id": "ecobuddy",
       "track": "game",
       "tier": "compact",
@@ -652,14 +920,14 @@
       },
       "points": {
         "tr": [
-          "Supabase'de satır düzeyi güvenlik ve Edge Function'lar; paylaşılan bağlantıların önizleme kartlarını bir Cloudflare Worker üretiyor.",
-          "Arama birden çok kaynağa soruyor, biri çökünce ötekine geçiyor. Kaynaklar arası eşleştirme Wikidata ile; katalog her gece kendiliğinden büyüyor.",
-          "AniList, Steam, MyAnimeList, Goodreads ve Letterboxd'dan içe aktarma; takip, mesaj, inceleme, rozetler ve mini oyunlar."
+          "Anime, manga, dizi, film, oyun, kitap ve müzik: yedi tür tek bir listede. Reklam yok, ücretsiz; hesap açmadan da gezilebiliyor.",
+          "Fikirden yayına her aşamayı tek başıma üstlendim. İlk kez bu ölçekte bir ürün çıkardım.",
+          "Arayüz 19 dilde, katalog her gece kendiliğinden büyüyor."
         ],
         "en": [
-          "Supabase with row-level security and Edge Functions; a Cloudflare Worker renders preview cards for shared links.",
-          "Search queries several sources and falls back when one goes down. IDs are matched across sources with Wikidata; the catalog grows by itself every night.",
-          "Imports from AniList, Steam, MyAnimeList, Goodreads and Letterboxd; follows, messages, reviews, badges and mini-games."
+          "Anime, manga, TV, films, games, books and music: seven kinds in one list. No ads, free, and you can browse without an account.",
+          "I took on every stage from idea to release on my own. It's the first product I've shipped at this scale.",
+          "The interface is in 19 languages and the catalog grows by itself every night."
         ]
       },
       "stats": [
@@ -744,7 +1012,139 @@
       "quote": {
         "tr": "Tek başıma geliştirip 19 dilde yayına aldım.",
         "en": "I built it on my own and shipped it in 19 languages."
-      }
+      },
+      "pages": [
+        {
+          "id": "myeverythinglist-yapim",
+          "type": "notes",
+          "title": {
+            "tr": "Yapım notları",
+            "en": "Making of"
+          },
+          "deck": {
+            "tr": "Ağustos'tan Ekim'e tek başıma: bir ürünün altında ne var?",
+            "en": "August to October, on my own: what's under the hood?"
+          },
+          "numbers": [
+            {
+              "v": {
+                "tr": "~58 bin",
+                "en": "~58k"
+              },
+              "k": {
+                "tr": "satır TypeScript",
+                "en": "lines of TypeScript"
+              }
+            },
+            {
+              "v": {
+                "tr": "261",
+                "en": "261"
+              },
+              "k": {
+                "tr": "commit",
+                "en": "commits"
+              }
+            },
+            {
+              "v": {
+                "tr": "148",
+                "en": "148"
+              },
+              "k": {
+                "tr": "SQL migration",
+                "en": "SQL migrations"
+              }
+            },
+            {
+              "v": {
+                "tr": "20",
+                "en": "20"
+              },
+              "k": {
+                "tr": "Edge Function",
+                "en": "Edge Functions"
+              }
+            },
+            {
+              "v": {
+                "tr": "19",
+                "en": "19"
+              },
+              "k": {
+                "tr": "dil",
+                "en": "languages"
+              }
+            },
+            {
+              "v": {
+                "tr": "5",
+                "en": "5"
+              },
+              "k": {
+                "tr": "içe aktarma kaynağı",
+                "en": "import sources"
+              }
+            }
+          ],
+          "items": [
+            {
+              "h": {
+                "tr": "Çökmeyen arama",
+                "en": "Search that doesn't fall over"
+              },
+              "t": {
+                "tr": "Arama birden çok kaynağa gidiyor; biri çökünce diğerine geçiyor. Aynı eseri kaynaklar arasında Wikidata ile eşleştirdim. Anlama göre arama da var.",
+                "en": "Search queries several sources and falls back when one goes down. I matched the same title across sources with Wikidata. There's also search by meaning."
+              }
+            },
+            {
+              "h": {
+                "tr": "Veritabanında güvenlik",
+                "en": "Security in the database"
+              },
+              "t": {
+                "tr": "Supabase'de satır düzeyi güvenlik (RLS) ve Edge Function'lar. Paylaşılan bağlantıların önizleme kartlarını bir Cloudflare Worker üretiyor.",
+                "en": "Row-level security (RLS) and Edge Functions on Supabase. A Cloudflare Worker renders the preview cards for shared links."
+              }
+            },
+            {
+              "h": {
+                "tr": "Listeni getir",
+                "en": "Bring your list"
+              },
+              "t": {
+                "tr": "AniList, Steam, MyAnimeList, Goodreads ve Letterboxd'dan içe aktarma.",
+                "en": "Imports from AniList, Steam, MyAnimeList, Goodreads and Letterboxd."
+              }
+            },
+            {
+              "h": {
+                "tr": "Sosyal",
+                "en": "Social"
+              },
+              "t": {
+                "tr": "Takip, mesaj, inceleme, moderasyon, rozetler ve mini oyunlar.",
+                "en": "Follows, messages, reviews, moderation, badges and mini-games."
+              }
+            },
+            {
+              "h": {
+                "tr": "Her yerde",
+                "en": "Everywhere"
+              },
+              "t": {
+                "tr": "PWA olarak telefona kuruluyor; Tauri ile masaüstü sürümü (.deb, .exe) var.",
+                "en": "Installs on phones as a PWA, with desktop builds (.deb, .exe) made with Tauri."
+              }
+            }
+          ],
+          "quote": {
+            "tr": "En çok farklı veri kaynaklarını birbiriyle eşleştirmek ve büyüyen bir kod tabanını düzenli tutmak konusunda öğrendim.",
+            "en": "I learned most about matching different data sources and keeping a growing codebase tidy."
+          }
+        }
+      ]
     },
     {
       "id": "nerobot",
@@ -770,10 +1170,14 @@
       },
       "points": {
         "tr": [
-          "Sağlayıcıdan bağımsız bir AI katmanı yazdım: Ollama, LM Studio, llama.cpp, vLLM, OpenAI, OpenRouter, Groq ve Claude Code, Codex, Gemini CLI gibi ajanlar aynı arayüzle çalışıyor. GitHub Releases ile kendini güncelliyor."
+          "Sağlayıcıdan bağımsız bir AI katmanı yazdım: yerel modeller (Ollama, LM Studio, llama.cpp, vLLM), bulut API'leri (OpenAI, OpenRouter, Groq, Together AI) ve CLI ajanları (Claude Code, Codex, Gemini CLI) aynı arayüzle çalışıyor.",
+          "Görsel, PDF ve Word okuma, AI ile görsel üretimi, kullanıcı başına hız sınırlama ve bir yönetici paneli ekledim.",
+          "Global kısayolla açılan hızlı bir sohbet var. Uygulama GitHub Releases üzerinden kendini güncelliyor."
         ],
         "en": [
-          "I wrote a provider-agnostic AI layer: Ollama, LM Studio, llama.cpp, vLLM, OpenAI, OpenRouter, Groq and agents like Claude Code, Codex and Gemini CLI all work through one interface. Updates itself through GitHub Releases."
+          "I wrote a provider-agnostic AI layer: local models (Ollama, LM Studio, llama.cpp, vLLM), cloud APIs (OpenAI, OpenRouter, Groq, Together AI) and CLI agents (Claude Code, Codex, Gemini CLI) all work through one interface.",
+          "I added image, PDF and Word reading, AI image generation, per-user rate limiting and an admin panel.",
+          "A quick chat opens with a global shortcut, and the app updates itself through GitHub Releases."
         ]
       },
       "stats": [
@@ -846,10 +1250,14 @@
       },
       "points": {
         "tr": [
-          "Görseller harici sunucu olmadan üretiliyor. Modelleri sırayla belleğe alıp boşaltarak 8 GB ekran kartında VRAM kullanımını 7820 MiB'den 3035 MiB'ye indirdim."
+          "Fikirden taslak, karakter, mekân, müzik ve sahne metni üretiyor. Beğenmediğin sahneyi geri bildirimle yeniden yazdırabiliyorsun.",
+          "Görseller harici sunucu olmadan, uygulamaya gömülü Python (diffusers) ile üretiliyor. Modelleri sırayla belleğe alıp boşaltarak 8 GB ekran kartında VRAM kullanımını 7820 MiB'den 3035 MiB'ye indirdim.",
+          "Uçtan uca üretim yaklaşık 150 saniye. 614 testin bir kısmı Ren'Py çıktısını gerçek motorda çalıştırarak doğruluyor. Uygulama tek bir 4,2 MB'lık dosya."
         ],
         "en": [
-          "Images are generated with no external server. Loading and unloading models one at a time cut VRAM use on an 8 GB GPU from 7820 MiB to 3035 MiB."
+          "It turns the idea into an outline, characters, locations, music and scene scripts. If you don't like a scene, you can have it rewritten with feedback.",
+          "Images are generated with embedded Python (diffusers), no external server. Loading and unloading models one at a time cut VRAM use on an 8 GB GPU from 7820 MiB to 3035 MiB.",
+          "A full run takes about 150 seconds. Some of the 614 tests run the Ren'Py output in the real engine. The app ships as a single 4.2 MB file."
         ]
       },
       "stats": [
@@ -915,6 +1323,88 @@
       "art": null,
       "gallery": [],
       "links": []
+    },
+    {
+      "id": "heren-agent",
+      "track": "code",
+      "tier": "card",
+      "hidden": false,
+      "title": "Heren Agent",
+      "subtitle": {
+        "tr": "",
+        "en": ""
+      },
+      "kind": {
+        "tr": "Ev sunucusu asistanı",
+        "en": "Home-server assistant"
+      },
+      "date": {
+        "tr": "Eylül 2026",
+        "en": "Sep 2026"
+      },
+      "pitch": {
+        "tr": "Telefondan sesle ya da dokunarak ev sunucusunu ve bağlı makineleri yöneten bir panel. Konuşma tanıma ve seslendirme tamamen yerelde çalışıyor.",
+        "en": "A phone-first panel for running a home server and paired machines by voice or touch. Speech recognition and text-to-speech run fully on the local machine."
+      },
+      "points": {
+        "tr": [
+          "Heren, Hermes Agent'ın üzerine kurulu: Hermes beyin, Heren yüzü ve elleri.",
+          "Her makinede küçük bir Go ajanı var. Ajanlar mesajlarını ed25519 ile imzalıyor ve tekrar oynatma saldırılarına karşı tek kullanımlık değer (nonce) kullanıyor.",
+          "Komutlar risk seviyesine ayrılıyor: düşük riskliler hemen çalışıyor, yüksek riskliler arayüzde onay bekliyor, kritik olanlar varsayılan olarak kapalı."
+        ],
+        "en": [
+          "Heren is built on Hermes Agent: Hermes is the brain, Heren the face and hands.",
+          "Each machine runs a small Go agent. Agents sign their messages with ed25519 and use a one-time nonce against replay attacks.",
+          "Commands are grouped by risk: low-risk ones run at once, high-risk ones wait for approval in the UI, and critical ones are off by default."
+        ]
+      },
+      "stats": [
+        {
+          "k": {
+            "tr": "İmza",
+            "en": "Signing"
+          },
+          "v": {
+            "tr": "ed25519",
+            "en": "ed25519"
+          }
+        },
+        {
+          "k": {
+            "tr": "Ses",
+            "en": "Voice"
+          },
+          "v": {
+            "tr": "yerel STT + TTS",
+            "en": "local STT + TTS"
+          }
+        }
+      ],
+      "tech": [
+        "Python",
+        "FastAPI",
+        "Go",
+        "TypeScript",
+        "faster-whisper",
+        "Piper TTS"
+      ],
+      "image": {
+        "src": "heren-agent.webp",
+        "w": 960,
+        "h": 748,
+        "alt": {
+          "tr": "Heren Agent ana ekranı",
+          "en": "Heren Agent main screen"
+        }
+      },
+      "art": null,
+      "gallery": [],
+      "links": [
+        {
+          "label": "source",
+          "href": "https://github.com/SalihYzts/heren-agent"
+        }
+      ]
     },
     {
       "id": "parsel",
@@ -984,85 +1474,113 @@
       "image": null,
       "art": "parcel",
       "gallery": [],
-      "links": []
-    },
-    {
-      "id": "heren-agent",
-      "track": "code",
-      "tier": "card",
-      "hidden": false,
-      "title": "Heren Agent",
-      "subtitle": {
-        "tr": "",
-        "en": ""
-      },
-      "kind": {
-        "tr": "Ev sunucusu asistanı",
-        "en": "Home-server assistant"
-      },
-      "date": {
-        "tr": "Eylül 2026",
-        "en": "Sep 2026"
-      },
-      "pitch": {
-        "tr": "Telefondan sesle ya da dokunarak ev sunucusunu ve bağlı makineleri yöneten bir panel. Konuşma tanıma ve seslendirme tamamen yerelde çalışıyor.",
-        "en": "A phone-first panel for running a home server and paired machines by voice or touch. Speech recognition and text-to-speech run fully on the local machine."
-      },
-      "points": {
-        "tr": [
-          "Her makinede bir Go ajanı var. Ajanlar mesajlarını ed25519 ile imzalıyor ve tekrar oynatma saldırılarına karşı tek kullanımlık değer kullanıyor. Yüksek riskli komutlar arayüzde onay bekliyor."
-        ],
-        "en": [
-          "Each machine runs a Go agent. Agents sign messages with ed25519 and use a one-time nonce against replay attacks. High-risk commands wait for approval in the UI."
-        ]
-      },
-      "stats": [
+      "links": [],
+      "pages": [
         {
-          "k": {
-            "tr": "İmza",
-            "en": "Signing"
+          "id": "parsel-dosya",
+          "type": "notes",
+          "title": {
+            "tr": "Staj dosyası",
+            "en": "Internship file"
           },
-          "v": {
-            "tr": "ed25519",
-            "en": "ed25519"
-          }
-        },
-        {
-          "k": {
-            "tr": "Ses",
-            "en": "Voice"
+          "deck": {
+            "tr": "Stoneograph, Ağustos 2026: emlak sektörü için tapu doğrulamalı bir pazaryeri.",
+            "en": "Stoneograph, August 2026: a land marketplace with title-deed verification."
           },
-          "v": {
-            "tr": "yerel STT + TTS",
-            "en": "local STT + TTS"
+          "numbers": [
+            {
+              "v": {
+                "tr": "~10 bin",
+                "en": "~10k"
+              },
+              "k": {
+                "tr": "satır backend kodu",
+                "en": "lines of backend code"
+              }
+            },
+            {
+              "v": {
+                "tr": "103",
+                "en": "103"
+              },
+              "k": {
+                "tr": "test",
+                "en": "tests"
+              }
+            },
+            {
+              "v": {
+                "tr": "TR/EN",
+                "en": "TR/EN"
+              },
+              "k": {
+                "tr": "arayüz",
+                "en": "interface"
+              }
+            }
+          ],
+          "items": [
+            {
+              "h": {
+                "tr": "Tapu doğrulama",
+                "en": "Title-deed check"
+              },
+              "t": {
+                "tr": "Parselleri TKGM üzerinden sorgulayan “Tapu Doğrulanmış” rozetini kurdum. Shapely ve pyproj ile eğime göre düzeltilmiş alan ve yükseklik analizi ekledim, KML/KMZ desteği verdim.",
+                "en": "I built a “title-verified” badge that looks parcels up in Turkey's land registry (TKGM), added slope-corrected area and elevation analysis with Shapely and pyproj, and KML/KMZ support."
+              }
+            },
+            {
+              "h": {
+                "tr": "Canlı açık artırma",
+                "en": "Live auctions"
+              },
+              "t": {
+                "tr": "Son saniye teklifinde süreyi uzatan anti-sniping, yarış koşullarına karşı güvenli teklif işleme ve WebSocket ile anlık akış.",
+                "en": "Anti-sniping (a last-second bid extends the timer), race-safe bid handling and real-time updates over WebSocket."
+              }
+            },
+            {
+              "h": {
+                "tr": "Sanal drone videosu",
+                "en": "Virtual drone videos"
+              },
+              "t": {
+                "tr": "Fotogerçekçi 3D harita üzerinde Playwright ve ffmpeg ile seslendirmeli, altyazılı tanıtım videosu üreten bir hat kurdum.",
+                "en": "A pipeline that renders narrated, subtitled promo videos over a photorealistic 3D map with Playwright and ffmpeg."
+              }
+            },
+            {
+              "h": {
+                "tr": "Yalnızca verilen bilgiyle",
+                "en": "Only the facts given"
+              },
+              "t": {
+                "tr": "Claude API ile ilan metinlerini yalnızca verilen bilgilere dayanarak yazdırdım.",
+                "en": "Used the Claude API to write listing text based only on the facts provided."
+              }
+            },
+            {
+              "h": {
+                "tr": "Giriş ve arama",
+                "en": "Sign-in and search"
+              },
+              "t": {
+                "tr": "JWT ve Google OAuth ile giriş, haritada çokgen çizerek arama ve TR/EN arayüz. Danışmanım için sunucu barındırma maliyetlerini karşılaştıran bir rapor da hazırladım.",
+                "en": "JWT and Google OAuth sign-in, search by drawing a polygon on the map and a TR/EN interface. I also wrote a hosting cost comparison for my mentor."
+              }
+            }
+          ],
+          "quote": {
+            "tr": "Gerçek bir sektör problemi üzerinde çalışmak ve bir backend'i testleriyle birlikte büyütmek bana çok şey kattı.",
+            "en": "Working on a real industry problem and growing a backend together with its tests taught me a lot."
           }
         }
       ],
-      "tech": [
-        "Python",
-        "FastAPI",
-        "Go",
-        "TypeScript",
-        "faster-whisper",
-        "Piper TTS"
-      ],
-      "image": {
-        "src": "heren-agent.webp",
-        "w": 960,
-        "h": 748,
-        "alt": {
-          "tr": "Heren Agent ana ekranı",
-          "en": "Heren Agent main screen"
-        }
-      },
-      "art": null,
-      "gallery": [],
-      "links": [
-        {
-          "label": "source",
-          "href": "https://github.com/SalihYzts/heren-agent"
-        }
-      ]
+      "team": {
+        "tr": "Stoneograph, staj",
+        "en": "Stoneograph, internship"
+      }
     },
     {
       "id": "kafe-finans",
@@ -1126,7 +1644,8 @@
       },
       "art": null,
       "gallery": [],
-      "links": []
+      "links": [],
+      "half": true
     },
     {
       "id": "truva-arabirimi",
@@ -1191,7 +1710,8 @@
       "image": null,
       "art": "pipeline",
       "gallery": [],
-      "links": []
+      "links": [],
+      "half": true
     },
     {
       "id": "oyun-vitrini",

@@ -14,7 +14,7 @@ Salih Yazıtaş'ın kişisel sitesi. Çerçevesiz, statik; GitHub Pages'te doğr
 node src/build.js
 ```
 
-Bu komut `index.html`, `en/index.html`, `404.html` ve `sitemap.xml` dosyalarını yazar. Yerelde bakmak için:
+Bu komut masayı (`index.html`, `en/index.html`), üç sayıyı (`ben/`, `oyun/`, `yazilim/` ve `en/about/`, `en/games/`, `en/software/`), `404.html` ve `sitemap.xml` dosyalarını yazar. Paylaşım görselleri `assets/og/` içinde (masa ve her sayı için TR/EN). Yerelde bakmak için:
 
 ```bash
 python3 -m http.server 8765

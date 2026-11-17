@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="tr" data-theme="light" data-issue="yazilim">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Salih Yazıtaş · Yazılım: MyEverythingList ve diğer projeler</title>
+<meta name="description" content="Salih Yazıtaş'ın yazılımları: 19 dilde yayındaki MyEverythingList, açık kaynak NeRoBoT, RaiPy, Heren Agent, Stoneograph stajında yazdığı Parsel ve Petra Cafe için yaptığı işler.">
+<meta name="author" content="Salih Yazıtaş">
+<link rel="canonical" href="https://salihyzts.github.io/yazilim/">
+<link rel="alternate" hreflang="tr" href="https://salihyzts.github.io/yazilim/">
+<link rel="alternate" hreflang="en" href="https://salihyzts.github.io/en/software/">
+<link rel="alternate" hreflang="x-default" href="https://salihyzts.github.io/yazilim/">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#d9d8d2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0e0f11" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="profile">
+<meta property="og:site_name" content="Salih Yazıtaş">
+<meta property="og:title" content="Salih Yazıtaş · Yazılım: MyEverythingList ve diğer projeler">
+<meta property="og:description" content="Salih Yazıtaş'ın yazılımları: 19 dilde yayındaki MyEverythingList, açık kaynak NeRoBoT, RaiPy, Heren Agent, Stoneograph stajında yazdığı Parsel ve Petra Cafe için yaptığı işler.">
+<meta property="og:url" content="https://salihyzts.github.io/yazilim/">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:image" content="https://salihyzts.github.io/assets/og/og-yazilim-tr.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="YAZITAŞ dergisinin Sayı 3: Yazılım">
+<meta property="profile:first_name" content="Salih">
+<meta property="profile:last_name" content="Yazıtaş">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="preload" href="/assets/fonts/archivo-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/fonts.css">
+<link rel="stylesheet" href="/assets/css/site.css">
+<script>
+  // Boyamadan önce temayı ve görünümü uygula (okuyucu ve masa aynı eşiği kullanır)
+  (function () {
+    var d = document.documentElement, t = null;
+    try { t = localStorage.getItem("theme"); } catch (e) {}
+    if (t !== "light" && t !== "dark") t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    d.dataset.theme = t;
+    d.classList.add("reader", innerWidth < 720 || innerHeight < 512 ? "app" : "print");
+  })();
+</script>
+<link rel="preload" href="/assets/img/myeverythinglist.webp" as="image" type="image/webp">
+</head>
+<body>
+<a class="skip" href="#icindekiler">İçeriğe geç</a>
+
+<header class="topbar">
+  <a class="desk-link" href="/" data-desk aria-label="Masaya dön: üç sayının durduğu giriş"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M5 1h1v1h-1zM4 2h2v1h-2zM3 3h3v1h-3zM2 4h10v1h-10zM1 5h11v1h-11zM1 6h11v1h-11zM2 7h10v1h-10zM3 8h3v1h-3zM4 9h2v1h-2zM5 10h1v1h-1z"/></svg><span>Masa</span></a>
+  <nav class="topnav issues-nav" aria-label="Sayılar">
+    <ul><li><a href="/ben/"><span class="in-n" aria-hidden="true">1</span><span class="in-name">Ben</span></a></li><li><a href="/oyun/"><span class="in-n" aria-hidden="true">2</span><span class="in-name">Oyun</span></a></li><li><a href="/yazilim/" aria-current="page"><span class="in-n" aria-hidden="true">3</span><span class="in-name">Yazılım</span></a></li></ul>
+  </nav>
+  <nav class="pager" aria-label="Dergi sayfaları">
+    <button type="button" class="pager-btn" data-prev aria-label="Önceki sayfa" aria-keyshortcuts="ArrowLeft"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M5 1h1v1h-1zM4 2h2v1h-2zM3 3h3v1h-3zM2 4h10v1h-10zM1 5h11v1h-11zM1 6h11v1h-11zM2 7h10v1h-10zM3 8h3v1h-3zM4 9h2v1h-2zM5 10h1v1h-1z"/></svg></button>
+    <label class="pager-jump"><span class="sr">Sayfaya git</span>
+      <select data-jump><option value="1">1. Kapak</option><option value="2">2. İçindekiler</option><option value="3">3. Yazılım masasından</option><option value="4">4. MyEverythingList</option><option value="5">5. MyEverythingList (2)</option><option value="6">6. MyEverythingList: Yapım notları</option><option value="7">7. NeRoBoT</option><option value="8">8. RaiPy</option><option value="9">9. Heren Agent</option><option value="10">10. Parsel</option><option value="11">11. Parsel: Staj dosyası</option><option value="12">12. Kafe Finans, Truva–Akınsoft arabirimi</option><option value="13">13. Kısa kısa: araçlar ve siteler</option><option value="14">14. Arka kapak</option></select>
+    </label>
+    <button type="button" class="pager-btn" data-next aria-label="Sonraki sayfa" aria-keyshortcuts="ArrowRight"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 1h1v1h-1zM6 2h2v1h-2zM6 3h3v1h-3zM0 4h10v1h-10zM0 5h11v1h-11zM0 6h11v1h-11zM0 7h10v1h-10zM6 8h3v1h-3zM6 9h2v1h-2zM6 10h1v1h-1z"/></svg></button>
+    <p class="sr" aria-live="polite" data-status></p>
+  </nav>
+  <div class="tools">
+    <a class="tool" href="/en/software/" hreflang="en" lang="en" aria-label="English">EN</a>
+    <button type="button" class="tool" data-theme-toggle aria-label="Gündüz ya da gece baskısı"><svg class="px only-dark" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M5 0h2v1h-2zM1 1h1v1h-1zM5 1h2v1h-2zM10 1h1v1h-1zM2 2h1v1h-1zM9 2h1v1h-1zM4 3h4v1h-4zM3 4h6v1h-6zM0 5h2v1h-2zM3 5h6v1h-6zM10 5h2v1h-2zM0 6h2v1h-2zM3 6h6v1h-6zM10 6h2v1h-2zM3 7h6v1h-6zM4 8h4v1h-4zM2 9h1v1h-1zM9 9h1v1h-1zM1 10h1v1h-1zM5 10h2v1h-2zM10 10h1v1h-1zM5 11h2v1h-2z"/></svg><svg class="px only-light" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M4 0h4v1h-4zM2 1h3v1h-3zM1 2h3v1h-3zM1 3h2v1h-2zM0 4h3v1h-3zM0 5h3v1h-3zM0 6h3v1h-3zM0 7h4v1h-4zM11 7h1v1h-1zM1 8h4v1h-4zM10 8h2v1h-2zM1 9h9v1h-9zM2 10h7v1h-7zM4 11h4v1h-4z"/></svg></button>
+  </div>
+</header>
+
+<main id="main" class="book" aria-label="Dergi sayfaları" data-total="14"><div class="world">
+  <section class="page page--cover cover--yazilim page--right" id="kapak" data-page="1" role="group" aria-roledescription="sayfa" aria-label="Kapak, 1 / 14">
+    <div class="page-inner">
+      <span class="cover-screen"><img src="/assets/img/myeverythinglist.webp" width="2000" height="1125" alt="MyEverythingList'in ana sayfası" fetchpriority="high"></span>
+      <div class="cover-inner">
+        <p class="cover-issue"><span>Sayı 3</span><span>Kasım 2026</span><span class="cover-issue-name">Yazılım</span></p>
+        <h1 class="masthead"><span class="masthead-word" lang="tr" translate="no" aria-hidden="true">YAZITAŞ</span><span class="cover-name"><span lang="tr">Salih Yazıtaş</span>, oyun ve yazılım geliştirici<span class="sr"> · Sayı 3: Yazılım</span></span></h1>
+        <a class="cover-story" href="#myeverythinglist"><span class="cover-kicker">Kapak konusu</span><span class="cover-title" translate="no" lang="en">MyEverythingList</span><span class="cover-deck">Tek başına geliştirilip 19 dilde yayına alınan, reklamsız bir medya takip platformu.</span></a>
+        <ul class="cover-lines">
+          <li><a class="cover-line" href="#myeverythinglist-yapim"><span class="cl-big">58 bin</span><span class="cl-text">satır TypeScript</span></a></li>
+          <li><a class="cover-line" href="#raipy"><span class="cl-big">614</span><span class="cl-text">testli yapay zekâ motoru: RaiPy</span></a></li>
+        </ul>
+        <a class="sticker" href="#nerobot"><span class="sticker-top">Açık kaynak</span><span class="sticker-main">NeRoBoT içeride</span></a>
+        <div class="barcode" aria-hidden="true"><svg class="barcode-bars" viewBox="0 0 111 40" preserveAspectRatio="none" aria-hidden="true"><rect x="0" y="0" width="2" height="40"/><rect x="3" y="0" width="3" height="40"/><rect x="7" y="0" width="1" height="40"/><rect x="9" y="0" width="3" height="40"/><rect x="14" y="0" width="2" height="40"/><rect x="17" y="0" width="3" height="40"/><rect x="21" y="0" width="2" height="40"/><rect x="24" y="0" width="2" height="40"/><rect x="27" y="0" width="1" height="40"/><rect x="29" y="0" width="2" height="40"/><rect x="32" y="0" width="1" height="40"/><rect x="34" y="0" width="2" height="40"/><rect x="37" y="0" width="2" height="40"/><rect x="40" y="0" width="2" height="40"/><rect x="43" y="0" width="1" height="40"/><rect x="45" y="0" width="2" height="40"/><rect x="48" y="0" width="1" height="40"/><rect x="50" y="0" width="1" height="40"/><rect x="52" y="0" width="1" height="40"/><rect x="54" y="0" width="1" height="40"/><rect x="56" y="0" width="1" height="40"/><rect x="58" y="0" width="3" height="40"/><rect x="62" y="0" width="3" height="40"/><rect x="66" y="0" width="2" height="40"/><rect x="69" y="0" width="3" height="40"/><rect x="73" y="0" width="3" height="40"/><rect x="77" y="0" width="2" height="40"/><rect x="80" y="0" width="3" height="40"/><rect x="84" y="0" width="1" height="40"/><rect x="86" y="0" width="1" height="40"/><rect x="88" y="0" width="3" height="40"/><rect x="92" y="0" width="1" height="40"/><rect x="94" y="0" width="2" height="40"/><rect x="97" y="0" width="2" height="40"/><rect x="100" y="0" width="2" height="40"/><rect x="103" y="0" width="2" height="40"/><rect x="106" y="0" width="2" height="40"/><rect x="109" y="0" width="1" height="40"/></svg><span>Sayı 3</span></div>
+      </div></div>
+  </section>
+  <section class="page page--contents sec--ink page--left" id="icindekiler" data-page="2" role="group" aria-roledescription="sayfa" aria-label="İçindekiler, 2 / 14">
+    <div class="page-inner">
+      <h2 class="toc-title">İçindekiler</h2>
+      <ol class="toc-rows">
+          <li><a href="#editor"><span class="toc-pg">3</span><span class="toc-t"><span class="toc-name">Yazılım masasından</span></span></a></li>
+          <li class="toc-cover-row"><a href="#myeverythinglist"><span class="toc-pg">4</span><span class="toc-t"><span class="toc-k">Kapak konusu</span><span class="toc-name"><span translate="no" lang="en">MyEverythingList</span></span><span class="toc-sub">Web uygulaması, tek geliştirici</span></span></a></li>
+          <li><a href="#myeverythinglist-yapim"><span class="toc-pg">6</span><span class="toc-t"><span class="toc-name">Yapım notları</span><span class="toc-sub"><span translate="no">MyEverythingList</span></span></span></a></li>
+          <li><a href="#nerobot"><span class="toc-pg">7</span><span class="toc-t"><span class="toc-name"><span translate="no" lang="en">NeRoBoT</span></span><span class="toc-sub">Açık kaynak masaüstü uygulaması</span></span></a></li>
+          <li><a href="#raipy"><span class="toc-pg">8</span><span class="toc-t"><span class="toc-name"><span translate="no" lang="en">RaiPy</span></span><span class="toc-sub">AI görsel roman motoru</span></span></a></li>
+          <li><a href="#heren-agent"><span class="toc-pg">9</span><span class="toc-t"><span class="toc-name"><span translate="no" lang="en">Heren Agent</span></span><span class="toc-sub">Ev sunucusu asistanı</span></span></a></li>
+          <li><a href="#parsel"><span class="toc-pg">10</span><span class="toc-t"><span class="toc-name"><span translate="no" lang="tr">Parsel</span></span><span class="toc-sub">Staj projesi, Stoneograph</span></span></a></li>
+          <li><a href="#parsel-dosya"><span class="toc-pg">11</span><span class="toc-t"><span class="toc-name">Staj dosyası</span><span class="toc-sub"><span translate="no">Parsel</span></span></span></a></li>
+          <li><a href="#kafe-finans-ve-truva-arabirimi"><span class="toc-pg">12</span><span class="toc-t"><span class="toc-name"><span translate="no">Kafe Finans</span> ve <span translate="no">Truva–Akınsoft arabirimi</span></span><span class="toc-sub">Petra Cafe işi, masaüstü uygulaması</span></span></a></li>
+          <li><a href="#yazilim-kisa"><span class="toc-pg">13</span><span class="toc-t"><span class="toc-name">Kısa kısa: araçlar ve siteler</span><span class="toc-sub" translate="no">Oyun Vitrini, Görevler, Volpen, GDD Creator, TurkOS, YtChatInstaller</span></span></a></li>
+      </ol>
+      <section class="toc-shelf" aria-labelledby="toc-shelf-h">
+        <h3 class="toc-shelf-h" id="toc-shelf-h">Masadaki diğer sayılar</h3>
+        <ul class="shelf">
+        <li><a class="shelf-card shelf--ben" href="/ben/"><span class="shelf-n">Sayı 1</span><span class="shelf-name">Ben</span><span class="shelf-deck">Profil, deneyim, okul ve topluluk, beceriler ve CV.</span></a></li>
+        <li><a class="shelf-card shelf--oyun" href="/oyun/"><span class="shelf-n">Sayı 2</span><span class="shelf-name">Oyun</span><span class="shelf-deck">Kralın Sözü, ekip oyunları, jamler ve kulüp.</span></a></li>
+      </ul>
+      </section></div>
+    <footer class="page-foot" aria-hidden="true"><span class="page-run"><span translate="no">YAZITAŞ</span> · Sayı 3 · Yazılım</span><span class="page-no">2</span></footer>
+  </section>
+  <section class="page page--editor sec--code page--right" id="editor" data-page="3" role="group" aria-roledescription="sayfa" aria-label="Yazılım masasından, 3 / 14">
+    <div class="page-inner">
+      <img class="editor-photo" src="/assets/img/salih.webp" width="480" height="480" alt="Salih Yazıtaş'ın fotoğrafı" loading="lazy" decoding="async">
+      <h2 class="editor-title">Yazılım masasından</h2>
+      <div class="editor-text"><p>Bu sayı yazılımlara ayrıldı. Kapakta Ağustos'tan Ekim'e tek başıma geliştirip 19 dilde yayına aldığım MyEverythingList var.</p><p>Ardından açık kaynak masaüstü uygulamaları, Stoneograph stajında yazdığım açık artırma platformu Parsel ve bir kafenin kasasıyla konuşan servisler geliyor. React, Python, Go ve Rust ile.</p></div>
+      <p class="editor-sign">Salih Yazıtaş, genel yayın yönetmeni</p>
+      
+      <dl class="editor-nums"><div><dt>yazılım projesi</dt><dd>13</dd></div><div><dt>dilde yayında</dt><dd>19</dd></div><div><dt>test, Parsel backend</dt><dd>103</dd></div><div><dt>GitHub yıldızı, NeRoBoT</dt><dd>7</dd></div></dl></div>
+    <footer class="page-foot" aria-hidden="true"><span class="page-run"><span translate="no">YAZITAŞ</span> · Sayı 3 · Yazılım</span><span class="page-no">3</span></footer>
+  </section>
+  <section class="page page--lead-a sec--code page--left" id="myeverythinglist" data-page="4" role="group" aria-roledescription="sayfa" aria-label="MyEverythingList, 4 / 14">
+    <div class="page-inner"><header class="sec-band" id="yazilim"><p class="sec-band-title">Yazılım</p><p class="sec-band-deck">Web, backend, masaüstü ve yapay zekâ: yayına aldığım yazılımlar.</p></header><h2 class="rv-title rv-title--long rv-title--keep" translate="no" lang="en">MyEverythingList</h2><p class="rv-deck">Anime, manga, dizi, film, oyun, kitap ve müziği tek yerde takip etmeni sağlayan, reklamsız bir web uygulaması. Tek başıma geliştirip 19 dilde yayına aldım.</p><figure class="rv-frame lead-frame"><img src="/assets/img/myeverythinglist.webp" width="2000" height="1125" alt="MyEverythingList ana sayfası" loading="lazy" decoding="async"></figure><p class="fig">Görsel 1. MyEverythingList ana sayfası</p></div>
+    <footer class="page-foot" aria-hidden="true"><span class="page-run"><span translate="no">YAZITAŞ</span> · Sayı 3 · Yazılım</span><span class="page-no">4</span></footer>
+  </section>
+  <section class="page page--lead-b sec--code page--right" id="myeverythinglist-2" data-page="5" role="group" aria-roledescription="sayfa" aria-label="MyEverythingList (2), 5 / 14">
+    <div class="page-inner"><blockquote class="pull"><p>Tek başıma geliştirip 19 dilde yayına aldım.</p></blockquote><div class="rv-body"><p>Anime, manga, dizi, film, oyun, kitap ve müzik: yedi tür tek bir listede. Reklam yok, ücretsiz; hesap açmadan da gezilebiliyor.</p><p>Fikirden yayına her aşamayı tek başıma üstlendim. İlk kez bu ölçekte bir ürün çıkardım.</p><p>Arayüz 19 dilde, katalog her gece kendiliğinden büyüyor.</p></div>
+          <aside class="spec" aria-label="Künye: MyEverythingList">
+            <p class="spec-h">Künye</p>
+            <dl class="spec-list">
+              <div><dt>Tür ve rol</dt><dd>Web uygulaması, tek geliştirici</dd></div>
+              <div><dt>Tarih</dt><dd>Ağustos – Ekim 2026</dd></div>
+              <div><dt>Teknoloji</dt><dd>React 19, TypeScript, Vite, Tailwind, TanStack Query, Supabase, Cloudflare Workers, Tauri v2</dd></div>
+            </dl>
+            <p class="spec-h">Rakamlarla</p>
+            <dl class="spec-nums"><div><dt>Dil</dt><dd>19</dd></div><div><dt>Satır TypeScript</dt><dd>~58 bin</dd></div><div><dt>Commit</dt><dd>261</dd></div><div><dt>SQL migration</dt><dd>148</dd></div><div><dt>Edge Function</dt><dd>20</dd></div></dl>
+          </aside>
+          <p class="rv-links"><a class="btn btn--solid" href="https://liste-programi.yazitassalih0.workers.dev/" target="_blank" rel="noopener">Siteyi aç<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(yeni sekmede açılır)</span></a></p></div>
+    <footer class="page-foot" aria-hidden="true"><span class="page-run"><span translate="no">YAZITAŞ</span> · Sayı 3 · Yazılım</span><span class="page-no">5</span></footer>
+  </section>
+  <section class="page page--notes sec--code page--left" id="myeverythinglist-yapim" data-page="6" role="group" aria-roledescription="sayfa" aria-label="MyEverythingList: Yapım notları, 6 / 14">
+    <div class="page-inner">
+      <p class="notes-kicker" translate="no" lang="en">MyEverythingList</p>
+      <h2 class="feature-title">Yapım notları</h2>
+      <p class="feature-deck">Ağustos'tan Ekim'e tek başıma: bir ürünün altında ne var?</p>
+      
+      <dl class="notes-nums"><div><dt>satır TypeScript</dt><dd>~58 bin</dd></div><div><dt>commit</dt><dd>261</dd></div><div><dt>SQL migration</dt><dd>148</dd></div><div><dt>Edge Function</dt><dd>20</dd></div><div><dt>dil</dt><dd>19</dd></div><div><dt>içe aktarma kaynağı</dt><dd>5</dd></div></dl>
+      <ol class="notes-list notes-list--notes">
+        <li><h3 class="notes-h">Çökmeyen arama</h3><p>Arama birden çok kaynağa gidiyor; biri çökünce diğerine geçiyor. Aynı eseri kaynaklar arasında Wikidata ile eşleştirdim. Anlama göre arama da var.</p></li>
+        <li><h3 class="notes-h">Veritabanında güvenlik</h3><p>Supabase'de satır düzeyi güvenlik (RLS) ve Edge Function'lar. Paylaşılan bağlantıların önizleme kartlarını bir Cloudflare Worker üretiyor.</p></li>
+        <li><h3 class="notes-h">Listeni getir</h3><p>AniList, Steam, MyAnimeList, Goodreads ve Letterboxd'dan içe aktarma.</p></li>
+        <li><h3 class="notes-h">Sosyal</h3><p>Takip, mesaj, inceleme, moderasyon, rozetler ve mini oyunlar.</p></li>
+        <li><h3 class="notes-h">Her yerde</h3><p>PWA olarak telefona kuruluyor; Tauri ile masaüstü sürümü (.deb, .exe) var.</p></li>
+      </ol>
+      <blockquote class="pull"><p>En çok farklı veri kaynaklarını birbiriyle eşleştirmek ve büyüyen bir kod tabanını düzenli tutmak konusunda öğrendim.</p><cite>Salih Yazıtaş</cite></blockquote></div>
+    <footer class="page-foot" aria-hidden="true"><span class="page-run"><span translate="no">YAZITAŞ</span> · Sayı 3 · Yazılım</span><span class="page-no">6</span></footer>
+  </section>
+  <section class="page page--solo sec--code page--right" id="nerobot" data-page="7" role="group" aria-roledescription="sayfa" aria-label="NeRoBoT, 7 / 14">
+    <div class="page-inner">
+      <p class="solo-kicker">Açık kaynak masaüstü uygulaması · 2026</p>
+      <h2 class="rv-title rv-title--keep" id="nerobot-h" translate="no" lang="en">NeRoBoT</h2>
+      <p class="rv-deck">Birden çok WhatsApp ve Telegram hesabında, her biri ayrı çalışan yapay zekâ botları yöneten masaüstü uygulaması.</p>
+      <figure class="rv-frame solo-frame"><img src="/assets/img/nerobot.webp" width="960" height="748" alt="NeRoBoT sohbet ekranı" loading="lazy" decoding="async"></figure>
+      <div class="solo-cols">
+        <div class="rv-body rv-body--nocap"><p><b class="runin">Sağlayıcıdan bağımsız bir AI</b> katmanı yazdım: yerel modeller (Ollama, LM Studio, llama.cpp, vLLM), bulut API'leri (OpenAI, OpenRouter, Groq, Together AI) ve CLI ajanları (Claude Code, Codex, Gemini CLI) aynı arayüzle çalışıyor.</p><p>Görsel, PDF ve Word okuma, AI ile görsel üretimi, kullanıcı başına hız sınırlama ve bir yönetici paneli ekledim.</p><p>Global kısayolla açılan hızlı bir sohbet var. Uygulama GitHub Releases üzerinden kendini güncelliyor.</p></div>
+        <aside class="solo-side" aria-label="Künye: NeRoBoT">
+          <ul class="duo-stats" aria-label="Rakamlarla"><li><b>7</b> GitHub yıldızı</li><li><b>Windows, Linux</b> Platform</li></ul>
+          
+          <p class="duo-tech">Electron, Node.js, whatsapp-web.js, Telegram</p>
+          
+          <p class="rv-links"><a class="btn btn--solid" href="https://github.com/SalihYzts/NeRoBoT" target="_blank" rel="noopener">Kaynak kod<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(yeni sekmede açılır)</span></a></p>
+        </aside>
+      </div></div>
+    <footer class="page-foot" aria-hidden="true"><span class="page-run"><span translate="no">YAZITAŞ</span> · Sayı 3 · Yazılım</span><span class="page-no">7</span></footer>
+  </section>
+  <section class="page page--solo sec--code page--left" id="raipy" data-page="8" role="group" aria-roledescription="sayfa" aria-label="RaiPy, 8 / 14">
+    <div class="page-inner">
+      <p class="solo-kicker">AI görsel roman motoru · Eylül 2026</p>
+      <h2 class="rv-title rv-title--keep" id="raipy-h" translate="no" lang="en">RaiPy</h2>
+      <p class="rv-deck">Tek cümlelik bir fikirden derlenip oynatılabilen bir Ren'Py oyunu çıkaran masaüstü uygulaması. Her aşama kullanıcı onayından geçiyor.</p>
+      <figure class="rv-frame solo-frame"><img src="/assets/img/raipy.webp" width="960" height="748" alt="RaiPy sahne düzenleyicisi" loading="lazy" decoding="async"></figure>
+      <div class="solo-cols">
+        <div class="rv-body rv-body--nocap"><p><b class="runin">Fikirden taslak, karakter, mekân,</b> müzik ve sahne metni üretiyor. Beğenmediğin sahneyi geri bildirimle yeniden yazdırabiliyorsun.</p><p>Görseller harici sunucu olmadan, uygulamaya gömülü Python (diffusers) ile üretiliyor. Modelleri sırayla belleğe alıp boşaltarak 8 GB ekran kartında VRAM kullanımını 7820 MiB'den 3035 MiB'ye indirdim.</p><p>Uçtan uca üretim yaklaşık 150 saniye. 614 testin bir kısmı Ren'Py çıktısını gerçek motorda çalıştırarak doğruluyor. Uygulama tek bir 4,2 MB'lık dosya.</p></div>
+        <aside class="solo-side" aria-label="Künye: RaiPy">
+          <ul class="duo-stats" aria-label="Rakamlarla"><li><b>614</b> Test</li><li><b>150 sn</b> Uçtan uca üretim</li><li><b>7820 → 3035 MiB</b> VRAM</li><li><b>4,2 MB</b> Uygulama boyutu</li></ul>
+          
+          <p class="duo-tech">Tauri v2, Rust, React 19, TypeScript, Python, diffusers, Ren'Py</p>
+          
+        </aside>
+      </div></div>
+    <footer class="page-foot" aria-hidden="true"><span class="page-run"><span translate="no">YAZITAŞ</span> · Sayı 3 · Yazılım</span><span class="page-no">8</span></footer>
+  </section>
+  <section class="page page--solo sec--code page--right" id="heren-agent" data-page="9" role="group" aria-roledescription="sayfa" aria-label="Heren Agent, 9 / 14">
+    <div class="page-inner">
+      <p class="solo-kicker">Ev sunucusu asistanı · Eylül 2026</p>
+      <h2 class="rv-title" id="heren-agent-h" translate="no" lang="en">Heren Agent</h2>
+      <p class="rv-deck">Telefondan sesle ya da dokunarak ev sunucusunu ve bağlı makineleri yöneten bir panel. Konuşma tanıma ve seslendirme tamamen yerelde çalışıyor.</p>
+      <figure class="rv-frame solo-frame"><img src="/assets/img/heren-agent.webp" width="960" height="748" alt="Heren Agent ana ekranı" loading="lazy" decoding="async"></figure>
+      <div class="solo-cols">
+        <div class="rv-body rv-body--nocap"><p><b class="runin">Heren, Hermes Agent'ın üzerine</b> kurulu: Hermes beyin, Heren yüzü ve elleri.</p><p>Her makinede küçük bir Go ajanı var. Ajanlar mesajlarını ed25519 ile imzalıyor ve tekrar oynatma saldırılarına karşı tek kullanımlık değer (nonce) kullanıyor.</p><p>Komutlar risk seviyesine ayrılıyor: düşük riskliler hemen çalışıyor, yüksek riskliler arayüzde onay bekliyor, kritik olanlar varsayılan olarak kapalı.</p></div>
+        <aside class="solo-side" aria-label="Künye: Heren Agent">
+          <ul class="duo-stats" aria-label="Rakamlarla"><li><b>ed25519</b> İmza</li><li><b>yerel STT + TTS</b> Ses</li></ul>
+          
+          <p class="duo-tech">Python, FastAPI, Go, TypeScript, faster-whisper, Piper TTS</p>
+          
+          <p class="rv-links"><a class="btn btn--solid" href="https://github.com/SalihYzts/heren-agent" target="_blank" rel="noopener">Kaynak kod<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(yeni sekmede açılır)</span></a></p>
+        </aside>
+      </div></div>
+    <footer class="page-foot" aria-hidden="true"><span class="page-run"><span translate="no">YAZITAŞ</span> · Sayı 3 · Yazılım</span><span class="page-no">9</span></footer>
+  </section>
+  <section class="page page--solo sec--code page--left" id="parsel" data-page="10" role="group" aria-roledescription="sayfa" aria-label="Parsel, 10 / 14">
+    <div class="page-inner">
+      <p class="solo-kicker">Staj projesi, Stoneograph · Ağustos 2026</p>
+      <h2 class="rv-title" id="parsel-h" translate="no" lang="tr">Parsel</h2>
+      <p class="rv-deck">Tapu doğrulamalı arsa pazaryeri ve canlı açık artırma platformu.</p>
+      <figure class="rv-frame solo-frame"><div class="rv-art"><svg class="art" viewBox="0 0 320 200" role="img" aria-label="Izgara üzerinde bir arsa parseli ve geri sayım çizimi">
+      <g stroke="currentColor" stroke-width="1" opacity=".35">
+        <path d="M20 10v180"/><path d="M55 10v180"/><path d="M90 10v180"/><path d="M125 10v180"/><path d="M160 10v180"/><path d="M195 10v180"/><path d="M230 10v180"/><path d="M265 10v180"/><path d="M300 10v180"/>
+        <path d="M10 20h300"/><path d="M10 52h300"/><path d="M10 84h300"/><path d="M10 116h300"/><path d="M10 148h300"/><path d="M10 180h300"/>
+      </g>
+      <path d="M58 52l96-18 64 40-20 82-112 10z" fill="none" stroke="currentColor" stroke-width="3"/>
+      <g fill="currentColor"><path d="M55 49h6v6h-6zM151 31h6v6h-6zM215 71h6v6h-6zM195 153h6v6h-6zM83 163h6v6h-6z"/></g>
+      <path d="M110 96l12 12 22-24" fill="none" stroke="currentColor" stroke-width="4"/>
+      <g fill="none" stroke="currentColor" stroke-width="2"><path d="M238 120h66v34h-66z"/></g>
+      <text x="248" y="143" fill="currentColor" font-family="IBM Plex Mono, monospace" font-size="15">00:10</text>
+    </svg></div></figure>
+      <div class="solo-cols">
+        <div class="rv-body rv-body--nocap"><p><b class="runin">Parselleri TKGM üzerinden sorgulayan</b> “Tapu Doğrulanmış” rozeti, eğime göre düzeltilmiş alan ve yükseklik analizi.</p><p>Son saniye teklifinde süreyi uzatan anti-sniping, yarış koşullarına karşı güvenli teklif işleme ve WebSocket ile canlı akış.</p><p>3D harita üzerinde seslendirmeli, altyazılı sanal drone videosu üreten bir hat (Playwright, ffmpeg).</p></div>
+        <aside class="solo-side" aria-label="Künye: Parsel">
+          <ul class="duo-stats" aria-label="Rakamlarla"><li><b>~10 bin satır</b> Backend kodu</li><li><b>103</b> Test</li></ul>
+          <p class="solo-team">Stoneograph, staj</p>
+          <p class="duo-tech">Python, FastAPI, SQLAlchemy, WebSocket, Shapely, pyproj, JavaScript</p>
+          
+        </aside>
+      </div></div>
+    <footer class="page-foot" aria-hidden="true"><span class="page-run"><span translate="no">YAZITAŞ</span> · Sayı 3 · Yazılım</span><span class="page-no">10</span></footer>
+  </section>
+  <section class="page page--notes sec--code page--right" id="parsel-dosya" data-page="11" role="group" aria-roledescription="sayfa" aria-label="Parsel: Staj dosyası, 11 / 14">
+    <div class="page-inner">
+      <p class="notes-kicker" translate="no" lang="tr">Parsel</p>
+      <h2 class="feature-title">Staj dosyası</h2>
+      <p class="feature-deck">Stoneograph, Ağustos 2026: emlak sektörü için tapu doğrulamalı bir pazaryeri.</p>
+      
+      <dl class="notes-nums"><div><dt>satır backend kodu</dt><dd>~10 bin</dd></div><div><dt>test</dt><dd>103</dd></div><div><dt>arayüz</dt><dd>TR/EN</dd></div></dl>
+      <ol class="notes-list notes-list--notes">
+        <li><h3 class="notes-h">Tapu doğrulama</h3><p>Parselleri TKGM üzerinden sorgulayan “Tapu Doğrulanmış” rozetini kurdum. Shapely ve pyproj ile eğime göre düzeltilmiş alan ve yükseklik analizi ekledim, KML/KMZ desteği verdim.</p></li>
+        <li><h3 class="notes-h">Canlı açık artırma</h3><p>Son saniye teklifinde süreyi uzatan anti-sniping, yarış koşullarına karşı güvenli teklif işleme ve WebSocket ile anlık akış.</p></li>
+        <li><h3 class="notes-h">Sanal drone videosu</h3><p>Fotogerçekçi 3D harita üzerinde Playwright ve ffmpeg ile seslendirmeli, altyazılı tanıtım videosu üreten bir hat kurdum.</p></li>
+        <li><h3 class="notes-h">Yalnızca verilen bilgiyle</h3><p>Claude API ile ilan metinlerini yalnızca verilen bilgilere dayanarak yazdırdım.</p></li>
+        <li><h3 class="notes-h">Giriş ve arama</h3><p>JWT ve Google OAuth ile giriş, haritada çokgen çizerek arama ve TR/EN arayüz. Danışmanım için sunucu barındırma maliyetlerini karşılaştıran bir rapor da hazırladım.</p></li>
+      </ol>
+      <blockquote class="pull"><p>Gerçek bir sektör problemi üzerinde çalışmak ve bir backend'i testleriyle birlikte büyütmek bana çok şey kattı.</p><cite>Salih Yazıtaş</cite></blockquote></div>
+    <footer class="page-foot" aria-hidden="true"><span class="page-run"><span translate="no">YAZITAŞ</span> · Sayı 3 · Yazılım</span><span class="page-no">11</span></footer>
+  </section>
+  <section class="page page--duo sec--code page--left" id="kafe-finans-ve-truva-arabirimi" data-page="12" role="group" aria-roledescription="sayfa" aria-label="Kafe Finans, Truva–Akınsoft arabirimi, 12 / 14">
+    <div class="page-inner">
+      <article class="duo" id="kafe-finans" aria-labelledby="kafe-finans-h">
+        <div class="rv-frame duo-frame"><img src="/assets/img/kafe-finans.webp" width="960" height="600" alt="Kafe Finans istatistik ekranı, demo verisiyle" loading="lazy" decoding="async"></div>
+        <div class="duo-text">
+          <h3 class="rv-title" id="kafe-finans-h" translate="no" lang="en">Kafe Finans</h3>
+          <p class="duo-meta">Petra Cafe işi, masaüstü uygulaması, 2026</p>
+          <p class="rv-deck">Kafe için gelir-gider ve ciro uygulaması. Elle girilen ciroyu POS'un gün sonu rakamlarıyla gün gün karşılaştırıyor, banka ekstresinden POS yatışlarını ve komisyonu okuyor.</p>
+          <div class="rv-body rv-body--nocap"><p><b class="runin">Kasadaki bilgisayarda çalışıyor; telefondan</b> VPN ve PIN ile bağlanılıyor.</p><p>Görseldeki bütün adlar ve tutarlar uydurma demo verisi.</p></div>
+          <ul class="duo-stats" aria-label="Rakamlarla"><li><b>240</b> Test</li></ul>
+          <p class="duo-tech">Electron, React, TypeScript, SQLite, Vitest</p>
+          
+        </div>
+      </article>
+      <article class="duo" id="truva-arabirimi" aria-labelledby="truva-arabirimi-h">
+        <div class="rv-frame duo-frame"><div class="rv-art"><svg class="art" viewBox="0 0 320 200" role="img" aria-label="QR menüden kasaya giden sipariş akışı çizimi">
+      <g fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M18 60h56v56H18zM90 76h36M118 70l8 6-8 6M140 52h64v80h-64zM218 76h36M246 70l8 6-8 6M262 56h44v44h-44zM270 100v16h28v-16"/>
+        <path d="M150 66h44M150 80h44M150 94h30"/>
+        <path d="M172 132v28M150 160h44M18 160h56"/>
+      </g>
+      <g fill="currentColor"><path d="M26 68h12v12H26zM54 68h12v12H54zM26 96h12v12H26zM44 86h6v6h-6zM56 96h4v4h-4zM62 104h4v4h-4z"/><path d="M276 66h16v4h-16zM276 76h10v4h-10z"/></g>
+      <text x="140" y="176" fill="currentColor" font-family="IBM Plex Mono, monospace" font-size="11">go · windows</text>
+      <text x="18" y="176" fill="currentColor" font-family="IBM Plex Mono, monospace" font-size="11">QR</text>
+      <text x="258" y="132" fill="currentColor" font-family="IBM Plex Mono, monospace" font-size="11">POS</text>
+    </svg></div></div>
+        <div class="duo-text">
+          <h3 class="rv-title rv-title--long" id="truva-arabirimi-h" translate="no" lang="tr">Truva–Akınsoft arabirimi</h3>
+          <p class="duo-meta">Petra Cafe işi, Truva Teknoloji ile ortak, 2026</p>
+          <p class="rv-deck">Truva'nın QR menüsünden ve garson uygulamasından gelen sipariş, iptal ve masa taşıma işlerini kasadaki Akınsoft Wolvox Restoran'a birkaç saniyede işleyen servis.</p>
+          <div class="rv-body rv-body--nocap"><p><b class="runin">Aynı siparişin iki kez</b> yazılmasını engelleyen iş kaydı; mutfak ve bar fişleri otomatik basılıyor.</p><p>Kasa ya da internet kesildikten sonra kendiliğinden toparlanıyor; dışarıya yalnızca HTTPS ile bağlanıyor.</p></div>
+          <ul class="duo-stats" aria-label="Rakamlarla"><li><b>~3.600 satır</b> Go kodu</li><li><b>tek Windows servisi</b> Çalışma biçimi</li></ul>
+          <p class="duo-tech">Go, Windows Service, HTTPS, Akınsoft Wolvox</p>
+          
+        </div>
+      </article></div>
+    <footer class="page-foot" aria-hidden="true"><span class="page-run"><span translate="no">YAZITAŞ</span> · Sayı 3 · Yazılım</span><span class="page-no">12</span></footer>
+  </section>
+  <section class="page page--briefs sec--code page--right" id="yazilim-kisa" data-page="13" role="group" aria-roledescription="sayfa" aria-label="Kısa kısa: araçlar ve siteler, 13 / 14">
+    <div class="page-inner">
+      <h2 class="briefs-title">Kısa kısa: araçlar ve siteler</h2>
+      <ul class="brief-list brief-list--six">
+        <li class="brief" id="oyun-vitrini">
+          <div class="brief-frame"><img src="/assets/img/oyun-vitrini.webp" width="960" height="748" alt="Oyun Vitrini ana sayfası" loading="lazy" decoding="async"></div>
+          <div class="brief-text">
+            <h3 class="brief-title" translate="no" lang="en">Oyun Vitrini</h3>
+            
+            <p class="brief-meta">Oyun Tasarımı Kulübü sitesi, 2026</p>
+            <p class="brief-pitch">Kulübün 21 oyununu tanıtan site: üye hesapları, etkinlik ve puan tablosu, yönetim paneli ve iki ekranlı stant modu.</p>
+            
+          </div>
+        </li>
+        <li class="brief" id="gorevler">
+          <div class="brief-frame"><img src="/assets/img/gorevler.webp" width="960" height="600" alt="Görevler'in Bugün ekranı, demo verisiyle" loading="lazy" decoding="async"></div>
+          <div class="brief-text">
+            <h3 class="brief-title" translate="no" lang="tr">Görevler</h3>
+            
+            <p class="brief-meta">Kişisel üretkenlik uygulaması, 2026</p>
+            <p class="brief-pitch">Görev, proje ve zaman yönetimi: otomatik planlama, odak takibi, alışkanlıklar ve Google Takvim entegrasyonu.</p>
+            
+          </div>
+        </li>
+        <li class="brief" id="volpen-site">
+          <div class="brief-frame"><img src="/assets/img/volpen.webp" width="960" height="748" alt="Volpen sitesinin ana sayfası" loading="lazy" decoding="async"></div>
+          <div class="brief-text">
+            <h3 class="brief-title" translate="no" lang="en">Volpen</h3>
+            
+            <p class="brief-meta">Ekibin tanıtım sitesi, 2026</p>
+            <p class="brief-pitch">Çerçeve kullanmadan yazılmış site: PWA, TR/EN, WCAG AA kontrast ve JSON-LD ile SEO.</p>
+            <p class="brief-links"><a href="https://salihyzts.github.io/VolpenWeb/" target="_blank" rel="noopener">Siteyi aç<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(yeni sekmede açılır)</span></a></p>
+          </div>
+        </li>
+        <li class="brief" id="gdd-creator">
+          <div class="brief-frame"><img src="/assets/img/gdd-creator.webp" width="960" height="600" alt="GDD Creator'da Kralın Sözü dokümanı" loading="lazy" decoding="async"></div>
+          <div class="brief-text">
+            <h3 class="brief-title" translate="no" lang="en">GDD Creator</h3>
+            
+            <p class="brief-meta">Oyun tasarım aracı, 2026</p>
+            <p class="brief-pitch">Oyunun türüne göre soru soran ve oyun tasarım dokümanını 7 biçimde dışa aktaran araç.</p>
+            <p class="brief-links"><a href="https://github.com/SalihYzts/gdd-creator" target="_blank" rel="noopener">Kaynak kod<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(yeni sekmede açılır)</span></a></p>
+          </div>
+        </li>
+        <li class="brief" id="turkos">
+          <div class="brief-frame"><img src="/assets/img/turkos.webp" width="960" height="600" alt="TurkOS açılış görselleri" loading="lazy" decoding="async"></div>
+          <div class="brief-text">
+            <h3 class="brief-title brief-title--keep" translate="no" lang="en">TurkOS</h3>
+            
+            <p class="brief-meta">Açık kaynak tema, 2026</p>
+            <p class="brief-pitch">R36S el konsolları için Türkçe arayüz teması, 711 satırlık çeviri ve Türk bayraklı açılış görselleri.</p>
+            <p class="brief-links"><a href="https://github.com/SalihYzts/TurkOS" target="_blank" rel="noopener">Kaynak kod<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(yeni sekmede açılır)</span></a></p>
+          </div>
+        </li>
+        <li class="brief" id="ytchatinstaller">
+          <div class="brief-frame"><div class="rv-art"><svg class="art" viewBox="0 0 320 200" role="img" aria-label="Sohbet balonlarından bir tabloya aktarım çizimi">
+      <g fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M20 40h100v30H44l-10 10V70H20zM30 96h90v30H54l-10 10v-10H30zM20 150h80v26H20z"/>
+        <path d="M140 108h34M166 100l8 8-8 8"/>
+        <path d="M190 40h112v128H190zM190 64h112M190 88h112M190 112h112M190 136h112M222 40v128"/>
+      </g>
+      <g fill="currentColor"><path d="M30 50h60v4H30zM30 58h40v4H30zM40 106h60v4H40zM30 158h50v4H30zM198 48h16v8h-16zM198 72h16v8h-16zM198 96h16v8h-16zM198 120h16v8h-16zM198 144h16v8h-16zM230 72h50v4h-50zM230 96h40v4h-40zM230 120h56v4h-56zM230 144h30v4h-30z"/></g>
+      <text x="232" y="56" fill="currentColor" font-family="IBM Plex Mono, monospace" font-size="10">.xlsx</text>
+    </svg></div></div>
+          <div class="brief-text">
+            <h3 class="brief-title brief-title--long brief-title--keep" translate="no" lang="en">YtChatInstaller</h3>
+            
+            <p class="brief-meta">Açık kaynak araç, 2026</p>
+            <p class="brief-pitch">YouTube yayınlarının sohbet kaydını indirip zaman damgası, profil fotoğrafı ve kullanıcı adıyla düzenli bir Excel dosyasına aktaran Python aracı.</p>
+            <p class="brief-links"><a href="https://github.com/SalihYzts/YtChAtInsTaLLer" target="_blank" rel="noopener">Kaynak kod<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(yeni sekmede açılır)</span></a></p>
+          </div>
+        </li>
+      </ul></div>
+    <footer class="page-foot" aria-hidden="true"><span class="page-run"><span translate="no">YAZITAŞ</span> · Sayı 3 · Yazılım</span><span class="page-no">13</span></footer>
+  </section>
+  <section class="page page--back back--yazilim page--left" id="arka-kapak" data-page="14" role="group" aria-roledescription="sayfa" aria-label="Arka kapak, 14 / 14">
+    <div class="page-inner">
+      
+      <p class="back-num" aria-hidden="true">3</p>
+      <p class="back-mast" lang="tr" translate="no">YAZITAŞ</p>
+      
+      <h2 class="back-shelf-h">Masadaki diğer sayılar</h2>
+      <ul class="shelf shelf--back">
+        <li><a class="shelf-card shelf--ben" href="/ben/"><span class="shelf-n">Sayı 1</span><span class="shelf-name">Ben</span><span class="shelf-deck">Profil, deneyim, okul ve topluluk, beceriler ve CV.</span></a></li>
+        <li><a class="shelf-card shelf--oyun" href="/oyun/"><span class="shelf-n">Sayı 2</span><span class="shelf-name">Oyun</span><span class="shelf-deck">Kralın Sözü, ekip oyunları, jamler ve kulüp.</span></a></li>
+      </ul>
+      <p class="back-line"><a class="back-desk" href="/" data-desk><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M5 1h1v1h-1zM4 2h2v1h-2zM3 3h3v1h-3zM2 4h10v1h-10zM1 5h11v1h-11zM1 6h11v1h-11zM2 7h10v1h-10zM3 8h3v1h-3zM4 9h2v1h-2zM5 10h1v1h-1z"/></svg><span>Masaya dön</span></a></p>
+      <div class="back-bottom">
+        <p class="back-price">Fiyatı: bir e-posta</p>
+        <div class="barcode barcode--back" aria-hidden="true"><svg class="barcode-bars" viewBox="0 0 111 40" preserveAspectRatio="none" aria-hidden="true"><rect x="0" y="0" width="2" height="40"/><rect x="3" y="0" width="3" height="40"/><rect x="7" y="0" width="1" height="40"/><rect x="9" y="0" width="3" height="40"/><rect x="14" y="0" width="2" height="40"/><rect x="17" y="0" width="3" height="40"/><rect x="21" y="0" width="2" height="40"/><rect x="24" y="0" width="2" height="40"/><rect x="27" y="0" width="1" height="40"/><rect x="29" y="0" width="2" height="40"/><rect x="32" y="0" width="1" height="40"/><rect x="34" y="0" width="2" height="40"/><rect x="37" y="0" width="2" height="40"/><rect x="40" y="0" width="2" height="40"/><rect x="43" y="0" width="1" height="40"/><rect x="45" y="0" width="2" height="40"/><rect x="48" y="0" width="1" height="40"/><rect x="50" y="0" width="1" height="40"/><rect x="52" y="0" width="1" height="40"/><rect x="54" y="0" width="1" height="40"/><rect x="56" y="0" width="1" height="40"/><rect x="58" y="0" width="3" height="40"/><rect x="62" y="0" width="3" height="40"/><rect x="66" y="0" width="2" height="40"/><rect x="69" y="0" width="3" height="40"/><rect x="73" y="0" width="3" height="40"/><rect x="77" y="0" width="2" height="40"/><rect x="80" y="0" width="3" height="40"/><rect x="84" y="0" width="1" height="40"/><rect x="86" y="0" width="1" height="40"/><rect x="88" y="0" width="3" height="40"/><rect x="92" y="0" width="1" height="40"/><rect x="94" y="0" width="2" height="40"/><rect x="97" y="0" width="2" height="40"/><rect x="100" y="0" width="2" height="40"/><rect x="103" y="0" width="2" height="40"/><rect x="106" y="0" width="2" height="40"/><rect x="109" y="0" width="1" height="40"/></svg><span>Sayı 3 · Kasım 2026</span></div>
+      </div></div>
+  </section>
+</div></main>
+
+<div class="toast" role="status" aria-live="polite" hidden></div>
+<template id="icon-star"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M5 0h2v1h-2zM5 1h2v1h-2zM4 2h4v1h-4zM4 3h4v1h-4zM0 4h12v1h-12zM1 5h10v1h-10zM2 6h8v1h-8zM3 7h6v1h-6zM3 8h6v1h-6zM2 9h3v1h-3zM7 9h3v1h-3zM2 10h2v1h-2zM8 10h2v1h-2zM1 11h2v1h-2zM9 11h2v1h-2z"/></svg></template>
+<script id="i18n" type="application/json">{"secretName":"Hile kodu","secretHow":"↑ ↑ ↓ ↓ ← → ← → B A tuşlarına bastın","toastSecret":"Gizli rozet açıldı: Hile kodu","page":"Sayfa","of":"/"}</script>
+<script src="/assets/js/site.js" defer></script>
+</body>
+</html>

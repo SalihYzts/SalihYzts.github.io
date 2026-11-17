@@ -72,7 +72,7 @@ function safeFile(base, urlPath) {
 
 // Önizlemede yalnızca yayımlanan çıktı sunulur: data, src, admin ve .git kapalı
 const PUBLIC_FILES = ["", "index.html", "404.html", "sitemap.xml", "robots.txt"];
-const PUBLIC_DIRS = ["en/", "assets/", "cv/"];
+const PUBLIC_DIRS = ["en/", "ben/", "oyun/", "yazilim/", "assets/", "cv/"];
 function isPublic(urlPath) {
   const rel = urlPath.replace(/^\/+/, "");
   return PUBLIC_FILES.includes(rel) || PUBLIC_DIRS.some((d) => rel === d.slice(0, -1) || rel.startsWith(d));
@@ -219,7 +219,7 @@ async function api(req, res, url) {
     const message = String(body.message || "").trim();
     if (!message) return send(res, 400, { error: "Commit mesajı boş olamaz" });
     // Yalnızca panelin değiştirdiği dosyalar
-    const add = await run("git", ["add", "--", "data/projects.json", "assets/img", "index.html", "en/index.html", "404.html", "sitemap.xml"]);
+    const add = await run("git", ["add", "--", "data/projects.json", "assets/img", "index.html", "en/index.html", "ben/index.html", "oyun/index.html", "yazilim/index.html", "en/about/index.html", "en/games/index.html", "en/software/index.html", "404.html", "sitemap.xml"]);
     if (!add.ok) return send(res, 500, { error: add.out });
     const commit = await run("git", ["commit", "-m", message]);
     return send(res, commit.ok ? 200 : 400, { ok: commit.ok, out: commit.out });

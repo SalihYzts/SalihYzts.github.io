@@ -374,7 +374,7 @@
     seal.querySelector(".seal-how").textContent = i18n.secretHow || "";
     var star = document.getElementById("icon-star"), disc = seal.querySelector(".seal-disc");
     if (star && disc) disc.replaceChildren(star.content.cloneNode(true));
-    if (announce) { notify(i18n.toastSecret); go(pageFor("rozetler")); }
+    if (announce) { notify(i18n.toastSecret); if (pageFor("rozetler")) go(pageFor("rozetler")); }
   }
   if (read("secret") === "1") unlock(false);
   document.addEventListener("keydown", function (e) {
@@ -383,9 +383,18 @@
     if (pos === code.length) { pos = 0; if (read("secret") !== "1") { store("secret", "1"); unlock(true); } }
   });
 
+  // ---------- Masaya dönüş ----------
+  // Masa, hangi sayıdan dönüldüğünü bilirse o dergiden geri çekilerek açılır
+  document.querySelectorAll("[data-desk]").forEach(function (a) {
+    a.addEventListener("click", function () { try { sessionStorage.setItem("desk-from", root.dataset.issue || ""); } catch (e) {} });
+  });
+  // Masadan gelindiyse kapak zaten masadaki dergiyle aynı yerde: logo animasyonu tekrar oynamasın
+  var fromDesk = false;
+  try { var ref = new URL(document.referrer); fromDesk = ref.origin === location.origin && /^\/(en\/)?$/.test(ref.pathname); } catch (e) {}
+
   // ---------- Başlat ----------
   current = pageFor(location.hash.slice(1)) || 1;
   layout();
-  if (current === 1) pages[0].classList.add("is-fresh");
+  if (current === 1 && !fromDesk) pages[0].classList.add("is-fresh");
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { fitAll(); });
 })();

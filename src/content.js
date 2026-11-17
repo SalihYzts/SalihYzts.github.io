@@ -290,4 +290,230 @@ const socials = [
   { name: "Volpen", handle: { tr: "ekip sitesi", en: "studio site" }, href: links.volpen },
 ];
 
-module.exports = { links, ui, meta, coverLines, quests, achievements, skills, languages, socials };
+// ---------- Üç sayı: Ben, Oyun, Yazılım. Masada üçü birden durur (index.html). ----------
+// slug: adres (TR: /ben/, EN: /en/about/). cover: kapağın metni. editor: o sayının editör yazısı.
+const issues = [
+  {
+    key: "ben", n: 1, slug: { tr: "ben", en: "about" },
+    name: { tr: "Ben", en: "About me" },
+    deck: { tr: "Profil, deneyim, okul ve topluluk, beceriler ve CV.", en: "Profile, work, school and community, skills and CV." },
+    meta: {
+      title: { tr: "Salih Yazıtaş · Ben: profil, deneyim ve CV", en: "Salih Yazıtaş · About me: profile, work and CV" },
+      description: {
+        tr: "Salih Yazıtaş'ın profili: Petra Cafe'de yazılım ve otomasyon danışmanlığı, Stoneograph stajı, Volpen'in kuruculuğu, ÇOMÜ Oyun Geliştirme ve Programlama, beceriler ve indirilebilir CV.",
+        en: "Salih Yazıtaş's profile: software and automation consulting at Petra Cafe, an internship at Stoneograph, founder of Volpen, game development at ÇOMÜ, skills and a downloadable CV.",
+      },
+    },
+    cover: {
+      kicker: { tr: "Profil, deneyim, CV", en: "Profile, work, CV" },
+      title: { tr: "Ben kimim?", en: "Who am I?" },
+      deck: { tr: "7 yıldır kendi kendine yazılım geliştiren bir oyun programlama öğrencisi. Fikirden yayına ürün çıkarıyor.", en: "A game programming student, self-taught in software for 7 years, taking products from idea to release." },
+      lines: [
+        { big: "3", text: { tr: "iş, staj ve kurucu deneyimi", en: "jobs: consulting, internship, studio" }, href: "#is" },
+        { big: "12", text: { tr: "rozet, biri gizli", en: "badges, one hidden" }, href: "#rozetler" },
+      ],
+      sticker: { top: { tr: "İçinde", en: "Inside" }, main: { tr: "CV indir", en: "Get the CV" }, cv: true },
+    },
+    editor: {
+      title: { tr: "Editörden", en: "From the editor" },
+      letter: {
+        tr: [
+          "Merhaba, ben Salih. Çanakkale Onsekiz Mart Üniversitesi'nde oyun geliştirme okuyorum ve 7 yıldır kendi kendime kod yazıyorum.",
+          "Bu sayı beni anlatıyor: bir kafe için yaptığım işler, stajım, kurduğum ekip Volpen, okul ve kulüp. Oyunlarım ve yazılımlarım masadaki diğer iki sayıda. CV'yi buradan indirebilirsin.",
+        ],
+        en: [
+          "Hi, I'm Salih. I study game development at Çanakkale Onsekiz Mart University and have been teaching myself to code for 7 years.",
+          "This issue is about me: my work for a cafe, my internship, the studio I founded, school and the club. My games and software are in the other two issues on the desk. You can grab the CV right here.",
+        ],
+      },
+    },
+  },
+  {
+    key: "oyun", n: 2, slug: { tr: "oyun", en: "games" },
+    name: { tr: "Oyun", en: "Games" },
+    deck: { tr: "Kralın Sözü, ekip oyunları, jamler ve kulüp.", en: "Kralın Sözü, team games, jams and the club." },
+    meta: {
+      title: { tr: "Salih Yazıtaş · Oyun: Kralın Sözü ve diğer oyunlar", en: "Salih Yazıtaş · Games: Kralın Sözü and more" },
+      description: {
+        tr: "Salih Yazıtaş'ın oyunları: arayüzsüz nöbet oyunu Kralın Sözü, baş programcısı olduğu Under the Counter, LAST DAWN, Pati Rotası, jam oyunları ve Volpen'in oyunları.",
+        en: "Games by Salih Yazıtaş: the HUD-less guard game Kralın Sözü, Under the Counter (lead programmer), LAST DAWN, Pati Rotası, jam games and Volpen's games.",
+      },
+    },
+    cover: {
+      kicker: { tr: "Kapak konusu", en: "Cover story" },
+      title: ui.coverTitle,
+      deck: ui.coverDeck,
+      lines: [
+        { big: "2000", text: { tr: "gecelik denge simülasyonu", en: "nights of balance simulation" }, href: "#kralin-sozu-yapim" },
+        { big: "10", text: { tr: "son, 3 gece, 17 ziyaretçi", en: "endings, 3 nights, 17 visitors" }, href: "#kralin-sozu-oyun" },
+        { big: { tr: "1,6 ms", en: "1.6 ms" }, text: { tr: "kare süresi, RTX 4060'ta", en: "per frame on an RTX 4060" }, href: "#kralin-sozu-yapim" },
+      ],
+      sticker: { top: { tr: "Ücretsiz", en: "Free" }, main: { tr: "itch.io'da oyna", en: "Play on itch.io" }, href: links.kralinItch },
+    },
+    editor: {
+      title: { tr: "Oyun masasından", en: "From the game desk" },
+      letter: {
+        tr: [
+          "Bu sayı oyunlara ayrıldı. Kapakta tek başıma yaptığım Kralın Sözü var: ekranında tek bir gösterge olmayan, bir halk hikâyesinden uyarlanmış bir nöbet oyunu.",
+          "Ardından ekip oyunları geliyor: baş programcısı olduğum Under the Counter, Volpen'de yazılım ve pazarlamasını yürüttüğüm LAST DAWN ve jamlerde yaptığımız oyunlar. Hepsi Unity ve C# ile.",
+        ],
+        en: [
+          "This issue is about games. On the cover is Kralın Sözü, which I made on my own: a guard game based on a folk tale, with not a single gauge on screen.",
+          "Then come the team games: Under the Counter, where I'm lead programmer, LAST DAWN, where I run software and marketing at Volpen, and the games we made at jams. All in Unity and C#.",
+        ],
+      },
+      numbers: [
+        { v: "10", k: { tr: "oyun projesi", en: "game projects" } },
+        { v: "3", k: { tr: "jam: GGJ, Yıldız, Troia", en: "jams: GGJ, Yıldız, Troia" } },
+        { v: "88", k: { tr: "script, Under the Counter", en: "scripts, Under the Counter" } },
+        { v: "21", k: { tr: "kulüp oyunu, Oyun Vitrini", en: "club games, Oyun Vitrini" } },
+      ],
+    },
+    back: { image: "last-dawn.webp", next: ui.next },
+  },
+  {
+    key: "yazilim", n: 3, slug: { tr: "yazilim", en: "software" },
+    name: { tr: "Yazılım", en: "Software" },
+    deck: { tr: "MyEverythingList, staj projesi Parsel, açık kaynak araçlar ve kafe işleri.", en: "MyEverythingList, the Parsel internship, open-source tools and cafe work." },
+    meta: {
+      title: { tr: "Salih Yazıtaş · Yazılım: MyEverythingList ve diğer projeler", en: "Salih Yazıtaş · Software: MyEverythingList and more" },
+      description: {
+        tr: "Salih Yazıtaş'ın yazılımları: 19 dilde yayındaki MyEverythingList, açık kaynak NeRoBoT, RaiPy, Heren Agent, Stoneograph stajında yazdığı Parsel ve Petra Cafe için yaptığı işler.",
+        en: "Software by Salih Yazıtaş: MyEverythingList live in 19 languages, open-source NeRoBoT, RaiPy, Heren Agent, Parsel from a Stoneograph internship and work for Petra Cafe.",
+      },
+    },
+    cover: {
+      kicker: { tr: "Kapak konusu", en: "Cover story" },
+      title: { tr: "MyEverythingList", en: "MyEverythingList" },
+      deck: { tr: "Tek başına geliştirilip 19 dilde yayına alınan, reklamsız bir medya takip platformu.", en: "An ad-free media tracker, built by one person and live in 19 languages." },
+      lines: [
+        { big: { tr: "58 bin", en: "58k" }, text: { tr: "satır TypeScript", en: "lines of TypeScript" }, href: "#myeverythinglist-yapim" },
+        { big: "614", text: { tr: "testli yapay zekâ motoru: RaiPy", en: "tests behind an AI engine: RaiPy" }, href: "#raipy" },
+      ],
+      sticker: { top: { tr: "Açık kaynak", en: "Open source" }, main: { tr: "NeRoBoT içeride", en: "NeRoBoT inside" }, href: "#nerobot" },
+    },
+    editor: {
+      title: { tr: "Yazılım masasından", en: "From the software desk" },
+      letter: {
+        tr: [
+          "Bu sayı yazılımlara ayrıldı. Kapakta Ağustos'tan Ekim'e tek başıma geliştirip 19 dilde yayına aldığım MyEverythingList var.",
+          "Ardından açık kaynak masaüstü uygulamaları, Stoneograph stajında yazdığım açık artırma platformu Parsel ve bir kafenin kasasıyla konuşan servisler geliyor. React, Python, Go ve Rust ile.",
+        ],
+        en: [
+          "This issue is about software. On the cover is MyEverythingList, which I built on my own from August to October and shipped in 19 languages.",
+          "Then come open-source desktop apps, Parsel, the auction platform I built during my internship at Stoneograph, and services that talk to a cafe's register. In React, Python, Go and Rust.",
+        ],
+      },
+      numbers: [
+        { v: "13", k: { tr: "yazılım projesi", en: "software projects" } },
+        { v: "19", k: { tr: "dilde yayında", en: "languages live" } },
+        { v: "103", k: { tr: "test, Parsel backend", en: "tests, Parsel backend" } },
+        { v: "7", k: { tr: "GitHub yıldızı, NeRoBoT", en: "GitHub stars, NeRoBoT" } },
+      ],
+    },
+  },
+];
+
+// Ben sayısı: iş deneyimi (CV'deki maddeler). link: başka sayıdaki ilgili sayfa
+const work = [
+  {
+    title: { tr: "Yazılım ve otomasyon danışmanı", en: "Software & automation consultant" }, org: { tr: "Petra Cafe, Çanakkale · serbest", en: "Petra Cafe, Çanakkale · freelance" }, date: "2026",
+    meta: { tr: "Go, Windows servisleri, Akınsoft Wolvox Restoran, Electron, React, SQLite", en: "Go, Windows services, Akınsoft Wolvox Restaurant, Electron, React, SQLite" },
+    bullets: {
+      tr: [
+        "Truva Teknoloji ile ortak bir arabirim geliştirdim: QR menüden ve garson uygulamasından gelen sipariş, iptal ve masa taşıma işlerini kasadaki Akınsoft Wolvox Restoran'a birkaç saniyede işliyor. Tek bir Windows servisi (Go, yaklaşık 3.600 satır), dışarıya yalnızca HTTPS ile bağlanıyor.",
+        "Aynı siparişin iki kez yazılmasını engelleyen bir iş kaydı kurdum. Mutfak ve bar fişleri otomatik basılıyor, ürün ve masa listeleri her gün eşitleniyor; servis kesintiden sonra kendiliğinden toparlanıyor.",
+        "Kafe için Kafe Finans adlı gelir-gider ve ciro uygulamasını geliştirdim. Menülendin QR menüsünden gelen siparişleri Akınsoft'a aktaran bir köprü de yazdım.",
+      ],
+      en: [
+        "With Truva Teknoloji, I built an integration that writes orders, cancellations and table moves from the QR menu and waiter app into Akınsoft Wolvox Restaurant at the register within seconds. One Windows service (Go, about 3,600 lines) that connects out over HTTPS only.",
+        "I built a job log that stops any order from being written twice. Kitchen and bar tickets print automatically, product and table lists sync daily, and the service recovers by itself after an outage.",
+        "I built Kafe Finans, the cafe's income, expense and revenue app, and a bridge that moves orders from the Menülendin QR menu into Akınsoft.",
+      ],
+    },
+    numbers: [
+      { v: { tr: "~3.600", en: "~3,600" }, k: { tr: "satır Go, tek Windows servisi", en: "lines of Go, one Windows service" } },
+      { v: "2", k: { tr: "QR menü köprüsü: Truva ve Menülendin", en: "QR menu bridges: Truva and Menülendin" } },
+      { v: "240", k: { tr: "test, Kafe Finans", en: "tests, Kafe Finans" } },
+    ],
+    link: { issue: "yazilim", id: "kafe-finans" },
+  },
+  {
+    title: { tr: "Yazılım geliştirme stajyeri", en: "Software development intern" }, org: "Stoneograph", date: { tr: "Ağustos 2026", en: "Aug 2026" },
+    meta: { tr: "Python, FastAPI, SQLAlchemy, WebSocket, Shapely, Playwright", en: "Python, FastAPI, SQLAlchemy, WebSocket, Shapely, Playwright" },
+    bullets: {
+      tr: [
+        "Emlak sektörü için Parsel'i geliştirdim: tapu doğrulamalı bir arsa pazaryeri ve açık artırma platformu. Yaklaşık 10 bin satır backend kodu ve 103 test.",
+        "TKGM üzerinden “Tapu Doğrulanmış” rozeti, eğime göre düzeltilmiş alan analizi, son saniye teklifinde süreyi uzatan canlı açık artırma ve seslendirmeli sanal drone videoları.",
+      ],
+      en: [
+        "I built Parsel for the real-estate sector: a land marketplace and auction platform with title-deed verification. About 10k lines of backend code and 103 tests.",
+        "A “title-verified” badge via TKGM, slope-corrected area analysis, live auctions that extend on last-second bids, and narrated virtual drone videos.",
+      ],
+    },
+    link: { issue: "yazilim", id: "parsel" },
+  },
+  {
+    title: { tr: "Kurucu ve yazılım geliştirici", en: "Founder & software developer" }, org: "Volpen", date: { tr: "2025'ten beri", en: "Since 2025" },
+    meta: { tr: "Velox (PC oyun), Lagopus (yazılım), Zerda (mobil oyun)", en: "Velox (PC games), Lagopus (software), Zerda (mobile games)" },
+    bullets: {
+      tr: [
+        "Oyun, yazılım ve tasarım üreten bağımsız ekibi kurdum, projelerin yazılım tarafını yürütüyorum. Yazılım dalının ana ürünü MyEverythingList'i tek başıma geliştirdim.",
+        "Ekibin oyunlarının kodunu yazdım: ColorLand (1 haftada, ilk 3D projem), ÜçKKeNİci (2 günde) ve Ağaçlaştırılmış Elma (2 ay). LAST DAWN'da yazılım ve pazarlamadan sorumluyum.",
+        "Tanıtım sitesini framework kullanmadan yaptım: PWA, TR/EN, WCAG AA kontrast ve JSON-LD ile SEO.",
+      ],
+      en: [
+        "I founded an independent team making games, software and design, and lead the software side of its projects. I built the software branch's main product, MyEverythingList, on my own.",
+        "I wrote the code for the team's games: ColorLand (in one week, my first 3D project), ÜçKKeNİci (in two days) and Ağaçlaştırılmış Elma (two months). I handle software and marketing for LAST DAWN.",
+        "I built the studio site without a framework: a PWA in TR/EN with WCAG AA contrast and JSON-LD for SEO.",
+      ],
+    },
+    link: { issue: "oyun", id: "last-dawn" },
+  },
+];
+
+// Ben sayısı: okul ve topluluk (en yeni üstte)
+const school = [
+  quests[5], quests[4], quests[3],
+  {
+    status: "done", title: { tr: "Katılımcı", en: "Participant" },
+    org: "Global Game Jam 2026 (İstanbul @BUG) · Yıldız Jam 2026", date: "2026",
+    goals: { tr: ["Let's Cook a Mask ve The Rolling Pizz'i jam süresinde ekiple bitirdik"], en: ["Finished Let's Cook a Mask and The Rolling Pizz with teams within the jams"] },
+  },
+  quests[6], quests[7],
+];
+
+// Oyun sayısı: kulüp ve jamler
+const community = {
+  title: { tr: "Topluluk: kulüp ve jamler", en: "Community: the club and jams" },
+  deck: { tr: "Oyunları tek başına değil, bir topluluğun içinde yapmak.", en: "Making games inside a community, not alone." },
+  entries: [
+    { big: "21", title: { tr: "Oyun Tasarımı Kulübü", en: "Game Design Club" }, role: { tr: "Kurucu yönetici ve sayman, ÇOMÜ", en: "Founding board member & treasurer, ÇOMÜ" },
+      text: { tr: "Kulübü kurdum, bütçesini yönetiyorum. Kulübün sitesi Oyun Vitrini, üyelerin jamlerde ve derslerde yaptığı 21 oyunu tanıtıyor: üye hesapları, puan tablosu, yönetim paneli ve iki ekranlı stant modu var.", en: "I founded the club and manage its budget. Its site, Oyun Vitrini, showcases 21 games members made at jams and in classes, with member accounts, a leaderboard, an admin panel and a two-screen booth mode." },
+      link: { issue: "yazilim", id: "oyun-vitrini" } },
+    { big: { tr: "48 sa", en: "48 h" }, title: { tr: "Troia Game Jam 2026", en: "Troia Game Jam 2026" }, role: { tr: "Görevli ve mentör, Mayıs 2026", en: "Staff & mentor, May 2026" },
+      text: { tr: "ÇOMÜ Yazılım Geliştirme Kulübü ile Oyun Programlama Bölümü'nün düzenlediği 48 saatlik jamde görev aldım ve katılımcılara mentörlük yaptım. Roll-up'ı ve sertifikaları tasarladım.", en: "I worked at the 48-hour jam run by the ÇOMÜ Software Development Club and the Game Programming department, mentored teams, and designed the roll-up banner and certificates." } },
+    { big: "GGJ", title: { tr: "Global Game Jam 2026", en: "Global Game Jam 2026" }, role: { tr: "Katılımcı, İstanbul @BUG", en: "Participant, Istanbul @BUG" },
+      text: { tr: "Let's Cook a Mask'i jam süresinde ekiple bitirdik.", en: "We finished Let's Cook a Mask as a team within the jam." }, link: { issue: "oyun", id: "lets-cook-a-mask" } },
+    { big: "4", title: { tr: "Yıldız Jam 2026", en: "Yıldız Jam 2026" }, role: { tr: "Unity geliştirici, Kozalak Çamları", en: "Unity developer, Kozalak Çamları" },
+      text: { tr: "4 kişilik ekiple The Rolling Pizz'i yaptık; oyunun programlamasını üstlendim.", en: "We made The Rolling Pizz as a team of four; I programmed the game." }, link: { issue: "oyun", id: "the-rolling-pizz" } },
+  ],
+};
+
+// Masa (giriş sayfası)
+const desk = {
+  heading: { tr: "Salih Yazıtaş: masada üç sayı var, birini seç", en: "Salih Yazıtaş: three issues on the desk, pick one" },
+  note: { tr: "Hangisini okumak istersin?", en: "Which one would you like to read?" },
+  noteSmall: { tr: "Bir sayıyı seç", en: "Pick an issue" },
+  hint: { tr: "Bir sayı seç · ← → ile gez, Enter ile aç", en: "Pick an issue · ← → to browse, Enter to open" },
+  hintTouch: { tr: "Okumak istediğin sayıya dokun", en: "Tap the issue you want to read" },
+  cv: { tr: "Özgeçmiş", en: "Résumé" },
+  cvLabel: { tr: "CV'yi indir, Türkçe PDF", en: "Download CV, English PDF" },
+  openWord: { tr: "Aç", en: "Open" },
+  back: { tr: "Masa", en: "Desk" },
+  backLabel: { tr: "Masaya dön: üç sayının durduğu giriş", en: "Back to the desk with all three issues" },
+  shelf: { tr: "Masadaki diğer sayılar", en: "Other issues on the desk" },
+  issueWord: { tr: "Sayı", en: "Issue" },
+};
+
+module.exports = { links, ui, meta, coverLines, quests, achievements, skills, languages, socials, issues, work, school, community, desk };

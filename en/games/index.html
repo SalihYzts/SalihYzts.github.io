@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="en" data-theme="light" data-issue="oyun">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Salih Yazıtaş · Games: Kralın Sözü and more</title>
+<meta name="description" content="Games by Salih Yazıtaş: the HUD-less guard game Kralın Sözü, Under the Counter (lead programmer), LAST DAWN, Pati Rotası, jam games and Volpen's games.">
+<meta name="author" content="Salih Yazıtaş">
+<link rel="canonical" href="https://salihyzts.github.io/en/games/">
+<link rel="alternate" hreflang="tr" href="https://salihyzts.github.io/oyun/">
+<link rel="alternate" hreflang="en" href="https://salihyzts.github.io/en/games/">
+<link rel="alternate" hreflang="x-default" href="https://salihyzts.github.io/oyun/">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#d9d8d2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0e0f11" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="profile">
+<meta property="og:site_name" content="Salih Yazıtaş">
+<meta property="og:title" content="Salih Yazıtaş · Games: Kralın Sözü and more">
+<meta property="og:description" content="Games by Salih Yazıtaş: the HUD-less guard game Kralın Sözü, Under the Counter (lead programmer), LAST DAWN, Pati Rotası, jam games and Volpen's games.">
+<meta property="og:url" content="https://salihyzts.github.io/en/games/">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="tr_TR">
+<meta property="og:image" content="https://salihyzts.github.io/assets/og/og-oyun-en.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="YAZITAŞ magazine, Issue 2: Games">
+<meta property="profile:first_name" content="Salih">
+<meta property="profile:last_name" content="Yazıtaş">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="preload" href="/assets/fonts/archivo-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/fonts.css">
+<link rel="stylesheet" href="/assets/css/site.css">
+<script>
+  // Boyamadan önce temayı ve görünümü uygula (okuyucu ve masa aynı eşiği kullanır)
+  (function () {
+    var d = document.documentElement, t = null;
+    try { t = localStorage.getItem("theme"); } catch (e) {}
+    if (t !== "light" && t !== "dark") t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    d.dataset.theme = t;
+    d.classList.add("reader", innerWidth < 720 || innerHeight < 512 ? "app" : "print");
+  })();
+</script>
+<link rel="preload" href="/assets/img/kralin-sozu-gate_view.webp" as="image" type="image/webp">
+</head>
+<body>
+<a class="skip" href="#icindekiler">Skip to content</a>
+
+<header class="topbar">
+  <a class="desk-link" href="/en/" data-desk aria-label="Back to the desk with all three issues"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M5 1h1v1h-1zM4 2h2v1h-2zM3 3h3v1h-3zM2 4h10v1h-10zM1 5h11v1h-11zM1 6h11v1h-11zM2 7h10v1h-10zM3 8h3v1h-3zM4 9h2v1h-2zM5 10h1v1h-1z"/></svg><span>Desk</span></a>
+  <nav class="topnav issues-nav" aria-label="Issues">
+    <ul><li><a href="/en/about/"><span class="in-n" aria-hidden="true">1</span><span class="in-name">About me</span></a></li><li><a href="/en/games/" aria-current="page"><span class="in-n" aria-hidden="true">2</span><span class="in-name">Games</span></a></li><li><a href="/en/software/"><span class="in-n" aria-hidden="true">3</span><span class="in-name">Software</span></a></li></ul>
+  </nav>
+  <nav class="pager" aria-label="Magazine pages">
+    <button type="button" class="pager-btn" data-prev aria-label="Previous page" aria-keyshortcuts="ArrowLeft"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M5 1h1v1h-1zM4 2h2v1h-2zM3 3h3v1h-3zM2 4h10v1h-10zM1 5h11v1h-11zM1 6h11v1h-11zM2 7h10v1h-10zM3 8h3v1h-3zM4 9h2v1h-2zM5 10h1v1h-1z"/></svg></button>
+    <label class="pager-jump"><span class="sr">Go to page</span>
+      <select data-jump><option value="1">1. Cover</option><option value="2">2. Contents</option><option value="3">3. From the game desk</option><option value="4">4. Kralın Sözü</option><option value="5">5. Kralın Sözü (2)</option><option value="6">6. Kralın Sözü: How it plays</option><option value="7">7. Kralın Sözü: Making of</option><option value="8">8. Under the Counter</option><option value="9">9. LAST DAWN</option><option value="10">10. Pati Rotası</option><option value="11">11. Let's Cook a Mask, The Rolling Pizz</option><option value="12">12. In brief: jam and team games</option><option value="13">13. Community: the club and jams</option><option value="14">14. Back cover</option></select>
+    </label>
+    <button type="button" class="pager-btn" data-next aria-label="Next page" aria-keyshortcuts="ArrowRight"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 1h1v1h-1zM6 2h2v1h-2zM6 3h3v1h-3zM0 4h10v1h-10zM0 5h11v1h-11zM0 6h11v1h-11zM0 7h10v1h-10zM6 8h3v1h-3zM6 9h2v1h-2zM6 10h1v1h-1z"/></svg></button>
+    <p class="sr" aria-live="polite" data-status></p>
+  </nav>
+  <div class="tools">
+    <a class="tool" href="/oyun/" hreflang="tr" lang="tr" aria-label="Türkçe">TR</a>
+    <button type="button" class="tool" data-theme-toggle aria-label="Day or night edition"><svg class="px only-dark" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M5 0h2v1h-2zM1 1h1v1h-1zM5 1h2v1h-2zM10 1h1v1h-1zM2 2h1v1h-1zM9 2h1v1h-1zM4 3h4v1h-4zM3 4h6v1h-6zM0 5h2v1h-2zM3 5h6v1h-6zM10 5h2v1h-2zM0 6h2v1h-2zM3 6h6v1h-6zM10 6h2v1h-2zM3 7h6v1h-6zM4 8h4v1h-4zM2 9h1v1h-1zM9 9h1v1h-1zM1 10h1v1h-1zM5 10h2v1h-2zM10 10h1v1h-1zM5 11h2v1h-2z"/></svg><svg class="px only-light" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M4 0h4v1h-4zM2 1h3v1h-3zM1 2h3v1h-3zM1 3h2v1h-2zM0 4h3v1h-3zM0 5h3v1h-3zM0 6h3v1h-3zM0 7h4v1h-4zM11 7h1v1h-1zM1 8h4v1h-4zM10 8h2v1h-2zM1 9h9v1h-9zM2 10h7v1h-7zM4 11h4v1h-4z"/></svg></button>
+  </div>
+</header>
+
+<main id="main" class="book" aria-label="Magazine pages" data-total="14"><div class="world">
+  <section class="page page--cover cover--oyun page--right" id="kapak" data-page="1" role="group" aria-roledescription="page" aria-label="Cover, 1 / 14">
+    <div class="page-inner">
+      <img class="cover-art" src="/assets/img/kralin-sozu-gate_view.webp" width="1200" height="675" alt="Kralın Sözü: the gate between two watchtowers on a snowy night" fetchpriority="high">
+      <div class="cover-inner">
+        <p class="cover-issue"><span>Issue 2</span><span>November 2026</span><span class="cover-issue-name">Games</span></p>
+        <h1 class="masthead"><span class="masthead-word" lang="tr" translate="no" aria-hidden="true">YAZITAŞ</span><span class="cover-name"><span lang="tr">Salih Yazıtaş</span>, game & software developer<span class="sr"> · Issue 2: Games</span></span></h1>
+        <a class="cover-story" href="#kralin-sozu"><span class="cover-kicker">Cover story</span><span class="cover-title">A night watch with no HUD</span><span class="cover-deck">Kralın Sözü: a first-person guard game with no on-screen interface, balanced with a 2,000-night simulation.</span></a>
+        <ul class="cover-lines">
+          <li><a class="cover-line" href="#kralin-sozu-yapim"><span class="cl-big">2000</span><span class="cl-text">nights of balance simulation</span></a></li>
+          <li><a class="cover-line" href="#kralin-sozu-oyun"><span class="cl-big">10</span><span class="cl-text">endings, 3 nights, 17 visitors</span></a></li>
+          <li><a class="cover-line" href="#kralin-sozu-yapim"><span class="cl-big">1.6 ms</span><span class="cl-text">per frame on an RTX 4060</span></a></li>
+        </ul>
+        <a class="sticker" href="https://salihyzts.itch.io/kralin-sozu" target="_blank" rel="noopener"><span class="sticker-top">Free</span><span class="sticker-main">Play on itch.io</span><svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a>
+        <div class="barcode" aria-hidden="true"><svg class="barcode-bars" viewBox="0 0 109 40" preserveAspectRatio="none" aria-hidden="true"><rect x="0" y="0" width="1" height="40"/><rect x="3" y="0" width="2" height="40"/><rect x="6" y="0" width="1" height="40"/><rect x="8" y="0" width="1" height="40"/><rect x="10" y="0" width="3" height="40"/><rect x="14" y="0" width="3" height="40"/><rect x="18" y="0" width="1" height="40"/><rect x="20" y="0" width="1" height="40"/><rect x="22" y="0" width="1" height="40"/><rect x="24" y="0" width="3" height="40"/><rect x="28" y="0" width="3" height="40"/><rect x="32" y="0" width="2" height="40"/><rect x="35" y="0" width="2" height="40"/><rect x="38" y="0" width="1" height="40"/><rect x="40" y="0" width="3" height="40"/><rect x="44" y="0" width="2" height="40"/><rect x="47" y="0" width="1" height="40"/><rect x="49" y="0" width="2" height="40"/><rect x="52" y="0" width="2" height="40"/><rect x="55" y="0" width="2" height="40"/><rect x="58" y="0" width="2" height="40"/><rect x="61" y="0" width="2" height="40"/><rect x="64" y="0" width="3" height="40"/><rect x="68" y="0" width="1" height="40"/><rect x="70" y="0" width="3" height="40"/><rect x="74" y="0" width="1" height="40"/><rect x="76" y="0" width="2" height="40"/><rect x="79" y="0" width="3" height="40"/><rect x="83" y="0" width="1" height="40"/><rect x="85" y="0" width="1" height="40"/><rect x="87" y="0" width="3" height="40"/><rect x="91" y="0" width="1" height="40"/><rect x="93" y="0" width="2" height="40"/><rect x="96" y="0" width="1" height="40"/><rect x="98" y="0" width="3" height="40"/><rect x="102" y="0" width="1" height="40"/><rect x="104" y="0" width="1" height="40"/><rect x="106" y="0" width="2" height="40"/></svg><span>Issue 2</span></div>
+      </div></div>
+  </section>
+  <section class="page page--contents sec--ink page--left" id="icindekiler" data-page="2" role="group" aria-roledescription="page" aria-label="Contents, 2 / 14">
+    <div class="page-inner">
+      <h2 class="toc-title">Contents</h2>
+      <ol class="toc-rows">
+          <li><a href="#editor"><span class="toc-pg">3</span><span class="toc-t"><span class="toc-name">From the game desk</span></span></a></li>
+          <li class="toc-cover-row"><a href="#kralin-sozu"><span class="toc-pg">4</span><span class="toc-t"><span class="toc-k">Cover story</span><span class="toc-name"><span translate="no" lang="tr">Kralın Sözü</span></span><span class="toc-sub">Solo game</span></span></a></li>
+          <li><a href="#kralin-sozu-oyun"><span class="toc-pg">6</span><span class="toc-t"><span class="toc-name">How it plays</span><span class="toc-sub"><span translate="no">Kralın Sözü</span></span></span></a></li>
+          <li><a href="#kralin-sozu-yapim"><span class="toc-pg">7</span><span class="toc-t"><span class="toc-name">Making of</span><span class="toc-sub"><span translate="no">Kralın Sözü</span></span></span></a></li>
+          <li><a href="#under-the-counter"><span class="toc-pg">8</span><span class="toc-t"><span class="toc-name"><span translate="no" lang="en">Under the Counter</span></span><span class="toc-sub">Team game, lead programmer</span></span></a></li>
+          <li><a href="#last-dawn"><span class="toc-pg">9</span><span class="toc-t"><span class="toc-name"><span translate="no" lang="en">LAST DAWN</span></span><span class="toc-sub">Volpen team game, software &amp; marketing</span></span></a></li>
+          <li><a href="#pati-rotasi"><span class="toc-pg">10</span><span class="toc-t"><span class="toc-name"><span translate="no" lang="tr">Pati Rotası</span></span><span class="toc-sub">Mobile game</span></span></a></li>
+          <li><a href="#lets-cook-a-mask-ve-the-rolling-pizz"><span class="toc-pg">11</span><span class="toc-t"><span class="toc-name"><span translate="no">Let's Cook a Mask</span> and <span translate="no">The Rolling Pizz</span></span><span class="toc-sub">Global Game Jam 2026, team game</span></span></a></li>
+          <li><a href="#oyun-kisa"><span class="toc-pg">12</span><span class="toc-t"><span class="toc-name">In brief: jam and team games</span><span class="toc-sub" translate="no">ColorLand, ÜçKKeNİci, Ağaçlaştırılmış Elma, EcoBuddy</span></span></a></li>
+          <li><a href="#topluluk"><span class="toc-pg">13</span><span class="toc-t"><span class="toc-name">Community: the club and jams</span><span class="toc-sub">The Game Design Club and jams</span></span></a></li>
+      </ol>
+      <section class="toc-shelf" aria-labelledby="toc-shelf-h">
+        <h3 class="toc-shelf-h" id="toc-shelf-h">Other issues on the desk</h3>
+        <ul class="shelf">
+        <li><a class="shelf-card shelf--ben" href="/en/about/"><span class="shelf-n">Issue 1</span><span class="shelf-name">About me</span><span class="shelf-deck">Profile, work, school and community, skills and CV.</span></a></li>
+        <li><a class="shelf-card shelf--yazilim" href="/en/software/"><span class="shelf-n">Issue 3</span><span class="shelf-name">Software</span><span class="shelf-deck">MyEverythingList, the Parsel internship, open-source tools and cafe work.</span></a></li>
+      </ul>
+      </section></div>
+    <footer class="page-foot" aria-hidden="true"><span class="page-run"><span translate="no">YAZITAŞ</span> · Issue 2 · Games</span><span class="page-no">2</span></footer>
+  </section>
+  <section class="page page--editor sec--game page--right" id="editor" data-page="3" role="group" aria-roledescription="page" aria-label="From the game desk, 3 / 14">
+    <div class="page-inner">
+      <img class="editor-photo" src="/assets/img/salih.webp" width="480" height="480" alt="Photo of Salih Yazıtaş" loading="lazy" decoding="async">
+      <h2 class="editor-title">From the game desk</h2>
+      <div class="editor-text"><p>This issue is about games. On the cover is Kralın Sözü, which I made on my own: a guard game based on a folk tale, with not a single gauge on screen.</p><p>Then come the team games: Under the Counter, where I'm lead programmer, LAST DAWN, where I run software and marketing at Volpen, and the games we made at jams. All in Unity and C#.</p></div>
+      <p class="editor-sign">Salih Yazıtaş, editor-in-chief</p>
+      
+      <dl class="editor-nums"><div><dt>game projects</dt><dd>10</dd></div><div><dt>jams: GGJ, Yıldız, Troia</dt><dd>3</dd></div><div><dt>scripts, Under the Counter</dt><dd>88</dd></div><div><dt>club games, Oyun Vitrini</dt><dd>21</dd></div></dl></div>
+    <footer class="page-foot" aria-hidden="true"><span class="page-run"><span translate="no">YAZITAŞ</span> · Issue 2 · Games</span><span class="page-no">3</span></footer>
+  </section>
+  <section class="page page--feature-a sec--game page--left" id="kralin-sozu" data-page="4" role="group" aria-roledescription="page" aria-label="Kralın Sözü, 4 / 14">
+    <div class="page-inner">
+      <header class="sec-band" id="oyun"><p class="sec-band-title">Games</p><p class="sec-band-deck">Games I made in Unity and C#: solo, with a team and at jams.</p></header>
+      <figure class="fa-art"><img src="/assets/img/kralin-sozu-gate_view.webp" width="1200" height="675" alt="Kralın Sözü: the gate between two watchtowers on a snowy night" loading="lazy" decoding="async"></figure>
+      <p class="fig">Fig. 1. Kralın Sözü: the gate between two watchtowers on a snowy night</p>
+      <div class="fa-head"><h2 class="rv-title" translate="no" lang="tr">Kralın Sözü<span class="rv-sub" lang="en">The King's Promise</span></h2><p class="rv-deck">A first-person guard game based on a folk tale, with no on-screen interface. You're the sentry the king forgot, holding the gate for three winter nights.</p></div></div>
+    <footer class="page-foot" aria-hidden="true"><span class="page-run"><span translate="no">YAZITAŞ</span> · Issue 2 · Games</span><span class="page-no">4</span></footer>
+  </section>
+  <section class="page page--feature-b sec--game page--right" id="kralin-sozu-2" data-page="5" role="group" aria-roledescription="page" aria-label="Kralın Sözü (2), 5 / 14">
+    <div class="page-inner"><blockquote class="pull"><p>It wasn't the cold that killed me. It was your promise.</p><cite>The note found by the frozen sentry, from the game's story</cite></blockquote><div class="rv-body"><p>The whole scene is built in code. The rules live in a core that doesn't depend on Unity.</p><p>Tuned with a 2,000-night balance simulation; automated test bots run without opening a window.</p></div>
+      <ul class="rv-gallery"><li><img src="/assets/img/kralin-sozu-papers.webp" width="1200" height="675" alt="Checking a visitor's papers" loading="lazy" decoding="async"></li><li><img src="/assets/img/kralin-sozu-wolves.webp" width="1200" height="675" alt="Wolves approaching in the dark" loading="lazy" decoding="async"></li><li><img src="/assets/img/kralin-sozu-king_promise.webp" width="1200" height="675" alt="The moment the king makes his promise" loading="lazy" decoding="async"></li></ul>
+      
+          <aside class="spec" aria-label="Fact file: Kralın Sözü">
+            <p class="spec-h">Fact file</p>
+            <dl class="spec-list">
+              <div><dt>Type and role</dt><dd>Solo game</dd></div>
+              <div><dt>Date</dt><dd>Oct 2026</dd></div>
+              <div><dt>Tech</dt><dd>Unity 6, C#, Vulkan, Windows, Linux</dd></div>
+            </dl>
+            <p class="spec-h">By the numbers</p>
+            <dl class="spec-nums"><div><dt>Nights</dt><dd>3</dd></div><div><dt>Visitor types</dt><dd>17</dd></div><div><dt>Endings</dt><dd>10</dd></div><div><dt>Balance simulation</dt><dd>2,000 nights</dd></div><div><dt>Frame time (RTX 4060, 1080p)</dt><dd>1.6 ms</dd></div></dl>
+          </aside>
+          <p class="rv-links"><a class="btn btn--solid" href="https://salihyzts.itch.io/kralin-sozu" target="_blank" rel="noopener">Play on itch.io<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a><a class="btn" href="https://github.com/SalihYzts/kralin-sozu" target="_blank" rel="noopener">Source code<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a></p></div>
+    <footer class="page-foot" aria-hidden="true"><span class="page-run"><span translate="no">YAZITAŞ</span> · Issue 2 · Games</span><span class="page-no">5</span></footer>
+  </section>
+  <section class="page page--notes sec--game page--left" id="kralin-sozu-oyun" data-page="6" role="group" aria-roledescription="page" aria-label="Kralın Sözü: How it plays, 6 / 14">
+    <div class="page-inner">
+      <p class="notes-kicker" translate="no" lang="tr">Kralın Sözü</p>
+      <h2 class="feature-title">How it plays</h2>
+      <p class="feature-deck">No bars or numbers on screen. You read everything from the world.</p>
+      
+      <ol class="notes-list notes-list--play">
+        <li><h3 class="notes-h">Question</h3><p>Ask for a name, where they came from and why. Check the seal, the wax colour, the moon stamp and the approving clerk against the order board.</p></li>
+        <li><h3 class="notes-h">Open or turn away</h3><p>Turning away an honest courier costs as much as letting a traitor in.</p></li>
+        <li><h3 class="notes-h">Keep warm</h3><p>You feel the cold in your breath, the frost creeping in at the edges and your heartbeat. Wood is scarce. Traitors offer wine and furs; take them and the men on the walls will see.</p></li>
+        <li><h3 class="notes-h">Listen to the dark</h3><p>Howling from the forest means wolves; torches on the frozen river mean bandits. Face the right way and sound the horn, and the archers loose their arrows.</p></li>
+        <li><h3 class="notes-h">Keep their trust</h3><p>If the guards in the towers stop trusting you, they turn their crossbows on you.</p></li>
+      </ol>
+      
+      <table class="notes-table">
+        <caption>Three nights</caption>
+        <tbody><tr><th scope="row">Night I · The promise</th><td>The king promises warm clothes. Sounds of a feast drift from the castle.</td></tr><tr><th scope="row">Night II · Another promise</th><td>“I forgot you, didn't I?” This time he promises his own fur.</td></tr><tr><th scope="row">Night III · The last promise</th><td>A blizzard, frequent attacks and traitors carrying two clues. After midnight a palace servant comes to the gate holding a fur…</td></tr></tbody>
+      </table></div>
+    <footer class="page-foot" aria-hidden="true"><span class="page-run"><span translate="no">YAZITAŞ</span> · Issue 2 · Games</span><span class="page-no">6</span></footer>
+  </section>
+  <section class="page page--notes sec--game page--right" id="kralin-sozu-yapim" data-page="7" role="group" aria-roledescription="page" aria-label="Kralın Sözü: Making of, 7 / 14">
+    <div class="page-inner">
+      <p class="notes-kicker" translate="no" lang="tr">Kralın Sözü</p>
+      <h2 class="feature-title">Making of</h2>
+      <p class="feature-deck">A one-person project: code, balance and performance.</p>
+      
+      <dl class="notes-nums"><div><dt>endings and interim dawns</dt><dd>10 + 2</dd></div><div><dt>achievements</dt><dd>14</dd></div><div><dt>nights of balance simulation</dt><dd>2,000</dd></div><div><dt>per frame, RTX 4060</dt><dd>1.6 ms</dd></div></dl>
+      <ol class="notes-list notes-list--notes">
+        <li><h3 class="notes-h">A scene built in code</h3><p>The whole scene is built in code. The rules live in a core that doesn't depend on Unity.</p></li>
+        <li><h3 class="notes-h">2,000 nights of balance</h3><p>I tuned the difficulty with a 2,000-night simulation and built automated test bots that run without opening a window.</p></li>
+        <li><h3 class="notes-h">No clock</h3><p>The moon tells the time: it rises behind the mountains on the right and is overhead at midnight. A castle bell rings on the hour.</p></li>
+        <li><h3 class="notes-h">Made to adjust</h3><p>Three difficulty levels, key remapping, controller support and subtitle size. Instead of voice acting, every character has its own speech blip.</p></li>
+        <li><h3 class="notes-h">Fast</h3><p>Built with Vulkan. Average frame time on an RTX 4060 at 1080p, High: 1.6 ms.</p></li>
+      </ol>
+      
+      <div class="notes-figs notes-figs--2"><figure><img src="/assets/img/kralin-sozu-volley.webp" width="1200" height="675" alt="Sound the horn and the archers loose arrows into the dark" loading="lazy" decoding="async"><figcaption class="fig">Sound the horn and the archers loose arrows into the dark</figcaption></figure><figure><img src="/assets/img/kralin-sozu-sky-midnight.webp" width="1200" height="675" alt="Midnight: the moon right above the towers" loading="lazy" decoding="async"><figcaption class="fig">Midnight: the moon right above the towers</figcaption></figure></div></div>
+    <footer class="page-foot" aria-hidden="true"><span class="page-run"><span translate="no">YAZITAŞ</span> · Issue 2 · Games</span><span class="page-no">7</span></footer>
+  </section>
+  <section class="page page--solo sec--game page--left" id="under-the-counter" data-page="8" role="group" aria-roledescription="page" aria-label="Under the Counter, 8 / 14">
+    <div class="page-inner">
+      <p class="solo-kicker">Team game, lead programmer · Since Jul 2026</p>
+      <h2 class="rv-title" id="under-the-counter-h" translate="no" lang="en">Under the Counter</h2>
+      <p class="rv-deck">A dark-humour first-person shop sim: you run a small 2000s shop selling bootleg CDs. Target: a Steam Next Fest demo.</p>
+      <figure class="rv-frame solo-frame"><div class="rv-art"><svg class="art" viewBox="0 0 320 200" role="img" aria-label="Drawing of a shop counter, CDs and a suspicion meter">
+      <g fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M20 150h280M20 150v34M300 150v34M40 120h240v30H40z"/>
+        <circle cx="96" cy="96" r="24"/><circle cx="96" cy="96" r="5"/>
+        <circle cx="150" cy="104" r="16"/><circle cx="150" cy="104" r="3"/>
+        <path d="M196 70h56v50h-56zM204 80h40M204 90h28"/>
+        <path d="M30 24h120v14H30z"/>
+      </g>
+      <path d="M32 26h78v10H32z" fill="currentColor"/>
+      <text x="160" y="35" fill="currentColor" font-family="IBM Plex Mono, monospace" font-size="11">SUSPICION</text>
+      <text x="196" y="138" fill="currentColor" font-family="IBM Plex Mono, monospace" font-size="11">₺ 2000s</text>
+    </svg></div></figure>
+      <div class="solo-cols">
+        <div class="rv-body rv-body--nocap"><p><b class="runin">I write the game's</b> systems: the economy, impatient customers, police raids driven by a suspicion meter and shopping from an in-game computer.</p><p>I built a crash-safe save system and TR/EN localization. Most of the team's commits are mine.</p><p>The game has 88 runtime scripts and 28 editor tools that speed up the team's work. The goal is a demo at Steam Next Fest.</p></div>
+        <aside class="solo-side" aria-label="Fact file: Under the Counter">
+          <ul class="duo-stats" aria-label="By the numbers"><li><b>88</b> Runtime scripts</li><li><b>28</b> Editor tools</li></ul>
+          <p class="solo-team">Team of 3</p>
+          <p class="duo-tech">Unity 6, URP, NavMesh, Input System, C#</p>
+          
+        </aside>
+      </div></div>
+    <footer class="page-foot" aria-hidden="true"><span class="page-run"><span translate="no">YAZITAŞ</span> · Issue 2 · Games</span><span class="page-no">8</span></footer>
+  </section>
+  <section class="page page--solo sec--game page--right" id="last-dawn" data-page="9" role="group" aria-roledescription="page" aria-label="LAST DAWN, 9 / 14">
+    <div class="page-inner">
+      <p class="solo-kicker">Volpen team game, software &amp; marketing · In development</p>
+      <h2 class="rv-title" id="last-dawn-h" translate="no" lang="en">LAST DAWN</h2>
+      <p class="rv-deck">A post-apocalyptic PC game that mixes survival and base building: scavenge by day, defend your base by night.</p>
+      <figure class="rv-frame solo-frame"><img src="/assets/img/last-dawn.webp" width="960" height="600" alt="Home screen of the LAST DAWN promo site" style="object-position:0% 45%" loading="lazy" decoding="async"></figure>
+      <div class="solo-cols">
+        <div class="rv-body rv-body--nocap"><p><b class="runin">I'm on the software</b> and marketing side of the project.</p><p>I built the promo site: a day/night switch changes the whole palette, and it has a trailer and an in-engine gallery.</p><p>The game will be announced there too once its Steam page opens.</p></div>
+        <aside class="solo-side" aria-label="Fact file: LAST DAWN">
+          
+          <p class="solo-team">Team of 5, Volpen</p>
+          <p class="duo-tech">Unity, C#, HTML, CSS</p>
+          
+          <p class="rv-links"><a class="btn btn--solid" href="https://salihyzts.github.io/Last-Down-WEB/" target="_blank" rel="noopener">Open the site<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a></p>
+        </aside>
+      </div></div>
+    <footer class="page-foot" aria-hidden="true"><span class="page-run"><span translate="no">YAZITAŞ</span> · Issue 2 · Games</span><span class="page-no">9</span></footer>
+  </section>
+  <section class="page page--solo sec--game page--left" id="pati-rotasi" data-page="10" role="group" aria-roledescription="page" aria-label="Pati Rotası, 10 / 14">
+    <div class="page-inner">
+      <p class="solo-kicker">Mobile game · 2026</p>
+      <h2 class="rv-title" id="pati-rotasi-h" translate="no" lang="tr">Pati Rotası</h2>
+      <p class="rv-deck">A mobile game that gets you walking. Photograph street cats to build a collection, clear the fog on the map as you walk, and turn your steps into food points for animal shelters.</p>
+      <figure class="rv-frame solo-frame"><img src="/assets/img/pati-rotasi.webp" width="960" height="748" alt="Pati Rotası promo screen with two phone screenshots" style="object-position:0% 50%" loading="lazy" decoding="async"></figure>
+      <div class="solo-cols">
+        <div class="rv-body rv-body--nocap"><p><b class="runin">32 cat breeds, rarity</b> levels and neighbourhood albums.</p><p>I added a step counter, streaks, daily quests and badges.</p><p>I wanted to see whether game mechanics can nudge people toward a real habit like getting outside. The Android APK is on GitHub.</p></div>
+        <aside class="solo-side" aria-label="Fact file: Pati Rotası">
+          
+          
+          <p class="duo-tech">Expo, React Native, Leaflet</p>
+          
+          <p class="rv-links"><a class="btn btn--solid" href="https://github.com/SalihYzts/pati-rotasi" target="_blank" rel="noopener">Source code<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a></p>
+        </aside>
+      </div></div>
+    <footer class="page-foot" aria-hidden="true"><span class="page-run"><span translate="no">YAZITAŞ</span> · Issue 2 · Games</span><span class="page-no">10</span></footer>
+  </section>
+  <section class="page page--duo sec--game page--right" id="lets-cook-a-mask-ve-the-rolling-pizz" data-page="11" role="group" aria-roledescription="page" aria-label="Let's Cook a Mask, The Rolling Pizz, 11 / 14">
+    <div class="page-inner">
+      <article class="duo" id="lets-cook-a-mask" aria-labelledby="lets-cook-a-mask-h">
+        <div class="rv-frame duo-frame"><img class="is-contain" src="/assets/img/lets-cook-a-mask.webp" width="960" height="600" alt="Let's Cook a Mask logo: two theatre masks in a frying pan" loading="lazy" decoding="async"></div>
+        <div class="duo-text">
+          <h3 class="rv-title" id="lets-cook-a-mask-h" translate="no" lang="en">Let's Cook a Mask</h3>
+          <p class="duo-meta">Global Game Jam 2026, team game, 2026</p>
+          <p class="rv-deck">In a world of hidden faces you craft identities: listen to each customer's whispers and cook the mask that gives them the power they want.</p>
+          <div class="rv-body rv-body--nocap"><p><b class="runin">We finished it as</b> a team within the jam at Global Game Jam 2026, Istanbul @BUG.</p></div>
+          
+          <p class="duo-tech">Unity, C#, HTML5</p>
+          
+          <p class="rv-links"><a class="btn btn--solid" href="https://ew0ue.itch.io/lets-cook-a-mask" target="_blank" rel="noopener">Play on itch.io<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a><a class="btn" href="https://github.com/SalihYzts/GGJ-2026-BUG-Ne-Yapsak-Yahu" target="_blank" rel="noopener">Source code<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a></p>
+        </div>
+      </article>
+      <article class="duo" id="the-rolling-pizz" aria-labelledby="the-rolling-pizz-h">
+        <div class="rv-frame duo-frame"><img src="/assets/img/the-rolling-pizz.webp" width="960" height="600" alt="The Rolling Pizz: a pizza rolling between colourful buildings" loading="lazy" decoding="async"></div>
+        <div class="duo-text">
+          <h3 class="rv-title" id="the-rolling-pizz-h" translate="no" lang="en">The Rolling Pizz</h3>
+          <p class="duo-meta">Yıldız Jam 2026, Unity developer, 2026 · Team of 4: Kozalak Çamları</p>
+          <p class="rv-deck">Help a pizza that got cut in half in its sleep escape the table; some obstacles need the whole pizza, others two halves. I programmed the game in Unity for team Kozalak Çamları.</p>
+          <div class="rv-body rv-body--nocap"><p><b class="runin">We put a single</b> mechanic, splitting and merging, at the centre and built every level around it.</p></div>
+          
+          <p class="duo-tech">Unity, C#</p>
+          
+          <p class="rv-links"><a class="btn btn--solid" href="https://tce81.itch.io/the-rolling-pizz" target="_blank" rel="noopener">Play on itch.io<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a></p>
+        </div>
+      </article></div>
+    <footer class="page-foot" aria-hidden="true"><span class="page-run"><span translate="no">YAZITAŞ</span> · Issue 2 · Games</span><span class="page-no">11</span></footer>
+  </section>
+  <section class="page page--briefs sec--game page--left" id="oyun-kisa" data-page="12" role="group" aria-roledescription="page" aria-label="In brief: jam and team games, 12 / 14">
+    <div class="page-inner">
+      <h2 class="briefs-title">In brief: jam and team games</h2>
+      <ul class="brief-list brief-list--four">
+        <li class="brief" id="colorland">
+          <div class="brief-frame"><img src="/assets/img/colorland.webp" width="960" height="600" alt="ColorLand: a grey stone room with a red door" loading="lazy" decoding="async"></div>
+          <div class="brief-text">
+            <h3 class="brief-title brief-title--keep" translate="no" lang="en">ColorLand</h3>
+            
+            <p class="brief-meta">Volpen, 1 week. My first 3D project</p>
+            <p class="brief-pitch">The world's colours have been stolen. Explore the station, solve the puzzles and bring the light back.</p>
+            <p class="brief-links"><a href="https://volpentr.itch.io/colorland" target="_blank" rel="noopener">Play on itch.io<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a></p>
+          </div>
+        </li>
+        <li class="brief" id="uckkenici">
+          <div class="brief-frame"><img src="/assets/img/uckkenici.webp" width="960" height="600" alt="ÜçKKeNİci: a triangle with two angles and four answer options" loading="lazy" decoding="async"></div>
+          <div class="brief-text">
+            <h3 class="brief-title brief-title--keep" translate="no" lang="tr">ÜçKKeNİci</h3>
+            
+            <p class="brief-meta">Volpen, 2 days</p>
+            <p class="brief-pitch">An endless game that turns maths into play: find the triangle's missing angle and pick it before time runs out.</p>
+            <p class="brief-links"><a href="https://volpentr.itch.io/uckkenci" target="_blank" rel="noopener">Play on itch.io<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a><a href="https://github.com/SalihYzts/UcgenIci" target="_blank" rel="noopener">Source code<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a></p>
+          </div>
+        </li>
+        <li class="brief" id="agaclastirilmis-elma">
+          <div class="brief-frame"><img src="/assets/img/agaclastirilmis-elma.webp" width="960" height="600" alt="Ağaçlaştırılmış Elma: illustration of a fox and an old woman waiting for an apple pie" loading="lazy" decoding="async"></div>
+          <div class="brief-text">
+            <h3 class="brief-title brief-title--long" translate="no" lang="tr">Ağaçlaştırılmış Elma</h3>
+            
+            <p class="brief-meta">Volpen, 2 months. Code, project lead and story</p>
+            <p class="brief-pitch">An apple's journey from seed to tree: help Kiki the fox grow it. An educational clicker game.</p>
+            <p class="brief-links"><a href="https://volpentr.itch.io/agaclastirilmiselma" target="_blank" rel="noopener">Play on itch.io<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a><a href="https://github.com/SalihYzts/ElnalistirilmisAgac" target="_blank" rel="noopener">Source code<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a></p>
+          </div>
+        </li>
+        <li class="brief" id="ecobuddy">
+          <div class="brief-frame"><img src="/assets/img/ecobuddy.webp" width="960" height="600" alt="EcoBuddy: colourful recycling bins at a picnic spot" loading="lazy" decoding="async"></div>
+          <div class="brief-text">
+            <h3 class="brief-title brief-title--keep" translate="no" lang="en">EcoBuddy</h3>
+            
+            <p class="brief-meta">Team game</p>
+            <p class="brief-pitch">A 3D educational game about picking up litter and sorting it into the right recycling bin.</p>
+            <p class="brief-links"><a href="https://ew0ue.itch.io/ecobuddy" target="_blank" rel="noopener">Play on itch.io<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a></p>
+          </div>
+        </li>
+      </ul></div>
+    <footer class="page-foot" aria-hidden="true"><span class="page-run"><span translate="no">YAZITAŞ</span> · Issue 2 · Games</span><span class="page-no">12</span></footer>
+  </section>
+  <section class="page page--community sec--game page--right" id="topluluk" data-page="13" role="group" aria-roledescription="page" aria-label="Community: the club and jams, 13 / 14">
+    <div class="page-inner">
+      <h2 class="feature-title">Community: the club and jams</h2>
+      <p class="feature-deck">Making games inside a community, not alone.</p>
+      <ul class="crew">
+        <li class="crew-item">
+          <p class="crew-big" aria-hidden="true">21</p>
+          <h3 class="crew-title">Game Design Club</h3>
+          <p class="crew-role">Founding board member &amp; treasurer, ÇOMÜ</p>
+          <p class="crew-text">I founded the club and manage its budget. Its site, Oyun Vitrini, showcases 21 games members made at jams and in classes, with member accounts, a leaderboard, an admin panel and a two-screen booth mode.</p>
+          <p class="crew-more"><a href="/en/software/#oyun-vitrini"><span translate="no">Oyun Vitrini</span>, Software · p. 13 →</a></p>
+        </li>
+        <li class="crew-item">
+          <p class="crew-big" aria-hidden="true">48 h</p>
+          <h3 class="crew-title">Troia Game Jam 2026</h3>
+          <p class="crew-role">Staff &amp; mentor, May 2026</p>
+          <p class="crew-text">I worked at the 48-hour jam run by the ÇOMÜ Software Development Club and the Game Programming department, mentored teams, and designed the roll-up banner and certificates.</p>
+          
+        </li>
+        <li class="crew-item">
+          <p class="crew-big" aria-hidden="true">GGJ</p>
+          <h3 class="crew-title">Global Game Jam 2026</h3>
+          <p class="crew-role">Participant, Istanbul @BUG</p>
+          <p class="crew-text">We finished Let's Cook a Mask as a team within the jam.</p>
+          <p class="crew-more"><a href="#lets-cook-a-mask"><span translate="no">Let's Cook a Mask</span>, p. 11 →</a></p>
+        </li>
+        <li class="crew-item">
+          <p class="crew-big" aria-hidden="true">4</p>
+          <h3 class="crew-title">Yıldız Jam 2026</h3>
+          <p class="crew-role">Unity developer, Kozalak Çamları</p>
+          <p class="crew-text">We made The Rolling Pizz as a team of four; I programmed the game.</p>
+          <p class="crew-more"><a href="#the-rolling-pizz"><span translate="no">The Rolling Pizz</span>, p. 11 →</a></p>
+        </li>
+      </ul></div>
+    <footer class="page-foot" aria-hidden="true"><span class="page-run"><span translate="no">YAZITAŞ</span> · Issue 2 · Games</span><span class="page-no">13</span></footer>
+  </section>
+  <section class="page page--back back--oyun page--left" id="arka-kapak" data-page="14" role="group" aria-roledescription="page" aria-label="Back cover, 14 / 14">
+    <div class="page-inner">
+      <div class="back-art"><img src="/assets/img/last-dawn.webp" width="960" height="600" alt="" loading="lazy" decoding="async"></div>
+      
+      <p class="back-mast" lang="tr" translate="no">YAZITAŞ</p>
+      <h2 class="back-title">Next issue</h2>
+      <ul class="back-next"><li>LAST DAWN: scavenge by day, defend by night</li><li>Under the Counter: a Steam Next Fest demo on the way</li></ul>
+      <h2 class="back-shelf-h">Other issues on the desk</h2>
+      <ul class="shelf shelf--back">
+        <li><a class="shelf-card shelf--ben" href="/en/about/"><span class="shelf-n">Issue 1</span><span class="shelf-name">About me</span><span class="shelf-deck">Profile, work, school and community, skills and CV.</span></a></li>
+        <li><a class="shelf-card shelf--yazilim" href="/en/software/"><span class="shelf-n">Issue 3</span><span class="shelf-name">Software</span><span class="shelf-deck">MyEverythingList, the Parsel internship, open-source tools and cafe work.</span></a></li>
+      </ul>
+      <p class="back-line"><a class="back-desk" href="/en/" data-desk><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M5 1h1v1h-1zM4 2h2v1h-2zM3 3h3v1h-3zM2 4h10v1h-10zM1 5h11v1h-11zM1 6h11v1h-11zM2 7h10v1h-10zM3 8h3v1h-3zM4 9h2v1h-2zM5 10h1v1h-1z"/></svg><span>Back to the desk</span></a></p>
+      <div class="back-bottom">
+        <p class="back-price">Price: one email</p>
+        <div class="barcode barcode--back" aria-hidden="true"><svg class="barcode-bars" viewBox="0 0 109 40" preserveAspectRatio="none" aria-hidden="true"><rect x="0" y="0" width="1" height="40"/><rect x="3" y="0" width="2" height="40"/><rect x="6" y="0" width="1" height="40"/><rect x="8" y="0" width="1" height="40"/><rect x="10" y="0" width="3" height="40"/><rect x="14" y="0" width="3" height="40"/><rect x="18" y="0" width="1" height="40"/><rect x="20" y="0" width="1" height="40"/><rect x="22" y="0" width="1" height="40"/><rect x="24" y="0" width="3" height="40"/><rect x="28" y="0" width="3" height="40"/><rect x="32" y="0" width="2" height="40"/><rect x="35" y="0" width="2" height="40"/><rect x="38" y="0" width="1" height="40"/><rect x="40" y="0" width="3" height="40"/><rect x="44" y="0" width="2" height="40"/><rect x="47" y="0" width="1" height="40"/><rect x="49" y="0" width="2" height="40"/><rect x="52" y="0" width="2" height="40"/><rect x="55" y="0" width="2" height="40"/><rect x="58" y="0" width="2" height="40"/><rect x="61" y="0" width="2" height="40"/><rect x="64" y="0" width="3" height="40"/><rect x="68" y="0" width="1" height="40"/><rect x="70" y="0" width="3" height="40"/><rect x="74" y="0" width="1" height="40"/><rect x="76" y="0" width="2" height="40"/><rect x="79" y="0" width="3" height="40"/><rect x="83" y="0" width="1" height="40"/><rect x="85" y="0" width="1" height="40"/><rect x="87" y="0" width="3" height="40"/><rect x="91" y="0" width="1" height="40"/><rect x="93" y="0" width="2" height="40"/><rect x="96" y="0" width="1" height="40"/><rect x="98" y="0" width="3" height="40"/><rect x="102" y="0" width="1" height="40"/><rect x="104" y="0" width="1" height="40"/><rect x="106" y="0" width="2" height="40"/></svg><span>Issue 2 · November 2026</span></div>
+      </div></div>
+  </section>
+</div></main>
+
+<div class="toast" role="status" aria-live="polite" hidden></div>
+<template id="icon-star"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M5 0h2v1h-2zM5 1h2v1h-2zM4 2h4v1h-4zM4 3h4v1h-4zM0 4h12v1h-12zM1 5h10v1h-10zM2 6h8v1h-8zM3 7h6v1h-6zM3 8h6v1h-6zM2 9h3v1h-3zM7 9h3v1h-3zM2 10h2v1h-2zM8 10h2v1h-2zM1 11h2v1h-2zM9 11h2v1h-2z"/></svg></template>
+<script id="i18n" type="application/json">{"secretName":"Cheat code","secretHow":"You pressed ↑ ↑ ↓ ↓ ← → ← → B A","toastSecret":"Hidden badge unlocked: Cheat code","page":"Page","of":"/"}</script>
+<script src="/assets/js/site.js" defer></script>
+</body>
+</html>

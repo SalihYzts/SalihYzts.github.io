@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="light" class="is-desk">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -23,18 +23,17 @@
 <meta property="og:image" content="https://salihyzts.github.io/assets/og/og-en.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Cover of YAZITAŞ magazine: a red masthead over the snowy gate of Kralın Sözü, Salih Yazıtaş's name and yellow numbers">
+<meta property="og:image:alt" content="Three issues of YAZITAŞ magazine on a wooden desk: About me, Games and Software">
 <meta property="profile:first_name" content="Salih">
 <meta property="profile:last_name" content="Yazıtaş">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="preload" href="/assets/fonts/archivo-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/assets/img/kralin-sozu-gate_view.webp" as="image" type="image/webp">
 <link rel="stylesheet" href="/assets/css/fonts.css">
 <link rel="stylesheet" href="/assets/css/site.css">
 <script>
-  // Boyamadan önce temayı uygula; JS varsa dergi okuyucusu açılır
+  // Boyamadan önce temayı ve görünümü uygula (okuyucu ve masa aynı eşiği kullanır)
   (function () {
     var d = document.documentElement, t = null;
     try { t = localStorage.getItem("theme"); } catch (e) {}
@@ -43,604 +42,95 @@
     d.classList.add("reader", innerWidth < 720 || innerHeight < 512 ? "app" : "print");
   })();
 </script>
+<link rel="stylesheet" href="/assets/css/desk.css">
+<script type="speculationrules">{"prerender":[{"source":"document","where":{"selector_matches":".mag"},"eagerness":"moderate"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Salih Yazıtaş","url":"https://salihyzts.github.io/en/","image":"https://salihyzts.github.io/assets/img/salih.webp","jobTitle":"Game & software developer","email":"mailto:yazitassalih0@gmail.com","address":{"@type":"PostalAddress","addressLocality":"Çanakkale","addressCountry":"TR"},"alumniOf":{"@type":"CollegeOrUniversity","name":"Çanakkale Onsekiz Mart Üniversitesi"},"founder":{"@type":"Organization","name":"Volpen","url":"https://salihyzts.github.io/VolpenWeb/"},"sameAs":["https://github.com/SalihYzts","https://www.linkedin.com/in/salih-yaz%C4%B1ta%C5%9F/","https://salihyzts.itch.io"],"knowsAbout":["Unity","C#","TypeScript","React","Python","FastAPI","Supabase","Electron","Tauri","Go"]}</script>
 </head>
-<body>
-<a class="skip" href="#icindekiler">Skip to content</a>
-
-<header class="topbar">
-  <a class="mini-mast" href="#kapak" aria-label="Cover: Salih Yazıtaş" translate="no"><span lang="tr">YAZITAŞ</span></a>
-  <nav class="topnav" aria-label="Magazine sections">
-    <ul><li><a href="#icindekiler" data-nav="icindekiler">Contents</a></li><li><a href="#oyun" data-nav="oyun">Games</a></li><li><a href="#yazilim" data-nav="yazilim">Software</a></li><li><a href="#yolculuk" data-nav="yolculuk">Journey</a></li><li><a href="#mektup" data-nav="mektup">Letters</a></li></ul>
-  </nav>
-  <nav class="pager" aria-label="Magazine pages">
-    <button type="button" class="pager-btn" data-prev aria-label="Previous page" aria-keyshortcuts="ArrowLeft"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M5 1h1v1h-1zM4 2h2v1h-2zM3 3h3v1h-3zM2 4h10v1h-10zM1 5h11v1h-11zM1 6h11v1h-11zM2 7h10v1h-10zM3 8h3v1h-3zM4 9h2v1h-2zM5 10h1v1h-1z"/></svg></button>
-    <label class="pager-jump"><span class="sr">Go to page</span>
-      <select data-jump><option value="1">1. Cover</option><option value="2">2. Contents</option><option value="3">3. From the editor</option><option value="4">4. Kralın Sözü</option><option value="5">5. Kralın Sözü (2)</option><option value="6">6. Under the Counter, LAST DAWN</option><option value="7">7. Pati Rotası, In brief: jam and team games</option><option value="8">8. MyEverythingList</option><option value="9">9. MyEverythingList (2)</option><option value="10">10. NeRoBoT, RaiPy</option><option value="11">11. Parsel, Heren Agent</option><option value="12">12. Kafe Finans, Truva–Akınsoft arabirimi</option><option value="13">13. In brief: tools and sites</option><option value="14">14. Feature: The journey</option><option value="15">15. Badges</option><option value="16">16. Guide: the toolkit</option><option value="17">17. Letters</option><option value="18">18. Back cover</option></select>
-    </label>
-    <button type="button" class="pager-btn" data-next aria-label="Next page" aria-keyshortcuts="ArrowRight"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 1h1v1h-1zM6 2h2v1h-2zM6 3h3v1h-3zM0 4h10v1h-10zM0 5h11v1h-11zM0 6h11v1h-11zM0 7h10v1h-10zM6 8h3v1h-3zM6 9h2v1h-2zM6 10h1v1h-1z"/></svg></button>
-    <p class="sr" aria-live="polite" data-status></p>
-  </nav>
-  <div class="tools">
-    <a class="tool" href="/" hreflang="tr" lang="tr" aria-label="Türkçe">TR</a>
-    <button type="button" class="tool" data-theme-toggle aria-label="Day or night edition"><svg class="px only-dark" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M5 0h2v1h-2zM1 1h1v1h-1zM5 1h2v1h-2zM10 1h1v1h-1zM2 2h1v1h-1zM9 2h1v1h-1zM4 3h4v1h-4zM3 4h6v1h-6zM0 5h2v1h-2zM3 5h6v1h-6zM10 5h2v1h-2zM0 6h2v1h-2zM3 6h6v1h-6zM10 6h2v1h-2zM3 7h6v1h-6zM4 8h4v1h-4zM2 9h1v1h-1zM9 9h1v1h-1zM1 10h1v1h-1zM5 10h2v1h-2zM10 10h1v1h-1zM5 11h2v1h-2z"/></svg><svg class="px only-light" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M4 0h4v1h-4zM2 1h3v1h-3zM1 2h3v1h-3zM1 3h2v1h-2zM0 4h3v1h-3zM0 5h3v1h-3zM0 6h3v1h-3zM0 7h4v1h-4zM11 7h1v1h-1zM1 8h4v1h-4zM10 8h2v1h-2zM1 9h9v1h-9zM2 10h7v1h-7zM4 11h4v1h-4z"/></svg></button>
-  </div>
-</header>
-
-<main id="main" class="book" aria-label="Magazine pages" data-total="18"><div class="world">
-  <section class="page page--cover page--right" id="kapak" data-page="1" role="group" aria-roledescription="page" aria-label="Cover, 1 / 18">
-    <div class="page-inner">
-      <img class="cover-art" src="/assets/img/kralin-sozu-gate_view.webp" width="1200" height="675" alt="Kralın Sözü: the gate between two watchtowers on a snowy night" fetchpriority="high">
-      <div class="cover-inner">
-        <p class="cover-issue"><span>Issue 26</span><span>November 2026</span><span>Games &amp; software magazine</span></p>
-        <h1 class="masthead"><span class="masthead-word" lang="tr" translate="no" aria-hidden="true">YAZITAŞ</span><span class="cover-name"><span lang="tr">Salih Yazıtaş</span>, game & software developer</span></h1>
-        <a class="cover-story" href="#kralin-sozu">
-          <span class="cover-title">A night watch with no HUD</span>
-          <span class="cover-deck">Kralın Sözü: a first-person guard game with no on-screen interface, balanced with a 2,000-night simulation.</span>
+<body class="desk-body">
+<main class="scene" id="scene">
+  <h1 class="sr">Salih Yazıtaş: three issues on the desk, pick one</h1>
+  <div class="viewport" id="viewport">
+    <div class="camera" id="camera">
+      <div class="desk">
+        <div class="thing mug" data-prop="mug" aria-hidden="true"><div class="mug-floor"></div><div class="mug-body"></div><div class="mug-top"></div></div>
+        <div class="thing pencil" data-prop="pencil" aria-hidden="true"></div>
+        <div class="thing note" data-prop="note" aria-hidden="true">Which one would you like to read?<small>Pick an issue</small></div>
+        <a class="thing cv-sheet" data-prop="cv" href="/cv/Salih_Yazitas_CV_EN.pdf" download aria-label="Download CV, English PDF">
+          <span class="cv-sheet-h">Salih Yazıtaş</span><span class="cv-sheet-k">Résumé</span>
+          <span class="cv-sheet-lines" aria-hidden="true"></span><span class="cv-sheet-tag">PDF <svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M5 0h2v1h-2zM5 1h2v1h-2zM5 2h2v1h-2zM5 3h2v1h-2zM2 4h8v1h-8zM3 5h6v1h-6zM4 6h4v1h-4zM5 7h2v1h-2zM0 9h1v1h-1zM11 9h1v1h-1zM0 10h1v1h-1zM11 10h1v1h-1zM0 11h12v1h-12z"/></svg></span>
         </a>
+        <ul class="mags" aria-label="Issues">
+        <li class="slot" data-i="0" style="--x:-330px;--y:20px;--r:-7deg">
+          <div class="thing shade"></div>
+          <a class="thing mag" href="/en/about/" data-issue="ben">
+            <span class="edge edge--r" aria-hidden="true"></span><span class="edge edge--b" aria-hidden="true"></span>
+            <span class="sr">Issue 1, About me: Profile, work, school and community, skills and CV.</span>
+            <div class="page page--cover cover--ben" aria-hidden="true"><div class="page-inner">
+      <span class="cover-photo"><img src="/assets/img/salih.webp" width="480" height="480" alt="" fetchpriority="high"><span class="cover-tape" aria-hidden="true"></span><span class="cover-photo-cap" aria-hidden="true">Çanakkale, 2026</span></span>
+      <div class="cover-inner">
+        <p class="cover-issue"><span>Issue 1</span><span>November 2026</span><span class="cover-issue-name">About me</span></p>
+        <p class="masthead"><span class="masthead-word" lang="tr" translate="no" aria-hidden="true">YAZITAŞ</span><span class="cover-name"><span lang="tr">Salih Yazıtaş</span>, game & software developer<span class="sr"> · Issue 1: About me</span></span></p>
+        <span class="cover-story"><span class="cover-kicker">Profile, work, CV</span><span class="cover-title">Who am I?</span><span class="cover-deck">A game programming student, self-taught in software for 7 years, taking products from idea to release.</span></span>
         <ul class="cover-lines">
-          <li><a href="#myeverythinglist"><span class="cl-big">19</span><span class="cl-text">languages live: MyEverythingList</span></a></li>
-          <li><a href="#raipy"><span class="cl-big">614</span><span class="cl-text">tests behind an AI engine: RaiPy</span></a></li>
-          <li><a href="#kralin-sozu"><span class="cl-big">1.6 ms</span><span class="cl-text">per frame on an RTX 4060</span></a></li>
+          <li><span class="cover-line"><span class="cl-big">3</span><span class="cl-text">jobs: consulting, internship, studio</span></span></li>
+          <li><span class="cover-line"><span class="cl-big">12</span><span class="cl-text">badges, one hidden</span></span></li>
         </ul>
-        <a class="sticker" href="/cv/Salih_Yazitas_CV_EN.pdf" download><span class="sticker-top">Inside</span><span class="sticker-main">Free CV</span></a>
-        <div class="barcode" aria-hidden="true"><svg class="barcode-bars" viewBox="0 0 113 40" preserveAspectRatio="none" aria-hidden="true"><rect x="0" y="0" width="1" height="40"/><rect x="2" y="0" width="1" height="40"/><rect x="4" y="0" width="3" height="40"/><rect x="8" y="0" width="3" height="40"/><rect x="12" y="0" width="1" height="40"/><rect x="14" y="0" width="1" height="40"/><rect x="16" y="0" width="1" height="40"/><rect x="18" y="0" width="2" height="40"/><rect x="21" y="0" width="1" height="40"/><rect x="23" y="0" width="1" height="40"/><rect x="25" y="0" width="2" height="40"/><rect x="28" y="0" width="1" height="40"/><rect x="30" y="0" width="3" height="40"/><rect x="34" y="0" width="2" height="40"/><rect x="37" y="0" width="1" height="40"/><rect x="39" y="0" width="3" height="40"/><rect x="43" y="0" width="3" height="40"/><rect x="47" y="0" width="3" height="40"/><rect x="51" y="0" width="2" height="40"/><rect x="54" y="0" width="3" height="40"/><rect x="58" y="0" width="3" height="40"/><rect x="62" y="0" width="1" height="40"/><rect x="64" y="0" width="1" height="40"/><rect x="66" y="0" width="1" height="40"/><rect x="68" y="0" width="1" height="40"/><rect x="70" y="0" width="3" height="40"/><rect x="74" y="0" width="2" height="40"/><rect x="77" y="0" width="1" height="40"/><rect x="79" y="0" width="2" height="40"/><rect x="82" y="0" width="1" height="40"/><rect x="84" y="0" width="3" height="40"/><rect x="88" y="0" width="3" height="40"/><rect x="92" y="0" width="3" height="40"/><rect x="96" y="0" width="1" height="40"/><rect x="98" y="0" width="3" height="40"/><rect x="102" y="0" width="3" height="40"/><rect x="106" y="0" width="3" height="40"/><rect x="110" y="0" width="2" height="40"/></svg><span>Issue 26</span></div>
-      </div></div>
-  </section>
-  <section class="page page--contents sec--ink page--left" id="icindekiler" data-page="2" role="group" aria-roledescription="page" aria-label="Contents, 2 / 18">
-    <div class="page-inner">
-      <h2 class="toc-title">Contents</h2>
-      <ol class="toc-list">
-        
-          <li class="toc-group">
-            <a class="toc-sec" href="#oyun"><span>Games</span><span class="toc-pg">4</span></a>
-            <ul>
-              <li><a href="#kralin-sozu"><span lang="tr">Kralın Sözü</span><span class="toc-pg">4</span></a></li>
-              <li><a href="#under-the-counter"><span lang="en">Under the Counter</span><span class="toc-pg">6</span></a></li>
-              <li><a href="#last-dawn"><span lang="en">LAST DAWN</span><span class="toc-pg">6</span></a></li>
-              <li><a href="#pati-rotasi"><span lang="tr">Pati Rotası</span><span class="toc-pg">7</span></a></li>
-              <li><a href="#oyun-kisa"><span>In brief</span><span class="toc-pg">7</span></a><p class="toc-briefs" translate="no">Let's Cook a Mask, The Rolling Pizz, Ağaçlaştırılmış Elma, ColorLand, ÜçKKeNİci, EcoBuddy</p></li>
-            </ul>
-          </li>
-        
-          <li class="toc-group">
-            <a class="toc-sec" href="#yazilim"><span>Software</span><span class="toc-pg">8</span></a>
-            <ul>
-              <li><a href="#myeverythinglist"><span lang="en">MyEverythingList</span><span class="toc-pg">8</span></a></li>
-              <li><a href="#nerobot"><span lang="en">NeRoBoT</span><span class="toc-pg">10</span></a></li>
-              <li><a href="#raipy"><span lang="en">RaiPy</span><span class="toc-pg">10</span></a></li>
-              <li><a href="#parsel"><span lang="tr">Parsel</span><span class="toc-pg">11</span></a></li>
-              <li><a href="#heren-agent"><span lang="en">Heren Agent</span><span class="toc-pg">11</span></a></li>
-              <li><a href="#kafe-finans"><span lang="en">Kafe Finans</span><span class="toc-pg">12</span></a></li>
-              <li><a href="#truva-arabirimi"><span lang="tr">Truva–Akınsoft arabirimi</span><span class="toc-pg">12</span></a></li>
-              <li><a href="#yazilim-kisa"><span>In brief</span><span class="toc-pg">13</span></a><p class="toc-briefs" translate="no">Oyun Vitrini, Görevler, Volpen, GDD Creator, TurkOS, YtChatInstaller</p></li>
-            </ul>
-          </li>
-        <li class="toc-group toc-group--misc"><ul>
-          <li><a href="#editor"><span>From the editor, masthead</span><span class="toc-pg">3</span></a></li>
-          <li><a href="#yolculuk"><span>Feature: The journey</span><span class="toc-pg">14</span></a></li>
-          <li><a href="#rozetler"><span>Badges</span><span class="toc-pg">15</span></a></li>
-          <li><a href="#rehber"><span>Guide: the toolkit</span><span class="toc-pg">16</span></a></li>
-          <li><a href="#mektup"><span>Letters</span><span class="toc-pg">17</span></a></li>
-        </ul></li>
-      </ol>
-      <a class="toc-cover" href="#kralin-sozu">
-        <img src="/assets/img/kralin-sozu-wolves.webp" width="1200" height="675" alt="" loading="lazy" decoding="async">
-        <span class="toc-cover-k">Cover story · 4</span>
-        <span class="toc-cover-t">A night watch with no HUD</span>
-      </a></div>
-    <footer class="page-foot" aria-hidden="true"><span class="page-run"><span translate="no">YAZITAŞ</span> · Contents</span><span class="page-no">2</span></footer>
-  </section>
-  <section class="page page--editor sec--game page--right" id="editor" data-page="3" role="group" aria-roledescription="page" aria-label="From the editor, 3 / 18">
-    <div class="page-inner">
-      <img class="editor-photo" src="/assets/img/salih.webp" width="480" height="480" alt="Photo of Salih Yazıtaş" loading="lazy" decoding="async">
-      <h2 class="editor-title">From the editor</h2>
-      <div class="editor-text"><p>Hi, I'm Salih. I study game development at Çanakkale Onsekiz Mart University and have been teaching myself to code for 7 years.</p><p>This issue puts both halves of my work side by side: the games I make in Unity and the software I write in React, Python and Go. I take both from idea to release. I founded the independent studio Volpen.</p></div>
-      <p class="editor-sign">Salih Yazıtaş, editor-in-chief</p>
-      <p class="editor-cv">
-        <a class="btn btn--solid" href="/cv/Salih_Yazitas_CV_EN.pdf" download><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M5 0h2v1h-2zM5 1h2v1h-2zM5 2h2v1h-2zM5 3h2v1h-2zM2 4h8v1h-8zM3 5h6v1h-6zM4 6h4v1h-4zM5 7h2v1h-2zM0 9h1v1h-1zM11 9h1v1h-1zM0 10h1v1h-1zM11 10h1v1h-1zM0 11h12v1h-12z"/></svg><span>Download CV, English PDF</span></a>
-      </p>
-      <section class="imprint-box" aria-labelledby="kunye-h">
-        <h3 class="imprint-title" id="kunye-h">Masthead</h3>
-        <dl class="imprint"><div><dt>Owner and editor-in-chief</dt><dd>Salih Yazıtaş</dd></div><div><dt>Editorial, code and design</dt><dd>Salih Yazıtaş</dd></div><div><dt>Publisher</dt><dd>Volpen, Çanakkale</dd></div><div><dt>School</dt><dd>ÇOMÜ, Game Development and Programming, 2nd year</dd></div><div><dt>Languages</dt><dd>Turkish (native), English (technical)</dd></div><div><dt>Printed on</dt><dd>GitHub Pages</dd></div></dl>
-        <p class="imprint-hint">Hand-set: no framework, no trackers. For the hidden badge: ↑ ↑ ↓ ↓ ← → ← → B A</p>
-      </section></div>
-    <footer class="page-foot" aria-hidden="true"><span class="page-run"><span translate="no">YAZITAŞ</span> · From the editor</span><span class="page-no">3</span></footer>
-  </section>
-  <section class="page page--feature-a sec--game page--left" id="kralin-sozu" data-page="4" role="group" aria-roledescription="page" aria-label="Kralın Sözü, 4 / 18">
-    <div class="page-inner">
-      <header class="sec-band" id="oyun"><h2 class="sec-band-title">Games</h2><p class="sec-band-deck">Games I made in Unity and C#: solo, with a team and at jams.</p></header>
-      <figure class="fa-art"><img src="/assets/img/kralin-sozu-gate_view.webp" width="1200" height="675" alt="Kralın Sözü: the gate between two watchtowers on a snowy night" loading="lazy" decoding="async"></figure>
-      <p class="fig">Fig. 1. Kralın Sözü: the gate between two watchtowers on a snowy night</p>
-      <div class="fa-head"><h3 class="rv-title" translate="no" lang="tr">Kralın Sözü<span class="rv-sub" lang="en">The King's Promise</span></h3><p class="rv-deck">A first-person guard game based on a folk tale, with no on-screen interface. You're the sentry the king forgot, holding the gate for three winter nights.</p></div></div>
-    <footer class="page-foot" aria-hidden="true"><span class="page-run"><span translate="no">YAZITAŞ</span> · Games</span><span class="page-no">4</span></footer>
-  </section>
-  <section class="page page--feature-b sec--game page--right" id="kralin-sozu-2" data-page="5" role="group" aria-roledescription="page" aria-label="Kralın Sözü (2), 5 / 18">
-    <div class="page-inner"><blockquote class="pull"><p>It wasn't the cold that killed me. It was your promise.</p><cite>The note found by the frozen sentry, from the game's story</cite></blockquote><div class="rv-body"><p>The whole scene is built in code. The rules live in a core that doesn't depend on Unity.</p><p>Tuned with a 2,000-night balance simulation; automated test bots run without opening a window.</p></div>
-      <ul class="rv-gallery"><li><img src="/assets/img/kralin-sozu-papers.webp" width="1200" height="675" alt="Checking a visitor's papers" loading="lazy" decoding="async"></li><li><img src="/assets/img/kralin-sozu-wolves.webp" width="1200" height="675" alt="Wolves approaching in the dark" loading="lazy" decoding="async"></li><li><img src="/assets/img/kralin-sozu-king_promise.webp" width="1200" height="675" alt="The moment the king makes his promise" loading="lazy" decoding="async"></li></ul>
-      
-          <aside class="spec" aria-label="Fact file: Kralın Sözü">
-            <p class="spec-h">Fact file</p>
-            <dl class="spec-list">
-              <div><dt>Type and role</dt><dd>Solo game</dd></div>
-              <div><dt>Date</dt><dd>Oct 2026</dd></div>
-              <div><dt>Tech</dt><dd>Unity 6, C#, Vulkan, Windows, Linux</dd></div>
-            </dl>
-            <p class="spec-h">By the numbers</p>
-            <dl class="spec-nums"><div><dt>Nights</dt><dd>3</dd></div><div><dt>Visitor types</dt><dd>17</dd></div><div><dt>Endings</dt><dd>10</dd></div><div><dt>Balance simulation</dt><dd>2,000 nights</dd></div><div><dt>Frame time (RTX 4060, 1080p)</dt><dd>1.6 ms</dd></div></dl>
-          </aside>
-          <p class="rv-links"><a class="btn btn--solid" href="https://salihyzts.itch.io/kralin-sozu" target="_blank" rel="noopener">Play on itch.io<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a><a class="btn" href="https://github.com/SalihYzts/kralin-sozu" target="_blank" rel="noopener">Source code<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a></p></div>
-    <footer class="page-foot" aria-hidden="true"><span class="page-run"><span translate="no">YAZITAŞ</span> · Games</span><span class="page-no">5</span></footer>
-  </section>
-  <section class="page page--duo sec--game page--left" id="oyun-1" data-page="6" role="group" aria-roledescription="page" aria-label="Under the Counter, LAST DAWN, 6 / 18">
-    <div class="page-inner">
-      <article class="duo" id="under-the-counter" aria-labelledby="under-the-counter-h">
-        <div class="rv-frame duo-frame"><div class="rv-art"><svg class="art" viewBox="0 0 320 200" role="img" aria-label="Drawing of a shop counter, CDs and a suspicion meter">
-      <g fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M20 150h280M20 150v34M300 150v34M40 120h240v30H40z"/>
-        <circle cx="96" cy="96" r="24"/><circle cx="96" cy="96" r="5"/>
-        <circle cx="150" cy="104" r="16"/><circle cx="150" cy="104" r="3"/>
-        <path d="M196 70h56v50h-56zM204 80h40M204 90h28"/>
-        <path d="M30 24h120v14H30z"/>
-      </g>
-      <path d="M32 26h78v10H32z" fill="currentColor"/>
-      <text x="160" y="35" fill="currentColor" font-family="IBM Plex Mono, monospace" font-size="11">SUSPICION</text>
-      <text x="196" y="138" fill="currentColor" font-family="IBM Plex Mono, monospace" font-size="11">₺ 2000s</text>
-    </svg></div></div>
-        <div class="duo-text">
-          <h3 class="rv-title" id="under-the-counter-h" translate="no" lang="en">Under the Counter</h3>
-          <p class="duo-meta">Team game, lead programmer, Since Jul 2026</p>
-          <p class="rv-deck">A dark-humour first-person shop sim: you run a small 2000s shop selling bootleg CDs. Target: a Steam Next Fest demo.</p>
-          <div class="rv-body rv-body--nocap"><p><b class="runin">I wrote the economy,</b> impatient customers, police raids driven by a suspicion meter, crash-safe saving and TR/EN localization. Most of the team's commits are mine.</p></div>
-          <ul class="duo-stats" aria-label="By the numbers"><li><b>88</b> Runtime scripts</li><li><b>28</b> Editor tools</li></ul>
-          <p class="duo-tech">Unity 6, URP, NavMesh, Input System, C#</p>
-          
-        </div>
-      </article>
-      <article class="duo" id="last-dawn" aria-labelledby="last-dawn-h">
-        <div class="rv-frame duo-frame"><img src="/assets/img/last-dawn.webp" width="960" height="600" alt="Home screen of the LAST DAWN promo site" style="object-position:0% 45%" loading="lazy" decoding="async"></div>
-        <div class="duo-text">
-          <h3 class="rv-title" id="last-dawn-h" translate="no" lang="en">LAST DAWN</h3>
-          <p class="duo-meta">Volpen team game, software &amp; marketing, In development</p>
-          <p class="rv-deck">A post-apocalyptic PC game that mixes survival and base building: scavenge by day, defend your base by night.</p>
-          <div class="rv-body rv-body--nocap"><p><b class="runin">I handle software and</b> marketing. I built the promo site, whose day/night switch changes the whole palette.</p></div>
-          
-          <p class="duo-tech">Unity, C#, HTML, CSS</p>
-          
-          <p class="rv-links"><a class="btn btn--solid" href="https://salihyzts.github.io/Last-Down-WEB/" target="_blank" rel="noopener">Open the site<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a></p>
-        </div>
-      </article></div>
-    <footer class="page-foot" aria-hidden="true"><span class="page-run"><span translate="no">YAZITAŞ</span> · Games</span><span class="page-no">6</span></footer>
-  </section>
-  <section class="page page--duo sec--game page--duo-briefs page--right" id="oyun-2" data-page="7" role="group" aria-roledescription="page" aria-label="Pati Rotası, In brief: jam and team games, 7 / 18">
-    <div class="page-inner">
-      <article class="duo" id="pati-rotasi" aria-labelledby="pati-rotasi-h">
-        <div class="rv-frame duo-frame"><img src="/assets/img/pati-rotasi.webp" width="960" height="748" alt="Pati Rotası promo screen with two phone screenshots" style="object-position:0% 50%" loading="lazy" decoding="async"></div>
-        <div class="duo-text">
-          <h3 class="rv-title" id="pati-rotasi-h" translate="no" lang="tr">Pati Rotası</h3>
-          <p class="duo-meta">Mobile game, 2026</p>
-          <p class="rv-deck">A mobile game that gets you walking. Photograph street cats to build a collection, clear the fog on the map as you walk, and turn your steps into food points for animal shelters.</p>
-          
-          
-          <p class="duo-tech">Expo, React Native, Leaflet</p>
-          
-          <p class="rv-links"><a class="btn btn--solid" href="https://github.com/SalihYzts/pati-rotasi" target="_blank" rel="noopener">Source code<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a></p>
-        </div>
-      </article>
-      <section class="duo-briefs" aria-labelledby="oyun-kisa-h">
-        <h3 class="briefs-title" id="oyun-kisa-h">In brief: jam and team games</h3>
-        <ul class="brief-list brief-list--rows">
-        <li class="brief" id="lets-cook-a-mask">
-          <div class="brief-frame"><img class="is-contain" src="/assets/img/lets-cook-a-mask.webp" width="960" height="600" alt="Let's Cook a Mask logo: two theatre masks in a frying pan" loading="lazy" decoding="async"></div>
-          <div class="brief-text">
-            <h4 class="brief-title" translate="no" lang="en">Let's Cook a Mask</h4>
-            
-            <p class="brief-meta">Global Game Jam 2026, team game, 2026</p>
-            <p class="brief-pitch">In a world of hidden faces you craft identities: listen to each customer's whispers and cook the mask that gives them the power they want.</p>
-            <p class="brief-links"><a href="https://ew0ue.itch.io/lets-cook-a-mask" target="_blank" rel="noopener">Play on itch.io<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a><a href="https://github.com/SalihYzts/GGJ-2026-BUG-Ne-Yapsak-Yahu" target="_blank" rel="noopener">Source code<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a></p>
-          </div>
+        <span class="sticker"><span class="sticker-top">Inside</span><span class="sticker-main">Get the CV</span></span>
+        <div class="barcode" aria-hidden="true"><svg class="barcode-bars" viewBox="0 0 111 40" preserveAspectRatio="none" aria-hidden="true"><rect x="0" y="0" width="2" height="40"/><rect x="4" y="0" width="2" height="40"/><rect x="7" y="0" width="3" height="40"/><rect x="11" y="0" width="3" height="40"/><rect x="15" y="0" width="1" height="40"/><rect x="17" y="0" width="2" height="40"/><rect x="20" y="0" width="1" height="40"/><rect x="22" y="0" width="3" height="40"/><rect x="26" y="0" width="2" height="40"/><rect x="29" y="0" width="2" height="40"/><rect x="32" y="0" width="2" height="40"/><rect x="35" y="0" width="1" height="40"/><rect x="37" y="0" width="1" height="40"/><rect x="39" y="0" width="3" height="40"/><rect x="43" y="0" width="2" height="40"/><rect x="46" y="0" width="2" height="40"/><rect x="49" y="0" width="1" height="40"/><rect x="51" y="0" width="2" height="40"/><rect x="54" y="0" width="3" height="40"/><rect x="58" y="0" width="1" height="40"/><rect x="60" y="0" width="2" height="40"/><rect x="63" y="0" width="2" height="40"/><rect x="66" y="0" width="2" height="40"/><rect x="69" y="0" width="1" height="40"/><rect x="71" y="0" width="2" height="40"/><rect x="74" y="0" width="1" height="40"/><rect x="76" y="0" width="3" height="40"/><rect x="80" y="0" width="1" height="40"/><rect x="82" y="0" width="2" height="40"/><rect x="85" y="0" width="1" height="40"/><rect x="87" y="0" width="3" height="40"/><rect x="91" y="0" width="1" height="40"/><rect x="93" y="0" width="2" height="40"/><rect x="96" y="0" width="3" height="40"/><rect x="100" y="0" width="1" height="40"/><rect x="102" y="0" width="3" height="40"/><rect x="106" y="0" width="1" height="40"/><rect x="108" y="0" width="2" height="40"/></svg><span>Issue 1</span></div>
+      </div></div></div>
+          </a>
         </li>
-        <li class="brief" id="the-rolling-pizz">
-          <div class="brief-frame"><img src="/assets/img/the-rolling-pizz.webp" width="960" height="600" alt="The Rolling Pizz: a pizza rolling between colourful buildings" loading="lazy" decoding="async"></div>
-          <div class="brief-text">
-            <h4 class="brief-title" translate="no" lang="en">The Rolling Pizz</h4>
-            
-            <p class="brief-meta">Yıldız Jam 2026, Unity developer, 2026</p>
-            <p class="brief-pitch">Help a pizza that got cut in half in its sleep escape the table; some obstacles need the whole pizza, others two halves.</p>
-            <p class="brief-links"><a href="https://tce81.itch.io/the-rolling-pizz" target="_blank" rel="noopener">Play on itch.io<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a></p>
-          </div>
+        <li class="slot" data-i="1" style="--x:0px;--y:-28px;--r:2.5deg">
+          <div class="thing shade"></div>
+          <a class="thing mag" href="/en/games/" data-issue="oyun">
+            <span class="edge edge--r" aria-hidden="true"></span><span class="edge edge--b" aria-hidden="true"></span>
+            <span class="sr">Issue 2, Games: Kralın Sözü, team games, jams and the club.</span>
+            <div class="page page--cover cover--oyun" aria-hidden="true"><div class="page-inner">
+      <img class="cover-art" src="/assets/img/kralin-sozu-gate_view.webp" width="1200" height="675" alt="" fetchpriority="high">
+      <div class="cover-inner">
+        <p class="cover-issue"><span>Issue 2</span><span>November 2026</span><span class="cover-issue-name">Games</span></p>
+        <p class="masthead"><span class="masthead-word" lang="tr" translate="no" aria-hidden="true">YAZITAŞ</span><span class="cover-name"><span lang="tr">Salih Yazıtaş</span>, game & software developer<span class="sr"> · Issue 2: Games</span></span></p>
+        <span class="cover-story"><span class="cover-kicker">Cover story</span><span class="cover-title">A night watch with no HUD</span><span class="cover-deck">Kralın Sözü: a first-person guard game with no on-screen interface, balanced with a 2,000-night simulation.</span></span>
+        <ul class="cover-lines">
+          <li><span class="cover-line"><span class="cl-big">2000</span><span class="cl-text">nights of balance simulation</span></span></li>
+          <li><span class="cover-line"><span class="cl-big">10</span><span class="cl-text">endings, 3 nights, 17 visitors</span></span></li>
+          <li><span class="cover-line"><span class="cl-big">1.6 ms</span><span class="cl-text">per frame on an RTX 4060</span></span></li>
+        </ul>
+        <span class="sticker"><span class="sticker-top">Free</span><span class="sticker-main">Play on itch.io</span></span>
+        <div class="barcode" aria-hidden="true"><svg class="barcode-bars" viewBox="0 0 109 40" preserveAspectRatio="none" aria-hidden="true"><rect x="0" y="0" width="1" height="40"/><rect x="3" y="0" width="2" height="40"/><rect x="6" y="0" width="1" height="40"/><rect x="8" y="0" width="1" height="40"/><rect x="10" y="0" width="3" height="40"/><rect x="14" y="0" width="3" height="40"/><rect x="18" y="0" width="1" height="40"/><rect x="20" y="0" width="1" height="40"/><rect x="22" y="0" width="1" height="40"/><rect x="24" y="0" width="3" height="40"/><rect x="28" y="0" width="3" height="40"/><rect x="32" y="0" width="2" height="40"/><rect x="35" y="0" width="2" height="40"/><rect x="38" y="0" width="1" height="40"/><rect x="40" y="0" width="3" height="40"/><rect x="44" y="0" width="2" height="40"/><rect x="47" y="0" width="1" height="40"/><rect x="49" y="0" width="2" height="40"/><rect x="52" y="0" width="2" height="40"/><rect x="55" y="0" width="2" height="40"/><rect x="58" y="0" width="2" height="40"/><rect x="61" y="0" width="2" height="40"/><rect x="64" y="0" width="3" height="40"/><rect x="68" y="0" width="1" height="40"/><rect x="70" y="0" width="3" height="40"/><rect x="74" y="0" width="1" height="40"/><rect x="76" y="0" width="2" height="40"/><rect x="79" y="0" width="3" height="40"/><rect x="83" y="0" width="1" height="40"/><rect x="85" y="0" width="1" height="40"/><rect x="87" y="0" width="3" height="40"/><rect x="91" y="0" width="1" height="40"/><rect x="93" y="0" width="2" height="40"/><rect x="96" y="0" width="1" height="40"/><rect x="98" y="0" width="3" height="40"/><rect x="102" y="0" width="1" height="40"/><rect x="104" y="0" width="1" height="40"/><rect x="106" y="0" width="2" height="40"/></svg><span>Issue 2</span></div>
+      </div></div></div>
+          </a>
         </li>
-        <li class="brief" id="agaclastirilmis-elma">
-          <div class="brief-frame"><img src="/assets/img/agaclastirilmis-elma.webp" width="960" height="600" alt="Ağaçlaştırılmış Elma: illustration of a fox and an old woman waiting for an apple pie" loading="lazy" decoding="async"></div>
-          <div class="brief-text">
-            <h4 class="brief-title brief-title--long" translate="no" lang="tr">Ağaçlaştırılmış Elma</h4>
-            
-            <p class="brief-meta">Volpen, 2 months. Code, project lead and story</p>
-            <p class="brief-pitch">An apple's journey from seed to tree: help Kiki the fox grow it.</p>
-            <p class="brief-links"><a href="https://volpentr.itch.io/agaclastirilmiselma" target="_blank" rel="noopener">Play on itch.io<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a><a href="https://github.com/SalihYzts/ElnalistirilmisAgac" target="_blank" rel="noopener">Source code<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a></p>
-          </div>
+        <li class="slot" data-i="2" style="--x:330px;--y:28px;--r:8deg">
+          <div class="thing shade"></div>
+          <a class="thing mag" href="/en/software/" data-issue="yazilim">
+            <span class="edge edge--r" aria-hidden="true"></span><span class="edge edge--b" aria-hidden="true"></span>
+            <span class="sr">Issue 3, Software: MyEverythingList, the Parsel internship, open-source tools and cafe work.</span>
+            <div class="page page--cover cover--yazilim" aria-hidden="true"><div class="page-inner">
+      <span class="cover-screen"><img src="/assets/img/myeverythinglist.webp" width="2000" height="1125" alt="" fetchpriority="high"></span>
+      <div class="cover-inner">
+        <p class="cover-issue"><span>Issue 3</span><span>November 2026</span><span class="cover-issue-name">Software</span></p>
+        <p class="masthead"><span class="masthead-word" lang="tr" translate="no" aria-hidden="true">YAZITAŞ</span><span class="cover-name"><span lang="tr">Salih Yazıtaş</span>, game & software developer<span class="sr"> · Issue 3: Software</span></span></p>
+        <span class="cover-story"><span class="cover-kicker">Cover story</span><span class="cover-title" translate="no" lang="en">MyEverythingList</span><span class="cover-deck">An ad-free media tracker, built by one person and live in 19 languages.</span></span>
+        <ul class="cover-lines">
+          <li><span class="cover-line"><span class="cl-big">58k</span><span class="cl-text">lines of TypeScript</span></span></li>
+          <li><span class="cover-line"><span class="cl-big">614</span><span class="cl-text">tests behind an AI engine: RaiPy</span></span></li>
+        </ul>
+        <span class="sticker"><span class="sticker-top">Open source</span><span class="sticker-main">NeRoBoT inside</span></span>
+        <div class="barcode" aria-hidden="true"><svg class="barcode-bars" viewBox="0 0 111 40" preserveAspectRatio="none" aria-hidden="true"><rect x="0" y="0" width="2" height="40"/><rect x="3" y="0" width="3" height="40"/><rect x="7" y="0" width="1" height="40"/><rect x="9" y="0" width="3" height="40"/><rect x="14" y="0" width="2" height="40"/><rect x="17" y="0" width="3" height="40"/><rect x="21" y="0" width="2" height="40"/><rect x="24" y="0" width="2" height="40"/><rect x="27" y="0" width="1" height="40"/><rect x="29" y="0" width="2" height="40"/><rect x="32" y="0" width="1" height="40"/><rect x="34" y="0" width="2" height="40"/><rect x="37" y="0" width="2" height="40"/><rect x="40" y="0" width="2" height="40"/><rect x="43" y="0" width="1" height="40"/><rect x="45" y="0" width="2" height="40"/><rect x="48" y="0" width="1" height="40"/><rect x="50" y="0" width="1" height="40"/><rect x="52" y="0" width="1" height="40"/><rect x="54" y="0" width="1" height="40"/><rect x="56" y="0" width="1" height="40"/><rect x="58" y="0" width="3" height="40"/><rect x="62" y="0" width="3" height="40"/><rect x="66" y="0" width="2" height="40"/><rect x="69" y="0" width="3" height="40"/><rect x="73" y="0" width="3" height="40"/><rect x="77" y="0" width="2" height="40"/><rect x="80" y="0" width="3" height="40"/><rect x="84" y="0" width="1" height="40"/><rect x="86" y="0" width="1" height="40"/><rect x="88" y="0" width="3" height="40"/><rect x="92" y="0" width="1" height="40"/><rect x="94" y="0" width="2" height="40"/><rect x="97" y="0" width="2" height="40"/><rect x="100" y="0" width="2" height="40"/><rect x="103" y="0" width="2" height="40"/><rect x="106" y="0" width="2" height="40"/><rect x="109" y="0" width="1" height="40"/></svg><span>Issue 3</span></div>
+      </div></div></div>
+          </a>
         </li>
-        <li class="brief" id="colorland">
-          <div class="brief-frame"><img src="/assets/img/colorland.webp" width="960" height="600" alt="ColorLand: a grey stone room with a red door" loading="lazy" decoding="async"></div>
-          <div class="brief-text">
-            <h4 class="brief-title brief-title--keep" translate="no" lang="en">ColorLand</h4>
-            
-            <p class="brief-meta">Volpen, 1 week. My first 3D project</p>
-            <p class="brief-pitch">The world's colours have been stolen. Explore the station, solve the puzzles and bring the light back.</p>
-            <p class="brief-links"><a href="https://volpentr.itch.io/colorland" target="_blank" rel="noopener">Play on itch.io<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a></p>
-          </div>
-        </li>
-        <li class="brief" id="uckkenici">
-          <div class="brief-frame"><img src="/assets/img/uckkenici.webp" width="960" height="600" alt="ÜçKKeNİci: a triangle with two angles and four answer options" loading="lazy" decoding="async"></div>
-          <div class="brief-text">
-            <h4 class="brief-title brief-title--keep" translate="no" lang="tr">ÜçKKeNİci</h4>
-            
-            <p class="brief-meta">Volpen, 2 days</p>
-            <p class="brief-pitch">An endless game that turns maths into play: find the triangle's missing angle and pick it before time runs out.</p>
-            <p class="brief-links"><a href="https://volpentr.itch.io/uckkenci" target="_blank" rel="noopener">Play on itch.io<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a><a href="https://github.com/SalihYzts/UcgenIci" target="_blank" rel="noopener">Source code<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a></p>
-          </div>
-        </li>
-        <li class="brief" id="ecobuddy">
-          <div class="brief-frame"><img src="/assets/img/ecobuddy.webp" width="960" height="600" alt="EcoBuddy: colourful recycling bins at a picnic spot" loading="lazy" decoding="async"></div>
-          <div class="brief-text">
-            <h4 class="brief-title brief-title--keep" translate="no" lang="en">EcoBuddy</h4>
-            
-            <p class="brief-meta">Team game</p>
-            <p class="brief-pitch">A 3D educational game about picking up litter and sorting it into the right recycling bin.</p>
-            <p class="brief-links"><a href="https://ew0ue.itch.io/ecobuddy" target="_blank" rel="noopener">Play on itch.io<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a></p>
-          </div>
-        </li></ul>
-      </section></div>
-    <footer class="page-foot" aria-hidden="true"><span class="page-run"><span translate="no">YAZITAŞ</span> · Games</span><span class="page-no">7</span></footer>
-  </section>
-  <section class="page page--lead-a sec--code page--left" id="myeverythinglist" data-page="8" role="group" aria-roledescription="page" aria-label="MyEverythingList, 8 / 18">
-    <div class="page-inner"><header class="sec-band" id="yazilim"><h2 class="sec-band-title">Software</h2><p class="sec-band-deck">Web, backend, desktop and AI: software I shipped.</p></header><h3 class="rv-title rv-title--long rv-title--keep" translate="no" lang="en">MyEverythingList</h3><p class="rv-deck">An ad-free web app for tracking anime, manga, TV, films, games, books and music in one place. I built it on my own and shipped it in 19 languages.</p><figure class="rv-frame lead-frame"><img src="/assets/img/myeverythinglist.webp" width="2000" height="1125" alt="MyEverythingList home page" loading="lazy" decoding="async"></figure><p class="fig">Fig. 2. MyEverythingList home page</p></div>
-    <footer class="page-foot" aria-hidden="true"><span class="page-run"><span translate="no">YAZITAŞ</span> · Software</span><span class="page-no">8</span></footer>
-  </section>
-  <section class="page page--lead-b sec--code page--right" id="myeverythinglist-2" data-page="9" role="group" aria-roledescription="page" aria-label="MyEverythingList (2), 9 / 18">
-    <div class="page-inner"><blockquote class="pull"><p>I built it on my own and shipped it in 19 languages.</p></blockquote><div class="rv-body"><p>Supabase with row-level security and Edge Functions; a Cloudflare Worker renders preview cards for shared links.</p><p>Search queries several sources and falls back when one goes down. IDs are matched across sources with Wikidata; the catalog grows by itself every night.</p><p>Imports from AniList, Steam, MyAnimeList, Goodreads and Letterboxd; follows, messages, reviews, badges and mini-games.</p></div>
-          <aside class="spec" aria-label="Fact file: MyEverythingList">
-            <p class="spec-h">Fact file</p>
-            <dl class="spec-list">
-              <div><dt>Type and role</dt><dd>Web app, solo developer</dd></div>
-              <div><dt>Date</dt><dd>Aug – Oct 2026</dd></div>
-              <div><dt>Tech</dt><dd>React 19, TypeScript, Vite, Tailwind, TanStack Query, Supabase, Cloudflare Workers, Tauri v2</dd></div>
-            </dl>
-            <p class="spec-h">By the numbers</p>
-            <dl class="spec-nums"><div><dt>Languages</dt><dd>19</dd></div><div><dt>Lines of TypeScript</dt><dd>~58k</dd></div><div><dt>Commit</dt><dd>261</dd></div><div><dt>SQL migration</dt><dd>148</dd></div><div><dt>Edge Function</dt><dd>20</dd></div></dl>
-          </aside>
-          <p class="rv-links"><a class="btn btn--solid" href="https://liste-programi.yazitassalih0.workers.dev/" target="_blank" rel="noopener">Open the site<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a></p></div>
-    <footer class="page-foot" aria-hidden="true"><span class="page-run"><span translate="no">YAZITAŞ</span> · Software</span><span class="page-no">9</span></footer>
-  </section>
-  <section class="page page--duo sec--code page--left" id="yazilim-1" data-page="10" role="group" aria-roledescription="page" aria-label="NeRoBoT, RaiPy, 10 / 18">
-    <div class="page-inner">
-      <article class="duo" id="nerobot" aria-labelledby="nerobot-h">
-        <div class="rv-frame duo-frame"><img src="/assets/img/nerobot.webp" width="960" height="748" alt="NeRoBoT chat screen" loading="lazy" decoding="async"></div>
-        <div class="duo-text">
-          <h3 class="rv-title rv-title--keep" id="nerobot-h" translate="no" lang="en">NeRoBoT</h3>
-          <p class="duo-meta">Open-source desktop app, 2026</p>
-          <p class="rv-deck">A desktop app that runs AI bots on several WhatsApp and Telegram accounts at once, each fully isolated.</p>
-          <div class="rv-body rv-body--nocap"><p><b class="runin">I wrote a provider-agnostic</b> AI layer: Ollama, LM Studio, llama.cpp, vLLM, OpenAI, OpenRouter, Groq and agents like Claude Code, Codex and Gemini CLI all work through one interface. Updates itself through GitHub Releases.</p></div>
-          <ul class="duo-stats" aria-label="By the numbers"><li><b>7</b> GitHub stars</li><li><b>Windows, Linux</b> Platform</li></ul>
-          <p class="duo-tech">Electron, Node.js, whatsapp-web.js, Telegram</p>
-          
-          <p class="rv-links"><a class="btn btn--solid" href="https://github.com/SalihYzts/NeRoBoT" target="_blank" rel="noopener">Source code<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a></p>
-        </div>
-      </article>
-      <article class="duo" id="raipy" aria-labelledby="raipy-h">
-        <div class="rv-frame duo-frame"><img src="/assets/img/raipy.webp" width="960" height="748" alt="RaiPy scene editor" loading="lazy" decoding="async"></div>
-        <div class="duo-text">
-          <h3 class="rv-title rv-title--keep" id="raipy-h" translate="no" lang="en">RaiPy</h3>
-          <p class="duo-meta">AI visual novel engine, Sep 2026</p>
-          <p class="rv-deck">A desktop app that turns a one-sentence idea into a Ren'Py game that compiles and runs. The user approves every stage.</p>
-          <div class="rv-body rv-body--nocap"><p><b class="runin">Images are generated with</b> no external server. Loading and unloading models one at a time cut VRAM use on an 8 GB GPU from 7820 MiB to 3035 MiB.</p></div>
-          <ul class="duo-stats" aria-label="By the numbers"><li><b>614</b> Test</li><li><b>150 s</b> End-to-end run</li><li><b>7820 → 3035 MiB</b> VRAM</li><li><b>4.2 MB</b> App size</li></ul>
-          <p class="duo-tech">Tauri v2, Rust, React 19, TypeScript, Python, diffusers, Ren'Py</p>
-          
-        </div>
-      </article></div>
-    <footer class="page-foot" aria-hidden="true"><span class="page-run"><span translate="no">YAZITAŞ</span> · Software</span><span class="page-no">10</span></footer>
-  </section>
-  <section class="page page--duo sec--code page--right" id="yazilim-2" data-page="11" role="group" aria-roledescription="page" aria-label="Parsel, Heren Agent, 11 / 18">
-    <div class="page-inner">
-      <article class="duo" id="parsel" aria-labelledby="parsel-h">
-        <div class="rv-frame duo-frame"><div class="rv-art"><svg class="art" viewBox="0 0 320 200" role="img" aria-label="Drawing of a land parcel on a grid with a countdown">
-      <g stroke="currentColor" stroke-width="1" opacity=".35">
-        <path d="M20 10v180"/><path d="M55 10v180"/><path d="M90 10v180"/><path d="M125 10v180"/><path d="M160 10v180"/><path d="M195 10v180"/><path d="M230 10v180"/><path d="M265 10v180"/><path d="M300 10v180"/>
-        <path d="M10 20h300"/><path d="M10 52h300"/><path d="M10 84h300"/><path d="M10 116h300"/><path d="M10 148h300"/><path d="M10 180h300"/>
-      </g>
-      <path d="M58 52l96-18 64 40-20 82-112 10z" fill="none" stroke="currentColor" stroke-width="3"/>
-      <g fill="currentColor"><path d="M55 49h6v6h-6zM151 31h6v6h-6zM215 71h6v6h-6zM195 153h6v6h-6zM83 163h6v6h-6z"/></g>
-      <path d="M110 96l12 12 22-24" fill="none" stroke="currentColor" stroke-width="4"/>
-      <g fill="none" stroke="currentColor" stroke-width="2"><path d="M238 120h66v34h-66z"/></g>
-      <text x="248" y="143" fill="currentColor" font-family="IBM Plex Mono, monospace" font-size="15">00:10</text>
-    </svg></div></div>
-        <div class="duo-text">
-          <h3 class="rv-title" id="parsel-h" translate="no" lang="tr">Parsel</h3>
-          <p class="duo-meta">Internship project, Stoneograph, Aug 2026</p>
-          <p class="rv-deck">A land marketplace with title-deed verification and live auctions.</p>
-          <div class="rv-body rv-body--nocap"><p><b class="runin">A “title-verified” badge that</b> looks parcels up in Turkey's land registry (TKGM), plus slope-corrected area and elevation analysis.</p><p>Anti-sniping (a last-second bid extends the timer), race-safe bid handling and real-time updates over WebSocket.</p><p>A pipeline that renders narrated, subtitled virtual drone videos over a 3D map (Playwright, ffmpeg).</p></div>
-          <ul class="duo-stats" aria-label="By the numbers"><li><b>~10k lines</b> Backend code</li><li><b>103</b> Test</li></ul>
-          <p class="duo-tech">Python, FastAPI, SQLAlchemy, WebSocket, Shapely, pyproj, JavaScript</p>
-          
-        </div>
-      </article>
-      <article class="duo" id="heren-agent" aria-labelledby="heren-agent-h">
-        <div class="rv-frame duo-frame"><img src="/assets/img/heren-agent.webp" width="960" height="748" alt="Heren Agent main screen" loading="lazy" decoding="async"></div>
-        <div class="duo-text">
-          <h3 class="rv-title" id="heren-agent-h" translate="no" lang="en">Heren Agent</h3>
-          <p class="duo-meta">Home-server assistant, Sep 2026</p>
-          <p class="rv-deck">A phone-first panel for running a home server and paired machines by voice or touch. Speech recognition and text-to-speech run fully on the local machine.</p>
-          <div class="rv-body rv-body--nocap"><p><b class="runin">Each machine runs a</b> Go agent. Agents sign messages with ed25519 and use a one-time nonce against replay attacks. High-risk commands wait for approval in the UI.</p></div>
-          <ul class="duo-stats" aria-label="By the numbers"><li><b>ed25519</b> Signing</li><li><b>local STT + TTS</b> Voice</li></ul>
-          <p class="duo-tech">Python, FastAPI, Go, TypeScript, faster-whisper, Piper TTS</p>
-          
-          <p class="rv-links"><a class="btn btn--solid" href="https://github.com/SalihYzts/heren-agent" target="_blank" rel="noopener">Source code<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a></p>
-        </div>
-      </article></div>
-    <footer class="page-foot" aria-hidden="true"><span class="page-run"><span translate="no">YAZITAŞ</span> · Software</span><span class="page-no">11</span></footer>
-  </section>
-  <section class="page page--duo sec--code page--left" id="yazilim-3" data-page="12" role="group" aria-roledescription="page" aria-label="Kafe Finans, Truva–Akınsoft arabirimi, 12 / 18">
-    <div class="page-inner">
-      <article class="duo" id="kafe-finans" aria-labelledby="kafe-finans-h">
-        <div class="rv-frame duo-frame"><img src="/assets/img/kafe-finans.webp" width="960" height="600" alt="Kafe Finans statistics screen with demo data" loading="lazy" decoding="async"></div>
-        <div class="duo-text">
-          <h3 class="rv-title" id="kafe-finans-h" translate="no" lang="en">Kafe Finans</h3>
-          <p class="duo-meta">Petra Cafe work, desktop app, 2026</p>
-          <p class="rv-deck">An income, expense and revenue app for the cafe. It checks hand-entered revenue against the POS end-of-day totals day by day and reads POS deposits and fees from bank statements.</p>
-          <div class="rv-body rv-body--nocap"><p><b class="runin">Runs on the register</b> PC; phones connect over VPN with a PIN.</p><p>Every name and amount in the screenshot is made-up demo data.</p></div>
-          <ul class="duo-stats" aria-label="By the numbers"><li><b>240</b> Test</li></ul>
-          <p class="duo-tech">Electron, React, TypeScript, SQLite, Vitest</p>
-          
-        </div>
-      </article>
-      <article class="duo" id="truva-arabirimi" aria-labelledby="truva-arabirimi-h">
-        <div class="rv-frame duo-frame"><div class="rv-art"><svg class="art" viewBox="0 0 320 200" role="img" aria-label="Drawing of orders flowing from a QR menu to the register">
-      <g fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M18 60h56v56H18zM90 76h36M118 70l8 6-8 6M140 52h64v80h-64zM218 76h36M246 70l8 6-8 6M262 56h44v44h-44zM270 100v16h28v-16"/>
-        <path d="M150 66h44M150 80h44M150 94h30"/>
-        <path d="M172 132v28M150 160h44M18 160h56"/>
-      </g>
-      <g fill="currentColor"><path d="M26 68h12v12H26zM54 68h12v12H54zM26 96h12v12H26zM44 86h6v6h-6zM56 96h4v4h-4zM62 104h4v4h-4z"/><path d="M276 66h16v4h-16zM276 76h10v4h-10z"/></g>
-      <text x="140" y="176" fill="currentColor" font-family="IBM Plex Mono, monospace" font-size="11">go · windows</text>
-      <text x="18" y="176" fill="currentColor" font-family="IBM Plex Mono, monospace" font-size="11">QR</text>
-      <text x="258" y="132" fill="currentColor" font-family="IBM Plex Mono, monospace" font-size="11">POS</text>
-    </svg></div></div>
-        <div class="duo-text">
-          <h3 class="rv-title rv-title--long" id="truva-arabirimi-h" translate="no" lang="tr">Truva–Akınsoft arabirimi</h3>
-          <p class="duo-meta">Petra Cafe work, with Truva Teknoloji, 2026</p>
-          <p class="rv-deck">A service that writes orders, cancellations and table moves from Truva's QR menu and waiter app into Akınsoft Wolvox Restaurant at the register within seconds.</p>
-          <div class="rv-body rv-body--nocap"><p><b class="runin">A job log stops</b> any order from being written twice; kitchen and bar tickets print automatically.</p><p>Recovers by itself after a register or internet outage; connects out over HTTPS only.</p></div>
-          <ul class="duo-stats" aria-label="By the numbers"><li><b>~3,600 lines</b> Go code</li><li><b>one Windows service</b> Runs as</li></ul>
-          <p class="duo-tech">Go, Windows Service, HTTPS, Akınsoft Wolvox</p>
-          
-        </div>
-      </article></div>
-    <footer class="page-foot" aria-hidden="true"><span class="page-run"><span translate="no">YAZITAŞ</span> · Software</span><span class="page-no">12</span></footer>
-  </section>
-  <section class="page page--briefs sec--code page--right" id="yazilim-kisa" data-page="13" role="group" aria-roledescription="page" aria-label="In brief: tools and sites, 13 / 18">
-    <div class="page-inner">
-      <h3 class="briefs-title">In brief: tools and sites</h3>
-      <ul class="brief-list">
-        <li class="brief" id="oyun-vitrini">
-          <div class="brief-frame"><img src="/assets/img/oyun-vitrini.webp" width="960" height="748" alt="Oyun Vitrini home page" loading="lazy" decoding="async"></div>
-          <div class="brief-text">
-            <h4 class="brief-title" translate="no" lang="en">Oyun Vitrini</h4>
-            
-            <p class="brief-meta">Game Design Club site, 2026</p>
-            <p class="brief-pitch">Showcases the club's 21 games: member accounts, events and leaderboard, an admin panel and a two-screen booth mode.</p>
-            
-          </div>
-        </li>
-        <li class="brief" id="gorevler">
-          <div class="brief-frame"><img src="/assets/img/gorevler.webp" width="960" height="600" alt="Görevler Today screen with demo data" loading="lazy" decoding="async"></div>
-          <div class="brief-text">
-            <h4 class="brief-title" translate="no" lang="tr">Görevler</h4>
-            
-            <p class="brief-meta">Personal productivity app, 2026</p>
-            <p class="brief-pitch">Tasks, projects and time in one place: auto-scheduling, focus tracking, habits and Google Calendar sync.</p>
-            
-          </div>
-        </li>
-        <li class="brief" id="volpen-site">
-          <div class="brief-frame"><img src="/assets/img/volpen.webp" width="960" height="748" alt="Volpen website home page" loading="lazy" decoding="async"></div>
-          <div class="brief-text">
-            <h4 class="brief-title" translate="no" lang="en">Volpen</h4>
-            
-            <p class="brief-meta">Studio website, 2026</p>
-            <p class="brief-pitch">Written without a framework: a PWA in TR/EN with WCAG AA contrast and JSON-LD for SEO.</p>
-            <p class="brief-links"><a href="https://salihyzts.github.io/VolpenWeb/" target="_blank" rel="noopener">Open the site<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a></p>
-          </div>
-        </li>
-        <li class="brief" id="gdd-creator">
-          <div class="brief-frame"><img src="/assets/img/gdd-creator.webp" width="960" height="600" alt="GDD Creator editing the Kralın Sözü document" loading="lazy" decoding="async"></div>
-          <div class="brief-text">
-            <h4 class="brief-title" translate="no" lang="en">GDD Creator</h4>
-            
-            <p class="brief-meta">Game design tool, 2026</p>
-            <p class="brief-pitch">Asks questions based on the game's genre and exports the game design document to 7 formats.</p>
-            <p class="brief-links"><a href="https://github.com/SalihYzts/gdd-creator" target="_blank" rel="noopener">Source code<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a></p>
-          </div>
-        </li>
-        <li class="brief" id="turkos">
-          <div class="brief-frame"><img src="/assets/img/turkos.webp" width="960" height="600" alt="TurkOS boot screens" loading="lazy" decoding="async"></div>
-          <div class="brief-text">
-            <h4 class="brief-title brief-title--keep" translate="no" lang="en">TurkOS</h4>
-            
-            <p class="brief-meta">Open-source theme, 2026</p>
-            <p class="brief-pitch">Turkish interface theme for R36S handhelds, a 711-string translation and Turkish-flag boot screens.</p>
-            <p class="brief-links"><a href="https://github.com/SalihYzts/TurkOS" target="_blank" rel="noopener">Source code<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a></p>
-          </div>
-        </li>
-        <li class="brief" id="ytchatinstaller">
-          <div class="brief-frame"><div class="rv-art"><svg class="art" viewBox="0 0 320 200" role="img" aria-label="Drawing of chat bubbles being exported to a spreadsheet">
-      <g fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M20 40h100v30H44l-10 10V70H20zM30 96h90v30H54l-10 10v-10H30zM20 150h80v26H20z"/>
-        <path d="M140 108h34M166 100l8 8-8 8"/>
-        <path d="M190 40h112v128H190zM190 64h112M190 88h112M190 112h112M190 136h112M222 40v128"/>
-      </g>
-      <g fill="currentColor"><path d="M30 50h60v4H30zM30 58h40v4H30zM40 106h60v4H40zM30 158h50v4H30zM198 48h16v8h-16zM198 72h16v8h-16zM198 96h16v8h-16zM198 120h16v8h-16zM198 144h16v8h-16zM230 72h50v4h-50zM230 96h40v4h-40zM230 120h56v4h-56zM230 144h30v4h-30z"/></g>
-      <text x="232" y="56" fill="currentColor" font-family="IBM Plex Mono, monospace" font-size="10">.xlsx</text>
-    </svg></div></div>
-          <div class="brief-text">
-            <h4 class="brief-title brief-title--long brief-title--keep" translate="no" lang="en">YtChatInstaller</h4>
-            
-            <p class="brief-meta">Open-source tool, 2026</p>
-            <p class="brief-pitch">A Python tool that downloads a YouTube stream's chat replay and exports it to a tidy Excel file with timestamps, profile pictures and usernames.</p>
-            <p class="brief-links"><a href="https://github.com/SalihYzts/YtChAtInsTaLLer" target="_blank" rel="noopener">Source code<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a></p>
-          </div>
-        </li>
-      </ul></div>
-    <footer class="page-foot" aria-hidden="true"><span class="page-run"><span translate="no">YAZITAŞ</span> · Software</span><span class="page-no">13</span></footer>
-  </section>
-  <section class="page page--journey sec--ink page--left" id="yolculuk" data-page="14" role="group" aria-roledescription="page" aria-label="Feature: The journey, 14 / 18">
-    <div class="page-inner">
-      <h2 class="feature-title">Feature: The journey</h2><p class="feature-deck">Work, school and community roles. Newest first.</p>
-      <ol class="timeline">
-        <li class="entry entry--active">
-          <p class="entry-date">2026<span class="entry-status"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M1 0h2v1h-2zM1 1h9v1h-9zM1 2h10v1h-10zM1 3h9v1h-9zM1 4h8v1h-8zM1 5h9v1h-9zM1 6h10v1h-10zM1 7h2v1h-2zM1 8h2v1h-2zM1 9h2v1h-2zM1 10h2v1h-2zM0 11h4v1h-4z"/></svg>Ongoing</span></p>
-          <div class="entry-body">
-            <h3 class="entry-title">Software &amp; automation consultant (freelance)</h3>
-            <p class="entry-org">Petra Cafe, Çanakkale</p>
-            <p class="entry-goals">An integration built with Truva Teknoloji: orders from the QR menu and waiter app reach Akınsoft Wolvox at the register within seconds (Go, ~3,600 lines, one Windows service)<span class="entry-sep" aria-hidden="true"> · </span>A job log that stops any order from being written twice; recovers by itself after outages</p>
-          </div>
-        </li>
-        <li class="entry entry--done">
-          <p class="entry-date">Aug 2026<span class="entry-status"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M11 1h1v1h-1zM10 2h2v1h-2zM9 3h2v1h-2zM8 4h2v1h-2zM0 5h1v1h-1zM7 5h2v1h-2zM0 6h2v1h-2zM6 6h2v1h-2zM1 7h2v1h-2zM5 7h2v1h-2zM2 8h4v1h-4zM3 9h2v1h-2z"/></svg>Done</span></p>
-          <div class="entry-body">
-            <h3 class="entry-title">Software development intern</h3>
-            <p class="entry-org">Stoneograph</p>
-            <p class="entry-goals">Wrote Parsel's backend: about 10k lines, 103 tests</p>
-          </div>
-        </li>
-        <li class="entry entry--active">
-          <p class="entry-date">Since 2025<span class="entry-status"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M1 0h2v1h-2zM1 1h9v1h-9zM1 2h10v1h-10zM1 3h9v1h-9zM1 4h8v1h-8zM1 5h9v1h-9zM1 6h10v1h-10zM1 7h2v1h-2zM1 8h2v1h-2zM1 9h2v1h-2zM1 10h2v1h-2zM0 11h4v1h-4z"/></svg>Ongoing</span></p>
-          <div class="entry-body">
-            <h3 class="entry-title">Founder &amp; software developer</h3>
-            <p class="entry-org">Volpen</p>
-            <p class="entry-goals">Founded the studio: Velox (PC games), Lagopus (software), Zerda (mobile games)<span class="entry-sep" aria-hidden="true"> · </span>Wrote the code for the team's games</p>
-          </div>
-        </li>
-        <li class="entry entry--done">
-          <p class="entry-date">May 2026<span class="entry-status"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M11 1h1v1h-1zM10 2h2v1h-2zM9 3h2v1h-2zM8 4h2v1h-2zM0 5h1v1h-1zM7 5h2v1h-2zM0 6h2v1h-2zM6 6h2v1h-2zM1 7h2v1h-2zM5 7h2v1h-2zM2 8h4v1h-4zM3 9h2v1h-2z"/></svg>Done</span></p>
-          <div class="entry-body">
-            <h3 class="entry-title">Staff &amp; mentor</h3>
-            <p class="entry-org">Troia Game Jam 2026</p>
-            
-          </div>
-        </li>
-        <li class="entry entry--active">
-          <p class="entry-date">&nbsp;<span class="entry-status"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M1 0h2v1h-2zM1 1h9v1h-9zM1 2h10v1h-10zM1 3h9v1h-9zM1 4h8v1h-8zM1 5h9v1h-9zM1 6h10v1h-10zM1 7h2v1h-2zM1 8h2v1h-2zM1 9h2v1h-2zM1 10h2v1h-2zM0 11h4v1h-4z"/></svg>Ongoing</span></p>
-          <div class="entry-body">
-            <h3 class="entry-title">Founding board member &amp; treasurer</h3>
-            <p class="entry-org">Game Design Club, ÇOMÜ</p>
-            <p class="entry-goals">Founded the club and manage its budget<span class="entry-sep" aria-hidden="true"> · </span>Built the club's website, Oyun Vitrini</p>
-          </div>
-        </li>
-        <li class="entry entry--active">
-          <p class="entry-date">2025 – 2027, 2nd year<span class="entry-status"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M1 0h2v1h-2zM1 1h9v1h-9zM1 2h10v1h-10zM1 3h9v1h-9zM1 4h8v1h-8zM1 5h9v1h-9zM1 6h10v1h-10zM1 7h2v1h-2zM1 8h2v1h-2zM1 9h2v1h-2zM1 10h2v1h-2zM0 11h4v1h-4z"/></svg>Ongoing</span></p>
-          <div class="entry-body">
-            <h3 class="entry-title">Game Development and Programming (associate degree)</h3>
-            <p class="entry-org">Çanakkale Onsekiz Mart University</p>
-            
-          </div>
-        </li>
-        <li class="entry entry--done">
-          <p class="entry-date">&nbsp;<span class="entry-status"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M11 1h1v1h-1zM10 2h2v1h-2zM9 3h2v1h-2zM8 4h2v1h-2zM0 5h1v1h-1zM7 5h2v1h-2zM0 6h2v1h-2zM6 6h2v1h-2zM1 7h2v1h-2zM5 7h2v1h-2zM2 8h4v1h-4zM3 9h2v1h-2z"/></svg>Done</span></p>
-          <div class="entry-body">
-            <h3 class="entry-title">Typesetter</h3>
-            <p class="entry-org">Manga fansub</p>
-            
-          </div>
-        </li>
-        <li class="entry entry--done">
-          <p class="entry-date">&nbsp;<span class="entry-status"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M11 1h1v1h-1zM10 2h2v1h-2zM9 3h2v1h-2zM8 4h2v1h-2zM0 5h1v1h-1zM7 5h2v1h-2zM0 6h2v1h-2zM6 6h2v1h-2zM1 7h2v1h-2zM5 7h2v1h-2zM2 8h4v1h-4zM3 9h2v1h-2z"/></svg>Done</span></p>
-          <div class="entry-body">
-            <h3 class="entry-title">Mechatronics</h3>
-            <p class="entry-org">Yozgat Science and Technology High School</p>
-            
-          </div>
-        </li></ol></div>
-    <footer class="page-foot" aria-hidden="true"><span class="page-run"><span translate="no">YAZITAŞ</span> · Feature: The journey</span><span class="page-no">14</span></footer>
-  </section>
-  <section class="page page--awards sec--game page--right" id="rozetler" data-page="15" role="group" aria-roledescription="page" aria-label="Badges, 15 / 18">
-    <div class="page-inner">
-      <h2 class="feature-title">Badges</h2>
-      <p class="feature-deck">Every badge stands for something you can check. One is hidden.</p>
-      <ul class="seals">
-        <li class="seal"><span class="seal-disc"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M4 0h4v1h-4zM2 1h2v1h-2zM5 1h2v1h-2zM8 1h2v1h-2zM1 2h1v1h-1zM4 2h1v1h-1zM7 2h1v1h-1zM10 2h1v1h-1zM1 3h1v1h-1zM4 3h1v1h-1zM7 3h1v1h-1zM10 3h1v1h-1zM0 4h12v1h-12zM0 5h1v1h-1zM4 5h1v1h-1zM7 5h1v1h-1zM11 5h1v1h-1zM0 6h1v1h-1zM4 6h1v1h-1zM7 6h1v1h-1zM11 6h1v1h-1zM0 7h12v1h-12zM1 8h1v1h-1zM4 8h1v1h-1zM7 8h1v1h-1zM10 8h1v1h-1zM1 9h1v1h-1zM4 9h1v1h-1zM7 9h1v1h-1zM10 9h1v1h-1zM2 10h2v1h-2zM5 10h2v1h-2zM8 10h2v1h-2zM4 11h4v1h-4z"/></svg></span><span class="seal-name">Polyglot</span><span class="seal-how">Ship MyEverythingList in 19 languages</span></li>
-        <li class="seal"><span class="seal-disc"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M5 0h2v1h-2zM5 1h2v1h-2zM4 2h4v1h-4zM4 3h4v1h-4zM0 4h12v1h-12zM1 5h10v1h-10zM2 6h8v1h-8zM3 7h6v1h-6zM3 8h6v1h-6zM2 9h3v1h-3zM7 9h3v1h-3zM2 10h2v1h-2zM8 10h2v1h-2zM1 11h2v1h-2zM9 11h2v1h-2z"/></svg></span><span class="seal-name">Star collector</span><span class="seal-how">Get 7 stars on GitHub for NeRoBoT</span></li>
-        <li class="seal"><span class="seal-disc"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M1 0h2v1h-2zM1 1h9v1h-9zM1 2h10v1h-10zM1 3h9v1h-9zM1 4h8v1h-8zM1 5h9v1h-9zM1 6h10v1h-10zM1 7h2v1h-2zM1 8h2v1h-2zM1 9h2v1h-2zM1 10h2v1h-2zM0 11h4v1h-4z"/></svg></span><span class="seal-name">Global Game Jam</span><span class="seal-how">Finish a game at Istanbul @BUG in 2026</span></li>
-        <li class="seal"><span class="seal-disc"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M1 0h2v1h-2zM1 1h9v1h-9zM1 2h10v1h-10zM1 3h9v1h-9zM1 4h8v1h-8zM1 5h9v1h-9zM1 6h10v1h-10zM1 7h2v1h-2zM1 8h2v1h-2zM1 9h2v1h-2zM1 10h2v1h-2zM0 11h4v1h-4z"/></svg></span><span class="seal-name">Yıldız Jam</span><span class="seal-how">Finish The Rolling Pizz within the jam</span></li>
-        <li class="seal"><span class="seal-disc"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M0 0h12v1h-12zM0 1h1v1h-1zM11 1h1v1h-1zM0 2h1v1h-1zM2 2h3v1h-3zM7 2h3v1h-3zM11 2h1v1h-1zM0 3h1v1h-1zM2 3h3v1h-3zM7 3h3v1h-3zM11 3h1v1h-1zM0 4h1v1h-1zM11 4h1v1h-1zM0 5h1v1h-1zM2 5h3v1h-3zM7 5h3v1h-3zM11 5h1v1h-1zM1 6h1v1h-1zM3 6h2v1h-2zM7 6h2v1h-2zM10 6h1v1h-1zM1 7h1v1h-1zM10 7h1v1h-1zM2 8h1v1h-1zM9 8h1v1h-1zM3 9h1v1h-1zM8 9h1v1h-1zM4 10h1v1h-1zM7 10h1v1h-1zM5 11h2v1h-2z"/></svg></span><span class="seal-name">Mentor</span><span class="seal-how">Guide teams at Troia Game Jam 2026</span></li>
-        <li class="seal"><span class="seal-disc"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M0 1h1v1h-1zM5 1h2v1h-2zM11 1h1v1h-1zM0 2h2v1h-2zM5 2h2v1h-2zM10 2h2v1h-2zM0 3h3v1h-3zM4 3h4v1h-4zM9 3h3v1h-3zM0 4h12v1h-12zM0 5h12v1h-12zM0 6h12v1h-12zM0 7h2v1h-2zM3 7h2v1h-2zM7 7h2v1h-2zM10 7h2v1h-2zM0 8h12v1h-12zM0 10h12v1h-12zM0 11h12v1h-12z"/></svg></span><span class="seal-name">Guild founder</span><span class="seal-how">Found Volpen with three branches</span></li>
-        <li class="seal"><span class="seal-disc"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M1 0h4v1h-4zM0 1h1v1h-1zM5 1h1v1h-1zM0 2h1v1h-1zM2 2h2v1h-2zM5 2h1v1h-1zM0 3h1v1h-1zM2 3h2v1h-2zM5 3h1v1h-1zM0 4h1v1h-1zM5 4h7v1h-7zM1 5h4v1h-4zM10 5h2v1h-2zM10 6h1v1h-1zM7 7h2v1h-2zM10 7h1v1h-1z"/></svg></span><span class="seal-name">Club founder</span><span class="seal-how">Found the Game Design Club and keep its books</span></li>
-        <li class="seal"><span class="seal-disc"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M11 1h1v1h-1zM10 2h2v1h-2zM9 3h2v1h-2zM8 4h2v1h-2zM0 5h1v1h-1zM7 5h2v1h-2zM0 6h2v1h-2zM6 6h2v1h-2zM1 7h2v1h-2zM5 7h2v1h-2zM2 8h4v1h-4zM3 9h2v1h-2z"/></svg></span><span class="seal-name">Test master</span><span class="seal-how">Write 614 tests for RaiPy</span></li>
-        <li class="seal"><span class="seal-disc"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2 0h1v1h-1zM4 0h1v1h-1zM7 0h1v1h-1zM9 0h1v1h-1zM2 1h1v1h-1zM4 1h1v1h-1zM7 1h1v1h-1zM9 1h1v1h-1zM0 2h12v1h-12zM1 3h1v1h-1zM10 3h1v1h-1zM0 4h2v1h-2zM3 4h6v1h-6zM10 4h2v1h-2zM1 5h1v1h-1zM3 5h1v1h-1zM8 5h1v1h-1zM10 5h1v1h-1zM0 6h2v1h-2zM3 6h1v1h-1zM8 6h1v1h-1zM10 6h2v1h-2zM1 7h1v1h-1zM3 7h6v1h-6zM10 7h1v1h-1zM0 8h2v1h-2zM10 8h2v1h-2zM0 9h12v1h-12zM2 10h1v1h-1zM4 10h1v1h-1zM7 10h1v1h-1zM9 10h1v1h-1zM2 11h1v1h-1zM4 11h1v1h-1zM7 11h1v1h-1zM9 11h1v1h-1z"/></svg></span><span class="seal-name">VRAM diet</span><span class="seal-how">Cut 7820 MiB down to 3035 MiB</span></li>
-        <li class="seal"><span class="seal-disc"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h4v1h-4zM5 1h4v1h-4zM4 2h4v1h-4zM3 3h4v1h-4zM2 4h8v1h-8zM3 5h7v1h-7zM5 6h4v1h-4zM4 7h4v1h-4zM3 8h3v1h-3zM2 9h3v1h-3zM1 10h2v1h-2zM0 11h1v1h-1z"/></svg></span><span class="seal-name">Frame budget</span><span class="seal-how">Run Kralın Sözü at 1.6 ms per frame</span></li>
-        <li class="seal"><span class="seal-disc"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M4 0h4v1h-4zM2 1h3v1h-3zM1 2h3v1h-3zM1 3h2v1h-2zM0 4h3v1h-3zM0 5h3v1h-3zM0 6h3v1h-3zM0 7h4v1h-4zM11 7h1v1h-1zM1 8h4v1h-4zM10 8h2v1h-2zM1 9h9v1h-9zM2 10h7v1h-7zM4 11h4v1h-4z"/></svg></span><span class="seal-name">2,000 nights</span><span class="seal-how">Run a balance simulation for 2,000 nights</span></li>
-        <li class="seal seal--locked" id="secret-badge"><span class="seal-disc"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 0h6v1h-6zM2 1h2v1h-2zM8 1h2v1h-2zM2 2h1v1h-1zM9 2h1v1h-1zM2 3h1v1h-1zM9 3h1v1h-1zM0 4h12v1h-12zM0 5h12v1h-12zM0 6h5v1h-5zM7 6h5v1h-5zM0 7h5v1h-5zM7 7h5v1h-5zM0 8h6v1h-6zM7 8h5v1h-5zM0 9h12v1h-12zM0 10h12v1h-12z"/></svg></span><span class="seal-name">Hidden badge</span><span class="seal-how">A classic cheat code unlocks it.</span></li>
-      </ul></div>
-    <footer class="page-foot" aria-hidden="true"><span class="page-run"><span translate="no">YAZITAŞ</span> · Badges</span><span class="page-no">15</span></footer>
-  </section>
-  <section class="page page--guide sec--code page--left" id="rehber" data-page="16" role="group" aria-roledescription="page" aria-label="Guide: the toolkit, 16 / 18">
-    <div class="page-inner">
-      <h2 class="feature-title">Guide: the toolkit</h2>
-      <p class="feature-deck">No levels or percentages. Each row says where I've actually used it.</p>
-      <table class="guide">
-        <thead><tr><th scope="col">Area</th><th scope="col">Tools</th><th scope="col">Used in</th></tr></thead>
-        <tbody>
-          <tr><th scope="row">Languages</th><td data-label="Tools">TypeScript, JavaScript, C#, Python, SQL, Go, Rust, Bash</td><td data-label="Used in">Every project</td></tr>
-          <tr><th scope="row">Games</th><td data-label="Tools">Unity 6, URP, NavMesh, Input System, Unreal (Blueprint), Ren'Py</td><td data-label="Used in">Kralın Sözü, Under the Counter, LAST DAWN, RaiPy</td></tr>
-          <tr><th scope="row">Web &amp; backend</th><td data-label="Tools">React 19, Next.js, Vite, Tailwind, TanStack Query, Zod, Node.js, FastAPI, SQLAlchemy, WebSocket, JWT, OAuth 2.0</td><td data-label="Used in">MyEverythingList, Parsel, Heren Agent</td></tr>
-          <tr><th scope="row">Data &amp; cloud</th><td data-label="Tools">Supabase, PostgreSQL, SQLite, Cloudflare Workers, Docker, GitHub Actions, Render</td><td data-label="Used in">MyEverythingList, Oyun Vitrini, Görevler</td></tr>
-          <tr><th scope="row">Desktop &amp; mobile</th><td data-label="Tools">Electron, Tauri v2, Expo, React Native, Capacitor, PWA</td><td data-label="Used in">NeRoBoT, RaiPy, Pati Rotası, Kafe Finans</td></tr>
-          <tr><th scope="row">AI</th><td data-label="Tools">LLM integration, Claude API, Ollama, diffusers, ComfyUI, faster-whisper, Piper TTS</td><td data-label="Used in">NeRoBoT, RaiPy, Heren Agent, Parsel</td></tr>
-          <tr><th scope="row">Testing &amp; tools</th><td data-label="Tools">Vitest, pytest, Playwright, Git, Linux, ffmpeg</td><td data-label="Used in">RaiPy, Kralın Sözü, Parsel</td></tr>
-          <tr><th scope="row">Design</th><td data-label="Tools">Photoshop, Affinity, VRoid Studio, SolidWorks, Arduino</td><td data-label="Used in">Troia Game Jam, manga fansub</td></tr>
-        </tbody>
-      </table></div>
-    <footer class="page-foot" aria-hidden="true"><span class="page-run"><span translate="no">YAZITAŞ</span> · Guide: the toolkit</span><span class="page-no">16</span></footer>
-  </section>
-  <section class="page page--letters sec--game page--right" id="mektup" data-page="17" role="group" aria-roledescription="page" aria-label="Letters, 17 / 18">
-    <div class="page-inner">
-      <h2 class="feature-title">Letters</h2>
-      <p class="feature-deck">Write about internships, teams or projects. I read every letter.</p>
-      <p class="mail"><a class="mail-link" href="mailto:yazitassalih0@gmail.com">yazitassalih0<wbr>@gmail.com</a></p>
-      <p class="letters-actions">
-        <button type="button" class="btn" data-copy="yazitassalih0@gmail.com" data-ok="Email address copied" data-fail="Couldn't copy, select the address instead"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M4 0h8v1h-8zM4 1h1v1h-1zM11 1h1v1h-1zM4 2h1v1h-1zM11 2h1v1h-1zM0 3h8v1h-8zM11 3h1v1h-1zM0 4h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM0 5h1v1h-1zM7 5h1v1h-1zM11 5h1v1h-1zM0 6h1v1h-1zM7 6h5v1h-5zM0 7h1v1h-1zM7 7h1v1h-1zM0 8h1v1h-1zM7 8h1v1h-1zM0 9h1v1h-1zM7 9h1v1h-1zM0 10h8v1h-8z"/></svg><span>Copy address</span></button>
-      </p>
-      <div class="cv-tiles"><a class="cv-tile" href="/cv/Salih_Yazitas_CV_EN.pdf" download><span class="cv-tile-lang">EN</span><span class="cv-tile-text">Download CV, English PDF</span><svg class="px cv-tile-icon" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M5 0h2v1h-2zM5 1h2v1h-2zM5 2h2v1h-2zM5 3h2v1h-2zM2 4h8v1h-8zM3 5h6v1h-6zM4 6h4v1h-4zM5 7h2v1h-2zM0 9h1v1h-1zM11 9h1v1h-1zM0 10h1v1h-1zM11 10h1v1h-1zM0 11h12v1h-12z"/></svg></a><a class="cv-tile" href="/cv/Salih_Yazitas_CV_TR.pdf" download><span class="cv-tile-lang">TR</span><span class="cv-tile-text">Download CV, Turkish PDF</span><svg class="px cv-tile-icon" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M5 0h2v1h-2zM5 1h2v1h-2zM5 2h2v1h-2zM5 3h2v1h-2zM2 4h8v1h-8zM3 5h6v1h-6zM4 6h4v1h-4zM5 7h2v1h-2zM0 9h1v1h-1zM11 9h1v1h-1zM0 10h1v1h-1zM11 10h1v1h-1zM0 11h12v1h-12z"/></svg></a></div>
-      <div class="coupon">
-        <p class="coupon-h">Reader coupon: pick a subject, the letter starts itself</p>
-        <ul class="coupon-list"><li><a href="mailto:yazitassalih0@gmail.com?subject=Internship%20offer"><span class="coupon-box" aria-hidden="true"></span>Internship offer</a></li><li><a href="mailto:yazitassalih0@gmail.com?subject=Team%20%2F%20jam%20invite"><span class="coupon-box" aria-hidden="true"></span>Team or jam</a></li><li><a href="mailto:yazitassalih0@gmail.com?subject=About%20a%20project"><span class="coupon-box" aria-hidden="true"></span>Let's talk projects</a></li></ul>
+        </ul>
       </div>
-      <ul class="socials">
-        <li><a href="https://github.com/SalihYzts" target="_blank" rel="noopener"><svg class="brand-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg><span>GitHub</span><svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a></li>
-        <li><a href="https://www.linkedin.com/in/salih-yaz%C4%B1ta%C5%9F/" target="_blank" rel="noopener"><svg class="brand-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg><span>LinkedIn</span><svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a></li>
-        <li><a href="https://salihyzts.itch.io" target="_blank" rel="noopener"><svg class="brand-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3.13 1.338C2.08 1.96.02 4.328 0 4.95v1.03c0 1.303 1.22 2.45 2.325 2.45 1.33 0 2.436-1.102 2.436-2.41 0 1.308 1.07 2.41 2.4 2.41 1.328 0 2.362-1.102 2.362-2.41 0 1.308 1.137 2.41 2.466 2.41h.024c1.33 0 2.466-1.102 2.466-2.41 0 1.308 1.034 2.41 2.363 2.41 1.33 0 2.4-1.102 2.4-2.41 0 1.308 1.106 2.41 2.435 2.41C22.78 8.43 24 7.282 24 5.98V4.95c-.02-.62-2.082-2.99-3.13-3.612-3.253-.114-5.508-.134-8.87-.133-3.362 0-7.945.053-8.87.133zm6.376 6.477a2.74 2.74 0 0 1-.468.602c-.5.49-1.19.795-1.947.795a2.786 2.786 0 0 1-1.95-.795c-.182-.178-.32-.37-.446-.59-.127.222-.303.412-.486.59a2.788 2.788 0 0 1-1.95.795c-.092 0-.187-.025-.264-.052-.107 1.113-.152 2.176-.168 2.95v.005l-.006 1.167c.02 2.334-.23 7.564 1.03 8.85 1.952.454 5.545.662 9.15.663 3.605 0 7.198-.21 9.15-.664 1.26-1.284 1.01-6.514 1.03-8.848l-.006-1.167v-.004c-.016-.775-.06-1.838-.168-2.95-.077.026-.172.052-.263.052a2.788 2.788 0 0 1-1.95-.795c-.184-.178-.36-.368-.486-.59-.127.22-.265.412-.447.59a2.786 2.786 0 0 1-1.95.794c-.76 0-1.446-.303-1.948-.793a2.74 2.74 0 0 1-.468-.602 2.738 2.738 0 0 1-.463.602 2.787 2.787 0 0 1-1.95.794h-.16a2.787 2.787 0 0 1-1.95-.793 2.738 2.738 0 0 1-.464-.602zm-2.004 2.59v.002c.795.002 1.5 0 2.373.953.687-.072 1.406-.108 2.125-.107.72 0 1.438.035 2.125.107.873-.953 1.578-.95 2.372-.953.376 0 1.876 0 2.92 2.934l1.123 4.028c.832 2.995-.266 3.068-1.636 3.07-2.03-.075-3.156-1.55-3.156-3.025-1.124.184-2.436.276-3.748.277-1.312 0-2.624-.093-3.748-.277 0 1.475-1.125 2.95-3.156 3.026-1.37-.004-2.468-.077-1.636-3.072l1.122-4.027c1.045-2.934 2.545-2.934 2.92-2.934zM12 12.714c-.002.002-2.14 1.964-2.523 2.662l1.4-.056v1.22c0 .056.56.033 1.123.007.562.026 1.124.05 1.124-.008v-1.22l1.4.055C14.138 14.677 12 12.713 12 12.713z"/></svg><span>itch.io</span><svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a></li>
-        <li><a href="https://salihyzts.github.io/VolpenWeb/" target="_blank" rel="noopener"><svg class="brand-icon" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M0 1h1v1h-1zM5 1h2v1h-2zM11 1h1v1h-1zM0 2h2v1h-2zM5 2h2v1h-2zM10 2h2v1h-2zM0 3h3v1h-3zM4 3h4v1h-4zM9 3h3v1h-3zM0 4h12v1h-12zM0 5h12v1h-12zM0 6h12v1h-12zM0 7h2v1h-2zM3 7h2v1h-2zM7 7h2v1h-2zM10 7h2v1h-2zM0 8h12v1h-12zM0 10h12v1h-12zM0 11h12v1h-12z"/></svg><span>Volpen</span><svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a></li>
-      </ul></div>
-    <footer class="page-foot" aria-hidden="true"><span class="page-run"><span translate="no">YAZITAŞ</span> · Letters</span><span class="page-no">17</span></footer>
-  </section>
-  <section class="page page--back page--left" id="arka-kapak" data-page="18" role="group" aria-roledescription="page" aria-label="Back cover, 18 / 18">
-    <div class="page-inner">
-      <div class="back-art"><img src="/assets/img/last-dawn.webp" width="960" height="600" alt="" loading="lazy" decoding="async"></div>
-      <p class="back-mast" lang="tr" translate="no">YAZITAŞ</p>
-      <h2 class="back-title">Next issue</h2>
-      <ul class="back-next"><li>LAST DAWN: scavenge by day, defend by night</li><li>Under the Counter: a Steam Next Fest demo on the way</li></ul>
-      <p class="back-line">See you in the next issue.</p>
-      <div class="back-bottom">
-        <p class="back-price">Price: one email</p>
-        <div class="barcode barcode--back" aria-hidden="true"><svg class="barcode-bars" viewBox="0 0 113 40" preserveAspectRatio="none" aria-hidden="true"><rect x="0" y="0" width="1" height="40"/><rect x="2" y="0" width="1" height="40"/><rect x="4" y="0" width="3" height="40"/><rect x="8" y="0" width="3" height="40"/><rect x="12" y="0" width="1" height="40"/><rect x="14" y="0" width="1" height="40"/><rect x="16" y="0" width="1" height="40"/><rect x="18" y="0" width="2" height="40"/><rect x="21" y="0" width="1" height="40"/><rect x="23" y="0" width="1" height="40"/><rect x="25" y="0" width="2" height="40"/><rect x="28" y="0" width="1" height="40"/><rect x="30" y="0" width="3" height="40"/><rect x="34" y="0" width="2" height="40"/><rect x="37" y="0" width="1" height="40"/><rect x="39" y="0" width="3" height="40"/><rect x="43" y="0" width="3" height="40"/><rect x="47" y="0" width="3" height="40"/><rect x="51" y="0" width="2" height="40"/><rect x="54" y="0" width="3" height="40"/><rect x="58" y="0" width="3" height="40"/><rect x="62" y="0" width="1" height="40"/><rect x="64" y="0" width="1" height="40"/><rect x="66" y="0" width="1" height="40"/><rect x="68" y="0" width="1" height="40"/><rect x="70" y="0" width="3" height="40"/><rect x="74" y="0" width="2" height="40"/><rect x="77" y="0" width="1" height="40"/><rect x="79" y="0" width="2" height="40"/><rect x="82" y="0" width="1" height="40"/><rect x="84" y="0" width="3" height="40"/><rect x="88" y="0" width="3" height="40"/><rect x="92" y="0" width="3" height="40"/><rect x="96" y="0" width="1" height="40"/><rect x="98" y="0" width="3" height="40"/><rect x="102" y="0" width="3" height="40"/><rect x="106" y="0" width="3" height="40"/><rect x="110" y="0" width="2" height="40"/></svg><span>Issue 26 · November 2026</span></div>
-      </div></div>
-  </section>
-</div></main>
-
-
-<div class="toast" role="status" aria-live="polite" hidden></div>
-<template id="icon-star"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M5 0h2v1h-2zM5 1h2v1h-2zM4 2h4v1h-4zM4 3h4v1h-4zM0 4h12v1h-12zM1 5h10v1h-10zM2 6h8v1h-8zM3 7h6v1h-6zM3 8h6v1h-6zM2 9h3v1h-3zM7 9h3v1h-3zM2 10h2v1h-2zM8 10h2v1h-2zM1 11h2v1h-2zM9 11h2v1h-2z"/></svg></template>
-<script id="i18n" type="application/json">{"secretName":"Cheat code","secretHow":"You pressed ↑ ↑ ↓ ↓ ← → ← → B A","toastSecret":"Hidden badge unlocked: Cheat code","page":"Page","of":"/"}</script>
-<script src="/assets/js/site.js" defer></script>
+    </div>
+  </div>
+  <div class="light" aria-hidden="true"></div>
+  <div class="dim" id="dim" aria-hidden="true"></div>
+  <p class="hint" aria-hidden="true"><span class="only-hover">Pick an issue · ← → to browse, Enter to open</span><span class="only-touch">Tap the issue you want to read</span></p>
+  <a class="desk-lang" href="/" hreflang="tr" lang="tr" aria-label="Türkçe">TR</a>
+</main>
+<script id="desk-data" type="application/json">{"legacy":{"kunye":"/en/about/","is":"/en/about/","is-2":"/en/about/","yolculuk":"/en/about/","rozetler":"/en/about/","rehber":"/en/about/","mektup":"/en/about/","kralin-sozu":"/en/games/","oyun":"/en/games/","kralin-sozu-2":"/en/games/","kralin-sozu-oyun":"/en/games/","kralin-sozu-yapim":"/en/games/","under-the-counter":"/en/games/","last-dawn":"/en/games/","pati-rotasi":"/en/games/","lets-cook-a-mask-ve-the-rolling-pizz":"/en/games/","lets-cook-a-mask":"/en/games/","the-rolling-pizz":"/en/games/","oyun-kisa":"/en/games/","colorland":"/en/games/","uckkenici":"/en/games/","agaclastirilmis-elma":"/en/games/","ecobuddy":"/en/games/","topluluk":"/en/games/","myeverythinglist":"/en/software/","yazilim":"/en/software/","myeverythinglist-2":"/en/software/","myeverythinglist-yapim":"/en/software/","nerobot":"/en/software/","raipy":"/en/software/","heren-agent":"/en/software/","parsel":"/en/software/","parsel-dosya":"/en/software/","kafe-finans-ve-truva-arabirimi":"/en/software/","kafe-finans":"/en/software/","truva-arabirimi":"/en/software/","yazilim-kisa":"/en/software/","oyun-vitrini":"/en/software/","gorevler":"/en/software/","volpen-site":"/en/software/","gdd-creator":"/en/software/","turkos":"/en/software/","ytchatinstaller":"/en/software/","icindekiler":"/en/about/","editor":"/en/about/"}}</script>
+<script src="/assets/js/desk.js"></script>
 </body>
 </html>

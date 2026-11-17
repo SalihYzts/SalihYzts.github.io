@@ -1,6 +1,11 @@
 # DESIGN.md · YAZITAŞ, oyun ve yazılım dergisi
 
-Site, Salih Yazıtaş'ın soyadını taşıyan bir oyun ve yazılım dergisinin bir sayısıdır: "YAZITAŞ, Sayı 26, Kasım 2026". Ziyaretçi bir portfolyoyu taramaz, bir sayıyı okur: kapak, içindekiler, bölüm açılışları, inceleme sayfaları, kısa haberler, bir dosya konusu, rozetler, bir rehber tablosu ve okur mektupları.
+Site, Salih Yazıtaş'ın soyadını taşıyan bir derginin üç sayısıdır. Ziyaretçi bir portfolyoyu taramaz; masadan bir sayı alıp okur.
+
+- **Masa** (`/`, `/en/`): ahşap bir masada üç dergi, bir kupa, kalem, not kâğıdı ve basılı CV. Dergiye tıklanınca kamera yaklaşır; dergi okuyucudaki kapağın tam yerine oturunca o sayının sayfası açılır.
+- **Sayı 1 · Ben** (`/ben/`, `/en/about/`, 10 sayfa, sarı): editörden ve künye, iş dosyası (Petra Cafe, Stoneograph, Volpen), okul ve topluluk, rozetler, rehber, okur mektupları.
+- **Sayı 2 · Oyun** (`/oyun/`, `/en/games/`, 14 sayfa, kırmızı): Kralın Sözü dört sayfa (açılım, nasıl oynanır, yapım notları), tek sayfalık oyunlar, jam oyunları, kısa kısa, kulüp ve jamler.
+- **Sayı 3 · Yazılım** (`/yazilim/`, `/en/software/`, 14 sayfa, mavi): MyEverythingList üç sayfa (açılım, yapım notları), tek sayfalık projeler, Parsel staj dosyası, kafe işleri, kısa kısa.
 
 Bu yön 2000'lerin Türk oyun ve bilgisayar dergilerinin baskı geleneğinden gelir. Herhangi bir derginin logosu, adı ya da sayfası kopyalanmadı.
 
@@ -22,18 +27,19 @@ Site uzun bir sayfa değil, sayfalara bölünmüş bir sayıdır (`src/build.js`
   - Çevirmeden önce hedef sayfanın görselleri çözülür (en çok 250 ms beklenir); yakındaki ±2 sayfanın görselleri önceden yüklenir.
   - Bağlantıyla açılan sayfada odak sayfanın ilk başlığına gider.
   - `prefers-reduced-motion` iken çevirme yerine 180 ms'lik bir geçiş olur.
-- **Sayfalama kuralları** (toplam 18 sayfa):
-  - Kapak s. 1, içindekiler ile editörden ve künye s. 2–3.
-  - Her bölümün öne çıkan projesi çift sayfadan başlayan iki sayfalık açılımdır; bölüm adı, açılımın ilk sayfasındaki renkli banttadır.
-  - Diğer projeler ikişer ikişer aynı sayfadadır (ikili sayfa: kare görsel, başlık, spot, metin, rakamlar, teknolojiler, bağlantılar). Tek kalan proje kısa kısa ile aynı sayfayı paylaşır.
-  - Yolculuk ve Rozetler bir açılım, Rehber ve Okur mektupları bir açılımdır; arka kapak tek ve çift numaralıdır.
-  - Hizalama bozulursa araya reklam sayfası girer (şu an gerek yok). Sayfa sayısı projelerden otomatik çıkar.
+- **Sayfalama kuralları** (her sayı ayrı; projeler `data/projects.json`'daki sıraya göre dizilir):
+  - Kapak s. 1, içindekiler ile editörden s. 2–3. Arka kapak çift numaralıdır.
+  - `featured` proje çift sayfadan başlayan iki sayfalık açılımdır; `pages` alanındaki ek sayfalar (nasıl oynanır, yapım notları) hemen ardından gelir.
+  - `card` proje kendi sayfasındadır (tek sayfa: görsel, başlık, spot, metin, yan sütunda rakamlar, ekip, teknoloji, bağlantılar). Ek sayfası varsa ikisi bir açılım olur. `half: true` olan kartlar ikişer ikişer aynı sayfadadır.
+  - `compact` projeler sayının sonunda kısa kısa sayfasındadır.
+  - Hizalama bozulursa araya reklam sayfası girer (şu an gerek yok).
 - **Gezinme:**
   - Ok tuşları, PageUp/PageDown, Home/End.
   - Alttaki yuvarlak sayfa çubuğu: önceki, sayfa listesi, sonraki.
   - Her sayfanın bağlantısı vardır (`#s12` ya da `#kralin-sozu`). İçindekiler, bölüm açılışları ve üst menü ilgili sayfayı açar.
   - Görünmeyen sayfalar `inert`'tir; ekran okuyucuya yalnızca açık sayfalar okunur, sayfa değişimi `aria-live` ile duyurulur.
-- **Sığdırma ve okunabilirlik tabanı:** Taşan sayfanın `--fit` çarpanı en çok %76'ya kadar düşer. Küçük yazıların piksel tabanı vardır (`max(px, calc(n * var(--u)))`): etiket ve künye 11–11.5px, gövde 12–13px. Böylece küçülen yalnızca başlıklar, görseller ve boşluklardır. Yine sığmayan sayfa küçülmez, kendi içinde kayar (`.is-scroll`, klavyeyle odaklanabilir). Ölçüm: 1366×768 ve üstünde hiçbir sayfa kaymaz; 1280×720'de Yolculuk ve oyunların kısa kısa sayfası kayar.
+- **Masa:** CSS 3B (kütüphane yok, `assets/css/desk.css`, `assets/js/desk.js`). Kamera, seçilen derginin dünyadaki dönüşümünün tersidir; hedefte dergi okuyucudaki kapağın piksel piksel yerindedir, çevresi okuyucunun zemin rengine döner, sonra sayfaya gidilir (hover'da önceden yükleme ve prerender). Okuyucudaki "Masa" bağlantısı ya da geri tuşu kamerayı aynı dergiden geri çeker. Fareyle hafif paralaks, ok tuşlarıyla dergiler arası gezinme, hareket azaltma açıkken doğrudan geçiş. Eski tek dergi adresleri (`/#kralin-sozu`) ilgili sayıya yönlenir.
+- **Sığdırma ve okunabilirlik tabanı:** Taşan sayfanın `--fit` çarpanı en çok %76'ya kadar düşer. Küçük yazıların piksel tabanı vardır (`max(px, calc(n * var(--u)))`): etiket ve künye 11–11.5px, gövde 12–13px. Böylece küçülen yalnızca başlıklar, görseller ve boşluklardır. Yine sığmayan sayfa küçülmez, kendi içinde kayar (`.is-scroll`, klavyeyle odaklanabilir). Ölçüm: 1366×768 ve üstünde hiçbir sayfa kaymaz; 1280×720'de yalnızca NeRoBoT ve RaiPy sayfaları kayar.
 - **Sayfa altı:** Dış köşede sayfa numarası, iç köşede `YAZITAŞ · bölüm` künye satırı. Sığdırmadan etkilenmeyen `--u0` birimindedir.
 
 ## Renk
@@ -136,3 +142,5 @@ Tek aile: **Archivo** (değişken; genişlik 62–125, ağırlık 100–900). Ki
 Bu yeniden tasarım Impeccable, design-taste-frontend, ui-ux-pro-max ve web-design-guidelines skill'leriyle yapıldı. Impeccable'ın motoru indirilmediği için yön kurası (concept-seed) çalışmadı. Yön, türetilen yedi aday arasından kullanıcıya sunulan üç seçenekten kullanıcı tarafından seçildi. Son inceleme bağımsız bir ajanla yapıldı.
 
 İyileştirme turu (17 Kasım 2026): bağımsız eleştiri, erişilebilirlik ve performans denetimi ile sayfa çevirme araştırması üzerine yapıldı. Hareket ve dokunma için emilkowalski/skills, erişilebilirlik ve Core Web Vitals için addyosmani/web-quality-skills skill'leri eklendi. axe-core 4.10: TR/EN, açık/koyu, masaüstü/telefonda 0 ihlal.
+
+Üç sayı turu (17 Kasım 2026): tek dergi masa ve üç sayıya bölündü (kullanıcının fikri: "biri ben, biri oyun, biri yazılım"; giriş için masada üç dergi). Masa önce bağımsız bir CSS 3B denemesiyle gösterildi, beğenilince asıl yapıma geçildi. Ayrıntılar CV verisinden, LinkedIn gönderi taslaklarından ve Kralın Sözü'nün itch metninden; uydurma bilgi yok. axe-core 4.10: masa ve üç sayı, TR/EN, açık/koyu, masaüstü/telefonda 0 ihlal.
