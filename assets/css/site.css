@@ -118,49 +118,26 @@ a, button { touch-action: manipulation; -webkit-tap-highlight-color: transparent
 .page-no { font-weight: 900; font-size: calc(13 * var(--u)); color: var(--ink); font-variant-numeric: tabular-nums; }
 html:not(.reader) .page { margin: 0 auto 16px; max-width: 760px; box-shadow: var(--page-shadow); }
 
-/* Telefon: tam ekran sayfalar, sayfa kendi içinde kayar, yatay kaydırınca çevrilir */
-.app body { overflow: hidden; }
-.app .book { height: calc(100dvh - 52px); overflow: hidden; }
-.app .page { position: absolute; inset: 0; overflow-y: auto; overscroll-behavior: contain; }
+/* Okuyucu: bütün sayfalar büyük bir masada yan yana durur, kamera (dünya katmanı) aralarında gezer.
+   Masaüstünde açılım ekranı doldurur; telefonda tek sayfa tam ekrandır. */
+.reader body { overflow: hidden; height: 100dvh; }
+.reader .book { position: fixed; top: 52px; left: 0; right: 0; bottom: 0; overflow: hidden; touch-action: pan-y; }
+.reader .world { position: absolute; left: 0; top: 0; transform-origin: 0 0; will-change: transform; }
+.reader.is-moving .world { pointer-events: none; }
+.reader .page { position: absolute; width: var(--pw); height: var(--ph); box-shadow: var(--page-shadow); }
+.print .page { --u: calc(var(--pw) / 600 * var(--fit, 1)); }
+.print .page-inner { height: 100%; overflow: hidden; padding: calc(40 * var(--u)) calc(44 * var(--u)) calc(56 * var(--u)); }
+/* Sırt gölgesi: açılımın ortasında kâğıt kıvrılır */
+.print[data-view="spread"] .page::after { content: ""; position: absolute; top: 0; bottom: 0; width: 9%; pointer-events: none; z-index: 5; }
+.print[data-view="spread"] .page--left::after { right: 0; background: linear-gradient(90deg, transparent, rgb(0 0 0 / .14)); }
+.print[data-view="spread"] .page--right:not(.page--cover)::after { left: 0; background: linear-gradient(270deg, transparent, rgb(0 0 0 / .16)); }
+/* Telefon: sayfa kendi içinde dikey kayar */
+.app .page { overflow-y: auto; overscroll-behavior: contain; box-shadow: none; }
 .app .page-inner { padding-bottom: calc(24 * var(--u)); }
 /* Telefonda sayfa numarası içeriğin sonunda akar, kayan metnin üstüne binmez */
 .app .page-foot { position: static; padding: calc(10 * var(--u)) calc(22 * var(--u)) calc(96 * var(--u)); }
 .app .page--cover .page-foot, .app .page--back .page-foot { display: none; }
-
-/* Basılı görünüm (masaüstü): gerçek oranlı sayfalar, açılım ya da tek sayfa */
-.print body { overflow: hidden; height: 100dvh; }
-.print .book {
-  --ph: calc(var(--pw) * 1.25);
-  margin: var(--book-top, 16px) auto 0; height: var(--ph);
-  width: calc(var(--pw) * 2); perspective: calc(var(--pw) * 5);
-}
-.print[data-view="single"] .book { width: var(--pw); }
-.print .page {
-  --u: calc(var(--pw) / 600 * var(--fit, 1));
-  position: absolute; top: 0; width: var(--pw); height: var(--ph);
-  box-shadow: var(--page-shadow);
-}
-.print .page-inner { height: 100%; overflow: hidden; padding: calc(40 * var(--u)) calc(44 * var(--u)) calc(56 * var(--u)); }
-.print .page.is-left { left: 0; }
-.print .page.is-right { left: var(--pw); }
-.print[data-view="single"] .page.is-solo { left: 0; }
-.print .page.is-off, .app .page.is-off { visibility: hidden; }
-/* Sırt gölgesi: açılımın ortasında kâğıt kıvrılır */
-.print[data-view="spread"] .page::after { content: ""; position: absolute; top: 0; bottom: 0; width: 9%; pointer-events: none; z-index: 5; }
-.print[data-view="spread"] .page.is-left::after { right: 0; background: linear-gradient(90deg, transparent, rgb(0 0 0 / .14)); }
-.print[data-view="spread"] .page.is-right::after { left: 0; background: linear-gradient(270deg, transparent, rgb(0 0 0 / .16)); }
-.print[data-view="spread"] .page.is-left { border-radius: 3px 0 0 3px; }
-.print[data-view="spread"] .page.is-right { border-radius: 0 3px 3px 0; }
-
-/* Çevrilen yaprak */
-.leaf { position: absolute; top: 0; z-index: 20; transform-style: preserve-3d; pointer-events: none; }
-.leaf-face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; overflow: hidden; }
-.leaf-face .page { position: absolute !important; inset: 0; left: 0 !important; visibility: visible !important; box-shadow: none; }
-.leaf-back { transform: rotateY(180deg); }
-.leaf-blank { background: var(--paper); }
-.leaf-shade { position: absolute; inset: 0; z-index: 30; pointer-events: none; opacity: 0; }
-.leaf-front .leaf-shade { background: linear-gradient(90deg, rgb(0 0 0 / .05), rgb(0 0 0 / .35)); }
-.leaf-back .leaf-shade { background: linear-gradient(270deg, rgb(0 0 0 / .05), rgb(0 0 0 / .35)); }
+.app .page--cover .page-inner, .app .page--back .page-inner { min-height: 100%; }
 
 /* ---------- Ortak sayfa öğeleri ---------- */
 .sec--game { --sec: var(--red); }
@@ -189,7 +166,7 @@ html:not(.reader) .page { margin: 0 auto 16px; max-width: 760px; box-shadow: var
 /* ---------- Kapak ---------- */
 .page--cover { background: #0d1018; color: #fff; }
 .page--cover .page-inner { padding: 0; height: 100%; }
-.app .page--cover .page-inner, html:not(.reader) .page--cover .page-inner { min-height: calc(100dvh - 52px); }
+html:not(.reader) .page--cover .page-inner { min-height: calc(100dvh - 52px); }
 .cover-art { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 62%; }
 .page--cover .page-inner::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgb(8 10 16 / .62) 0%, rgb(8 10 16 / .08) 36%, rgb(8 10 16 / .2) 58%, rgb(8 10 16 / .86) 100%); }
 .cover-inner {
@@ -389,12 +366,13 @@ html:not(.reader) .page { margin: 0 auto 16px; max-width: 760px; box-shadow: var
 #reklam-cv { background: var(--yellow); color: #161616; }
 #reklam-cv .btn--ad { background: #161616; color: #fff; border-color: #161616; }
 .page--ad .page-foot, .page--ad .page-no { color: inherit; }
-.app .page--ad .page-inner, html:not(.reader) .page--ad .page-inner { min-height: 80dvh; }
+.app .page--ad .page-inner { min-height: 100%; }
+html:not(.reader) .page--ad .page-inner { min-height: 80dvh; }
 
 /* ---------- Arka kapak ---------- */
 .page--back { background: #161616; color: #f3f2ee; }
 .page--back .page-inner { justify-content: space-between; }
-.print .page--back .page-inner, .app .page--back .page-inner { height: 100%; }
+.reader .page--back .page-inner { height: 100%; }
 .back-mast { font-weight: 900; font-stretch: var(--w-mast); font-size: calc(44 * var(--u)); letter-spacing: -.04em; color: #ff2a22; line-height: .9; }
 .back-title { font-weight: 900; font-stretch: var(--w-head); font-size: calc(54 * var(--u)); line-height: .95; letter-spacing: -.03em; margin-top: auto; }
 .back-next { display: grid; gap: calc(8 * var(--u)); }

@@ -10,16 +10,17 @@ Bu yön 2000'lerin Türk oyun ve bilgisayar dergilerinin baskı geleneğinden ge
 
 Site uzun bir sayfa değil, sayfalara bölünmüş bir sayıdır (`src/build.js` sayfalara böler, `assets/js/site.js` okur).
 
-- **Sayfa oranı 4:5.** Bütün sayfa içi ölçüler `--u` birimindedir. Masaüstünde 1u = sayfa genişliği / 600; telefonda ve JS kapalıyken 1u = 1.08px. Bir sayfa her ekranda aynı oranda dizilir.
-- **Görünümler** (pencereye göre JS seçer):
-  - *Açılım:* iki sayfa yan yana, sırtta gölge. Kapak tek başına sağda, arka kapak tek başına solda durur.
-  - *Tek sayfa:* iki sayfa sığmayan dar masaüstü.
-  - *Telefon:* tam ekran sayfa; sayfa kendi içinde kayar, yatay kaydırma sayfa çevirir.
+- **Sayfa oranı 4:5** (masaüstü). Bütün sayfa içi ölçüler `--u` birimindedir. Masaüstünde 1u = sayfa genişliği / 600; telefonda ve JS kapalıyken 1u = 1.08px. Bir sayfa her ekranda aynı oranda dizilir.
+- **Masa ve kamera:** Bütün sayfalar büyük bir masada yan yana durur. Okuyucu bir kameradır; bir anda bir durak ekranı doldurur.
+  - *Masaüstü:* durak iki sayfalık açılımdır; ekranın neredeyse tamamını kaplar, ortasında sırt gölgesi vardır. Kapak ve arka kapak tek başına ekranın ortasında durur.
+  - *Telefon:* durak tek sayfadır, tam ekran. Sayfa kendi içinde dikey kayar.
   - *JS kapalı:* sayfalar alt alta.
-- **Sayfa çevirme:**
-  - Açılımda sağ sayfa sırttan 3B döner (0.9 sn). Arkasında bir sonraki açılımın sol sayfası görünür ve gölgesi döndükçe değişir.
-  - Tek sayfa görünümünde sayfa sola döner, telefonda yana kayar.
-  - `prefers-reduced-motion` iken çevirme animasyonsuzdur.
+- **Kamera hareketi:**
+  - Bir duraktan ötekine geçerken kamera geri çekilir (komşu sayfalar görünür), kayar ve yeni durağa yeniden yaklaşır.
+  - Süre 0.8 sn'dir (telefonda 0.5 sn). Uzak bir sayfaya atlarken kamera daha çok geri çekilir (en çok %42 ölçeğe kadar), aradaki açılımlar masada görünür.
+  - Telefonda sayfalar parmağı takip eder; bırakınca kamera sonraki durağa gider ya da geri oturur.
+  - Trackpad'de yatay kaydırma da durak değiştirir.
+  - `prefers-reduced-motion` iken kamera atlamalı gider.
 - **Sayfalama kuralları:**
   - Kapak s. 1'dir; açılımlar çift sayfadan başlar.
   - Öne çıkan projeler iki sayfalık gerçek açılımdır.

@@ -465,8 +465,8 @@ function page(lang) {
   </div>
 </header>
 
-<main id="main" class="book" aria-label="${T("readerLabel")}" data-total="${total}">${html}
-</main>
+<main id="main" class="book" aria-label="${T("readerLabel")}" data-total="${total}"><div class="world">${html}
+</div></main>
 
 <nav class="pager" aria-label="${T("readerLabel")}">
   <button type="button" class="pager-btn" data-prev aria-label="${T("prevPage")}" aria-keyshortcuts="ArrowLeft">${icon("arrowL", "px")}</button>

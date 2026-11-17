@@ -1,10 +1,12 @@
-// Dergi okuyucusu: sayfa düzeni, sayfa çevirme, tema, e-posta kopyalama, gizli rozet.
+// Dergi okuyucusu: bütün sayfalar büyük bir masada yan yana durur, bir kamera aralarında gezer.
+// Masaüstünde iki sayfalık açılım ekranı doldurur; telefonda tek sayfa tam ekrandır.
 // JS kapalıysa sayfalar alt alta okunur; bu dosya yalnızca okuma deneyimini ekler.
 (function () {
   "use strict";
 
   var root = document.documentElement;
   var book = document.querySelector(".book");
+  var world = document.querySelector(".world");
   var pages = Array.prototype.slice.call(document.querySelectorAll(".page"));
   var total = pages.length;
   var reduce = matchMedia("(prefers-reduced-motion: reduce)");
@@ -13,36 +15,66 @@
   function store(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
   function read(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
 
-  // ---------- Görünüm: açılım (iki sayfa), tek sayfa ya da telefon ----------
-  var view = "";
-  var current = 1;       // görünen sayfa (açılımda soldaki ya da kapak)
-  var busy = false;
-  var queued = null;
+  var TOP = 52;
+  var view = "", pw = 0, ph = 0, gap = 0;
+  var stops = [];       // her durak: { pages: [n...], fx, fy } (kameranın odak noktası)
+  var stopOf = {};      // sayfa numarası → durak sırası
+  var stop = 0;         // şu anki durak
+  var cam = { x: 0, y: 0, s: 1 };
+  var anim = null;
 
+  // ---------- Yerleşim ----------
   function layout() {
-    var w = window.innerWidth, h = window.innerHeight;
-    var top = 52, bottom = 76, side = 24, gap = 16;
-    var next, pw;
-    if (w < 720 || h < 520) {
-      next = "app";
-    } else {
-      var spread = Math.min((w - side * 2) / 2, (h - top - bottom - gap) / 1.25);
-      if (spread >= 380) { next = "spread"; pw = spread; }
-      else { next = "single"; pw = Math.min(w - side * 2, (h - top - bottom - gap) / 1.25); }
+    var w = window.innerWidth, h = window.innerHeight - TOP;
+    var margin = 14, bottomRoom = 8;
+    var next;
+    if (w < 720 || h < 460) next = "app";
+    else {
+      var spreadW = Math.min((w - margin * 2) / 2, (h - margin - bottomRoom) / 1.25);
+      next = spreadW >= 360 ? "spread" : "single";
     }
-    root.classList.toggle("app", next === "app");
-    root.classList.toggle("print", next !== "app");
-    root.dataset.view = next;
-    if (pw) {
-      root.style.setProperty("--pw", Math.floor(pw) + "px");
-      var free = h - top - bottom - pw * 1.25;
-      root.style.setProperty("--book-top", Math.max(8, Math.floor(free / 2)) + "px");
-    }
-    var changed = next !== view;
     view = next;
-    if (changed) { fitAll(); }
-    show(current, true);
+    root.classList.toggle("app", view === "app");
+    root.classList.toggle("print", view !== "app");
+    root.dataset.view = view;
+
+    if (view === "app") { pw = w; ph = h; gap = Math.round(w * 0.06); }
+    else if (view === "spread") { pw = Math.floor(Math.min((w - margin * 2) / 2, (h - margin - bottomRoom) / 1.25)); ph = Math.round(pw * 1.25); gap = Math.round(pw * 0.22); }
+    else { pw = Math.floor(Math.min(w - margin * 2, (h - margin - bottomRoom) / 1.25)); ph = Math.round(pw * 1.25); gap = Math.round(pw * 0.12); }
+    root.style.setProperty("--pw", pw + "px");
+    root.style.setProperty("--ph", ph + "px");
+
+    // Durakları ve sayfaların masadaki yerini hesapla
+    stops = []; stopOf = {};
+    var x = 0, y = view === "app" ? 0 : Math.max(margin, Math.round((h - ph - bottomRoom) / 2));
+    if (view === "spread") {
+      var groups = [[1]];
+      for (var n = 2; n <= total; n += 2) groups.push(n + 1 <= total && n !== total ? [n, n + 1] : [n]);
+      groups.forEach(function (g, i) {
+        var left = x, right = x + pw;
+        g.forEach(function (num) {
+          var el = pages[num - 1];
+          var isLeft = num !== 1 && num % 2 === 0;
+          place(el, isLeft ? left : right, y);
+        });
+        // Tek sayfalık duraklarda (kapak, arka kapak) kamera o sayfaya odaklanır
+        var cx = g.length === 2 ? left + pw : (g[0] === 1 ? right + pw / 2 : left + pw / 2);
+        stops.push({ pages: g, fx: cx, fy: y + ph / 2 });
+        g.forEach(function (num) { stopOf[num] = i; });
+        x += pw * 2 + gap;
+      });
+    } else {
+      pages.forEach(function (el, i) {
+        place(el, x, y);
+        stops.push({ pages: [i + 1], fx: x + pw / 2, fy: y + ph / 2 });
+        stopOf[i + 1] = i;
+        x += pw + gap;
+      });
+    }
+    fitAll();
+    jumpTo(stop);
   }
+  function place(el, x, y) { el.style.left = x + "px"; el.style.top = y + "px"; }
 
   // Taşan sayfayı küçült: bütün ölçüler --u'ya bağlı olduğu için oran ekran boyundan bağımsız
   function fitAll() {
@@ -50,178 +82,108 @@
     if (view === "app") return;
     pages.forEach(function (p) {
       var inner = p.querySelector(".page-inner");
-      if (!inner) return;
       var fit = 1;
-      var off = p.classList.contains("is-off");
-      if (off) p.style.visibility = "hidden", p.classList.remove("is-off");
-      while (inner.scrollHeight > inner.clientHeight + 2 && fit > 0.72) {
+      while (inner && inner.scrollHeight > inner.clientHeight + 2 && fit > 0.72) {
         fit = Math.round((fit - 0.03) * 100) / 100;
         p.style.setProperty("--fit", fit);
       }
-      if (off) { p.classList.add("is-off"); p.style.removeProperty("visibility"); }
     });
   }
 
-  // Bir sayfanın içinde bulunduğu açılım
-  function spreadOf(n) {
-    if (view !== "spread") return [n];
-    if (n <= 1) return [1];
-    var left = n % 2 === 0 ? n : n - 1;
-    var right = left + 1;
-    return right <= total && left !== total ? [left, right] : [left];
+  // ---------- Kamera ----------
+  function viewport() { return { w: window.innerWidth, h: window.innerHeight - TOP }; }
+  function camFor(i, s) {
+    var v = viewport(), st = stops[i];
+    s = s || 1;
+    return { x: v.w / 2 - st.fx * s, y: v.h / 2 - st.fy * s, s: s };
   }
-  function firstOf(n) { return spreadOf(n)[0]; }
+  function setCam(c) {
+    cam = c;
+    world.style.transform = "translate3d(" + c.x.toFixed(1) + "px," + c.y.toFixed(1) + "px,0) scale(" + c.s + ")";
+  }
+  function tf(c) { return "translate3d(" + c.x.toFixed(1) + "px," + c.y.toFixed(1) + "px,0) scale(" + c.s + ")"; }
 
-  // Sayfaları yerleştir (animasyonsuz)
-  function show(n, silent) {
-    n = Math.max(1, Math.min(total, n));
-    current = firstOf(n);
-    var visible = spreadOf(current);
-    pages.forEach(function (p, i) {
-      var num = i + 1;
-      p.classList.remove("is-left", "is-right", "is-solo", "is-off");
-      var on = visible.indexOf(num) >= 0;
-      if (!on) { p.classList.add("is-off"); p.setAttribute("inert", ""); p.setAttribute("aria-hidden", "true"); return; }
-      p.removeAttribute("inert"); p.removeAttribute("aria-hidden");
-      if (view === "spread") p.classList.add(num === 1 || num % 2 === 1 ? "is-right" : "is-left");
-      else p.classList.add("is-solo");
+  function jumpTo(i) {
+    stop = Math.max(0, Math.min(stops.length - 1, i));
+    setCam(camFor(stop));
+    settle();
+  }
+
+  // Bir duraktan ötekine: kamera geri çekilir, kayar, yeniden yaklaşır
+  function travel(i, focusPage) {
+    i = Math.max(0, Math.min(stops.length - 1, i));
+    if (i === stop && !anim) { if (focusPage) focusOn(focusPage); return; }
+    if (anim) { anim.cancel(); anim = null; }
+    var from = cam, to = camFor(i);
+    var dist = Math.abs(i - stop);
+    if (reduce.matches) { stop = i; setCam(to); settle(); if (focusPage) focusOn(focusPage); return; }
+    // Uzaklık arttıkça kamera daha çok geri çekilir ve yolculuk biraz uzar
+    var low = Math.max(view === "app" ? 0.62 : 0.42, (view === "app" ? 0.86 : 0.8) - 0.05 * (dist - 1));
+    var v = viewport();
+    var midFx = (stops[stop].fx + stops[i].fx) / 2, midFy = (stops[stop].fy + stops[i].fy) / 2;
+    var mid = { x: v.w / 2 - midFx * low, y: v.h / 2 - midFy * low, s: low };
+    var duration = Math.min(1500, (view === "app" ? 520 : 820) + 90 * (dist - 1));
+    stop = i;
+    root.classList.add("is-moving");
+    updateChrome();
+    anim = world.animate([
+      { transform: tf(from), easing: "cubic-bezier(.45,0,.35,1)" },
+      { transform: tf(mid), offset: 0.5, easing: "cubic-bezier(.45,0,.35,1)" },
+      { transform: tf(to) },
+    ], { duration: duration });
+    anim.onfinish = function () {
+      anim = null;
+      setCam(to);
+      root.classList.remove("is-moving");
+      settle();
+      if (focusPage) focusOn(focusPage);
+    };
+  }
+
+  // Görünen sayfalar etkileşime açık, diğerleri inert (ekran okuyucu ve sekme sırası için)
+  function settle() {
+    var on = stops[stop].pages;
+    pages.forEach(function (p, idx) {
+      var visible = on.indexOf(idx + 1) >= 0;
+      if (visible) { p.removeAttribute("inert"); p.removeAttribute("aria-hidden"); }
+      else { p.setAttribute("inert", ""); p.setAttribute("aria-hidden", "true"); }
     });
-    if (view === "app") { var cur = pages[current - 1]; if (cur) cur.scrollTop = 0; }
-    updateChrome(silent);
+    if (view === "app") on.forEach(function (n) { pages[n - 1].scrollTop = 0; });
+    loadNear();
+    updateChrome(true);
   }
 
-  function label(list) {
-    return (i18n.page || "") + " " + list.join("–") + " " + (i18n.of || "/") + " " + total;
+  // Yolda görünecek komşu sayfaların görsellerini önceden yükle
+  function loadNear() {
+    for (var d = -2; d <= 2; d++) {
+      var st = stops[stop + d];
+      if (!st) continue;
+      st.pages.forEach(function (n) { pages[n - 1].querySelectorAll('img[loading="lazy"]').forEach(function (im) { im.loading = "eager"; }); });
+    }
   }
+
+  // ---------- Çubuklar ----------
   var status = document.querySelector("[data-status]");
   var jump = document.querySelector("[data-jump]");
   var prevBtn = document.querySelector("[data-prev]");
   var nextBtn = document.querySelector("[data-next]");
   var navLinks = Array.prototype.slice.call(document.querySelectorAll("[data-nav]"));
 
-  function updateChrome(silent) {
-    var visible = spreadOf(current);
-    if (jump) jump.value = String(visible[visible.length - 1] === 1 ? 1 : visible[0]);
-    if (status && !silent) status.textContent = label(visible);
-    if (prevBtn) prevBtn.disabled = current <= 1;
-    if (nextBtn) nextBtn.disabled = visible[visible.length - 1] >= total;
-    var id = pages[current - 1].id;
-    if (history.replaceState) history.replaceState(null, "", current === 1 ? location.pathname : "#" + id);
-    // Üst menüde okunan bölüm
-    var best = null, bestN = 0;
+  function updateChrome(announce) {
+    var on = stops[stop].pages;
+    if (jump) jump.value = String(on[0]);
+    if (status && announce) status.textContent = (i18n.page || "") + " " + on.join("–") + " " + (i18n.of || "/") + " " + total;
+    if (prevBtn) prevBtn.disabled = stop <= 0;
+    if (nextBtn) nextBtn.disabled = stop >= stops.length - 1;
+    var id = pages[on[0] - 1].id;
+    if (history.replaceState) history.replaceState(null, "", on[0] === 1 ? location.pathname : "#" + id);
+    var best = null, bestN = 0, last = on[on.length - 1];
     navLinks.forEach(function (a) {
       var t = document.getElementById(a.dataset.nav);
       var n = t ? Number(t.dataset.page) : 0;
-      if (n && n <= visible[visible.length - 1] && n > bestN) { best = a; bestN = n; }
+      if (n && n <= last && n > bestN) { best = a; bestN = n; }
     });
-    navLinks.forEach(function (a) { a.toggleAttribute("aria-current", a === best); if (a === best) a.setAttribute("aria-current", "true"); });
-  }
-
-  // ---------- Sayfa çevirme ----------
-  function cloneFace(n) {
-    var src = pages[n - 1];
-    if (!src) return null;
-    var c = src.cloneNode(true);
-    c.removeAttribute("id");
-    c.querySelectorAll("[id]").forEach(function (el) { el.removeAttribute("id"); });
-    c.classList.remove("is-off", "is-left", "is-right", "is-solo");
-    c.setAttribute("aria-hidden", "true");
-    c.setAttribute("inert", "");
-    return c;
-  }
-  function face(cls, n, blank) {
-    var f = document.createElement("div");
-    f.className = "leaf-face " + cls + (blank ? " leaf-blank" : "");
-    var c = n ? cloneFace(n) : null;
-    if (c) f.appendChild(c);
-    var s = document.createElement("div");
-    s.className = "leaf-shade";
-    f.appendChild(s);
-    return f;
-  }
-
-  function go(target, focusPage) {
-    target = Math.max(1, Math.min(total, target));
-    var to = firstOf(target);
-    if (busy) { queued = [target, focusPage]; return; }
-    if (to === current) { if (focusPage) focusOn(target); return; }
-    var forward = to > current;
-    var done = function () {
-      busy = false;
-      show(to);
-      if (focusPage) focusOn(target);
-      if (queued) { var q = queued; queued = null; go(q[0], q[1]); }
-    };
-    if (reduce.matches || view === "app" && !("animate" in Element.prototype)) { show(to); if (focusPage) focusOn(target); return; }
-    busy = true;
-    if (view === "spread") turnSpread(forward, to, done);
-    else if (view === "single") turnSingle(forward, to, done);
-    else slide(forward, to, done);
-  }
-
-  function turnSpread(forward, to, done) {
-    var from = spreadOf(current), dest = spreadOf(to);
-    var leaf = document.createElement("div");
-    leaf.className = "leaf";
-    var pw = pages[0].getBoundingClientRect().width || 0;
-    leaf.style.width = "var(--pw)"; leaf.style.height = "var(--ph)";
-    var frontN, backN;
-    if (forward) {
-      frontN = from[from.length - 1] === 1 ? 1 : (from[1] || from[0]);
-      backN = dest[0];
-      leaf.style.left = "var(--pw)"; leaf.style.transformOrigin = "left center";
-      // Altta: hedef açılımın sağ sayfası
-      placeUnder(from.length > 1 ? from[0] : null, dest[1] || null);
-    } else {
-      frontN = from[0];
-      backN = dest[1] || dest[0];
-      leaf.style.left = "0"; leaf.style.transformOrigin = "right center";
-      placeUnder(dest.length > 1 ? dest[0] : null, from.length > 1 ? from[1] : (from[0] === 1 ? 1 : null));
-    }
-    var front = face("leaf-front", frontN), back = face("leaf-back", backN);
-    leaf.appendChild(front); leaf.appendChild(back);
-    book.appendChild(leaf);
-    var angle = forward ? -180 : 180;
-    var anim = leaf.animate([{ transform: "rotateY(0deg)" }, { transform: "rotateY(" + angle + "deg)" }], { duration: 900, easing: "cubic-bezier(.62,.04,.3,1)" });
-    front.querySelector(".leaf-shade").animate([{ opacity: 0 }, { opacity: 0.9 }], { duration: 900, easing: "ease-in" });
-    back.querySelector(".leaf-shade").animate([{ opacity: 0.9 }, { opacity: 0 }], { duration: 900, easing: "ease-out" });
-    anim.onfinish = function () { leaf.remove(); done(); };
-  }
-
-  // Çevirme sırasında altta görünecek sayfalar
-  function placeUnder(leftN, rightN) {
-    pages.forEach(function (p, i) {
-      var n = i + 1;
-      p.classList.remove("is-left", "is-right", "is-solo");
-      if (n === leftN) { p.classList.remove("is-off"); p.classList.add("is-left"); }
-      else if (n === rightN) { p.classList.remove("is-off"); p.classList.add("is-right"); }
-      else p.classList.add("is-off");
-    });
-  }
-
-  function turnSingle(forward, to, done) {
-    var leaf = document.createElement("div");
-    leaf.className = "leaf";
-    leaf.style.width = "var(--pw)"; leaf.style.height = "var(--ph)"; leaf.style.left = "0"; leaf.style.transformOrigin = "left center";
-    var frontN = forward ? current : to;
-    var underN = forward ? to : current;
-    pages.forEach(function (p, i) { p.classList.remove("is-solo"); p.classList.toggle("is-off", i + 1 !== underN); if (i + 1 === underN) p.classList.add("is-solo"); });
-    var front = face("leaf-front", frontN), back = face("leaf-back", null, true);
-    leaf.appendChild(front); leaf.appendChild(back);
-    book.appendChild(leaf);
-    var kf = forward ? [{ transform: "rotateY(0deg)" }, { transform: "rotateY(-180deg)", opacity: 0.4 }] : [{ transform: "rotateY(-180deg)", opacity: 0.4 }, { transform: "rotateY(0deg)" }];
-    var anim = leaf.animate(kf, { duration: 750, easing: "cubic-bezier(.62,.04,.3,1)" });
-    anim.onfinish = function () { leaf.remove(); done(); };
-  }
-
-  function slide(forward, to, done) {
-    var a = pages[current - 1], b = pages[to - 1];
-    b.classList.remove("is-off"); b.classList.add("is-solo"); b.scrollTop = 0;
-    var dir = forward ? 1 : -1;
-    a.animate([{ transform: "translateX(0)", filter: "brightness(1)" }, { transform: "translateX(" + (-30 * dir) + "%)", filter: "brightness(.7)" }], { duration: 380, easing: "cubic-bezier(.3,.7,.2,1)" });
-    var anim = b.animate([{ transform: "translateX(" + (100 * dir) + "%)", boxShadow: "-20px 0 40px rgb(0 0 0 / .3)" }, { transform: "translateX(0)", boxShadow: "0 0 0 rgb(0 0 0 / 0)" }], { duration: 380, easing: "cubic-bezier(.3,.7,.2,1)" });
-    b.style.zIndex = 3;
-    anim.onfinish = function () { b.style.zIndex = ""; done(); };
+    navLinks.forEach(function (a) { if (a === best) a.setAttribute("aria-current", "true"); else a.removeAttribute("aria-current"); });
   }
 
   function focusOn(n) {
@@ -229,13 +191,10 @@
     if (!el) return;
     el.setAttribute("tabindex", "-1");
     el.focus({ preventScroll: true });
+    book.scrollLeft = 0; book.scrollTop = 0;
   }
-
-  function step(dir) {
-    var visible = spreadOf(current);
-    if (dir > 0) go(visible[visible.length - 1] + 1);
-    else go(current - 1);
-  }
+  function go(n, focus) { n = Math.max(1, Math.min(total, n)); travel(stopOf[n], focus ? n : 0); }
+  function step(d) { travel(stop + d); }
 
   // ---------- Girdiler ----------
   if (prevBtn) prevBtn.addEventListener("click", function () { step(-1); });
@@ -248,24 +207,61 @@
     if (e.altKey || e.ctrlKey || e.metaKey) return;
     if (e.key === "ArrowRight" || e.key === "PageDown") { e.preventDefault(); step(1); }
     else if (e.key === "ArrowLeft" || e.key === "PageUp") { e.preventDefault(); step(-1); }
-    else if (e.key === "Home") { e.preventDefault(); go(1); }
-    else if (e.key === "End") { e.preventDefault(); go(total); }
+    else if (e.key === "Home") { e.preventDefault(); travel(0); }
+    else if (e.key === "End") { e.preventDefault(); travel(stops.length - 1); }
   });
 
-  // Kaydırarak çevirme (telefon ve dokunmatik ekran)
-  var sx = 0, sy = 0, st = 0;
-  book.addEventListener("touchstart", function (e) { var p = e.changedTouches[0]; sx = p.clientX; sy = p.clientY; st = Date.now(); }, { passive: true });
-  book.addEventListener("touchend", function (e) {
-    var p = e.changedTouches[0], dx = p.clientX - sx, dy = p.clientY - sy;
-    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.4 && Date.now() - st < 800) step(dx < 0 ? 1 : -1);
-  }, { passive: true });
+  // Trackpad ya da yatay tekerlek: yatay kaydırma sayfa değiştirir
+  var wheelLock = 0;
+  book.addEventListener("wheel", function (e) {
+    if (Math.abs(e.deltaX) < Math.abs(e.deltaY) * 1.2 || Math.abs(e.deltaX) < 18) return;
+    e.preventDefault();
+    var now = Date.now();
+    if (now < wheelLock) return;
+    wheelLock = now + 750;
+    step(e.deltaX > 0 ? 1 : -1);
+  }, { passive: false });
 
-  // Sayfa içi bağlantılar: ilgili sayfayı aç
+  // Dokunmatik: sayfalar parmağı takip eder, bırakınca kamera bir sonraki durağa gider
+  var drag = null;
+  book.addEventListener("touchstart", function (e) {
+    if (anim) return;
+    var p = e.touches[0];
+    drag = { x: p.clientX, y: p.clientY, dx: 0, dir: 0, base: cam };
+  }, { passive: true });
+  book.addEventListener("touchmove", function (e) {
+    if (!drag) return;
+    var p = e.touches[0], dx = p.clientX - drag.x, dy = p.clientY - drag.y;
+    if (!drag.dir) { if (Math.abs(dx) > 10 && Math.abs(dx) > Math.abs(dy)) drag.dir = 1; else if (Math.abs(dy) > 10) { drag = null; return; } }
+    if (drag.dir === 1) {
+      drag.dx = dx;
+      var edge = (dx > 0 && stop === 0) || (dx < 0 && stop === stops.length - 1);
+      var moved = edge ? dx * 0.3 : dx;
+      var s = 1 - Math.min(0.08, Math.abs(moved) / 4000);
+      var v = viewport();
+      setCam({ x: drag.base.x + moved + (1 - s) * (v.w / 2 - drag.base.x), y: drag.base.y + (1 - s) * (v.h / 2 - drag.base.y), s: s });
+    }
+  }, { passive: true });
+  book.addEventListener("touchend", function () {
+    if (!drag) return;
+    var d = drag; drag = null;
+    if (d.dir !== 1) return;
+    if (d.dx < -60 && stop < stops.length - 1) travel(stop + 1);
+    else if (d.dx > 60 && stop > 0) travel(stop - 1);
+    else travelBack();
+  }, { passive: true });
+  function travelBack() {
+    var from = cam, to = camFor(stop);
+    if (reduce.matches) { setCam(to); return; }
+    anim = world.animate([{ transform: tf(from) }, { transform: tf(to) }], { duration: 260, easing: "cubic-bezier(.3,.7,.2,1)" });
+    anim.onfinish = function () { anim = null; setCam(to); };
+  }
+
+  // Sayfa içi bağlantılar: ilgili sayfaya git
   document.addEventListener("click", function (e) {
     var a = e.target.closest && e.target.closest('a[href^="#"]');
     if (!a) return;
-    var id = a.getAttribute("href").slice(1);
-    var n = pageFor(id);
+    var n = pageFor(a.getAttribute("href").slice(1));
     if (!n) return;
     e.preventDefault();
     go(n, true);
@@ -281,7 +277,10 @@
   window.addEventListener("hashchange", function () { var n = pageFor(location.hash.slice(1)); if (n) go(n, true); });
 
   var resizeTimer = null;
-  window.addEventListener("resize", function () { clearTimeout(resizeTimer); resizeTimer = setTimeout(layout, 120); });
+  window.addEventListener("resize", function () {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function () { var first = stops[stop] ? stops[stop].pages[0] : 1; layout(); jumpTo(stopOf[first]); }, 120);
+  });
 
   // ---------- Tema ----------
   var themeBtn = document.querySelector("[data-theme-toggle]");
@@ -326,9 +325,13 @@
   });
 
   // ---------- Başlat ----------
-  var startN = pageFor(location.hash.slice(1)) || 1;
-  current = startN;
+  var startPage = pageFor(location.hash.slice(1)) || 1;
   layout();
-  if (current === 1) { pages[0].classList.add("is-fresh"); }
+  jumpTo(stopOf[startPage]);
+  if (stop === 0) pages[0].classList.add("is-fresh");
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { fitAll(); });
+  // Kamera uzun yolculukta bütün masayı gösterebilir: ilk açılıştan sonra diğer görselleri de yükle
+  window.addEventListener("load", function () {
+    setTimeout(function () { document.querySelectorAll('img[loading="lazy"]').forEach(function (im) { im.loading = "eager"; }); }, 1200);
+  });
 })();
