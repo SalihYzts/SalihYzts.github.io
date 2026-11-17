@@ -23,116 +23,103 @@ const links = {
 
 const ui = {
   skip: { tr: "İçeriğe geç", en: "Skip to content" },
-  modeLabel: { tr: "Mod", en: "Mode" },
-  modeGame: { tr: "Oyun", en: "Games" },
-  modeCode: { tr: "Yazılım", en: "Software" },
   langSwitch: { tr: "English", en: "Türkçe" },
   langSwitchShort: { tr: "EN", en: "TR" },
-  themeToggle: { tr: "Açık ya da koyu tema", en: "Light or dark theme" },
-  soundOn: { tr: "Sesi aç", en: "Turn sound on" },
-  soundOff: { tr: "Sesi kapat", en: "Turn sound off" },
-  role: { tr: "Oyun ve yazılım geliştirici", en: "Game & software developer" },
-  intro: {
-    tr: "Çanakkale Onsekiz Mart Üniversitesi'nde oyun geliştirme okuyorum ve 7 yıldır kendi kendime kod yazıyorum. Unity'de oyun, React ve Python'la ürün geliştiriyorum, ikisini de yayına kadar götürüyorum. Bağımsız ekip Volpen'in kurucusuyum.",
-    en: "I study game development at Çanakkale Onsekiz Mart University and have been teaching myself to code for 7 years. I make games in Unity and products with React and Python, and I take both all the way to release. I founded Volpen, an independent studio.",
-  },
-  pickMode: { tr: "Nereden başlamak istersin?", en: "Where do you want to start?" },
-  pickGameTitle: { tr: "Oyunlar", en: "Games" },
-  pickGameText: {
-    tr: "Unity ve C#: Kralın Sözü, Under the Counter, LAST DAWN ve jam oyunları",
-    en: "Unity and C#: Kralın Sözü, Under the Counter, LAST DAWN and jam games",
-  },
-  pickCodeTitle: { tr: "Yazılım", en: "Software" },
-  pickCodeText: {
-    tr: "Web, backend, masaüstü ve yapay zekâ: MyEverythingList, NeRoBoT, RaiPy",
-    en: "Web, backend, desktop and AI: MyEverythingList, NeRoBoT, RaiPy",
-  },
-  terminalLine: { tr: "19 dilde yayında", en: "live in 19 languages" },
-  menuLabel: { tr: "Ana menü", en: "Main menu" },
-  hudLabel: { tr: "Kısa istatistikler", en: "Quick stats" },
+  themeToggle: { tr: "Gündüz ya da gece baskısı", en: "Day or night edition" },
   externalHint: { tr: "(yeni sekmede açılır)", en: "(opens in a new tab)" },
+  navLabel: { tr: "Dergi bölümleri", en: "Magazine sections" },
 
-  levelsTitleGame: { tr: "Seviye seçimi", en: "Level select" },
-  levelsTitleCode: { tr: "~/projeler", en: "~/projects" },
-  levelsIntroGame: {
-    tr: "Oyun modundasın: oyunlar ana görev, yazılım projeleri yan görev. Üstteki mod düğmesiyle sırayı değiştirebilirsin.",
-    en: "You're in games mode: games are the main quest, software projects are side quests. Switch the order with the mode button at the top.",
+  // Kapak
+  issue: { tr: "Sayı 26", en: "Issue 26" },
+  issueDate: { tr: "Kasım 2026", en: "November 2026" },
+  issueTag: { tr: "Oyun ve yazılım dergisi", en: "Games & software magazine" },
+  coverKicker: { tr: "Kapak konusu", en: "Cover story" },
+  coverTitle: { tr: "Arayüzsüz bir nöbet", en: "A watch with no interface" },
+  coverDeck: {
+    tr: "Kralın Sözü'nü yapan Salih Yazıtaş, ekranında tek bir gösterge olmayan oyunu 2000 gecelik bir simülasyonla nasıl dengelediğini anlatıyor.",
+    en: "Salih Yazıtaş, who made Kralın Sözü, on balancing a game with no on-screen interface through a 2,000-night simulation.",
   },
-  levelsIntroCode: {
-    tr: "Yazılım modundasın: yazılım projeleri ana görev, oyunlar yan görev. Üstteki mod düğmesiyle sırayı değiştirebilirsin.",
-    en: "You're in software mode: software projects are the main quest, games are side quests. Switch the order with the mode button at the top.",
-  },
-  trackGame: { tr: "Oyunlar", en: "Games" },
-  trackCode: { tr: "Yazılım", en: "Software" },
-  mainQuest: { tr: "Ana görev", en: "Main quest" },
-  sideQuest: { tr: "Yan görev", en: "Side quest" },
-  stats: { tr: "İstatistikler", en: "Stats" },
-  inventory: { tr: "Envanter", en: "Inventory" },
-  moreGames: { tr: "Jam ve ekip oyunları", en: "Jam & team games" },
-  moreCode: { tr: "Diğer araçlar ve siteler", en: "Other tools & sites" },
+  coverAlt: { tr: "Kralın Sözü: karlı bir gecede iki nöbet kulesi arasındaki kapı", en: "Kralın Sözü: the gate between two watchtowers on a snowy night" },
+  stickerTop: { tr: "Bu sayıda", en: "Free with" },
+  stickerMain: { tr: "CV hediye", en: "CV inside" },
+  readIssue: { tr: "Sayıyı oku", en: "Read the issue" },
 
-  questsTitleGame: { tr: "Görev günlüğü", en: "Quest log" },
-  questsTitleCode: { tr: "git log", en: "git log" },
-  questsIntro: {
-    tr: "Deneyim, eğitim ve topluluk işleri. En yeni görev en üstte.",
-    en: "Work, school and community roles. Newest quest first.",
+  // İçindekiler ve editörden
+  tocTitle: { tr: "İçindekiler", en: "Contents" },
+  editorTitle: { tr: "Editörden", en: "From the editor" },
+  editorLetter: {
+    tr: [
+      "Merhaba, ben Salih. Çanakkale Onsekiz Mart Üniversitesi'nde oyun geliştirme okuyorum ve 7 yıldır kendi kendime kod yazıyorum.",
+      "Bu sayıda iki işimi bir arada bulacaksın: Unity'de yaptığım oyunlar ve React, Python, Go ile yazdığım yazılımlar. İkisini de fikirden yayına kadar götürüyorum. Bağımsız ekip Volpen'in kurucusuyum.",
+    ],
+    en: [
+      "Hi, I'm Salih. I study game development at Çanakkale Onsekiz Mart University and have been teaching myself to code for 7 years.",
+      "This issue puts both halves of my work side by side: the games I make in Unity and the software I write in React, Python and Go. I take both from idea to release. I founded the independent studio Volpen.",
+    ],
   },
-  status: {
-    active: { tr: "Sürüyor", en: "Active" },
-    done: { tr: "Tamamlandı", en: "Completed" },
-    locked: { tr: "Kilitli", en: "Locked" },
-  },
-  lockedTitle: { tr: "Yeni görev yükleniyor", en: "New quest loading" },
-  lockedText: { tr: "Bu kayıt yakında açılacak.", en: "This entry unlocks soon." },
-
-  achTitleGame: { tr: "Başarımlar", en: "Achievements" },
-  achTitleCode: { tr: "Kilometre taşları", en: "Milestones" },
-  achIntro: {
-    tr: "Her rozetin arkasında ölçülebilir bir şey var. Biri gizli.",
-    en: "Every badge stands for something you can check. One is hidden.",
-  },
-  achUnlocked: { tr: "açıldı", en: "unlocked" },
-  secretName: { tr: "???", en: "???" },
-  secretHint: { tr: "Gizli başarım. Klasik bir hile kodu var.", en: "Hidden achievement. There's a classic cheat code." },
-
-  skillsTitleGame: { tr: "Yetenek ağacı", en: "Skill tree" },
-  skillsTitleCode: { tr: "package.json", en: "package.json" },
-  skillsIntro: {
-    tr: "Seviye ya da yüzde yok. Her dalın altında, o dalı nerede kullandığım yazıyor.",
-    en: "No levels or percentages. Each branch shows where I've actually used it.",
-  },
-  usedIn: { tr: "Kullandığım yer", en: "Used in" },
-
-  saveTitleGame: { tr: "Kayıt noktası", en: "Save point" },
-  saveTitleCode: { tr: "İletişim", en: "Contact" },
-  saveIntro: {
-    tr: "Staj, ekip ya da proje için yazabilirsin. CV'mi buradan indirebilirsin.",
-    en: "Write to me about internships, teams or projects. You can download my CV here.",
-  },
-  charClass: { tr: "Sınıf", en: "Class" },
-  charGuild: { tr: "Lonca", en: "Guild" },
-  charBase: { tr: "Üs", en: "Base" },
-  charSchool: { tr: "Okul", en: "School" },
-  charLang: { tr: "Diller", en: "Languages" },
-  charClassValue: { tr: "Oyun ve yazılım geliştirici", en: "Game & software developer" },
-  charGuildValue: { tr: "Volpen (kurucu)", en: "Volpen (founder)" },
-  charBaseValue: { tr: "Çanakkale, Türkiye", en: "Çanakkale, Türkiye" },
-  charSchoolValue: { tr: "ÇOMÜ, 2. sınıf", en: "ÇOMÜ, 2nd year" },
-  charLangValue: { tr: "Türkçe (ana dil), İngilizce (teknik)", en: "Turkish (native), English (technical)" },
+  editorSign: { tr: "Salih Yazıtaş, genel yayın yönetmeni", en: "Salih Yazıtaş, editor-in-chief" },
   photoAlt: { tr: "Salih Yazıtaş'ın fotoğrafı", en: "Photo of Salih Yazıtaş" },
-  cvTr: { tr: "CV'yi indir (Türkçe, PDF)", en: "Download CV (Turkish, PDF)" },
-  cvEn: { tr: "CV'yi indir (İngilizce, PDF)", en: "Download CV (English, PDF)" },
-  copyEmail: { tr: "Kopyala", en: "Copy" },
+
+  // Bölümler
+  secGame: { tr: "Oyun", en: "Games" },
+  secCode: { tr: "Yazılım", en: "Software" },
+  secGameDeck: { tr: "Unity ve C# ile yaptığım oyunlar: tek başıma, ekiple ve jamlerde.", en: "Games I made in Unity and C#: solo, with a team and at jams." },
+  secCodeDeck: { tr: "Web, backend, masaüstü ve yapay zekâ: yayına aldığım yazılımlar.", en: "Web, backend, desktop and AI: software I shipped." },
+  briefsGame: { tr: "Kısa kısa: jam ve ekip oyunları", en: "In brief: jam and team games" },
+  briefsCode: { tr: "Kısa kısa: araçlar ve siteler", en: "In brief: tools and sites" },
+  specTitle: { tr: "Künye", en: "Fact file" },
+  specKind: { tr: "Tür ve rol", en: "Type and role" },
+  specDate: { tr: "Tarih", en: "Date" },
+  specTech: { tr: "Teknoloji", en: "Tech" },
+  numbersTitle: { tr: "Rakamlarla", en: "By the numbers" },
+  page: { tr: "s.", en: "p." },
+
+  journeyTitle: { tr: "Dosya: Yolculuk", en: "Feature: The journey" },
+  journeyDeck: { tr: "Deneyim, okul ve topluluk işleri. En yenisi en üstte.", en: "Work, school and community roles. Newest first." },
+  status: {
+    active: { tr: "Sürüyor", en: "Ongoing" },
+    done: { tr: "Tamamlandı", en: "Done" },
+    locked: { tr: "Yakında", en: "Coming soon" },
+  },
+  lockedTitle: { tr: "Yeni bir görev yolda", en: "A new role is on its way" },
+  lockedText: { tr: "Bu kayıt yakında eklenecek.", en: "This entry is coming soon." },
+
+  awardsTitle: { tr: "Rozetler", en: "Badges" },
+  awardsDeck: { tr: "Her rozetin arkasında ölçülebilir bir şey var. Biri gizli.", en: "Every badge stands for something you can check. One is hidden." },
+  secretName: { tr: "Gizli rozet", en: "Hidden badge" },
+  secretHint: { tr: "Klasik bir hile kodu açıyor.", en: "A classic cheat code unlocks it." },
+
+  guideTitle: { tr: "Rehber: alet çantası", en: "Guide: the toolkit" },
+  guideDeck: { tr: "Seviye ya da yüzde yok. Her satırda o aracı nerede kullandığım yazıyor.", en: "No levels or percentages. Each row says where I've actually used it." },
+  guideCat: { tr: "Alan", en: "Area" },
+  guideTools: { tr: "Araçlar", en: "Tools" },
+  guideUsed: { tr: "Kullandığım yer", en: "Used in" },
+  guideLangs: { tr: "Diller", en: "Languages" },
+
+  lettersTitle: { tr: "Okur mektupları", en: "Letters" },
+  lettersDeck: { tr: "Staj, ekip ya da proje için yazabilirsin. Her mektubu okuyorum.", en: "Write about internships, teams or projects. I read every letter." },
+  copyEmail: { tr: "Adresi kopyala", en: "Copy address" },
   copied: { tr: "E-posta adresi kopyalandı", en: "Email address copied" },
   copyFailed: { tr: "Kopyalanamadı, adresi elle seç", en: "Couldn't copy, select the address instead" },
-  footer: {
-    tr: "Bu site elle yazıldı: çerçeve yok, izleyici yok.",
-    en: "This site is handwritten: no framework, no trackers.",
+  cvTr: { tr: "CV'yi indir, Türkçe PDF", en: "Download CV, Turkish PDF" },
+  cvEn: { tr: "CV'yi indir, İngilizce PDF", en: "Download CV, English PDF" },
+  imprintTitle: { tr: "Künye", en: "Masthead" },
+  imprint: [
+    { k: { tr: "Sahibi ve genel yayın yönetmeni", en: "Owner and editor-in-chief" }, v: "Salih Yazıtaş" },
+    { k: { tr: "Yazı işleri, kod ve tasarım", en: "Editorial, code and design" }, v: "Salih Yazıtaş" },
+    { k: { tr: "Yayınevi", en: "Publisher" }, v: { tr: "Volpen, Çanakkale", en: "Volpen, Çanakkale" } },
+    { k: { tr: "Okul", en: "School" }, v: { tr: "ÇOMÜ, Oyun Geliştirme ve Programlama, 2. sınıf", en: "ÇOMÜ, Game Development and Programming, 2nd year" } },
+    { k: { tr: "Diller", en: "Languages" }, v: { tr: "Türkçe (ana dil), İngilizce (teknik)", en: "Turkish (native), English (technical)" } },
+    { k: { tr: "Baskı", en: "Printed on" }, v: "GitHub Pages" },
+  ],
+  nextTitle: { tr: "Gelecek sayıda", en: "Next issue" },
+  next: {
+    tr: ["LAST DAWN: gündüz yağma, gece savunma", "Under the Counter: Steam Next Fest demosu yolda"],
+    en: ["LAST DAWN: scavenge by day, defend by night", "Under the Counter: a Steam Next Fest demo on the way"],
   },
-  footerHint: { tr: "İpucu: ↑ ↑ ↓ ↓ ← → ← → B A", en: "Hint: ↑ ↑ ↓ ↓ ← → ← → B A" },
-  toastSecret: { tr: "Başarım açıldı: Hile kodu", en: "Achievement unlocked: Cheat code" },
-  crtOn: { tr: "Tarama çizgileri açık", en: "Scanlines on" },
-  crtOff: { tr: "Tarama çizgileri kapalı", en: "Scanlines off" },
+  footer: { tr: "Bu dergi elle dizildi: çerçeve yok, izleyici yok.", en: "Hand-set: no framework, no trackers." },
+  footerHint: { tr: "Gizli rozet için: ↑ ↑ ↓ ↓ ← → ← → B A", en: "For the hidden badge: ↑ ↑ ↓ ↓ ← → ← → B A" },
+  toastSecret: { tr: "Gizli rozet açıldı: Hile kodu", en: "Hidden badge unlocked: Cheat code" },
   links: {
     play: { tr: "itch.io'da oyna", en: "Play on itch.io" },
     open: { tr: "Siteyi aç", en: "Open the site" },
@@ -148,18 +135,16 @@ const meta = {
     en: "Salih Yazıtaş: game and software developer. Unity games (Kralın Sözü, Under the Counter), MyEverythingList live in 19 languages, open-source NeRoBoT and RaiPy. Founder of Volpen.",
   },
   ogAlt: {
-    tr: "Salih Yazıtaş, oyun ve yazılım geliştirici: mod seçim ekranı",
-    en: "Salih Yazıtaş, game and software developer: mode select screen",
+    tr: "YAZITAŞ dergisinin kapağı: Kralın Sözü'nün karlı kapısı üstünde kırmızı logo, Salih Yazıtaş adı ve sarı rakamlar",
+    en: "Cover of YAZITAŞ magazine: a red masthead over the snowy gate of Kralın Sözü, Salih Yazıtaş's name and yellow numbers",
   },
 };
 
-// Hero altındaki durum çubuğu
-const hud = [
-  { value: { tr: "7 yıl", en: "7 yrs" }, label: { tr: "kendi kendine kod", en: "self-taught coding" } },
-  { value: "19", label: { tr: "dilde yayında", en: "languages live" } },
-  { value: "614", label: { tr: "test, RaiPy", en: "tests, RaiPy" } },
-  { value: { tr: "1,6 ms", en: "1.6 ms" }, label: { tr: "kare süresi, Kralın Sözü", en: "frame time, Kralın Sözü" } },
-  { value: "3", label: { tr: "game jam", en: "game jams" } },
+// Kapaktaki başlıklar (gerçek rakamlar, cv-data.js'den)
+const coverLines = [
+  { big: "19", text: { tr: "dilde yayında: MyEverythingList", en: "languages live: MyEverythingList" }, href: "#myeverythinglist" },
+  { big: "614", text: { tr: "testli yapay zekâ motoru: RaiPy", en: "tests behind an AI engine: RaiPy" }, href: "#raipy" },
+  { big: { tr: "1,6 ms", en: "1.6 ms" }, text: { tr: "kare süresi, RTX 4060'ta", en: "per frame on an RTX 4060" }, href: "#kralin-sozu" },
 ];
 
 // Projeler data/projects.json içinde (yerel panelden düzenlenir: node admin/server.js)
@@ -270,4 +255,4 @@ const socials = [
   { name: "Volpen", handle: { tr: "ekip sitesi", en: "studio site" }, href: links.volpen },
 ];
 
-module.exports = { links, ui, meta, hud, quests, achievements, skills, languages, socials };
+module.exports = { links, ui, meta, coverLines, quests, achievements, skills, languages, socials };

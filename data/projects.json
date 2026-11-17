@@ -715,8 +715,8 @@
       ],
       "image": {
         "src": "myeverythinglist.webp",
-        "w": 960,
-        "h": 748,
+        "w": 2000,
+        "h": 1125,
         "alt": {
           "tr": "MyEverythingList ana sayfası",
           "en": "MyEverythingList home page"
@@ -925,12 +925,12 @@
       },
       "points": {
         "tr": [
-          "Parselleri TKGM üzerinden sorgulayan \"Tapu Doğrulanmış\" rozeti, eğime göre düzeltilmiş alan ve yükseklik analizi.",
+          "Parselleri TKGM üzerinden sorgulayan “Tapu Doğrulanmış” rozeti, eğime göre düzeltilmiş alan ve yükseklik analizi.",
           "Son saniye teklifinde süreyi uzatan anti-sniping, yarış koşullarına karşı güvenli teklif işleme ve WebSocket ile canlı akış.",
           "3D harita üzerinde seslendirmeli, altyazılı sanal drone videosu üreten bir hat (Playwright, ffmpeg)."
         ],
         "en": [
-          "A \"title-verified\" badge that looks parcels up in Turkey's land registry (TKGM), plus slope-corrected area and elevation analysis.",
+          "A “title-verified” badge that looks parcels up in Turkey's land registry (TKGM), plus slope-corrected area and elevation analysis.",
           "Anti-sniping (a last-second bid extends the timer), race-safe bid handling and real-time updates over WebSocket.",
           "A pipeline that renders narrated, subtitled virtual drone videos over a 3D map (Playwright, ffmpeg)."
         ]

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="tr" data-theme="dark" data-lens="game">
+<html lang="tr" data-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,16 +8,16 @@
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/assets/css/fonts.css">
 <link rel="stylesheet" href="/assets/css/site.css">
-<script>(function(){var d=document.documentElement,t=null;try{t=localStorage.getItem("theme")}catch(e){}if(!t)t=matchMedia("(prefers-color-scheme: light)").matches?"light":"dark";d.dataset.theme=t;})();</script>
+<script>(function(){var d=document.documentElement,t=null;try{t=localStorage.getItem("theme")}catch(e){}if(t!=="light"&&t!=="dark")t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";d.dataset.theme=t;})();</script>
 </head>
 <body>
 <main class="lost">
   <div class="wrap">
     <p class="lost-code">404</p>
-    <h1 class="lost-title">Bu bölüm haritada yok</h1>
-    <p class="lost-text">Aradığın sayfa taşınmış ya da hiç olmamış. Ana menüye dönüp oradan devam edebilirsin.</p>
-    <p class="lost-text" lang="en">This level isn't on the map. Head back to the main menu.</p>
-    <p class="qc-links"><a class="btn btn--primary" href="/">Ana menüye dön</a> <a class="btn btn--ghost" href="/en/" lang="en">Main menu (English)</a></p>
+    <h1 class="lost-title">Bu sayfa baskıdan çıkmamış</h1>
+    <p class="lost-text">Aradığın sayfa bu sayıda yok. İçindekilere dönüp oradan devam edebilirsin.</p>
+    <p class="lost-text" lang="en">This page didn't make it into the issue. Head back to the contents.</p>
+    <p class="rv-links"><a class="btn btn--solid" href="/#icindekiler">İçindekilere dön</a> <a class="btn" href="/en/#icindekiler" lang="en">Contents (English)</a></p>
   </div>
 </main>
 </body>

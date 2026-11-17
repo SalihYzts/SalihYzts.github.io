@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-theme="dark" data-lens="game">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,9 +10,9 @@
 <link rel="alternate" hreflang="tr" href="https://salihyzts.github.io/">
 <link rel="alternate" hreflang="en" href="https://salihyzts.github.io/en/">
 <link rel="alternate" hreflang="x-default" href="https://salihyzts.github.io/">
-<meta name="color-scheme" content="dark light">
-<meta name="theme-color" content="#10131d" media="(prefers-color-scheme: dark)">
-<meta name="theme-color" content="#eceef2" media="(prefers-color-scheme: light)">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#fbfbf9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#16171a" media="(prefers-color-scheme: dark)">
 <meta property="og:type" content="profile">
 <meta property="og:site_name" content="Salih Yazıtaş">
 <meta property="og:title" content="Salih Yazıtaş · Game &amp; Software Developer">
@@ -20,148 +20,159 @@
 <meta property="og:url" content="https://salihyzts.github.io/en/">
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="tr_TR">
-<meta property="og:image" content="https://salihyzts.github.io/assets/og/og-en.png">
+<meta property="og:image" content="https://salihyzts.github.io/assets/og/og-en.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Salih Yazıtaş, game and software developer: mode select screen">
+<meta property="og:image:alt" content="Cover of YAZITAŞ magazine: a red masthead over the snowy gate of Kralın Sözü, Salih Yazıtaş's name and yellow numbers">
 <meta property="profile:first_name" content="Salih">
 <meta property="profile:last_name" content="Yazıtaş">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-<link rel="preload" href="/assets/fonts/big-shoulders-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/assets/fonts/plex-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/archivo-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/img/kralin-sozu-gate_view.webp" as="image" type="image/webp">
 <link rel="stylesheet" href="/assets/css/fonts.css">
 <link rel="stylesheet" href="/assets/css/site.css">
 <script>
-  // Boyamadan önce tema ve modu uygula (yanıp sönme olmasın)
+  // Boyamadan önce temayı uygula (yanıp sönme olmasın)
   (function () {
-    var d = document.documentElement, t = null, l = null;
-    try { t = localStorage.getItem("theme"); l = localStorage.getItem("lens"); } catch (e) {}
-    if (!t) t = matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+    var d = document.documentElement, t = null;
+    try { t = localStorage.getItem("theme"); } catch (e) {}
+    if (t !== "light" && t !== "dark") t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
     d.dataset.theme = t;
-    // ?mod=yazilim / ?mod=oyun ile paylaşılan bağlantı o modda açılsın
-    var q = /[?&]mod=(oyun|game|yazilim|code)/.exec(location.search);
-    if (q) l = /oyun|game/.test(q[1]) ? "game" : "code";
-    if (l === "game" || l === "code") d.dataset.lens = l;
-    d.classList.add("js");
   })();
 </script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Salih Yazıtaş","url":"https://salihyzts.github.io/en/","image":"https://salihyzts.github.io/assets/img/salih.webp","jobTitle":"Game & software developer","email":"mailto:yazitassalih0@gmail.com","address":{"@type":"PostalAddress","addressLocality":"Çanakkale","addressCountry":"TR"},"alumniOf":{"@type":"CollegeOrUniversity","name":"Çanakkale Onsekiz Mart Üniversitesi"},"founder":{"@type":"Organization","name":"Volpen","url":"https://salihyzts.github.io/VolpenWeb/"},"sameAs":["https://github.com/SalihYzts","https://www.linkedin.com/in/salih-yaz%C4%B1ta%C5%9F/","https://salihyzts.itch.io"],"knowsAbout":["Unity","C#","TypeScript","React","Python","FastAPI","Supabase","Electron","Tauri"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Salih Yazıtaş","url":"https://salihyzts.github.io/en/","image":"https://salihyzts.github.io/assets/img/salih.webp","jobTitle":"Game & software developer","email":"mailto:yazitassalih0@gmail.com","address":{"@type":"PostalAddress","addressLocality":"Çanakkale","addressCountry":"TR"},"alumniOf":{"@type":"CollegeOrUniversity","name":"Çanakkale Onsekiz Mart Üniversitesi"},"founder":{"@type":"Organization","name":"Volpen","url":"https://salihyzts.github.io/VolpenWeb/"},"sameAs":["https://github.com/SalihYzts","https://www.linkedin.com/in/salih-yaz%C4%B1ta%C5%9F/","https://salihyzts.itch.io"],"knowsAbout":["Unity","C#","TypeScript","React","Python","FastAPI","Supabase","Electron","Tauri","Go"]}</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 
-<header class="hud">
-  <div class="wrap hud-inner">
-    <a class="brand" href="/en/" aria-label="Salih Yazıtaş">
-      <svg class="brand-mark" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M1 2h3v1h-3zM7 2h1v1h-1zM11 2h1v1h-1zM0 3h1v1h-1zM7 3h1v1h-1zM11 3h1v1h-1zM0 4h1v1h-1zM8 4h1v1h-1zM10 4h1v1h-1zM1 5h2v1h-2zM9 5h1v1h-1zM3 6h1v1h-1zM9 6h1v1h-1zM3 7h1v1h-1zM9 7h1v1h-1zM0 8h3v1h-3zM9 8h1v1h-1z"/></svg>
-      <span class="brand-name" lang="tr">Salih Yazıtaş</span>
-    </a>
-    <div class="lens-switch" role="group" aria-label="Mode">
-      <button type="button" class="lens-btn" data-set-lens="game" aria-pressed="true"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2 2h8v1h-8zM1 3h10v1h-10zM0 4h3v1h-3zM4 4h4v1h-4zM9 4h3v1h-3zM0 5h1v1h-1zM6 5h2v1h-2zM9 5h1v1h-1zM11 5h1v1h-1zM0 6h3v1h-3zM4 6h4v1h-4zM9 6h3v1h-3zM0 7h12v1h-12zM0 8h4v1h-4zM8 8h4v1h-4zM0 9h3v1h-3zM9 9h3v1h-3zM1 10h1v1h-1zM10 10h1v1h-1z"/></svg><span>Games</span></button>
-      <button type="button" class="lens-btn" data-set-lens="code" aria-pressed="false"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M0 0h12v1h-12zM0 1h1v1h-1zM11 1h1v1h-1zM0 2h12v1h-12zM0 3h1v1h-1zM11 3h1v1h-1zM0 4h1v1h-1zM2 4h1v1h-1zM11 4h1v1h-1zM0 5h1v1h-1zM3 5h1v1h-1zM11 5h1v1h-1zM0 6h1v1h-1zM4 6h1v1h-1zM11 6h1v1h-1zM0 7h1v1h-1zM3 7h1v1h-1zM11 7h1v1h-1zM0 8h1v1h-1zM2 8h1v1h-1zM5 8h4v1h-4zM11 8h1v1h-1zM0 9h1v1h-1zM11 9h1v1h-1zM0 10h12v1h-12z"/></svg><span>Software</span></button>
-    </div>
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a class="mini-mast" href="/en/" aria-label="Salih Yazıtaş" translate="no"><span lang="tr">YAZITAŞ</span></a>
+    <nav class="topnav" aria-label="Magazine sections">
+      <ul><li><a href="#icindekiler" data-nav="icindekiler">Contents</a></li><li><a href="#oyun" data-nav="oyun">Games</a></li><li><a href="#yazilim" data-nav="yazilim">Software</a></li><li><a href="#yolculuk" data-nav="yolculuk">Journey</a></li><li><a href="#mektup" data-nav="mektup">Letters</a></li></ul>
+    </nav>
     <div class="tools">
-      <a class="tool tool--lang" href="/" hreflang="tr" lang="tr" aria-label="Türkçe">TR</a>
-      <button type="button" class="tool" data-theme-toggle aria-label="Light or dark theme"><svg class="px only-dark" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M5 0h2v1h-2zM1 1h1v1h-1zM5 1h2v1h-2zM10 1h1v1h-1zM2 2h1v1h-1zM9 2h1v1h-1zM4 3h4v1h-4zM3 4h6v1h-6zM0 5h2v1h-2zM3 5h6v1h-6zM10 5h2v1h-2zM0 6h2v1h-2zM3 6h6v1h-6zM10 6h2v1h-2zM3 7h6v1h-6zM4 8h4v1h-4zM2 9h1v1h-1zM9 9h1v1h-1zM1 10h1v1h-1zM5 10h2v1h-2zM10 10h1v1h-1zM5 11h2v1h-2z"/></svg><svg class="px only-light" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M4 0h4v1h-4zM2 1h3v1h-3zM1 2h3v1h-3zM1 3h2v1h-2zM0 4h3v1h-3zM0 5h3v1h-3zM0 6h3v1h-3zM0 7h4v1h-4zM11 7h1v1h-1zM1 8h4v1h-4zM10 8h2v1h-2zM1 9h9v1h-9zM2 10h7v1h-7zM4 11h4v1h-4z"/></svg></button>
-      <button type="button" class="tool" data-sound-toggle aria-pressed="false" aria-label="Turn sound on" data-label-on="Turn sound off" data-label-off="Turn sound on"><svg class="px if-muted" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M5 0h1v1h-1zM4 1h2v1h-2zM3 2h3v1h-3zM0 3h6v1h-6zM7 3h1v1h-1zM11 3h1v1h-1zM0 4h6v1h-6zM8 4h1v1h-1zM10 4h1v1h-1zM0 5h6v1h-6zM9 5h1v1h-1zM0 6h6v1h-6zM8 6h1v1h-1zM10 6h1v1h-1zM0 7h6v1h-6zM7 7h1v1h-1zM11 7h1v1h-1zM3 8h3v1h-3zM4 9h2v1h-2zM5 10h1v1h-1z"/></svg><svg class="px if-sound" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M5 0h1v1h-1zM4 1h2v1h-2zM10 1h1v1h-1zM3 2h3v1h-3zM8 2h1v1h-1zM11 2h1v1h-1zM0 3h6v1h-6zM9 3h1v1h-1zM11 3h1v1h-1zM0 4h6v1h-6zM7 4h1v1h-1zM9 4h1v1h-1zM11 4h1v1h-1zM0 5h6v1h-6zM7 5h1v1h-1zM9 5h1v1h-1zM11 5h1v1h-1zM0 6h6v1h-6zM7 6h1v1h-1zM9 6h1v1h-1zM11 6h1v1h-1zM0 7h6v1h-6zM9 7h1v1h-1zM11 7h1v1h-1zM3 8h3v1h-3zM8 8h1v1h-1zM11 8h1v1h-1zM4 9h2v1h-2zM10 9h1v1h-1zM5 10h1v1h-1z"/></svg></button>
+      <a class="tool" href="/" hreflang="tr" lang="tr" aria-label="Türkçe">TR</a>
+      <button type="button" class="tool" data-theme-toggle aria-label="Day or night edition"><svg class="px only-dark" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M5 0h2v1h-2zM1 1h1v1h-1zM5 1h2v1h-2zM10 1h1v1h-1zM2 2h1v1h-1zM9 2h1v1h-1zM4 3h4v1h-4zM3 4h6v1h-6zM0 5h2v1h-2zM3 5h6v1h-6zM10 5h2v1h-2zM0 6h2v1h-2zM3 6h6v1h-6zM10 6h2v1h-2zM3 7h6v1h-6zM4 8h4v1h-4zM2 9h1v1h-1zM9 9h1v1h-1zM1 10h1v1h-1zM5 10h2v1h-2zM10 10h1v1h-1zM5 11h2v1h-2z"/></svg><svg class="px only-light" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M4 0h4v1h-4zM2 1h3v1h-3zM1 2h3v1h-3zM1 3h2v1h-2zM0 4h3v1h-3zM0 5h3v1h-3zM0 6h3v1h-3zM0 7h4v1h-4zM11 7h1v1h-1zM1 8h4v1h-4zM10 8h2v1h-2zM1 9h9v1h-9zM2 10h7v1h-7zM4 11h4v1h-4z"/></svg></button>
     </div>
   </div>
 </header>
 
 <main id="main">
 
-  <section class="title-screen" aria-labelledby="hero-h">
-    <div class="wrap hero-grid">
-      <div class="hero-copy">
-        <h1 id="hero-h" class="hero-name"><span class="hero-first" lang="tr">SALİH</span> <span class="hero-last" lang="tr">YAZITAŞ</span></h1>
-        <p class="hero-role">Game &amp; software developer</p>
-        <p class="hero-intro">I study game development at Çanakkale Onsekiz Mart University and have been teaching myself to code for 7 years. I make games in Unity and products with React and Python, and I take both all the way to release. I founded Volpen, an independent studio.</p>
-      </div>
+  <section class="cover" aria-labelledby="cover-h">
+    <img class="cover-art" src="/assets/img/kralin-sozu-gate_view.webp" width="1200" height="675" alt="Kralın Sözü: the gate between two watchtowers on a snowy night" fetchpriority="high">
+    <div class="wrap cover-inner">
+      <p class="cover-issue"><span>Issue 26</span><span>November 2026</span><span>Games &amp; software magazine</span></p>
+      <h1 class="masthead" id="cover-h"><span class="masthead-word" lang="tr" translate="no" aria-hidden="true">YAZITAŞ</span><span class="cover-name"><span lang="tr">Salih Yazıtaş</span>, game & software developer</span></h1>
 
-      <div class="hero-side">
-        <p class="mode-q" id="mode-q">Where do you want to start?</p>
-        <div class="mode-cards" role="group" aria-labelledby="mode-q">
-          <button type="button" class="mode-card mode-card--game" data-set-lens="game" data-go="#seviyeler" aria-pressed="true">
-            <span class="mode-screen" aria-hidden="true">
-              <img src="/assets/img/kralin-sozu-thumb.webp" width="400" height="225" alt="">
-              <span class="snow"></span>
-            </span>
-            <span class="mode-label"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2 2h8v1h-8zM1 3h10v1h-10zM0 4h3v1h-3zM4 4h4v1h-4zM9 4h3v1h-3zM0 5h1v1h-1zM6 5h2v1h-2zM9 5h1v1h-1zM11 5h1v1h-1zM0 6h3v1h-3zM4 6h4v1h-4zM9 6h3v1h-3zM0 7h12v1h-12zM0 8h4v1h-4zM8 8h4v1h-4zM0 9h3v1h-3zM9 9h3v1h-3zM1 10h1v1h-1zM10 10h1v1h-1z"/></svg><span class="mode-title">Games</span></span>
-            <span class="mode-text">Unity and C#: Kralın Sözü, Under the Counter, LAST DAWN and jam games</span>
-          </button>
-          <button type="button" class="mode-card mode-card--code" data-set-lens="code" data-go="#seviyeler" aria-pressed="false">
-            <span class="mode-screen mode-screen--term" aria-hidden="true">
-              <span class="term-line"><span class="term-prompt">$</span> npm run deploy</span>
-              <span class="term-line term-ok">✓ live in 19 languages<span class="caret"></span></span>
-            </span>
-            <span class="mode-label"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M0 0h12v1h-12zM0 1h1v1h-1zM11 1h1v1h-1zM0 2h12v1h-12zM0 3h1v1h-1zM11 3h1v1h-1zM0 4h1v1h-1zM2 4h1v1h-1zM11 4h1v1h-1zM0 5h1v1h-1zM3 5h1v1h-1zM11 5h1v1h-1zM0 6h1v1h-1zM4 6h1v1h-1zM11 6h1v1h-1zM0 7h1v1h-1zM3 7h1v1h-1zM11 7h1v1h-1zM0 8h1v1h-1zM2 8h1v1h-1zM5 8h4v1h-4zM11 8h1v1h-1zM0 9h1v1h-1zM11 9h1v1h-1zM0 10h12v1h-12z"/></svg><span class="mode-title">Software</span></span>
-            <span class="mode-text">Web, backend, desktop and AI: MyEverythingList, NeRoBoT, RaiPy</span>
-          </button>
-        </div>
+      <a class="cover-story" href="#kralin-sozu">
+        <span class="cover-title">A watch with no interface</span>
+        <span class="cover-deck">Salih Yazıtaş, who made Kralın Sözü, on balancing a game with no on-screen interface through a 2,000-night simulation.</span>
+      </a>
 
-        <nav class="main-menu" aria-label="Main menu">
-          <ul>
-            <li><a href="#seviyeler"><span class="mm-label"><span data-lens-only="game">Level select</span><span data-lens-only="code">~/projects</span></span><span class="mm-leader" aria-hidden="true"></span><span class="mm-count">23</span></a></li>
-            <li><a href="#gorevler"><span class="mm-label"><span data-lens-only="game">Quest log</span><span data-lens-only="code">git log</span></span><span class="mm-leader" aria-hidden="true"></span><span class="mm-count">8</span></a></li>
-            <li><a href="#basarimlar"><span class="mm-label"><span data-lens-only="game">Achievements</span><span data-lens-only="code">Milestones</span></span><span class="mm-leader" aria-hidden="true"></span><span class="mm-count"><span data-ach-count>11</span>/12</span></a></li>
-            <li><a href="#yetenekler"><span class="mm-label"><span data-lens-only="game">Skill tree</span><span data-lens-only="code">package.json</span></span><span class="mm-leader" aria-hidden="true"></span><span class="mm-count">8</span></a></li>
-            <li><a href="#kayit"><span class="mm-label"><span data-lens-only="game">Save point</span><span data-lens-only="code">Contact</span></span><span class="mm-leader" aria-hidden="true"></span><span class="mm-count">CV</span></a></li>
-          </ul>
-        </nav>
-      </div>
-    </div>
+      <ul class="cover-lines">
+        <li><a href="#myeverythinglist"><span class="cl-big">19</span><span class="cl-text">languages live: MyEverythingList</span></a></li>
+        <li><a href="#raipy"><span class="cl-big">614</span><span class="cl-text">tests behind an AI engine: RaiPy</span></a></li>
+        <li><a href="#kralin-sozu"><span class="cl-big">1.6 ms</span><span class="cl-text">per frame on an RTX 4060</span></a></li>
+      </ul>
 
-    <div class="wrap">
-      <dl class="statusbar" aria-label="Quick stats">
-        <div><dt>self-taught coding</dt><dd>7 yrs</dd></div>
-        <div><dt>languages live</dt><dd>19</dd></div>
-        <div><dt>tests, RaiPy</dt><dd>614</dd></div>
-        <div><dt>frame time, Kralın Sözü</dt><dd>1.6 ms</dd></div>
-        <div><dt>game jams</dt><dd>3</dd></div>
-      </dl>
+      <a class="sticker" href="/cv/Salih_Yazitas_CV_EN.pdf" download><span class="sticker-top">Free with</span><span class="sticker-main">CV inside</span></a>
+
+      <div class="barcode" aria-hidden="true"><svg class="barcode-bars" viewBox="0 0 113 40" preserveAspectRatio="none" aria-hidden="true"><rect x="0" y="0" width="1" height="40"/><rect x="2" y="0" width="1" height="40"/><rect x="4" y="0" width="3" height="40"/><rect x="8" y="0" width="3" height="40"/><rect x="12" y="0" width="1" height="40"/><rect x="14" y="0" width="1" height="40"/><rect x="16" y="0" width="1" height="40"/><rect x="18" y="0" width="2" height="40"/><rect x="21" y="0" width="1" height="40"/><rect x="23" y="0" width="1" height="40"/><rect x="25" y="0" width="2" height="40"/><rect x="28" y="0" width="1" height="40"/><rect x="30" y="0" width="3" height="40"/><rect x="34" y="0" width="2" height="40"/><rect x="37" y="0" width="1" height="40"/><rect x="39" y="0" width="3" height="40"/><rect x="43" y="0" width="3" height="40"/><rect x="47" y="0" width="3" height="40"/><rect x="51" y="0" width="2" height="40"/><rect x="54" y="0" width="3" height="40"/><rect x="58" y="0" width="3" height="40"/><rect x="62" y="0" width="1" height="40"/><rect x="64" y="0" width="1" height="40"/><rect x="66" y="0" width="1" height="40"/><rect x="68" y="0" width="1" height="40"/><rect x="70" y="0" width="3" height="40"/><rect x="74" y="0" width="2" height="40"/><rect x="77" y="0" width="1" height="40"/><rect x="79" y="0" width="2" height="40"/><rect x="82" y="0" width="1" height="40"/><rect x="84" y="0" width="3" height="40"/><rect x="88" y="0" width="3" height="40"/><rect x="92" y="0" width="3" height="40"/><rect x="96" y="0" width="1" height="40"/><rect x="98" y="0" width="3" height="40"/><rect x="102" y="0" width="3" height="40"/><rect x="106" y="0" width="3" height="40"/><rect x="110" y="0" width="2" height="40"/></svg><span>Issue 26</span></div>
     </div>
   </section>
 
-  <section class="section" id="seviyeler" aria-labelledby="seviyeler-h">
+  <section class="contents" id="icindekiler" aria-labelledby="icindekiler-h">
+    <div class="wrap contents-grid">
+      <div class="toc">
+        <h2 class="toc-title" id="icindekiler-h">Contents<span class="folio" aria-hidden="true">p. 2</span></h2>
+        <ol class="toc-list">
+          
+          <li class="toc-group">
+            <a class="toc-sec" href="#oyun"><span>Games</span><span class="toc-pg">4</span></a>
+            <ul>
+              <li><a href="#kralin-sozu"><span lang="tr">Kralın Sözü</span><span class="toc-pg">5</span></a></li>
+              <li><a href="#under-the-counter"><span lang="en">Under the Counter</span><span class="toc-pg">7</span></a></li>
+              <li><a href="#last-dawn"><span lang="en">LAST DAWN</span><span class="toc-pg">8</span></a></li>
+              <li><a href="#pati-rotasi"><span lang="tr">Pati Rotası</span><span class="toc-pg">9</span></a></li>
+              <li><a href="#oyun-kisa-h"><span>In brief</span><span class="toc-pg">10</span></a></li>
+            </ul>
+          </li>
+          
+          <li class="toc-group">
+            <a class="toc-sec" href="#yazilim"><span>Software</span><span class="toc-pg">11</span></a>
+            <ul>
+              <li><a href="#myeverythinglist"><span lang="en">MyEverythingList</span><span class="toc-pg">12</span></a></li>
+              <li><a href="#nerobot"><span lang="en">NeRoBoT</span><span class="toc-pg">14</span></a></li>
+              <li><a href="#parsel"><span lang="tr">Parsel</span><span class="toc-pg">15</span></a></li>
+              <li><a href="#raipy"><span lang="en">RaiPy</span><span class="toc-pg">16</span></a></li>
+              <li><a href="#heren-agent"><span lang="en">Heren Agent</span><span class="toc-pg">17</span></a></li>
+              <li><a href="#kafe-finans"><span lang="en">Kafe Finans</span><span class="toc-pg">18</span></a></li>
+              <li><a href="#truva-arabirimi"><span lang="tr">Truva–Akınsoft arabirimi</span><span class="toc-pg">19</span></a></li>
+              <li><a href="#yazilim-kisa-h"><span>In brief</span><span class="toc-pg">20</span></a></li>
+            </ul>
+          </li>
+          <li class="toc-group toc-group--misc"><ul>
+            <li><a href="#yolculuk"><span>Feature: The journey</span><span class="toc-pg">21</span></a></li>
+            <li><a href="#rozetler"><span>Badges</span><span class="toc-pg">23</span></a></li>
+            <li><a href="#rehber"><span>Guide: the toolkit</span><span class="toc-pg">25</span></a></li>
+            <li><a href="#mektup"><span>Letters</span><span class="toc-pg">27</span></a></li>
+          </ul></li>
+        </ol>
+      </div>
+      <aside class="editor" aria-labelledby="editor-h">
+        <img class="editor-photo" src="/assets/img/salih.webp" width="480" height="480" alt="Photo of Salih Yazıtaş" loading="lazy" decoding="async">
+        <h2 class="editor-title" id="editor-h">From the editor</h2>
+        <p>Hi, I'm Salih. I study game development at Çanakkale Onsekiz Mart University and have been teaching myself to code for 7 years.</p>
+        <p>This issue puts both halves of my work side by side: the games I make in Unity and the software I write in React, Python and Go. I take both from idea to release. I founded the independent studio Volpen.</p>
+        <p class="editor-sign">Salih Yazıtaş, editor-in-chief</p>
+      </aside>
+    </div>
+  </section>
+
+  
+  <section class="section section--game" id="oyun" aria-labelledby="oyun-h">
+    <span class="thumb-tab" aria-hidden="true">Games</span>
+    <header class="opener">
+      <div class="wrap opener-inner">
+        <h2 class="opener-title" id="oyun-h">Games</h2>
+        <p class="opener-deck">Games I made in Unity and C#: solo, with a team and at jams.</p>
+        <p class="folio folio--light" aria-hidden="true">p. 4</p>
+      </div>
+    </header>
     <div class="wrap">
-      
-      <header class="section-head">
-        <h2 id="seviyeler-h"><span data-lens-only="game">Level select</span><span data-lens-only="code" class="h-code" lang="en">~/projects</span></h2>
-        <p class="section-intro"><span data-lens-only="game">You're in games mode: games are the main quest, software projects are side quests. Switch the order with the mode button at the top.</span><span data-lens-only="code">You're in software mode: software projects are the main quest, games are side quests. Switch the order with the mode button at the top.</span></p>
-      </header>
-      <div class="tracks" data-tracks>
-        
-    <section class="track" id="track-game" data-track="game" aria-labelledby="track-game-h">
-      <h3 class="track-head" id="track-game-h">
-        <svg class="px px--lg" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2 2h8v1h-8zM1 3h10v1h-10zM0 4h3v1h-3zM4 4h4v1h-4zM9 4h3v1h-3zM0 5h1v1h-1zM6 5h2v1h-2zM9 5h1v1h-1zM11 5h1v1h-1zM0 6h3v1h-3zM4 6h4v1h-4zM9 6h3v1h-3zM0 7h12v1h-12zM0 8h4v1h-4zM8 8h4v1h-4zM0 9h3v1h-3zM9 9h3v1h-3zM1 10h1v1h-1zM10 10h1v1h-1z"/></svg>
-        <span class="track-name">Games</span>
-        <span class="track-rank" data-rank-for="game"><span data-lens-only="game">Main quest</span><span data-lens-only="code">Side quest</span></span>
-      </h3>
-      <div class="qc-list">
-      <article class="qc qc--featured" id="kralin-sozu">
-        <div class="qc-media">
-          <div class="qc-screen"><img src="/assets/img/kralin-sozu-gate_view.webp" width="1200" height="675" alt="Kralın Sözü: the gate between two watchtowers on a snowy night" loading="lazy" decoding="async"></div>
-        <ul class="qc-gallery"><li><img src="/assets/img/kralin-sozu-papers.webp" width="1200" height="675" alt="Checking a visitor's papers" loading="lazy" decoding="async"></li><li><img src="/assets/img/kralin-sozu-wolves.webp" width="1200" height="675" alt="Wolves approaching in the dark" loading="lazy" decoding="async"></li><li><img src="/assets/img/kralin-sozu-king_promise.webp" width="1200" height="675" alt="The moment the king makes his promise" loading="lazy" decoding="async"></li></ul>
+      <div class="reviews">
+      <article class="review review--feature review--feature" id="kralin-sozu" aria-labelledby="kralin-sozu-h">
+        <div class="rv-media">
+          <div class="rv-frame"><img src="/assets/img/kralin-sozu-gate_view.webp" width="1200" height="675" alt="Kralın Sözü: the gate between two watchtowers on a snowy night" loading="lazy" decoding="async"></div>
+          <ul class="rv-gallery"><li><img src="/assets/img/kralin-sozu-papers.webp" width="1200" height="675" alt="Checking a visitor's papers" loading="lazy" decoding="async"></li><li><img src="/assets/img/kralin-sozu-wolves.webp" width="1200" height="675" alt="Wolves approaching in the dark" loading="lazy" decoding="async"></li><li><img src="/assets/img/kralin-sozu-king_promise.webp" width="1200" height="675" alt="The moment the king makes his promise" loading="lazy" decoding="async"></li></ul>
         </div>
-        <div class="qc-body">
-          <p class="qc-kind"><span>Solo game</span><span class="qc-date">Oct 2026</span></p>
-          <h4 class="qc-title" lang="tr">Kralın Sözü <span class="qc-sub" lang="en">The King's Promise</span></h4>
-          <p class="qc-pitch">A first-person guard game based on a folk tale, with no on-screen interface. You're the sentry the king forgot, holding the gate for three winter nights.</p>
-          <ul class="qc-points"><li>The whole scene is built in code. The rules live in a core that doesn't depend on Unity.</li><li>Tuned with a 2,000-night balance simulation; automated test bots run without opening a window.</li></ul>
+        <div class="rv-text">
+          <h3 translate="no" class="rv-title" id="kralin-sozu-h" lang="tr">Kralın Sözü<span class="rv-sub" lang="en">The King's Promise</span></h3>
+          <p class="rv-deck">A first-person guard game based on a folk tale, with no on-screen interface. You're the sentry the king forgot, holding the gate for three winter nights.</p>
+          <div class="rv-body"><p>The whole scene is built in code. The rules live in a core that doesn't depend on Unity.</p><p>Tuned with a 2,000-night balance simulation; automated test bots run without opening a window.</p></div>
           
-        <dl class="stat-sheet" aria-label="Stats">
-          <div><dt>Nights</dt><dd>3</dd></div><div><dt>Visitor types</dt><dd>17</dd></div><div><dt>Endings</dt><dd>10</dd></div><div><dt>Balance simulation</dt><dd>2,000 nights</dd></div><div><dt>Frame time (RTX 4060, 1080p)</dt><dd>1.6 ms</dd></div>
-        </dl>
+          <aside class="spec" aria-label="Fact file: Kralın Sözü">
+            <p class="spec-h">Fact file</p>
+            <dl class="spec-list">
+              <div><dt>Type and role</dt><dd>Solo game</dd></div>
+              <div><dt>Date</dt><dd>Oct 2026</dd></div>
+              <div><dt>Tech</dt><dd>Unity 6, C#, Vulkan, Windows, Linux</dd></div>
+            </dl>
+            <p class="spec-h">By the numbers</p>
+            <dl class="spec-nums"><div><dt>Nights</dt><dd>3</dd></div><div><dt>Visitor types</dt><dd>17</dd></div><div><dt>Endings</dt><dd>10</dd></div><div><dt>Balance simulation</dt><dd>2,000 nights</dd></div><div><dt>Frame time (RTX 4060, 1080p)</dt><dd>1.6 ms</dd></div></dl>
+          </aside>
           
-        <ul class="inventory" aria-label="Inventory"><li>Unity 6</li><li>C#</li><li>Vulkan</li><li>Windows</li><li>Linux</li></ul>
-          <p class="qc-links"><a class="btn btn--primary" href="https://salihyzts.itch.io/kralin-sozu" target="_blank" rel="noopener">Play on itch.io<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a><a class="btn btn--ghost" href="https://github.com/SalihYzts/kralin-sozu" target="_blank" rel="noopener">Source code<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a></p>
+          <p class="rv-links"><a class="btn btn--solid" href="https://salihyzts.itch.io/kralin-sozu" target="_blank" rel="noopener">Play on itch.io<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a><a class="btn" href="https://github.com/SalihYzts/kralin-sozu" target="_blank" rel="noopener">Source code<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a></p>
         </div>
+        <p class="folio rv-folio" aria-hidden="true">p. 5</p>
       </article>
-      <article class="qc qc--art" id="under-the-counter">
-        <div class="qc-media">
-          <div class="qc-screen"><svg class="art" viewBox="0 0 320 200" role="img" aria-label="Drawing of a shop counter, CDs and a suspicion meter">
+      <article class="review review--row review--art" id="under-the-counter" aria-labelledby="under-the-counter-h">
+        <div class="rv-media">
+          <div class="rv-frame"><div class="rv-art"><svg class="art" viewBox="0 0 320 200" role="img" aria-label="Drawing of a shop counter, CDs and a suspicion meter">
       <g fill="none" stroke="currentColor" stroke-width="2">
         <path d="M20 150h280M20 150v34M300 150v34M40 120h240v30H40z"/>
         <circle cx="96" cy="96" r="24"/><circle cx="96" cy="96" r="5"/>
@@ -172,176 +183,212 @@
       <path d="M32 26h78v10H32z" fill="currentColor"/>
       <text x="160" y="35" fill="currentColor" font-family="IBM Plex Mono, monospace" font-size="11">SUSPICION</text>
       <text x="196" y="138" fill="currentColor" font-family="IBM Plex Mono, monospace" font-size="11">₺ 2000s</text>
-    </svg></div>
+    </svg></div></div>
         </div>
-        <div class="qc-body">
-          <p class="qc-kind"><span>Team game, lead programmer</span><span class="qc-date">Since Jul 2026</span></p>
-          <h4 class="qc-title" lang="en">Under the Counter</h4>
-          <p class="qc-pitch">A dark-humour first-person shop sim: you run a small 2000s shop selling bootleg CDs. Target: a Steam Next Fest demo.</p>
-          <ul class="qc-points"><li>I wrote the economy, impatient customers, police raids driven by a suspicion meter, crash-safe saving and TR/EN localization. Most of the team's commits are mine.</li></ul>
+        <div class="rv-text">
+          <h3 translate="no" class="rv-title" id="under-the-counter-h" lang="en">Under the Counter</h3>
+          <p class="rv-deck">A dark-humour first-person shop sim: you run a small 2000s shop selling bootleg CDs. Target: a Steam Next Fest demo.</p>
+          <div class="rv-body rv-body--nocap"><p>I wrote the economy, impatient customers, police raids driven by a suspicion meter, crash-safe saving and TR/EN localization. Most of the team's commits are mine.</p></div>
           
-        <dl class="stat-sheet" aria-label="Stats">
-          <div><dt>Runtime scripts</dt><dd>88</dd></div><div><dt>Editor tools</dt><dd>28</dd></div>
-        </dl>
-          
-        <ul class="inventory" aria-label="Inventory"><li>Unity 6</li><li>URP</li><li>NavMesh</li><li>Input System</li><li>C#</li></ul>
+          <aside class="spec" aria-label="Fact file: Under the Counter">
+            <p class="spec-h">Fact file</p>
+            <dl class="spec-list">
+              <div><dt>Type and role</dt><dd>Team game, lead programmer</dd></div>
+              <div><dt>Date</dt><dd>Since Jul 2026</dd></div>
+              <div><dt>Tech</dt><dd>Unity 6, URP, NavMesh, Input System, C#</dd></div>
+            </dl>
+            <p class="spec-h">By the numbers</p>
+            <dl class="spec-nums"><div><dt>Runtime scripts</dt><dd>88</dd></div><div><dt>Editor tools</dt><dd>28</dd></div></dl>
+          </aside>
           
         </div>
+        <p class="folio rv-folio" aria-hidden="true">p. 7</p>
       </article>
-      <article class="qc" id="last-dawn">
-        <div class="qc-media">
-          <div class="qc-screen"><img src="/assets/img/last-dawn.webp" width="960" height="600" alt="Home screen of the LAST DAWN promo site" loading="lazy" decoding="async"></div>
+      <article class="review review--pair" id="last-dawn" aria-labelledby="last-dawn-h">
+        <div class="rv-media">
+          <div class="rv-frame"><img src="/assets/img/last-dawn.webp" width="960" height="600" alt="Home screen of the LAST DAWN promo site" loading="lazy" decoding="async"></div>
         </div>
-        <div class="qc-body">
-          <p class="qc-kind"><span>Volpen team game, software &amp; marketing</span><span class="qc-date">In development</span></p>
-          <h4 class="qc-title" lang="en">LAST DAWN</h4>
-          <p class="qc-pitch">A post-apocalyptic PC game that mixes survival and base building: scavenge by day, defend your base by night.</p>
-          <ul class="qc-points"><li>I handle software and marketing. I built the promo site, whose day/night switch changes the whole palette.</li></ul>
+        <div class="rv-text">
+          <h3 translate="no" class="rv-title" id="last-dawn-h" lang="en">LAST DAWN</h3>
+          <p class="rv-deck">A post-apocalyptic PC game that mixes survival and base building: scavenge by day, defend your base by night.</p>
+          <div class="rv-body rv-body--nocap"><p>I handle software and marketing. I built the promo site, whose day/night switch changes the whole palette.</p></div>
           
+          <aside class="spec" aria-label="Fact file: LAST DAWN">
+            <p class="spec-h">Fact file</p>
+            <dl class="spec-list">
+              <div><dt>Type and role</dt><dd>Volpen team game, software &amp; marketing</dd></div>
+              <div><dt>Date</dt><dd>In development</dd></div>
+              <div><dt>Tech</dt><dd>Unity, C#, HTML, CSS</dd></div>
+            </dl>
+            
+          </aside>
           
-        <ul class="inventory" aria-label="Inventory"><li>Unity</li><li>C#</li><li>HTML</li><li>CSS</li></ul>
-          <p class="qc-links"><a class="btn btn--primary" href="https://salihyzts.github.io/Last-Down-WEB/" target="_blank" rel="noopener">Open the site<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a></p>
+          <p class="rv-links"><a class="btn btn--solid" href="https://salihyzts.github.io/Last-Down-WEB/" target="_blank" rel="noopener">Open the site<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a></p>
         </div>
+        <p class="folio rv-folio" aria-hidden="true">p. 8</p>
       </article>
-      <article class="qc" id="pati-rotasi">
-        <div class="qc-media">
-          <div class="qc-screen"><img src="/assets/img/pati-rotasi.webp" width="960" height="748" alt="Pati Rotası promo screen with two phone screenshots" loading="lazy" decoding="async"></div>
+      <article class="review review--pair" id="pati-rotasi" aria-labelledby="pati-rotasi-h">
+        <div class="rv-media">
+          <div class="rv-frame"><img src="/assets/img/pati-rotasi.webp" width="960" height="748" alt="Pati Rotası promo screen with two phone screenshots" loading="lazy" decoding="async"></div>
         </div>
-        <div class="qc-body">
-          <p class="qc-kind"><span>Mobile game</span><span class="qc-date">2026</span></p>
-          <h4 class="qc-title" lang="tr">Pati Rotası</h4>
-          <p class="qc-pitch">A mobile game that gets you walking. Photograph street cats to build a collection, clear the fog on the map as you walk, and turn your steps into food points for animal shelters.</p>
+        <div class="rv-text">
+          <h3 translate="no" class="rv-title" id="pati-rotasi-h" lang="tr">Pati Rotası</h3>
+          <p class="rv-deck">A mobile game that gets you walking. Photograph street cats to build a collection, clear the fog on the map as you walk, and turn your steps into food points for animal shelters.</p>
           
           
+          <aside class="spec" aria-label="Fact file: Pati Rotası">
+            <p class="spec-h">Fact file</p>
+            <dl class="spec-list">
+              <div><dt>Type and role</dt><dd>Mobile game</dd></div>
+              <div><dt>Date</dt><dd>2026</dd></div>
+              <div><dt>Tech</dt><dd>Expo, React Native, Leaflet</dd></div>
+            </dl>
+            
+          </aside>
           
-        <ul class="inventory" aria-label="Inventory"><li>Expo</li><li>React Native</li><li>Leaflet</li></ul>
-          <p class="qc-links"><a class="btn btn--primary" href="https://github.com/SalihYzts/pati-rotasi" target="_blank" rel="noopener">Source code<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a></p>
+          <p class="rv-links"><a class="btn btn--solid" href="https://github.com/SalihYzts/pati-rotasi" target="_blank" rel="noopener">Source code<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a></p>
         </div>
-      </article></div>
+        <p class="folio rv-folio" aria-hidden="true">p. 9</p>
+      </article>
+      </div>
       
-      <h4 class="minor-title">Jam &amp; team games</h4>
-      <ul class="mini-grid">
-        <li class="mini" id="lets-cook-a-mask">
-          <div class="qc-screen"><img src="/assets/img/lets-cook-a-mask.webp" width="960" height="600" alt="Let's Cook a Mask logo: two theatre masks in a frying pan" loading="lazy" decoding="async"></div>
-          <p class="qc-kind"><span>Global Game Jam 2026, team game</span><span class="qc-date">2026</span></p>
-          <h5 class="mini-title" lang="en">Let's Cook a Mask</h5>
-          
-          <p class="mini-pitch">In a world of hidden faces you craft identities: listen to each customer's whispers and cook the mask that gives them the power they want.</p>
-          <p class="mini-tech">Unity, C#, HTML5</p>
-          <p class="mini-links"><a href="https://ew0ue.itch.io/lets-cook-a-mask" target="_blank" rel="noopener">Play on itch.io<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a><a href="https://github.com/SalihYzts/GGJ-2026-BUG-Ne-Yapsak-Yahu" target="_blank" rel="noopener">Source code<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a></p>
-        </li>
-        <li class="mini" id="the-rolling-pizz">
-          <div class="qc-screen"><img src="/assets/img/the-rolling-pizz.webp" width="960" height="600" alt="The Rolling Pizz: a pizza rolling between colourful buildings" loading="lazy" decoding="async"></div>
-          <p class="qc-kind"><span>Yıldız Jam 2026, Unity developer</span><span class="qc-date">2026</span></p>
-          <h5 class="mini-title" lang="en">The Rolling Pizz</h5>
-          
-          <p class="mini-pitch">Help a pizza that got cut in half in its sleep escape the table; some obstacles need the whole pizza, others two halves. I programmed the game in Unity for team Kozalak Çamları.</p>
-          <p class="mini-tech">Unity, C#</p>
-          <p class="mini-links"><a href="https://tce81.itch.io/the-rolling-pizz" target="_blank" rel="noopener">Play on itch.io<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a></p>
-        </li>
-        <li class="mini" id="agaclastirilmis-elma">
-          <div class="qc-screen"><img src="/assets/img/agaclastirilmis-elma.webp" width="960" height="600" alt="Ağaçlaştırılmış Elma: illustration of a fox and an old woman waiting for an apple pie" loading="lazy" decoding="async"></div>
-          <p class="qc-kind"><span>Volpen, 2 months. Code, project lead and story</span></p>
-          <h5 class="mini-title" lang="tr">Ağaçlaştırılmış Elma</h5>
-          
-          <p class="mini-pitch">An apple's journey from seed to tree: help Kiki the fox grow it. An educational clicker game.</p>
-          <p class="mini-tech">Unity, C#</p>
-          <p class="mini-links"><a href="https://volpentr.itch.io/agaclastirilmiselma" target="_blank" rel="noopener">Play on itch.io<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a><a href="https://github.com/SalihYzts/ElnalistirilmisAgac" target="_blank" rel="noopener">Source code<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a></p>
-        </li>
-        <li class="mini" id="colorland">
-          <div class="qc-screen"><img src="/assets/img/colorland.webp" width="960" height="600" alt="ColorLand: a grey stone room with a red door" loading="lazy" decoding="async"></div>
-          <p class="qc-kind"><span>Volpen, 1 week. My first 3D project</span></p>
-          <h5 class="mini-title" lang="en">ColorLand</h5>
-          
-          <p class="mini-pitch">The world's colours have been stolen. Explore the station, solve the puzzles and bring the light back.</p>
-          <p class="mini-tech">Unity, C#</p>
-          <p class="mini-links"><a href="https://volpentr.itch.io/colorland" target="_blank" rel="noopener">Play on itch.io<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a></p>
-        </li>
-        <li class="mini" id="uckkenici">
-          <div class="qc-screen"><img src="/assets/img/uckkenici.webp" width="960" height="600" alt="ÜçKKeNİci: a triangle with two angles and four answer options" loading="lazy" decoding="async"></div>
-          <p class="qc-kind"><span>Volpen, 2 days</span></p>
-          <h5 class="mini-title" lang="tr">ÜçKKeNİci</h5>
-          
-          <p class="mini-pitch">An endless game that turns maths into play: find the triangle's missing angle and pick it before time runs out.</p>
-          <p class="mini-tech">Unity, C#</p>
-          <p class="mini-links"><a href="https://volpentr.itch.io/uckkenci" target="_blank" rel="noopener">Play on itch.io<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a><a href="https://github.com/SalihYzts/UcgenIci" target="_blank" rel="noopener">Source code<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a></p>
-        </li>
-        <li class="mini" id="ecobuddy">
-          <div class="qc-screen"><img src="/assets/img/ecobuddy.webp" width="960" height="600" alt="EcoBuddy: colourful recycling bins at a picnic spot" loading="lazy" decoding="async"></div>
-          <p class="qc-kind"><span>Team game</span></p>
-          <h5 class="mini-title" lang="en">EcoBuddy</h5>
-          
-          <p class="mini-pitch">A 3D educational game about picking up litter and sorting it into the right recycling bin.</p>
-          <p class="mini-tech">Unity, C#</p>
-          <p class="mini-links"><a href="https://ew0ue.itch.io/ecobuddy" target="_blank" rel="noopener">Play on itch.io<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a></p>
-        </li>
-      </ul>
-    </section>
-        
-    <section class="track" id="track-code" data-track="code" aria-labelledby="track-code-h">
-      <h3 class="track-head" id="track-code-h">
-        <svg class="px px--lg" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M0 0h12v1h-12zM0 1h1v1h-1zM11 1h1v1h-1zM0 2h12v1h-12zM0 3h1v1h-1zM11 3h1v1h-1zM0 4h1v1h-1zM2 4h1v1h-1zM11 4h1v1h-1zM0 5h1v1h-1zM3 5h1v1h-1zM11 5h1v1h-1zM0 6h1v1h-1zM4 6h1v1h-1zM11 6h1v1h-1zM0 7h1v1h-1zM3 7h1v1h-1zM11 7h1v1h-1zM0 8h1v1h-1zM2 8h1v1h-1zM5 8h4v1h-4zM11 8h1v1h-1zM0 9h1v1h-1zM11 9h1v1h-1zM0 10h12v1h-12z"/></svg>
-        <span class="track-name">Software</span>
-        <span class="track-rank" data-rank-for="code"><span data-lens-only="game">Side quest</span><span data-lens-only="code">Main quest</span></span>
-      </h3>
-      <div class="qc-list">
-      <article class="qc qc--featured" id="myeverythinglist">
-        <div class="qc-media">
-          <div class="qc-screen"><img src="/assets/img/myeverythinglist.webp" width="960" height="748" alt="MyEverythingList home page" loading="lazy" decoding="async"></div>
+      <section class="briefs" aria-labelledby="oyun-kisa-h">
+        <h3 class="briefs-title" id="oyun-kisa-h">In brief: jam and team games<span class="folio" aria-hidden="true">p. 10</span></h3>
+        <ul class="brief-list">
+          <li class="brief" id="lets-cook-a-mask">
+            <div class="brief-frame"><img src="/assets/img/lets-cook-a-mask.webp" width="960" height="600" alt="Let's Cook a Mask logo: two theatre masks in a frying pan" loading="lazy" decoding="async"></div>
+            <div class="brief-text">
+              <h4 class="brief-title" translate="no" lang="en">Let's Cook a Mask</h4>
+              
+              <p class="brief-meta">Global Game Jam 2026, team game, 2026</p>
+              <p class="brief-pitch">In a world of hidden faces you craft identities: listen to each customer's whispers and cook the mask that gives them the power they want.</p>
+              <p class="brief-tech">Unity, C#, HTML5</p>
+              <p class="brief-links"><a href="https://ew0ue.itch.io/lets-cook-a-mask" target="_blank" rel="noopener">Play on itch.io<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a><a href="https://github.com/SalihYzts/GGJ-2026-BUG-Ne-Yapsak-Yahu" target="_blank" rel="noopener">Source code<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a></p>
+            </div>
+          </li>
+          <li class="brief" id="the-rolling-pizz">
+            <div class="brief-frame"><img src="/assets/img/the-rolling-pizz.webp" width="960" height="600" alt="The Rolling Pizz: a pizza rolling between colourful buildings" loading="lazy" decoding="async"></div>
+            <div class="brief-text">
+              <h4 class="brief-title" translate="no" lang="en">The Rolling Pizz</h4>
+              
+              <p class="brief-meta">Yıldız Jam 2026, Unity developer, 2026</p>
+              <p class="brief-pitch">Help a pizza that got cut in half in its sleep escape the table; some obstacles need the whole pizza, others two halves. I programmed the game in Unity for team Kozalak Çamları.</p>
+              <p class="brief-tech">Unity, C#</p>
+              <p class="brief-links"><a href="https://tce81.itch.io/the-rolling-pizz" target="_blank" rel="noopener">Play on itch.io<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a></p>
+            </div>
+          </li>
+          <li class="brief" id="agaclastirilmis-elma">
+            <div class="brief-frame"><img src="/assets/img/agaclastirilmis-elma.webp" width="960" height="600" alt="Ağaçlaştırılmış Elma: illustration of a fox and an old woman waiting for an apple pie" loading="lazy" decoding="async"></div>
+            <div class="brief-text">
+              <h4 class="brief-title brief-title--long" translate="no" lang="tr">Ağaçlaştırılmış Elma</h4>
+              
+              <p class="brief-meta">Volpen, 2 months. Code, project lead and story</p>
+              <p class="brief-pitch">An apple's journey from seed to tree: help Kiki the fox grow it. An educational clicker game.</p>
+              <p class="brief-tech">Unity, C#</p>
+              <p class="brief-links"><a href="https://volpentr.itch.io/agaclastirilmiselma" target="_blank" rel="noopener">Play on itch.io<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a><a href="https://github.com/SalihYzts/ElnalistirilmisAgac" target="_blank" rel="noopener">Source code<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a></p>
+            </div>
+          </li>
+          <li class="brief" id="colorland">
+            <div class="brief-frame"><img src="/assets/img/colorland.webp" width="960" height="600" alt="ColorLand: a grey stone room with a red door" loading="lazy" decoding="async"></div>
+            <div class="brief-text">
+              <h4 class="brief-title" translate="no" lang="en">ColorLand</h4>
+              
+              <p class="brief-meta">Volpen, 1 week. My first 3D project</p>
+              <p class="brief-pitch">The world's colours have been stolen. Explore the station, solve the puzzles and bring the light back.</p>
+              <p class="brief-tech">Unity, C#</p>
+              <p class="brief-links"><a href="https://volpentr.itch.io/colorland" target="_blank" rel="noopener">Play on itch.io<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a></p>
+            </div>
+          </li>
+          <li class="brief" id="uckkenici">
+            <div class="brief-frame"><img src="/assets/img/uckkenici.webp" width="960" height="600" alt="ÜçKKeNİci: a triangle with two angles and four answer options" loading="lazy" decoding="async"></div>
+            <div class="brief-text">
+              <h4 class="brief-title" translate="no" lang="tr">ÜçKKeNİci</h4>
+              
+              <p class="brief-meta">Volpen, 2 days</p>
+              <p class="brief-pitch">An endless game that turns maths into play: find the triangle's missing angle and pick it before time runs out.</p>
+              <p class="brief-tech">Unity, C#</p>
+              <p class="brief-links"><a href="https://volpentr.itch.io/uckkenci" target="_blank" rel="noopener">Play on itch.io<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a><a href="https://github.com/SalihYzts/UcgenIci" target="_blank" rel="noopener">Source code<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a></p>
+            </div>
+          </li>
+          <li class="brief" id="ecobuddy">
+            <div class="brief-frame"><img src="/assets/img/ecobuddy.webp" width="960" height="600" alt="EcoBuddy: colourful recycling bins at a picnic spot" loading="lazy" decoding="async"></div>
+            <div class="brief-text">
+              <h4 class="brief-title" translate="no" lang="en">EcoBuddy</h4>
+              
+              <p class="brief-meta">Team game</p>
+              <p class="brief-pitch">A 3D educational game about picking up litter and sorting it into the right recycling bin.</p>
+              <p class="brief-tech">Unity, C#</p>
+              <p class="brief-links"><a href="https://ew0ue.itch.io/ecobuddy" target="_blank" rel="noopener">Play on itch.io<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a></p>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </div>
+  </section>
+
+  
+  <section class="section section--code" id="yazilim" aria-labelledby="yazilim-h">
+    <span class="thumb-tab" aria-hidden="true">Software</span>
+    <header class="opener">
+      <div class="wrap opener-inner">
+        <h2 class="opener-title" id="yazilim-h">Software</h2>
+        <p class="opener-deck">Web, backend, desktop and AI: software I shipped.</p>
+        <p class="folio folio--light" aria-hidden="true">p. 11</p>
+      </div>
+    </header>
+    <div class="wrap">
+      <div class="reviews">
+      <article class="review review--lead review--feature" id="myeverythinglist" aria-labelledby="myeverythinglist-h">
+        <div class="rv-media">
+          <div class="rv-frame"><img src="/assets/img/myeverythinglist.webp" width="2000" height="1125" alt="MyEverythingList home page" loading="lazy" decoding="async"></div>
         </div>
-        <div class="qc-body">
-          <p class="qc-kind"><span>Web app, solo developer</span><span class="qc-date">Aug – Oct 2026</span></p>
-          <h4 class="qc-title" lang="en">MyEverythingList</h4>
-          <p class="qc-pitch">An ad-free web app for tracking anime, manga, TV, films, games, books and music in one place. I built it on my own and shipped it in 19 languages.</p>
-          <ul class="qc-points"><li>Supabase with row-level security and Edge Functions; a Cloudflare Worker renders preview cards for shared links.</li><li>Search queries several sources and falls back when one goes down. IDs are matched across sources with Wikidata; the catalog grows by itself every night.</li><li>Imports from AniList, Steam, MyAnimeList, Goodreads and Letterboxd; follows, messages, reviews, badges and mini-games.</li></ul>
+        <div class="rv-text">
+          <h3 translate="no" class="rv-title rv-title--long" id="myeverythinglist-h" lang="en">MyEverythingList</h3>
+          <p class="rv-deck">An ad-free web app for tracking anime, manga, TV, films, games, books and music in one place. I built it on my own and shipped it in 19 languages.</p>
+          <div class="rv-body rv-body--cols"><p>Supabase with row-level security and Edge Functions; a Cloudflare Worker renders preview cards for shared links.</p><p>Search queries several sources and falls back when one goes down. IDs are matched across sources with Wikidata; the catalog grows by itself every night.</p><p>Imports from AniList, Steam, MyAnimeList, Goodreads and Letterboxd; follows, messages, reviews, badges and mini-games.</p></div>
           
-        <dl class="stat-sheet" aria-label="Stats">
-          <div><dt>Languages</dt><dd>19</dd></div><div><dt>Lines of TypeScript</dt><dd>~58k</dd></div><div><dt>Commit</dt><dd>261</dd></div><div><dt>SQL migration</dt><dd>148</dd></div><div><dt>Edge Function</dt><dd>20</dd></div>
-        </dl>
+          <aside class="spec" aria-label="Fact file: MyEverythingList">
+            <p class="spec-h">Fact file</p>
+            <dl class="spec-list">
+              <div><dt>Type and role</dt><dd>Web app, solo developer</dd></div>
+              <div><dt>Date</dt><dd>Aug – Oct 2026</dd></div>
+              <div><dt>Tech</dt><dd>React 19, TypeScript, Vite, Tailwind, TanStack Query, Supabase, Cloudflare Workers, Tauri v2</dd></div>
+            </dl>
+            <p class="spec-h">By the numbers</p>
+            <dl class="spec-nums"><div><dt>Languages</dt><dd>19</dd></div><div><dt>Lines of TypeScript</dt><dd>~58k</dd></div><div><dt>Commit</dt><dd>261</dd></div><div><dt>SQL migration</dt><dd>148</dd></div><div><dt>Edge Function</dt><dd>20</dd></div></dl>
+          </aside>
           
-        <ul class="inventory" aria-label="Inventory"><li>React 19</li><li>TypeScript</li><li>Vite</li><li>Tailwind</li><li>TanStack Query</li><li>Supabase</li><li>Cloudflare Workers</li><li>Tauri v2</li></ul>
-          <p class="qc-links"><a class="btn btn--primary" href="https://liste-programi.yazitassalih0.workers.dev/" target="_blank" rel="noopener">Open the site<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a></p>
+          <p class="rv-links"><a class="btn btn--solid" href="https://liste-programi.yazitassalih0.workers.dev/" target="_blank" rel="noopener">Open the site<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a></p>
         </div>
+        <p class="folio rv-folio" aria-hidden="true">p. 12</p>
       </article>
-      <article class="qc" id="nerobot">
-        <div class="qc-media">
-          <div class="qc-screen"><img src="/assets/img/nerobot.webp" width="960" height="748" alt="NeRoBoT chat screen" loading="lazy" decoding="async"></div>
+      <article class="review review--row" id="nerobot" aria-labelledby="nerobot-h">
+        <div class="rv-media">
+          <div class="rv-frame"><img src="/assets/img/nerobot.webp" width="960" height="748" alt="NeRoBoT chat screen" loading="lazy" decoding="async"></div>
         </div>
-        <div class="qc-body">
-          <p class="qc-kind"><span>Open-source desktop app</span><span class="qc-date">2026</span></p>
-          <h4 class="qc-title" lang="en">NeRoBoT</h4>
-          <p class="qc-pitch">A desktop app that runs AI bots on several WhatsApp and Telegram accounts at once, each fully isolated.</p>
-          <ul class="qc-points"><li>I wrote a provider-agnostic AI layer: Ollama, LM Studio, llama.cpp, vLLM, OpenAI, OpenRouter, Groq and agents like Claude Code, Codex and Gemini CLI all work through one interface. Updates itself through GitHub Releases.</li></ul>
+        <div class="rv-text">
+          <h3 translate="no" class="rv-title" id="nerobot-h" lang="en">NeRoBoT</h3>
+          <p class="rv-deck">A desktop app that runs AI bots on several WhatsApp and Telegram accounts at once, each fully isolated.</p>
+          <div class="rv-body rv-body--nocap"><p>I wrote a provider-agnostic AI layer: Ollama, LM Studio, llama.cpp, vLLM, OpenAI, OpenRouter, Groq and agents like Claude Code, Codex and Gemini CLI all work through one interface. Updates itself through GitHub Releases.</p></div>
           
-        <dl class="stat-sheet" aria-label="Stats">
-          <div><dt>GitHub stars</dt><dd>7</dd></div><div><dt>Platform</dt><dd>Windows, Linux</dd></div>
-        </dl>
+          <aside class="spec" aria-label="Fact file: NeRoBoT">
+            <p class="spec-h">Fact file</p>
+            <dl class="spec-list">
+              <div><dt>Type and role</dt><dd>Open-source desktop app</dd></div>
+              <div><dt>Date</dt><dd>2026</dd></div>
+              <div><dt>Tech</dt><dd>Electron, Node.js, whatsapp-web.js, Telegram</dd></div>
+            </dl>
+            <p class="spec-h">By the numbers</p>
+            <dl class="spec-nums"><div><dt>GitHub stars</dt><dd>7</dd></div><div><dt>Platform</dt><dd>Windows, Linux</dd></div></dl>
+          </aside>
           
-        <ul class="inventory" aria-label="Inventory"><li>Electron</li><li>Node.js</li><li>whatsapp-web.js</li><li>Telegram</li></ul>
-          <p class="qc-links"><a class="btn btn--primary" href="https://github.com/SalihYzts/NeRoBoT" target="_blank" rel="noopener">Source code<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a></p>
+          <p class="rv-links"><a class="btn btn--solid" href="https://github.com/SalihYzts/NeRoBoT" target="_blank" rel="noopener">Source code<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a></p>
         </div>
+        <p class="folio rv-folio" aria-hidden="true">p. 14</p>
       </article>
-      <article class="qc" id="raipy">
-        <div class="qc-media">
-          <div class="qc-screen"><img src="/assets/img/raipy.webp" width="960" height="748" alt="RaiPy scene editor" loading="lazy" decoding="async"></div>
-        </div>
-        <div class="qc-body">
-          <p class="qc-kind"><span>AI visual novel engine</span><span class="qc-date">Sep 2026</span></p>
-          <h4 class="qc-title" lang="en">RaiPy</h4>
-          <p class="qc-pitch">A desktop app that turns a one-sentence idea into a Ren'Py game that compiles and runs. The user approves every stage.</p>
-          <ul class="qc-points"><li>Images are generated with no external server. Loading and unloading models one at a time cut VRAM use on an 8 GB GPU from 7820 MiB to 3035 MiB.</li></ul>
-          
-        <dl class="stat-sheet" aria-label="Stats">
-          <div><dt>Test</dt><dd>614</dd></div><div><dt>End-to-end run</dt><dd>150 s</dd></div><div><dt>VRAM</dt><dd>7820 → 3035 MiB</dd></div><div><dt>App size</dt><dd>4.2 MB</dd></div>
-        </dl>
-          
-        <ul class="inventory" aria-label="Inventory"><li>Tauri v2</li><li>Rust</li><li>React 19</li><li>TypeScript</li><li>Python</li><li>diffusers</li><li>Ren'Py</li></ul>
-          
-        </div>
-      </article>
-      <article class="qc qc--art" id="parsel">
-        <div class="qc-media">
-          <div class="qc-screen"><svg class="art" viewBox="0 0 320 200" role="img" aria-label="Drawing of a land parcel on a grid with a countdown">
+      <article class="review review--row review--flip review--art" id="parsel" aria-labelledby="parsel-h">
+        <div class="rv-media">
+          <div class="rv-frame"><div class="rv-art"><svg class="art" viewBox="0 0 320 200" role="img" aria-label="Drawing of a land parcel on a grid with a countdown">
       <g stroke="currentColor" stroke-width="1" opacity=".35">
         <path d="M20 10v180"/><path d="M55 10v180"/><path d="M90 10v180"/><path d="M125 10v180"/><path d="M160 10v180"/><path d="M195 10v180"/><path d="M230 10v180"/><path d="M265 10v180"/><path d="M300 10v180"/>
         <path d="M10 20h300"/><path d="M10 52h300"/><path d="M10 84h300"/><path d="M10 116h300"/><path d="M10 148h300"/><path d="M10 180h300"/>
@@ -351,61 +398,100 @@
       <path d="M110 96l12 12 22-24" fill="none" stroke="currentColor" stroke-width="4"/>
       <g fill="none" stroke="currentColor" stroke-width="2"><path d="M238 120h66v34h-66z"/></g>
       <text x="248" y="143" fill="currentColor" font-family="IBM Plex Mono, monospace" font-size="15">00:10</text>
-    </svg></div>
+    </svg></div></div>
         </div>
-        <div class="qc-body">
-          <p class="qc-kind"><span>Internship project, Stoneograph</span><span class="qc-date">Aug 2026</span></p>
-          <h4 class="qc-title" lang="tr">Parsel</h4>
-          <p class="qc-pitch">A land marketplace with title-deed verification and live auctions.</p>
-          <ul class="qc-points"><li>A &quot;title-verified&quot; badge that looks parcels up in Turkey's land registry (TKGM), plus slope-corrected area and elevation analysis.</li><li>Anti-sniping (a last-second bid extends the timer), race-safe bid handling and real-time updates over WebSocket.</li><li>A pipeline that renders narrated, subtitled virtual drone videos over a 3D map (Playwright, ffmpeg).</li></ul>
+        <div class="rv-text">
+          <h3 translate="no" class="rv-title" id="parsel-h" lang="tr">Parsel</h3>
+          <p class="rv-deck">A land marketplace with title-deed verification and live auctions.</p>
+          <div class="rv-body rv-body--cols"><p>A “title-verified” badge that looks parcels up in Turkey's land registry (TKGM), plus slope-corrected area and elevation analysis.</p><p>Anti-sniping (a last-second bid extends the timer), race-safe bid handling and real-time updates over WebSocket.</p><p>A pipeline that renders narrated, subtitled virtual drone videos over a 3D map (Playwright, ffmpeg).</p></div>
           
-        <dl class="stat-sheet" aria-label="Stats">
-          <div><dt>Backend code</dt><dd>~10k lines</dd></div><div><dt>Test</dt><dd>103</dd></div>
-        </dl>
-          
-        <ul class="inventory" aria-label="Inventory"><li>Python</li><li>FastAPI</li><li>SQLAlchemy</li><li>WebSocket</li><li>Shapely</li><li>pyproj</li><li>JavaScript</li></ul>
+          <aside class="spec" aria-label="Fact file: Parsel">
+            <p class="spec-h">Fact file</p>
+            <dl class="spec-list">
+              <div><dt>Type and role</dt><dd>Internship project, Stoneograph</dd></div>
+              <div><dt>Date</dt><dd>Aug 2026</dd></div>
+              <div><dt>Tech</dt><dd>Python, FastAPI, SQLAlchemy, WebSocket, Shapely, pyproj, JavaScript</dd></div>
+            </dl>
+            <p class="spec-h">By the numbers</p>
+            <dl class="spec-nums"><div><dt>Backend code</dt><dd>~10k lines</dd></div><div><dt>Test</dt><dd>103</dd></div></dl>
+          </aside>
           
         </div>
+        <p class="folio rv-folio" aria-hidden="true">p. 15</p>
       </article>
-      <article class="qc" id="heren-agent">
-        <div class="qc-media">
-          <div class="qc-screen"><img src="/assets/img/heren-agent.webp" width="960" height="748" alt="Heren Agent main screen" loading="lazy" decoding="async"></div>
+      <article class="review review--pair" id="raipy" aria-labelledby="raipy-h">
+        <div class="rv-media">
+          <div class="rv-frame"><img src="/assets/img/raipy.webp" width="960" height="748" alt="RaiPy scene editor" loading="lazy" decoding="async"></div>
         </div>
-        <div class="qc-body">
-          <p class="qc-kind"><span>Home-server assistant</span><span class="qc-date">Sep 2026</span></p>
-          <h4 class="qc-title" lang="en">Heren Agent</h4>
-          <p class="qc-pitch">A phone-first panel for running a home server and paired machines by voice or touch. Speech recognition and text-to-speech run fully on the local machine.</p>
-          <ul class="qc-points"><li>Each machine runs a Go agent. Agents sign messages with ed25519 and use a one-time nonce against replay attacks. High-risk commands wait for approval in the UI.</li></ul>
+        <div class="rv-text">
+          <h3 translate="no" class="rv-title" id="raipy-h" lang="en">RaiPy</h3>
+          <p class="rv-deck">A desktop app that turns a one-sentence idea into a Ren'Py game that compiles and runs. The user approves every stage.</p>
+          <div class="rv-body rv-body--nocap"><p>Images are generated with no external server. Loading and unloading models one at a time cut VRAM use on an 8 GB GPU from 7820 MiB to 3035 MiB.</p></div>
           
-        <dl class="stat-sheet" aria-label="Stats">
-          <div><dt>Signing</dt><dd>ed25519</dd></div><div><dt>Voice</dt><dd>local STT + TTS</dd></div>
-        </dl>
+          <aside class="spec" aria-label="Fact file: RaiPy">
+            <p class="spec-h">Fact file</p>
+            <dl class="spec-list">
+              <div><dt>Type and role</dt><dd>AI visual novel engine</dd></div>
+              <div><dt>Date</dt><dd>Sep 2026</dd></div>
+              <div><dt>Tech</dt><dd>Tauri v2, Rust, React 19, TypeScript, Python, diffusers, Ren'Py</dd></div>
+            </dl>
+            <p class="spec-h">By the numbers</p>
+            <dl class="spec-nums"><div><dt>Test</dt><dd>614</dd></div><div><dt>End-to-end run</dt><dd>150 s</dd></div><div><dt>VRAM</dt><dd>7820 → 3035 MiB</dd></div><div><dt>App size</dt><dd>4.2 MB</dd></div></dl>
+          </aside>
           
-        <ul class="inventory" aria-label="Inventory"><li>Python</li><li>FastAPI</li><li>Go</li><li>TypeScript</li><li>faster-whisper</li><li>Piper TTS</li></ul>
-          <p class="qc-links"><a class="btn btn--primary" href="https://github.com/SalihYzts/heren-agent" target="_blank" rel="noopener">Source code<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a></p>
         </div>
+        <p class="folio rv-folio" aria-hidden="true">p. 16</p>
       </article>
-      <article class="qc" id="kafe-finans">
-        <div class="qc-media">
-          <div class="qc-screen"><img src="/assets/img/kafe-finans.webp" width="960" height="600" alt="Kafe Finans statistics screen with demo data" loading="lazy" decoding="async"></div>
+      <article class="review review--pair" id="heren-agent" aria-labelledby="heren-agent-h">
+        <div class="rv-media">
+          <div class="rv-frame"><img src="/assets/img/heren-agent.webp" width="960" height="748" alt="Heren Agent main screen" loading="lazy" decoding="async"></div>
         </div>
-        <div class="qc-body">
-          <p class="qc-kind"><span>Petra Cafe work, desktop app</span><span class="qc-date">2026</span></p>
-          <h4 class="qc-title" lang="en">Kafe Finans</h4>
-          <p class="qc-pitch">An income, expense and revenue app for the cafe. It checks hand-entered revenue against the POS end-of-day totals day by day and reads POS deposits and fees from bank statements.</p>
-          <ul class="qc-points"><li>Runs on the register PC; phones connect over VPN with a PIN.</li><li>Every name and amount in the screenshot is made-up demo data.</li></ul>
+        <div class="rv-text">
+          <h3 translate="no" class="rv-title" id="heren-agent-h" lang="en">Heren Agent</h3>
+          <p class="rv-deck">A phone-first panel for running a home server and paired machines by voice or touch. Speech recognition and text-to-speech run fully on the local machine.</p>
+          <div class="rv-body"><p>Each machine runs a Go agent. Agents sign messages with ed25519 and use a one-time nonce against replay attacks. High-risk commands wait for approval in the UI.</p></div>
           
-        <dl class="stat-sheet" aria-label="Stats">
-          <div><dt>Test</dt><dd>240</dd></div>
-        </dl>
+          <aside class="spec" aria-label="Fact file: Heren Agent">
+            <p class="spec-h">Fact file</p>
+            <dl class="spec-list">
+              <div><dt>Type and role</dt><dd>Home-server assistant</dd></div>
+              <div><dt>Date</dt><dd>Sep 2026</dd></div>
+              <div><dt>Tech</dt><dd>Python, FastAPI, Go, TypeScript, faster-whisper, Piper TTS</dd></div>
+            </dl>
+            <p class="spec-h">By the numbers</p>
+            <dl class="spec-nums"><div><dt>Signing</dt><dd>ed25519</dd></div><div><dt>Voice</dt><dd>local STT + TTS</dd></div></dl>
+          </aside>
           
-        <ul class="inventory" aria-label="Inventory"><li>Electron</li><li>React</li><li>TypeScript</li><li>SQLite</li><li>Vitest</li></ul>
-          
+          <p class="rv-links"><a class="btn btn--solid" href="https://github.com/SalihYzts/heren-agent" target="_blank" rel="noopener">Source code<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a></p>
         </div>
+        <p class="folio rv-folio" aria-hidden="true">p. 17</p>
       </article>
-      <article class="qc qc--art" id="truva-arabirimi">
-        <div class="qc-media">
-          <div class="qc-screen"><svg class="art" viewBox="0 0 320 200" role="img" aria-label="Drawing of orders flowing from a QR menu to the register">
+      <article class="review review--pair" id="kafe-finans" aria-labelledby="kafe-finans-h">
+        <div class="rv-media">
+          <div class="rv-frame"><img src="/assets/img/kafe-finans.webp" width="960" height="600" alt="Kafe Finans statistics screen with demo data" loading="lazy" decoding="async"></div>
+        </div>
+        <div class="rv-text">
+          <h3 translate="no" class="rv-title" id="kafe-finans-h" lang="en">Kafe Finans</h3>
+          <p class="rv-deck">An income, expense and revenue app for the cafe. It checks hand-entered revenue against the POS end-of-day totals day by day and reads POS deposits and fees from bank statements.</p>
+          <div class="rv-body"><p>Runs on the register PC; phones connect over VPN with a PIN.</p><p>Every name and amount in the screenshot is made-up demo data.</p></div>
+          
+          <aside class="spec" aria-label="Fact file: Kafe Finans">
+            <p class="spec-h">Fact file</p>
+            <dl class="spec-list">
+              <div><dt>Type and role</dt><dd>Petra Cafe work, desktop app</dd></div>
+              <div><dt>Date</dt><dd>2026</dd></div>
+              <div><dt>Tech</dt><dd>Electron, React, TypeScript, SQLite, Vitest</dd></div>
+            </dl>
+            <p class="spec-h">By the numbers</p>
+            <dl class="spec-nums"><div><dt>Test</dt><dd>240</dd></div></dl>
+          </aside>
+          
+        </div>
+        <p class="folio rv-folio" aria-hidden="true">p. 18</p>
+      </article>
+      <article class="review review--pair review--art" id="truva-arabirimi" aria-labelledby="truva-arabirimi-h">
+        <div class="rv-media">
+          <div class="rv-frame"><div class="rv-art"><svg class="art" viewBox="0 0 320 200" role="img" aria-label="Drawing of orders flowing from a QR menu to the register">
       <g fill="none" stroke="currentColor" stroke-width="2">
         <path d="M18 60h56v56H18zM90 76h36M118 70l8 6-8 6M140 52h64v80h-64zM218 76h36M246 70l8 6-8 6M262 56h44v44h-44zM270 100v16h28v-16"/>
         <path d="M150 66h44M150 80h44M150 94h30"/>
@@ -415,72 +501,89 @@
       <text x="140" y="176" fill="currentColor" font-family="IBM Plex Mono, monospace" font-size="11">go · windows</text>
       <text x="18" y="176" fill="currentColor" font-family="IBM Plex Mono, monospace" font-size="11">QR</text>
       <text x="258" y="132" fill="currentColor" font-family="IBM Plex Mono, monospace" font-size="11">POS</text>
-    </svg></div>
+    </svg></div></div>
         </div>
-        <div class="qc-body">
-          <p class="qc-kind"><span>Petra Cafe work, with Truva Teknoloji</span><span class="qc-date">2026</span></p>
-          <h4 class="qc-title" lang="tr">Truva–Akınsoft arabirimi</h4>
-          <p class="qc-pitch">A service that writes orders, cancellations and table moves from Truva's QR menu and waiter app into Akınsoft Wolvox Restaurant at the register within seconds.</p>
-          <ul class="qc-points"><li>A job log stops any order from being written twice; kitchen and bar tickets print automatically.</li><li>Recovers by itself after a register or internet outage; connects out over HTTPS only.</li></ul>
+        <div class="rv-text">
+          <h3 translate="no" class="rv-title rv-title--long" id="truva-arabirimi-h" lang="tr">Truva–Akınsoft arabirimi</h3>
+          <p class="rv-deck">A service that writes orders, cancellations and table moves from Truva's QR menu and waiter app into Akınsoft Wolvox Restaurant at the register within seconds.</p>
+          <div class="rv-body"><p>A job log stops any order from being written twice; kitchen and bar tickets print automatically.</p><p>Recovers by itself after a register or internet outage; connects out over HTTPS only.</p></div>
           
-        <dl class="stat-sheet" aria-label="Stats">
-          <div><dt>Go code</dt><dd>~3,600 lines</dd></div><div><dt>Runs as</dt><dd>one Windows service</dd></div>
-        </dl>
-          
-        <ul class="inventory" aria-label="Inventory"><li>Go</li><li>Windows Service</li><li>HTTPS</li><li>Akınsoft Wolvox</li></ul>
+          <aside class="spec" aria-label="Fact file: Truva–Akınsoft arabirimi">
+            <p class="spec-h">Fact file</p>
+            <dl class="spec-list">
+              <div><dt>Type and role</dt><dd>Petra Cafe work, with Truva Teknoloji</dd></div>
+              <div><dt>Date</dt><dd>2026</dd></div>
+              <div><dt>Tech</dt><dd>Go, Windows Service, HTTPS, Akınsoft Wolvox</dd></div>
+            </dl>
+            <p class="spec-h">By the numbers</p>
+            <dl class="spec-nums"><div><dt>Go code</dt><dd>~3,600 lines</dd></div><div><dt>Runs as</dt><dd>one Windows service</dd></div></dl>
+          </aside>
           
         </div>
-      </article></div>
+        <p class="folio rv-folio" aria-hidden="true">p. 19</p>
+      </article>
+      </div>
       
-      <h4 class="minor-title">Other tools &amp; sites</h4>
-      <ul class="mini-grid">
-        <li class="mini" id="oyun-vitrini">
-          <div class="qc-screen"><img src="/assets/img/oyun-vitrini.webp" width="960" height="748" alt="Oyun Vitrini home page" loading="lazy" decoding="async"></div>
-          <p class="qc-kind"><span>Game Design Club site</span><span class="qc-date">2026</span></p>
-          <h5 class="mini-title" lang="en">Oyun Vitrini</h5>
-          
-          <p class="mini-pitch">Showcases the club's 21 games: member accounts, events and leaderboard, an admin panel and a two-screen booth mode.</p>
-          <p class="mini-tech">Node.js, SQLite, Electron</p>
-          
-        </li>
-        <li class="mini" id="gorevler">
-          <div class="qc-screen"><img src="/assets/img/gorevler.webp" width="960" height="600" alt="Görevler Today screen with demo data" loading="lazy" decoding="async"></div>
-          <p class="qc-kind"><span>Personal productivity app</span><span class="qc-date">2026</span></p>
-          <h5 class="mini-title" lang="tr">Görevler</h5>
-          
-          <p class="mini-pitch">Tasks, projects and time in one place: auto-scheduling, focus tracking, habits and Google Calendar sync.</p>
-          <p class="mini-tech">pnpm monorepo, React, PostgreSQL, Docker</p>
-          
-        </li>
-        <li class="mini" id="volpen-site">
-          <div class="qc-screen"><img src="/assets/img/volpen.webp" width="960" height="748" alt="Volpen website home page" loading="lazy" decoding="async"></div>
-          <p class="qc-kind"><span>Studio website</span><span class="qc-date">2026</span></p>
-          <h5 class="mini-title" lang="en">Volpen</h5>
-          
-          <p class="mini-pitch">Written without a framework: a PWA in TR/EN with WCAG AA contrast and JSON-LD for SEO.</p>
-          <p class="mini-tech">HTML, CSS, JavaScript, PWA</p>
-          <p class="mini-links"><a href="https://salihyzts.github.io/VolpenWeb/" target="_blank" rel="noopener">Open the site<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a></p>
-        </li>
-        <li class="mini" id="gdd-creator">
-          <div class="qc-screen"><img src="/assets/img/gdd-creator.webp" width="960" height="600" alt="GDD Creator editing the Kralın Sözü document" loading="lazy" decoding="async"></div>
-          <p class="qc-kind"><span>Game design tool</span><span class="qc-date">2026</span></p>
-          <h5 class="mini-title" lang="en">GDD Creator</h5>
-          
-          <p class="mini-pitch">Asks questions based on the game's genre and exports the game design document to 7 formats.</p>
-          <p class="mini-tech">JavaScript, Supabase</p>
-          <p class="mini-links"><a href="https://github.com/SalihYzts/gdd-creator" target="_blank" rel="noopener">Source code<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a></p>
-        </li>
-        <li class="mini" id="turkos">
-          <div class="qc-screen"><img src="/assets/img/turkos.webp" width="960" height="600" alt="TurkOS boot screens" loading="lazy" decoding="async"></div>
-          <p class="qc-kind"><span>Open-source theme</span><span class="qc-date">2026</span></p>
-          <h5 class="mini-title" lang="en">TurkOS</h5>
-          
-          <p class="mini-pitch">Turkish interface theme for R36S handhelds, a 711-string translation and Turkish-flag boot screens.</p>
-          <p class="mini-tech">Bash, EmulationStation</p>
-          <p class="mini-links"><a href="https://github.com/SalihYzts/TurkOS" target="_blank" rel="noopener">Source code<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a></p>
-        </li>
-        <li class="mini qc--art" id="ytchatinstaller">
-          <div class="qc-screen"><svg class="art" viewBox="0 0 320 200" role="img" aria-label="Drawing of chat bubbles being exported to a spreadsheet">
+      <section class="briefs" aria-labelledby="yazilim-kisa-h">
+        <h3 class="briefs-title" id="yazilim-kisa-h">In brief: tools and sites<span class="folio" aria-hidden="true">p. 20</span></h3>
+        <ul class="brief-list">
+          <li class="brief" id="oyun-vitrini">
+            <div class="brief-frame"><img src="/assets/img/oyun-vitrini.webp" width="960" height="748" alt="Oyun Vitrini home page" loading="lazy" decoding="async"></div>
+            <div class="brief-text">
+              <h4 class="brief-title" translate="no" lang="en">Oyun Vitrini</h4>
+              
+              <p class="brief-meta">Game Design Club site, 2026</p>
+              <p class="brief-pitch">Showcases the club's 21 games: member accounts, events and leaderboard, an admin panel and a two-screen booth mode.</p>
+              <p class="brief-tech">Node.js, SQLite, Electron</p>
+              
+            </div>
+          </li>
+          <li class="brief" id="gorevler">
+            <div class="brief-frame"><img src="/assets/img/gorevler.webp" width="960" height="600" alt="Görevler Today screen with demo data" loading="lazy" decoding="async"></div>
+            <div class="brief-text">
+              <h4 class="brief-title" translate="no" lang="tr">Görevler</h4>
+              
+              <p class="brief-meta">Personal productivity app, 2026</p>
+              <p class="brief-pitch">Tasks, projects and time in one place: auto-scheduling, focus tracking, habits and Google Calendar sync.</p>
+              <p class="brief-tech">pnpm monorepo, React, PostgreSQL, Docker</p>
+              
+            </div>
+          </li>
+          <li class="brief" id="volpen-site">
+            <div class="brief-frame"><img src="/assets/img/volpen.webp" width="960" height="748" alt="Volpen website home page" loading="lazy" decoding="async"></div>
+            <div class="brief-text">
+              <h4 class="brief-title" translate="no" lang="en">Volpen</h4>
+              
+              <p class="brief-meta">Studio website, 2026</p>
+              <p class="brief-pitch">Written without a framework: a PWA in TR/EN with WCAG AA contrast and JSON-LD for SEO.</p>
+              <p class="brief-tech">HTML, CSS, JavaScript, PWA</p>
+              <p class="brief-links"><a href="https://salihyzts.github.io/VolpenWeb/" target="_blank" rel="noopener">Open the site<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a></p>
+            </div>
+          </li>
+          <li class="brief" id="gdd-creator">
+            <div class="brief-frame"><img src="/assets/img/gdd-creator.webp" width="960" height="600" alt="GDD Creator editing the Kralın Sözü document" loading="lazy" decoding="async"></div>
+            <div class="brief-text">
+              <h4 class="brief-title" translate="no" lang="en">GDD Creator</h4>
+              
+              <p class="brief-meta">Game design tool, 2026</p>
+              <p class="brief-pitch">Asks questions based on the game's genre and exports the game design document to 7 formats.</p>
+              <p class="brief-tech">JavaScript, Supabase</p>
+              <p class="brief-links"><a href="https://github.com/SalihYzts/gdd-creator" target="_blank" rel="noopener">Source code<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a></p>
+            </div>
+          </li>
+          <li class="brief" id="turkos">
+            <div class="brief-frame"><img src="/assets/img/turkos.webp" width="960" height="600" alt="TurkOS boot screens" loading="lazy" decoding="async"></div>
+            <div class="brief-text">
+              <h4 class="brief-title" translate="no" lang="en">TurkOS</h4>
+              
+              <p class="brief-meta">Open-source theme, 2026</p>
+              <p class="brief-pitch">Turkish interface theme for R36S handhelds, a 711-string translation and Turkish-flag boot screens.</p>
+              <p class="brief-tech">Bash, EmulationStation</p>
+              <p class="brief-links"><a href="https://github.com/SalihYzts/TurkOS" target="_blank" rel="noopener">Source code<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a></p>
+            </div>
+          </li>
+          <li class="brief" id="ytchatinstaller">
+            <div class="brief-frame"><div class="rv-art"><svg class="art" viewBox="0 0 320 200" role="img" aria-label="Drawing of chat bubbles being exported to a spreadsheet">
       <g fill="none" stroke="currentColor" stroke-width="2">
         <path d="M20 40h100v30H44l-10 10V70H20zM30 96h90v30H54l-10 10v-10H30zM20 150h80v26H20z"/>
         <path d="M140 108h34M166 100l8 8-8 8"/>
@@ -488,97 +591,91 @@
       </g>
       <g fill="currentColor"><path d="M30 50h60v4H30zM30 58h40v4H30zM40 106h60v4H40zM30 158h50v4H30zM198 48h16v8h-16zM198 72h16v8h-16zM198 96h16v8h-16zM198 120h16v8h-16zM198 144h16v8h-16zM230 72h50v4h-50zM230 96h40v4h-40zM230 120h56v4h-56zM230 144h30v4h-30z"/></g>
       <text x="232" y="56" fill="currentColor" font-family="IBM Plex Mono, monospace" font-size="10">.xlsx</text>
-    </svg></div>
-          <p class="qc-kind"><span>Open-source tool</span><span class="qc-date">2026</span></p>
-          <h5 class="mini-title" lang="en">YtChatInstaller</h5>
-          
-          <p class="mini-pitch">A Python tool that downloads a YouTube stream's chat replay and exports it to a tidy Excel file with timestamps, profile pictures and usernames.</p>
-          <p class="mini-tech">Python, openpyxl, yt-dlp</p>
-          <p class="mini-links"><a href="https://github.com/SalihYzts/YtChAtInsTaLLer" target="_blank" rel="noopener">Source code<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a></p>
-        </li>
-      </ul>
-    </section>
-      </div>
+    </svg></div></div>
+            <div class="brief-text">
+              <h4 class="brief-title brief-title--long" translate="no" lang="en">YtChatInstaller</h4>
+              
+              <p class="brief-meta">Open-source tool, 2026</p>
+              <p class="brief-pitch">A Python tool that downloads a YouTube stream's chat replay and exports it to a tidy Excel file with timestamps, profile pictures and usernames.</p>
+              <p class="brief-tech">Python, openpyxl, yt-dlp</p>
+              <p class="brief-links"><a href="https://github.com/SalihYzts/YtChAtInsTaLLer" target="_blank" rel="noopener">Source code<svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a></p>
+            </div>
+          </li>
+        </ul>
+      </section>
     </div>
   </section>
 
-  <section class="section" id="gorevler" aria-labelledby="gorevler-h">
+  <section class="section section--journey" id="yolculuk" aria-labelledby="yolculuk-h">
+    <span class="thumb-tab" aria-hidden="true">Feature</span>
     <div class="wrap">
-      
-      <header class="section-head">
-        <h2 id="gorevler-h"><span data-lens-only="game">Quest log</span><span data-lens-only="code" class="h-code" lang="en">git log</span></h2>
-        <p class="section-intro">Work, school and community roles. Newest quest first.</p>
+      <header class="feature-head">
+        <h2 class="feature-title" id="yolculuk-h">Feature: The journey</h2>
+        <p class="feature-deck">Work, school and community roles. Newest first.</p>
+        <p class="folio" aria-hidden="true">p. 21</p>
       </header>
-      <ol class="quest-log">
-        <li class="quest quest--active">
-          <span class="quest-node" aria-hidden="true"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M1 0h2v1h-2zM1 1h9v1h-9zM1 2h10v1h-10zM1 3h9v1h-9zM1 4h8v1h-8zM1 5h9v1h-9zM1 6h10v1h-10zM1 7h2v1h-2zM1 8h2v1h-2zM1 9h2v1h-2zM1 10h2v1h-2zM0 11h4v1h-4z"/></svg></span>
-          <div class="quest-main">
-            <p class="quest-status">Active</p>
-            <h3 class="quest-title">Software &amp; automation consultant (freelance)</h3>
-            <p class="quest-org"><span>Petra Cafe, Çanakkale</span><span class="quest-date">2026</span></p>
-            <ul class="goals"><li>An integration built with Truva Teknoloji: orders from the QR menu and waiter app reach Akınsoft Wolvox at the register within seconds (Go, ~3,600 lines, one Windows service)</li><li>A job log that stops any order from being written twice; recovers by itself after outages</li><li>Kafe Finans: an income and expense app that checks revenue against POS end-of-day totals (Electron, React, SQLite)</li></ul>
+      <ol class="timeline">
+        <li class="entry entry--active">
+          <p class="entry-date">2026<span class="entry-status"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M1 0h2v1h-2zM1 1h9v1h-9zM1 2h10v1h-10zM1 3h9v1h-9zM1 4h8v1h-8zM1 5h9v1h-9zM1 6h10v1h-10zM1 7h2v1h-2zM1 8h2v1h-2zM1 9h2v1h-2zM1 10h2v1h-2zM0 11h4v1h-4z"/></svg>Ongoing</span></p>
+          <div class="entry-body">
+            <h3 class="entry-title">Software &amp; automation consultant (freelance)</h3>
+            <p class="entry-org">Petra Cafe, Çanakkale</p>
+            <ul class="entry-goals"><li>An integration built with Truva Teknoloji: orders from the QR menu and waiter app reach Akınsoft Wolvox at the register within seconds (Go, ~3,600 lines, one Windows service)</li><li>A job log that stops any order from being written twice; recovers by itself after outages</li><li>Kafe Finans: an income and expense app that checks revenue against POS end-of-day totals (Electron, React, SQLite)</li></ul>
           </div>
         </li>
-        <li class="quest quest--done">
-          <span class="quest-node" aria-hidden="true"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M11 1h1v1h-1zM10 2h2v1h-2zM9 3h2v1h-2zM8 4h2v1h-2zM0 5h1v1h-1zM7 5h2v1h-2zM0 6h2v1h-2zM6 6h2v1h-2zM1 7h2v1h-2zM5 7h2v1h-2zM2 8h4v1h-4zM3 9h2v1h-2z"/></svg></span>
-          <div class="quest-main">
-            <p class="quest-status">Completed</p>
-            <h3 class="quest-title">Software development intern</h3>
-            <p class="quest-org"><span>Stoneograph</span><span class="quest-date">Aug 2026</span></p>
-            <ul class="goals"><li>Wrote Parsel's backend: about 10k lines, 103 tests</li><li>Live auctions and title-deed verification</li><li>JWT and Google OAuth sign-in, TR/EN interface</li><li>A hosting cost comparison for my mentor</li></ul>
+        <li class="entry entry--done">
+          <p class="entry-date">Aug 2026<span class="entry-status"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M11 1h1v1h-1zM10 2h2v1h-2zM9 3h2v1h-2zM8 4h2v1h-2zM0 5h1v1h-1zM7 5h2v1h-2zM0 6h2v1h-2zM6 6h2v1h-2zM1 7h2v1h-2zM5 7h2v1h-2zM2 8h4v1h-4zM3 9h2v1h-2z"/></svg>Done</span></p>
+          <div class="entry-body">
+            <h3 class="entry-title">Software development intern</h3>
+            <p class="entry-org">Stoneograph</p>
+            <ul class="entry-goals"><li>Wrote Parsel's backend: about 10k lines, 103 tests</li><li>Live auctions and title-deed verification</li><li>JWT and Google OAuth sign-in, TR/EN interface</li><li>A hosting cost comparison for my mentor</li></ul>
           </div>
         </li>
-        <li class="quest quest--active">
-          <span class="quest-node" aria-hidden="true"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M1 0h2v1h-2zM1 1h9v1h-9zM1 2h10v1h-10zM1 3h9v1h-9zM1 4h8v1h-8zM1 5h9v1h-9zM1 6h10v1h-10zM1 7h2v1h-2zM1 8h2v1h-2zM1 9h2v1h-2zM1 10h2v1h-2zM0 11h4v1h-4z"/></svg></span>
-          <div class="quest-main">
-            <p class="quest-status">Active</p>
-            <h3 class="quest-title">Founder &amp; software developer</h3>
-            <p class="quest-org"><span>Volpen</span><span class="quest-date">Since 2025</span></p>
-            <ul class="goals"><li>Founded the studio: Velox (PC games), Lagopus (software), Zerda (mobile games)</li><li>Wrote the code for the team's games</li><li>Built MyEverythingList on my own</li><li>Built the studio site without a framework</li></ul>
+        <li class="entry entry--active">
+          <p class="entry-date">Since 2025<span class="entry-status"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M1 0h2v1h-2zM1 1h9v1h-9zM1 2h10v1h-10zM1 3h9v1h-9zM1 4h8v1h-8zM1 5h9v1h-9zM1 6h10v1h-10zM1 7h2v1h-2zM1 8h2v1h-2zM1 9h2v1h-2zM1 10h2v1h-2zM0 11h4v1h-4z"/></svg>Ongoing</span></p>
+          <div class="entry-body">
+            <h3 class="entry-title">Founder &amp; software developer</h3>
+            <p class="entry-org">Volpen</p>
+            <ul class="entry-goals"><li>Founded the studio: Velox (PC games), Lagopus (software), Zerda (mobile games)</li><li>Wrote the code for the team's games</li><li>Built MyEverythingList on my own</li><li>Built the studio site without a framework</li></ul>
           </div>
         </li>
-        <li class="quest quest--done">
-          <span class="quest-node" aria-hidden="true"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M11 1h1v1h-1zM10 2h2v1h-2zM9 3h2v1h-2zM8 4h2v1h-2zM0 5h1v1h-1zM7 5h2v1h-2zM0 6h2v1h-2zM6 6h2v1h-2zM1 7h2v1h-2zM5 7h2v1h-2zM2 8h4v1h-4zM3 9h2v1h-2z"/></svg></span>
-          <div class="quest-main">
-            <p class="quest-status">Completed</p>
-            <h3 class="quest-title">Staff &amp; mentor</h3>
-            <p class="quest-org"><span>Troia Game Jam 2026</span><span class="quest-date">May 2026</span></p>
-            <ul class="goals"><li>Mentored participants at a 48-hour jam</li><li>Designed the roll-up banner and certificates</li></ul>
+        <li class="entry entry--done">
+          <p class="entry-date">May 2026<span class="entry-status"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M11 1h1v1h-1zM10 2h2v1h-2zM9 3h2v1h-2zM8 4h2v1h-2zM0 5h1v1h-1zM7 5h2v1h-2zM0 6h2v1h-2zM6 6h2v1h-2zM1 7h2v1h-2zM5 7h2v1h-2zM2 8h4v1h-4zM3 9h2v1h-2z"/></svg>Done</span></p>
+          <div class="entry-body">
+            <h3 class="entry-title">Staff &amp; mentor</h3>
+            <p class="entry-org">Troia Game Jam 2026</p>
+            <ul class="entry-goals"><li>Mentored participants at a 48-hour jam</li><li>Designed the roll-up banner and certificates</li></ul>
           </div>
         </li>
-        <li class="quest quest--active">
-          <span class="quest-node" aria-hidden="true"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M1 0h2v1h-2zM1 1h9v1h-9zM1 2h10v1h-10zM1 3h9v1h-9zM1 4h8v1h-8zM1 5h9v1h-9zM1 6h10v1h-10zM1 7h2v1h-2zM1 8h2v1h-2zM1 9h2v1h-2zM1 10h2v1h-2zM0 11h4v1h-4z"/></svg></span>
-          <div class="quest-main">
-            <p class="quest-status">Active</p>
-            <h3 class="quest-title">Founding board member &amp; treasurer</h3>
-            <p class="quest-org"><span>Game Design Club, ÇOMÜ</span></p>
-            <ul class="goals"><li>Founded the club and manage its budget</li><li>Built the club's website, Oyun Vitrini</li></ul>
+        <li class="entry entry--active">
+          <p class="entry-date">&nbsp;<span class="entry-status"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M1 0h2v1h-2zM1 1h9v1h-9zM1 2h10v1h-10zM1 3h9v1h-9zM1 4h8v1h-8zM1 5h9v1h-9zM1 6h10v1h-10zM1 7h2v1h-2zM1 8h2v1h-2zM1 9h2v1h-2zM1 10h2v1h-2zM0 11h4v1h-4z"/></svg>Ongoing</span></p>
+          <div class="entry-body">
+            <h3 class="entry-title">Founding board member &amp; treasurer</h3>
+            <p class="entry-org">Game Design Club, ÇOMÜ</p>
+            <ul class="entry-goals"><li>Founded the club and manage its budget</li><li>Built the club's website, Oyun Vitrini</li></ul>
           </div>
         </li>
-        <li class="quest quest--active">
-          <span class="quest-node" aria-hidden="true"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M1 0h2v1h-2zM1 1h9v1h-9zM1 2h10v1h-10zM1 3h9v1h-9zM1 4h8v1h-8zM1 5h9v1h-9zM1 6h10v1h-10zM1 7h2v1h-2zM1 8h2v1h-2zM1 9h2v1h-2zM1 10h2v1h-2zM0 11h4v1h-4z"/></svg></span>
-          <div class="quest-main">
-            <p class="quest-status">Active</p>
-            <h3 class="quest-title">Game Development and Programming (associate degree)</h3>
-            <p class="quest-org"><span>Çanakkale Onsekiz Mart University</span><span class="quest-date">2025 – 2027, 2nd year</span></p>
+        <li class="entry entry--active">
+          <p class="entry-date">2025 – 2027, 2nd year<span class="entry-status"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M1 0h2v1h-2zM1 1h9v1h-9zM1 2h10v1h-10zM1 3h9v1h-9zM1 4h8v1h-8zM1 5h9v1h-9zM1 6h10v1h-10zM1 7h2v1h-2zM1 8h2v1h-2zM1 9h2v1h-2zM1 10h2v1h-2zM0 11h4v1h-4z"/></svg>Ongoing</span></p>
+          <div class="entry-body">
+            <h3 class="entry-title">Game Development and Programming (associate degree)</h3>
+            <p class="entry-org">Çanakkale Onsekiz Mart University</p>
             
           </div>
         </li>
-        <li class="quest quest--done">
-          <span class="quest-node" aria-hidden="true"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M11 1h1v1h-1zM10 2h2v1h-2zM9 3h2v1h-2zM8 4h2v1h-2zM0 5h1v1h-1zM7 5h2v1h-2zM0 6h2v1h-2zM6 6h2v1h-2zM1 7h2v1h-2zM5 7h2v1h-2zM2 8h4v1h-4zM3 9h2v1h-2z"/></svg></span>
-          <div class="quest-main">
-            <p class="quest-status">Completed</p>
-            <h3 class="quest-title">Typesetter</h3>
-            <p class="quest-org"><span>Manga fansub</span></p>
-            <ul class="goals"><li>Placed translated text on pages in Photoshop and adapted it to the culture</li></ul>
+        <li class="entry entry--done">
+          <p class="entry-date">&nbsp;<span class="entry-status"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M11 1h1v1h-1zM10 2h2v1h-2zM9 3h2v1h-2zM8 4h2v1h-2zM0 5h1v1h-1zM7 5h2v1h-2zM0 6h2v1h-2zM6 6h2v1h-2zM1 7h2v1h-2zM5 7h2v1h-2zM2 8h4v1h-4zM3 9h2v1h-2z"/></svg>Done</span></p>
+          <div class="entry-body">
+            <h3 class="entry-title">Typesetter</h3>
+            <p class="entry-org">Manga fansub</p>
+            <ul class="entry-goals"><li>Placed translated text on pages in Photoshop and adapted it to the culture</li></ul>
           </div>
         </li>
-        <li class="quest quest--done">
-          <span class="quest-node" aria-hidden="true"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M11 1h1v1h-1zM10 2h2v1h-2zM9 3h2v1h-2zM8 4h2v1h-2zM0 5h1v1h-1zM7 5h2v1h-2zM0 6h2v1h-2zM6 6h2v1h-2zM1 7h2v1h-2zM5 7h2v1h-2zM2 8h4v1h-4zM3 9h2v1h-2z"/></svg></span>
-          <div class="quest-main">
-            <p class="quest-status">Completed</p>
-            <h3 class="quest-title">Mechatronics</h3>
-            <p class="quest-org"><span>Yozgat Science and Technology High School</span></p>
+        <li class="entry entry--done">
+          <p class="entry-date">&nbsp;<span class="entry-status"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M11 1h1v1h-1zM10 2h2v1h-2zM9 3h2v1h-2zM8 4h2v1h-2zM0 5h1v1h-1zM7 5h2v1h-2zM0 6h2v1h-2zM6 6h2v1h-2zM1 7h2v1h-2zM5 7h2v1h-2zM2 8h4v1h-4zM3 9h2v1h-2z"/></svg>Done</span></p>
+          <div class="entry-body">
+            <h3 class="entry-title">Mechatronics</h3>
+            <p class="entry-org">Yozgat Science and Technology High School</p>
             
           </div>
         </li>
@@ -586,158 +683,130 @@
     </div>
   </section>
 
-  <section class="section" id="basarimlar" aria-labelledby="basarimlar-h">
+  <section class="section section--awards" id="rozetler" aria-labelledby="rozetler-h">
+    <span class="thumb-tab" aria-hidden="true">Badges</span>
     <div class="wrap">
-      
-      <header class="section-head">
-        <h2 id="basarimlar-h"><span data-lens-only="game">Achievements</span><span data-lens-only="code" class="h-code" lang="en">Milestones</span></h2>
-        <p class="section-intro">Every badge stands for something you can check. One is hidden.</p>
+      <header class="feature-head">
+        <h2 class="feature-title" id="rozetler-h">Badges</h2>
+        <p class="feature-deck">Every badge stands for something you can check. One is hidden.</p>
+        <p class="folio" aria-hidden="true">p. 23</p>
       </header>
-      <ul class="badges">
-        <li class="badge">
-          <span class="badge-icon"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M4 0h4v1h-4zM2 1h2v1h-2zM5 1h2v1h-2zM8 1h2v1h-2zM1 2h1v1h-1zM4 2h1v1h-1zM7 2h1v1h-1zM10 2h1v1h-1zM1 3h1v1h-1zM4 3h1v1h-1zM7 3h1v1h-1zM10 3h1v1h-1zM0 4h12v1h-12zM0 5h1v1h-1zM4 5h1v1h-1zM7 5h1v1h-1zM11 5h1v1h-1zM0 6h1v1h-1zM4 6h1v1h-1zM7 6h1v1h-1zM11 6h1v1h-1zM0 7h12v1h-12zM1 8h1v1h-1zM4 8h1v1h-1zM7 8h1v1h-1zM10 8h1v1h-1zM1 9h1v1h-1zM4 9h1v1h-1zM7 9h1v1h-1zM10 9h1v1h-1zM2 10h2v1h-2zM5 10h2v1h-2zM8 10h2v1h-2zM4 11h4v1h-4z"/></svg></span>
-          <span class="badge-text"><span class="badge-name">Polyglot</span><span class="badge-how">Ship MyEverythingList in 19 languages</span></span>
+      <ul class="seals">
+        <li class="seal">
+          <span class="seal-disc"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M4 0h4v1h-4zM2 1h2v1h-2zM5 1h2v1h-2zM8 1h2v1h-2zM1 2h1v1h-1zM4 2h1v1h-1zM7 2h1v1h-1zM10 2h1v1h-1zM1 3h1v1h-1zM4 3h1v1h-1zM7 3h1v1h-1zM10 3h1v1h-1zM0 4h12v1h-12zM0 5h1v1h-1zM4 5h1v1h-1zM7 5h1v1h-1zM11 5h1v1h-1zM0 6h1v1h-1zM4 6h1v1h-1zM7 6h1v1h-1zM11 6h1v1h-1zM0 7h12v1h-12zM1 8h1v1h-1zM4 8h1v1h-1zM7 8h1v1h-1zM10 8h1v1h-1zM1 9h1v1h-1zM4 9h1v1h-1zM7 9h1v1h-1zM10 9h1v1h-1zM2 10h2v1h-2zM5 10h2v1h-2zM8 10h2v1h-2zM4 11h4v1h-4z"/></svg></span>
+          <span class="seal-name">Polyglot</span>
+          <span class="seal-how">Ship MyEverythingList in 19 languages</span>
         </li>
-        <li class="badge">
-          <span class="badge-icon"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M5 0h2v1h-2zM5 1h2v1h-2zM4 2h4v1h-4zM4 3h4v1h-4zM0 4h12v1h-12zM1 5h10v1h-10zM2 6h8v1h-8zM3 7h6v1h-6zM3 8h6v1h-6zM2 9h3v1h-3zM7 9h3v1h-3zM2 10h2v1h-2zM8 10h2v1h-2zM1 11h2v1h-2zM9 11h2v1h-2z"/></svg></span>
-          <span class="badge-text"><span class="badge-name">Star collector</span><span class="badge-how">Get 7 stars on GitHub for NeRoBoT</span></span>
+        <li class="seal">
+          <span class="seal-disc"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M5 0h2v1h-2zM5 1h2v1h-2zM4 2h4v1h-4zM4 3h4v1h-4zM0 4h12v1h-12zM1 5h10v1h-10zM2 6h8v1h-8zM3 7h6v1h-6zM3 8h6v1h-6zM2 9h3v1h-3zM7 9h3v1h-3zM2 10h2v1h-2zM8 10h2v1h-2zM1 11h2v1h-2zM9 11h2v1h-2z"/></svg></span>
+          <span class="seal-name">Star collector</span>
+          <span class="seal-how">Get 7 stars on GitHub for NeRoBoT</span>
         </li>
-        <li class="badge">
-          <span class="badge-icon"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M1 0h2v1h-2zM1 1h9v1h-9zM1 2h10v1h-10zM1 3h9v1h-9zM1 4h8v1h-8zM1 5h9v1h-9zM1 6h10v1h-10zM1 7h2v1h-2zM1 8h2v1h-2zM1 9h2v1h-2zM1 10h2v1h-2zM0 11h4v1h-4z"/></svg></span>
-          <span class="badge-text"><span class="badge-name">Global Game Jam</span><span class="badge-how">Finish a game at Istanbul @BUG in 2026</span></span>
+        <li class="seal">
+          <span class="seal-disc"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M1 0h2v1h-2zM1 1h9v1h-9zM1 2h10v1h-10zM1 3h9v1h-9zM1 4h8v1h-8zM1 5h9v1h-9zM1 6h10v1h-10zM1 7h2v1h-2zM1 8h2v1h-2zM1 9h2v1h-2zM1 10h2v1h-2zM0 11h4v1h-4z"/></svg></span>
+          <span class="seal-name">Global Game Jam</span>
+          <span class="seal-how">Finish a game at Istanbul @BUG in 2026</span>
         </li>
-        <li class="badge">
-          <span class="badge-icon"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M1 0h2v1h-2zM1 1h9v1h-9zM1 2h10v1h-10zM1 3h9v1h-9zM1 4h8v1h-8zM1 5h9v1h-9zM1 6h10v1h-10zM1 7h2v1h-2zM1 8h2v1h-2zM1 9h2v1h-2zM1 10h2v1h-2zM0 11h4v1h-4z"/></svg></span>
-          <span class="badge-text"><span class="badge-name">Yıldız Jam</span><span class="badge-how">Finish The Rolling Pizz within the jam</span></span>
+        <li class="seal">
+          <span class="seal-disc"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M1 0h2v1h-2zM1 1h9v1h-9zM1 2h10v1h-10zM1 3h9v1h-9zM1 4h8v1h-8zM1 5h9v1h-9zM1 6h10v1h-10zM1 7h2v1h-2zM1 8h2v1h-2zM1 9h2v1h-2zM1 10h2v1h-2zM0 11h4v1h-4z"/></svg></span>
+          <span class="seal-name">Yıldız Jam</span>
+          <span class="seal-how">Finish The Rolling Pizz within the jam</span>
         </li>
-        <li class="badge">
-          <span class="badge-icon"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M0 0h12v1h-12zM0 1h1v1h-1zM11 1h1v1h-1zM0 2h1v1h-1zM2 2h3v1h-3zM7 2h3v1h-3zM11 2h1v1h-1zM0 3h1v1h-1zM2 3h3v1h-3zM7 3h3v1h-3zM11 3h1v1h-1zM0 4h1v1h-1zM11 4h1v1h-1zM0 5h1v1h-1zM2 5h3v1h-3zM7 5h3v1h-3zM11 5h1v1h-1zM1 6h1v1h-1zM3 6h2v1h-2zM7 6h2v1h-2zM10 6h1v1h-1zM1 7h1v1h-1zM10 7h1v1h-1zM2 8h1v1h-1zM9 8h1v1h-1zM3 9h1v1h-1zM8 9h1v1h-1zM4 10h1v1h-1zM7 10h1v1h-1zM5 11h2v1h-2z"/></svg></span>
-          <span class="badge-text"><span class="badge-name">Mentor</span><span class="badge-how">Guide teams at Troia Game Jam 2026</span></span>
+        <li class="seal">
+          <span class="seal-disc"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M0 0h12v1h-12zM0 1h1v1h-1zM11 1h1v1h-1zM0 2h1v1h-1zM2 2h3v1h-3zM7 2h3v1h-3zM11 2h1v1h-1zM0 3h1v1h-1zM2 3h3v1h-3zM7 3h3v1h-3zM11 3h1v1h-1zM0 4h1v1h-1zM11 4h1v1h-1zM0 5h1v1h-1zM2 5h3v1h-3zM7 5h3v1h-3zM11 5h1v1h-1zM1 6h1v1h-1zM3 6h2v1h-2zM7 6h2v1h-2zM10 6h1v1h-1zM1 7h1v1h-1zM10 7h1v1h-1zM2 8h1v1h-1zM9 8h1v1h-1zM3 9h1v1h-1zM8 9h1v1h-1zM4 10h1v1h-1zM7 10h1v1h-1zM5 11h2v1h-2z"/></svg></span>
+          <span class="seal-name">Mentor</span>
+          <span class="seal-how">Guide teams at Troia Game Jam 2026</span>
         </li>
-        <li class="badge">
-          <span class="badge-icon"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M0 1h1v1h-1zM5 1h2v1h-2zM11 1h1v1h-1zM0 2h2v1h-2zM5 2h2v1h-2zM10 2h2v1h-2zM0 3h3v1h-3zM4 3h4v1h-4zM9 3h3v1h-3zM0 4h12v1h-12zM0 5h12v1h-12zM0 6h12v1h-12zM0 7h2v1h-2zM3 7h2v1h-2zM7 7h2v1h-2zM10 7h2v1h-2zM0 8h12v1h-12zM0 10h12v1h-12zM0 11h12v1h-12z"/></svg></span>
-          <span class="badge-text"><span class="badge-name">Guild founder</span><span class="badge-how">Found Volpen with three branches</span></span>
+        <li class="seal">
+          <span class="seal-disc"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M0 1h1v1h-1zM5 1h2v1h-2zM11 1h1v1h-1zM0 2h2v1h-2zM5 2h2v1h-2zM10 2h2v1h-2zM0 3h3v1h-3zM4 3h4v1h-4zM9 3h3v1h-3zM0 4h12v1h-12zM0 5h12v1h-12zM0 6h12v1h-12zM0 7h2v1h-2zM3 7h2v1h-2zM7 7h2v1h-2zM10 7h2v1h-2zM0 8h12v1h-12zM0 10h12v1h-12zM0 11h12v1h-12z"/></svg></span>
+          <span class="seal-name">Guild founder</span>
+          <span class="seal-how">Found Volpen with three branches</span>
         </li>
-        <li class="badge">
-          <span class="badge-icon"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M1 0h4v1h-4zM0 1h1v1h-1zM5 1h1v1h-1zM0 2h1v1h-1zM2 2h2v1h-2zM5 2h1v1h-1zM0 3h1v1h-1zM2 3h2v1h-2zM5 3h1v1h-1zM0 4h1v1h-1zM5 4h7v1h-7zM1 5h4v1h-4zM10 5h2v1h-2zM10 6h1v1h-1zM7 7h2v1h-2zM10 7h1v1h-1z"/></svg></span>
-          <span class="badge-text"><span class="badge-name">Club founder</span><span class="badge-how">Found the Game Design Club and keep its books</span></span>
+        <li class="seal">
+          <span class="seal-disc"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M1 0h4v1h-4zM0 1h1v1h-1zM5 1h1v1h-1zM0 2h1v1h-1zM2 2h2v1h-2zM5 2h1v1h-1zM0 3h1v1h-1zM2 3h2v1h-2zM5 3h1v1h-1zM0 4h1v1h-1zM5 4h7v1h-7zM1 5h4v1h-4zM10 5h2v1h-2zM10 6h1v1h-1zM7 7h2v1h-2zM10 7h1v1h-1z"/></svg></span>
+          <span class="seal-name">Club founder</span>
+          <span class="seal-how">Found the Game Design Club and keep its books</span>
         </li>
-        <li class="badge">
-          <span class="badge-icon"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M11 1h1v1h-1zM10 2h2v1h-2zM9 3h2v1h-2zM8 4h2v1h-2zM0 5h1v1h-1zM7 5h2v1h-2zM0 6h2v1h-2zM6 6h2v1h-2zM1 7h2v1h-2zM5 7h2v1h-2zM2 8h4v1h-4zM3 9h2v1h-2z"/></svg></span>
-          <span class="badge-text"><span class="badge-name">Test master</span><span class="badge-how">Write 614 tests for RaiPy</span></span>
+        <li class="seal">
+          <span class="seal-disc"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M11 1h1v1h-1zM10 2h2v1h-2zM9 3h2v1h-2zM8 4h2v1h-2zM0 5h1v1h-1zM7 5h2v1h-2zM0 6h2v1h-2zM6 6h2v1h-2zM1 7h2v1h-2zM5 7h2v1h-2zM2 8h4v1h-4zM3 9h2v1h-2z"/></svg></span>
+          <span class="seal-name">Test master</span>
+          <span class="seal-how">Write 614 tests for RaiPy</span>
         </li>
-        <li class="badge">
-          <span class="badge-icon"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2 0h1v1h-1zM4 0h1v1h-1zM7 0h1v1h-1zM9 0h1v1h-1zM2 1h1v1h-1zM4 1h1v1h-1zM7 1h1v1h-1zM9 1h1v1h-1zM0 2h12v1h-12zM1 3h1v1h-1zM10 3h1v1h-1zM0 4h2v1h-2zM3 4h6v1h-6zM10 4h2v1h-2zM1 5h1v1h-1zM3 5h1v1h-1zM8 5h1v1h-1zM10 5h1v1h-1zM0 6h2v1h-2zM3 6h1v1h-1zM8 6h1v1h-1zM10 6h2v1h-2zM1 7h1v1h-1zM3 7h6v1h-6zM10 7h1v1h-1zM0 8h2v1h-2zM10 8h2v1h-2zM0 9h12v1h-12zM2 10h1v1h-1zM4 10h1v1h-1zM7 10h1v1h-1zM9 10h1v1h-1zM2 11h1v1h-1zM4 11h1v1h-1zM7 11h1v1h-1zM9 11h1v1h-1z"/></svg></span>
-          <span class="badge-text"><span class="badge-name">VRAM diet</span><span class="badge-how">Cut 7820 MiB down to 3035 MiB</span></span>
+        <li class="seal">
+          <span class="seal-disc"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2 0h1v1h-1zM4 0h1v1h-1zM7 0h1v1h-1zM9 0h1v1h-1zM2 1h1v1h-1zM4 1h1v1h-1zM7 1h1v1h-1zM9 1h1v1h-1zM0 2h12v1h-12zM1 3h1v1h-1zM10 3h1v1h-1zM0 4h2v1h-2zM3 4h6v1h-6zM10 4h2v1h-2zM1 5h1v1h-1zM3 5h1v1h-1zM8 5h1v1h-1zM10 5h1v1h-1zM0 6h2v1h-2zM3 6h1v1h-1zM8 6h1v1h-1zM10 6h2v1h-2zM1 7h1v1h-1zM3 7h6v1h-6zM10 7h1v1h-1zM0 8h2v1h-2zM10 8h2v1h-2zM0 9h12v1h-12zM2 10h1v1h-1zM4 10h1v1h-1zM7 10h1v1h-1zM9 10h1v1h-1zM2 11h1v1h-1zM4 11h1v1h-1zM7 11h1v1h-1zM9 11h1v1h-1z"/></svg></span>
+          <span class="seal-name">VRAM diet</span>
+          <span class="seal-how">Cut 7820 MiB down to 3035 MiB</span>
         </li>
-        <li class="badge">
-          <span class="badge-icon"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h4v1h-4zM5 1h4v1h-4zM4 2h4v1h-4zM3 3h4v1h-4zM2 4h8v1h-8zM3 5h7v1h-7zM5 6h4v1h-4zM4 7h4v1h-4zM3 8h3v1h-3zM2 9h3v1h-3zM1 10h2v1h-2zM0 11h1v1h-1z"/></svg></span>
-          <span class="badge-text"><span class="badge-name">Frame budget</span><span class="badge-how">Run Kralın Sözü at 1.6 ms per frame</span></span>
+        <li class="seal">
+          <span class="seal-disc"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h4v1h-4zM5 1h4v1h-4zM4 2h4v1h-4zM3 3h4v1h-4zM2 4h8v1h-8zM3 5h7v1h-7zM5 6h4v1h-4zM4 7h4v1h-4zM3 8h3v1h-3zM2 9h3v1h-3zM1 10h2v1h-2zM0 11h1v1h-1z"/></svg></span>
+          <span class="seal-name">Frame budget</span>
+          <span class="seal-how">Run Kralın Sözü at 1.6 ms per frame</span>
         </li>
-        <li class="badge">
-          <span class="badge-icon"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M4 0h4v1h-4zM2 1h3v1h-3zM1 2h3v1h-3zM1 3h2v1h-2zM0 4h3v1h-3zM0 5h3v1h-3zM0 6h3v1h-3zM0 7h4v1h-4zM11 7h1v1h-1zM1 8h4v1h-4zM10 8h2v1h-2zM1 9h9v1h-9zM2 10h7v1h-7zM4 11h4v1h-4z"/></svg></span>
-          <span class="badge-text"><span class="badge-name">2,000 nights</span><span class="badge-how">Run a balance simulation for 2,000 nights</span></span>
+        <li class="seal">
+          <span class="seal-disc"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M4 0h4v1h-4zM2 1h3v1h-3zM1 2h3v1h-3zM1 3h2v1h-2zM0 4h3v1h-3zM0 5h3v1h-3zM0 6h3v1h-3zM0 7h4v1h-4zM11 7h1v1h-1zM1 8h4v1h-4zM10 8h2v1h-2zM1 9h9v1h-9zM2 10h7v1h-7zM4 11h4v1h-4z"/></svg></span>
+          <span class="seal-name">2,000 nights</span>
+          <span class="seal-how">Run a balance simulation for 2,000 nights</span>
         </li>
-        <li class="badge badge--locked" id="secret-badge">
-          <span class="badge-icon"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 0h6v1h-6zM2 1h2v1h-2zM8 1h2v1h-2zM2 2h1v1h-1zM9 2h1v1h-1zM2 3h1v1h-1zM9 3h1v1h-1zM0 4h12v1h-12zM0 5h12v1h-12zM0 6h5v1h-5zM7 6h5v1h-5zM0 7h5v1h-5zM7 7h5v1h-5zM0 8h6v1h-6zM7 8h5v1h-5zM0 9h12v1h-12zM0 10h12v1h-12z"/></svg></span>
-          <span class="badge-text"><span class="badge-name">???</span><span class="badge-how">Hidden achievement. There's a classic cheat code.</span></span>
+        <li class="seal seal--locked" id="secret-badge">
+          <span class="seal-disc"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 0h6v1h-6zM2 1h2v1h-2zM8 1h2v1h-2zM2 2h1v1h-1zM9 2h1v1h-1zM2 3h1v1h-1zM9 3h1v1h-1zM0 4h12v1h-12zM0 5h12v1h-12zM0 6h5v1h-5zM7 6h5v1h-5zM0 7h5v1h-5zM7 7h5v1h-5zM0 8h6v1h-6zM7 8h5v1h-5zM0 9h12v1h-12zM0 10h12v1h-12z"/></svg></span>
+          <span class="seal-name">Hidden badge</span>
+          <span class="seal-how">A classic cheat code unlocks it.</span>
         </li>
       </ul>
     </div>
   </section>
 
-  <section class="section" id="yetenekler" aria-labelledby="yetenekler-h">
+  <section class="section section--guide" id="rehber" aria-labelledby="rehber-h">
+    <span class="thumb-tab" aria-hidden="true">Guide</span>
     <div class="wrap">
-      
-      <header class="section-head">
-        <h2 id="yetenekler-h"><span data-lens-only="game">Skill tree</span><span data-lens-only="code" class="h-code" lang="en">package.json</span></h2>
-        <p class="section-intro">No levels or percentages. Each branch shows where I've actually used it.</p>
+      <header class="feature-head">
+        <h2 class="feature-title" id="rehber-h">Guide: the toolkit</h2>
+        <p class="feature-deck">No levels or percentages. Each row says where I've actually used it.</p>
+        <p class="folio" aria-hidden="true">p. 25</p>
       </header>
-      <div class="tree">
-        <div class="tree-root">
-          <p class="node node--root">Languages</p>
-          <ul class="root-leaves"><li class="node">TypeScript</li><li class="node">JavaScript</li><li class="node">C#</li><li class="node">Python</li><li class="node">SQL</li><li class="node">Go</li><li class="node">Rust</li><li class="node">Bash</li></ul>
-        </div>
-        <ul class="branches">
-        <li class="branch">
-          <h3 class="node node--branch">Games</h3>
-          <ul class="leaves"><li class="node">Unity 6</li><li class="node">URP</li><li class="node">NavMesh</li><li class="node">Input System</li><li class="node">Unreal (Blueprint)</li><li class="node">Ren'Py</li></ul>
-          <p class="used"><span>Used in</span> Kralın Sözü, Under the Counter, LAST DAWN, RaiPy</p>
-        </li>
-        <li class="branch">
-          <h3 class="node node--branch">Web &amp; backend</h3>
-          <ul class="leaves"><li class="node">React 19</li><li class="node">Next.js</li><li class="node">Vite</li><li class="node">Tailwind</li><li class="node">TanStack Query</li><li class="node">Zod</li><li class="node">Node.js</li><li class="node">FastAPI</li><li class="node">SQLAlchemy</li><li class="node">WebSocket</li><li class="node">JWT</li><li class="node">OAuth 2.0</li></ul>
-          <p class="used"><span>Used in</span> MyEverythingList, Parsel, Heren Agent</p>
-        </li>
-        <li class="branch">
-          <h3 class="node node--branch">Data &amp; cloud</h3>
-          <ul class="leaves"><li class="node">Supabase</li><li class="node">PostgreSQL</li><li class="node">SQLite</li><li class="node">Cloudflare Workers</li><li class="node">Docker</li><li class="node">GitHub Actions</li><li class="node">Render</li></ul>
-          <p class="used"><span>Used in</span> MyEverythingList, Oyun Vitrini, Görevler</p>
-        </li>
-        <li class="branch">
-          <h3 class="node node--branch">Desktop &amp; mobile</h3>
-          <ul class="leaves"><li class="node">Electron</li><li class="node">Tauri v2</li><li class="node">Expo</li><li class="node">React Native</li><li class="node">Capacitor</li><li class="node">PWA</li></ul>
-          <p class="used"><span>Used in</span> NeRoBoT, RaiPy, Pati Rotası, Kafe Finans</p>
-        </li>
-        <li class="branch">
-          <h3 class="node node--branch">AI</h3>
-          <ul class="leaves"><li class="node">LLM integration</li><li class="node">Claude API</li><li class="node">Ollama</li><li class="node">diffusers</li><li class="node">ComfyUI</li><li class="node">faster-whisper</li><li class="node">Piper TTS</li></ul>
-          <p class="used"><span>Used in</span> NeRoBoT, RaiPy, Heren Agent, Parsel</p>
-        </li>
-        <li class="branch">
-          <h3 class="node node--branch">Testing &amp; tools</h3>
-          <ul class="leaves"><li class="node">Vitest</li><li class="node">pytest</li><li class="node">Playwright</li><li class="node">Git</li><li class="node">Linux</li><li class="node">ffmpeg</li></ul>
-          <p class="used"><span>Used in</span> RaiPy, Kralın Sözü, Parsel</p>
-        </li>
-        <li class="branch">
-          <h3 class="node node--branch">Design</h3>
-          <ul class="leaves"><li class="node">Photoshop</li><li class="node">Affinity</li><li class="node">VRoid Studio</li><li class="node">SolidWorks</li><li class="node">Arduino</li></ul>
-          <p class="used"><span>Used in</span> Troia Game Jam, manga fansub</p>
-        </li>
-        </ul>
+      <div class="table-scroll" role="region" aria-labelledby="rehber-h" tabindex="0">
+        <table class="guide">
+          <thead><tr><th scope="col">Area</th><th scope="col">Tools</th><th scope="col">Used in</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Languages</th><td data-label="Tools">TypeScript, JavaScript, C#, Python, SQL, Go, Rust, Bash</td><td data-label="Used in">Every project</td></tr>
+            <tr><th scope="row">Games</th><td data-label="Tools">Unity 6, URP, NavMesh, Input System, Unreal (Blueprint), Ren'Py</td><td data-label="Used in">Kralın Sözü, Under the Counter, LAST DAWN, RaiPy</td></tr>
+            <tr><th scope="row">Web &amp; backend</th><td data-label="Tools">React 19, Next.js, Vite, Tailwind, TanStack Query, Zod, Node.js, FastAPI, SQLAlchemy, WebSocket, JWT, OAuth 2.0</td><td data-label="Used in">MyEverythingList, Parsel, Heren Agent</td></tr>
+            <tr><th scope="row">Data &amp; cloud</th><td data-label="Tools">Supabase, PostgreSQL, SQLite, Cloudflare Workers, Docker, GitHub Actions, Render</td><td data-label="Used in">MyEverythingList, Oyun Vitrini, Görevler</td></tr>
+            <tr><th scope="row">Desktop &amp; mobile</th><td data-label="Tools">Electron, Tauri v2, Expo, React Native, Capacitor, PWA</td><td data-label="Used in">NeRoBoT, RaiPy, Pati Rotası, Kafe Finans</td></tr>
+            <tr><th scope="row">AI</th><td data-label="Tools">LLM integration, Claude API, Ollama, diffusers, ComfyUI, faster-whisper, Piper TTS</td><td data-label="Used in">NeRoBoT, RaiPy, Heren Agent, Parsel</td></tr>
+            <tr><th scope="row">Testing &amp; tools</th><td data-label="Tools">Vitest, pytest, Playwright, Git, Linux, ffmpeg</td><td data-label="Used in">RaiPy, Kralın Sözü, Parsel</td></tr>
+            <tr><th scope="row">Design</th><td data-label="Tools">Photoshop, Affinity, VRoid Studio, SolidWorks, Arduino</td><td data-label="Used in">Troia Game Jam, manga fansub</td></tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </section>
 
-  <section class="section section--save" id="kayit" aria-labelledby="kayit-h">
-    <div class="wrap">
-      
-      <header class="section-head">
-        <h2 id="kayit-h"><span data-lens-only="game">Save point</span><span data-lens-only="code" class="h-code" lang="en">Contact</span></h2>
-        <p class="section-intro">Write to me about internships, teams or projects. You can download my CV here.</p>
-      </header>
-      <div class="save-grid">
-        <div class="char-card">
-          <img class="char-photo" src="/assets/img/salih.webp" width="480" height="480" alt="Photo of Salih Yazıtaş" loading="lazy" decoding="async">
-          <div class="char-info">
-            <p class="char-name" lang="tr">Salih Yazıtaş</p>
-            <dl class="stat-sheet stat-sheet--char">
-              <div><dt>Class</dt><dd>Game &amp; software developer</dd></div>
-              <div><dt>Guild</dt><dd>Volpen (founder)</dd></div>
-              <div><dt>School</dt><dd>ÇOMÜ, 2nd year</dd></div>
-              <div><dt>Base</dt><dd>Çanakkale, Türkiye</dd></div>
-              <div><dt>Languages</dt><dd>Turkish (native), English (technical)</dd></div>
-            </dl>
-          </div>
-        </div>
-
-        <div class="save-menu">
-          <div class="save-cv">
-            <a class="btn btn--primary btn--block" href="/cv/Salih_Yazitas_CV_EN.pdf" download><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M5 0h2v1h-2zM5 1h2v1h-2zM5 2h2v1h-2zM5 3h2v1h-2zM2 4h8v1h-8zM3 5h6v1h-6zM4 6h4v1h-4zM5 7h2v1h-2zM0 9h1v1h-1zM11 9h1v1h-1zM0 10h1v1h-1zM11 10h1v1h-1zM0 11h12v1h-12z"/></svg><span>Download CV (English, PDF)</span></a>
-            <a class="btn btn--ghost btn--block" href="/cv/Salih_Yazitas_CV_TR.pdf" download><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M5 0h2v1h-2zM5 1h2v1h-2zM5 2h2v1h-2zM5 3h2v1h-2zM2 4h8v1h-8zM3 5h6v1h-6zM4 6h4v1h-4zM5 7h2v1h-2zM0 9h1v1h-1zM11 9h1v1h-1zM0 10h1v1h-1zM11 10h1v1h-1zM0 11h12v1h-12z"/></svg><span>Download CV (Turkish, PDF)</span></a>
-          </div>
-          <div class="save-mail">
-            <a class="mail-link" href="mailto:yazitassalih0@gmail.com"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M0 1h12v1h-12zM0 2h2v1h-2zM10 2h2v1h-2zM0 3h1v1h-1zM2 3h1v1h-1zM9 3h1v1h-1zM11 3h1v1h-1zM0 4h1v1h-1zM3 4h1v1h-1zM8 4h1v1h-1zM11 4h1v1h-1zM0 5h1v1h-1zM4 5h1v1h-1zM7 5h1v1h-1zM11 5h1v1h-1zM0 6h1v1h-1zM5 6h2v1h-2zM11 6h1v1h-1zM0 7h1v1h-1zM11 7h1v1h-1zM0 8h1v1h-1zM11 8h1v1h-1zM0 9h12v1h-12z"/></svg><span>yazitassalih0@gmail.com</span></a>
-            <button type="button" class="btn btn--ghost btn--small" data-copy="yazitassalih0@gmail.com" data-ok="Email address copied" data-fail="Couldn't copy, select the address instead"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M4 0h8v1h-8zM4 1h1v1h-1zM11 1h1v1h-1zM4 2h1v1h-1zM11 2h1v1h-1zM0 3h8v1h-8zM11 3h1v1h-1zM0 4h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM0 5h1v1h-1zM7 5h1v1h-1zM11 5h1v1h-1zM0 6h1v1h-1zM7 6h5v1h-5zM0 7h1v1h-1zM7 7h1v1h-1zM0 8h1v1h-1zM7 8h1v1h-1zM0 9h1v1h-1zM7 9h1v1h-1zM0 10h8v1h-8z"/></svg><span>Copy</span></button>
-          </div>
-          <ul class="socials">
-            <li><a href="https://github.com/SalihYzts" target="_blank" rel="noopener"><span class="soc-name">GitHub</span><span class="soc-handle">SalihYzts</span><svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a></li>
-            <li><a href="https://www.linkedin.com/in/salih-yaz%C4%B1ta%C5%9F/" target="_blank" rel="noopener"><span class="soc-name">LinkedIn</span><span class="soc-handle">salih-yazıtaş</span><svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a></li>
-            <li><a href="https://salihyzts.itch.io" target="_blank" rel="noopener"><span class="soc-name">itch.io</span><span class="soc-handle">salihyzts</span><svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a></li>
-            <li><a href="https://salihyzts.github.io/VolpenWeb/" target="_blank" rel="noopener"><span class="soc-name">Volpen</span><span class="soc-handle">studio site</span><svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a></li>
-          </ul>
-        </div>
+  <section class="section section--letters" id="mektup" aria-labelledby="mektup-h">
+    <span class="thumb-tab" aria-hidden="true">Letters</span>
+    <div class="wrap letters-grid">
+      <div class="letters-main">
+        <h2 class="feature-title" id="mektup-h">Letters<span class="folio" aria-hidden="true">p. 27</span></h2>
+        <p class="feature-deck">Write about internships, teams or projects. I read every letter.</p>
+        <p class="mail"><a class="mail-link" href="mailto:yazitassalih0@gmail.com">yazitassalih0@gmail.com</a></p>
+        <p class="letters-actions">
+          <button type="button" class="btn" data-copy="yazitassalih0@gmail.com" data-ok="Email address copied" data-fail="Couldn't copy, select the address instead"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M4 0h8v1h-8zM4 1h1v1h-1zM11 1h1v1h-1zM4 2h1v1h-1zM11 2h1v1h-1zM0 3h8v1h-8zM11 3h1v1h-1zM0 4h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM0 5h1v1h-1zM7 5h1v1h-1zM11 5h1v1h-1zM0 6h1v1h-1zM7 6h5v1h-5zM0 7h1v1h-1zM7 7h1v1h-1zM0 8h1v1h-1zM7 8h1v1h-1zM0 9h1v1h-1zM7 9h1v1h-1zM0 10h8v1h-8z"/></svg><span>Copy address</span></button>
+          <a class="btn btn--solid" href="/cv/Salih_Yazitas_CV_EN.pdf" download><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M5 0h2v1h-2zM5 1h2v1h-2zM5 2h2v1h-2zM5 3h2v1h-2zM2 4h8v1h-8zM3 5h6v1h-6zM4 6h4v1h-4zM5 7h2v1h-2zM0 9h1v1h-1zM11 9h1v1h-1zM0 10h1v1h-1zM11 10h1v1h-1zM0 11h12v1h-12z"/></svg><span>Download CV, English PDF</span></a>
+          <a class="btn" href="/cv/Salih_Yazitas_CV_TR.pdf" download><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M5 0h2v1h-2zM5 1h2v1h-2zM5 2h2v1h-2zM5 3h2v1h-2zM2 4h8v1h-8zM3 5h6v1h-6zM4 6h4v1h-4zM5 7h2v1h-2zM0 9h1v1h-1zM11 9h1v1h-1zM0 10h1v1h-1zM11 10h1v1h-1zM0 11h12v1h-12z"/></svg><span>Download CV, Turkish PDF</span></a>
+        </p>
+        <ul class="socials">
+          <li><a href="https://github.com/SalihYzts" target="_blank" rel="noopener"><svg class="brand-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg><span>GitHub</span><svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a></li>
+          <li><a href="https://www.linkedin.com/in/salih-yaz%C4%B1ta%C5%9F/" target="_blank" rel="noopener"><svg class="brand-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg><span>LinkedIn</span><svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a></li>
+          <li><a href="https://salihyzts.itch.io" target="_blank" rel="noopener"><svg class="brand-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3.13 1.338C2.08 1.96.02 4.328 0 4.95v1.03c0 1.303 1.22 2.45 2.325 2.45 1.33 0 2.436-1.102 2.436-2.41 0 1.308 1.07 2.41 2.4 2.41 1.328 0 2.362-1.102 2.362-2.41 0 1.308 1.137 2.41 2.466 2.41h.024c1.33 0 2.466-1.102 2.466-2.41 0 1.308 1.034 2.41 2.363 2.41 1.33 0 2.4-1.102 2.4-2.41 0 1.308 1.106 2.41 2.435 2.41C22.78 8.43 24 7.282 24 5.98V4.95c-.02-.62-2.082-2.99-3.13-3.612-3.253-.114-5.508-.134-8.87-.133-3.362 0-7.945.053-8.87.133zm6.376 6.477a2.74 2.74 0 0 1-.468.602c-.5.49-1.19.795-1.947.795a2.786 2.786 0 0 1-1.95-.795c-.182-.178-.32-.37-.446-.59-.127.222-.303.412-.486.59a2.788 2.788 0 0 1-1.95.795c-.092 0-.187-.025-.264-.052-.107 1.113-.152 2.176-.168 2.95v.005l-.006 1.167c.02 2.334-.23 7.564 1.03 8.85 1.952.454 5.545.662 9.15.663 3.605 0 7.198-.21 9.15-.664 1.26-1.284 1.01-6.514 1.03-8.848l-.006-1.167v-.004c-.016-.775-.06-1.838-.168-2.95-.077.026-.172.052-.263.052a2.788 2.788 0 0 1-1.95-.795c-.184-.178-.36-.368-.486-.59-.127.22-.265.412-.447.59a2.786 2.786 0 0 1-1.95.794c-.76 0-1.446-.303-1.948-.793a2.74 2.74 0 0 1-.468-.602 2.738 2.738 0 0 1-.463.602 2.787 2.787 0 0 1-1.95.794h-.16a2.787 2.787 0 0 1-1.95-.793 2.738 2.738 0 0 1-.464-.602zm-2.004 2.59v.002c.795.002 1.5 0 2.373.953.687-.072 1.406-.108 2.125-.107.72 0 1.438.035 2.125.107.873-.953 1.578-.95 2.372-.953.376 0 1.876 0 2.92 2.934l1.123 4.028c.832 2.995-.266 3.068-1.636 3.07-2.03-.075-3.156-1.55-3.156-3.025-1.124.184-2.436.276-3.748.277-1.312 0-2.624-.093-3.748-.277 0 1.475-1.125 2.95-3.156 3.026-1.37-.004-2.468-.077-1.636-3.072l1.122-4.027c1.045-2.934 2.545-2.934 2.92-2.934zM12 12.714c-.002.002-2.14 1.964-2.523 2.662l1.4-.056v1.22c0 .056.56.033 1.123.007.562.026 1.124.05 1.124-.008v-1.22l1.4.055C14.138 14.677 12 12.713 12 12.713z"/></svg><span>itch.io</span><svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a></li>
+          <li><a href="https://salihyzts.github.io/VolpenWeb/" target="_blank" rel="noopener"><svg class="brand-icon" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M0 1h1v1h-1zM5 1h2v1h-2zM11 1h1v1h-1zM0 2h2v1h-2zM5 2h2v1h-2zM10 2h2v1h-2zM0 3h3v1h-3zM4 3h4v1h-4zM9 3h3v1h-3zM0 4h12v1h-12zM0 5h12v1h-12zM0 6h12v1h-12zM0 7h2v1h-2zM3 7h2v1h-2zM7 7h2v1h-2zM10 7h2v1h-2zM0 8h12v1h-12zM0 10h12v1h-12zM0 11h12v1h-12z"/></svg><span>Volpen</span><svg class="px px--ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0h6v1h-6zM10 1h2v1h-2zM9 2h1v1h-1zM11 2h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM7 4h1v1h-1zM11 4h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1zM4 7h1v1h-1z"/></svg><span class="sr">(opens in a new tab)</span></a></li>
+        </ul>
       </div>
+      <aside class="imprint" aria-labelledby="imprint-h">
+        <h2 class="imprint-title" id="imprint-h">Masthead</h2>
+        <dl><div><dt>Owner and editor-in-chief</dt><dd>Salih Yazıtaş</dd></div><div><dt>Editorial, code and design</dt><dd>Salih Yazıtaş</dd></div><div><dt>Publisher</dt><dd>Volpen, Çanakkale</dd></div><div><dt>School</dt><dd>ÇOMÜ, Game Development and Programming, 2nd year</dd></div><div><dt>Languages</dt><dd>Turkish (native), English (technical)</dd></div><div><dt>Printed on</dt><dd>GitHub Pages</dd></div></dl>
+        <h2 class="imprint-title">Next issue</h2>
+        <ul class="next"><li>LAST DAWN: scavenge by day, defend by night</li><li>Under the Counter: a Steam Next Fest demo on the way</li></ul>
+      </aside>
     </div>
   </section>
 
@@ -745,15 +814,16 @@
 
 <footer class="footer">
   <div class="wrap footer-inner">
-    <p>© 2026 <span lang="tr">Salih Yazıtaş</span>. This site is handwritten: no framework, no trackers.</p>
-    <p class="footer-hint">Hint: ↑ ↑ ↓ ↓ ← → ← → B A</p>
+    <p class="footer-mast"><span lang="tr">YAZITAŞ</span>, Issue 26, November 2026</p>
+    <p>Hand-set: no framework, no trackers.</p>
+    <p class="footer-hint">For the hidden badge: ↑ ↑ ↓ ↓ ← → ← → B A</p>
     <p><a href="/" hreflang="tr" lang="tr">Türkçe</a></p>
   </div>
 </footer>
 
 <div class="toast" role="status" aria-live="polite" hidden></div>
 <template id="icon-star"><svg class="px" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M5 0h2v1h-2zM5 1h2v1h-2zM4 2h4v1h-4zM4 3h4v1h-4zM0 4h12v1h-12zM1 5h10v1h-10zM2 6h8v1h-8zM3 7h6v1h-6zM3 8h6v1h-6zM2 9h3v1h-3zM7 9h3v1h-3zM2 10h2v1h-2zM8 10h2v1h-2zM1 11h2v1h-2zM9 11h2v1h-2z"/></svg></template>
-<script id="i18n" type="application/json">{"secretName":"Cheat code","secretHow":"Press ↑ ↑ ↓ ↓ ← → ← → B A","toastSecret":"Achievement unlocked: Cheat code","crtOn":"Scanlines on","crtOff":"Scanlines off"}</script>
+<script id="i18n" type="application/json">{"secretName":"Cheat code","secretHow":"You pressed ↑ ↑ ↓ ↓ ← → ← → B A","toastSecret":"Hidden badge unlocked: Cheat code"}</script>
 <script src="/assets/js/site.js" defer></script>
 </body>
 </html>
