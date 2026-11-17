@@ -95,33 +95,43 @@ function page(lang) {
   const blocks = [];
   const add = (b) => blocks.push(b);
 
-  // İçindekiler + Editörden (s. 2-3)
+  // İçindekiler + Editörden ve künye (s. 2-3)
   add({ even: true, pages: [
     { id: "icindekiler", cls: "page--contents sec--ink", label: T("tocTitle"), render: () => contentsPage() },
-    { id: "editor", cls: "page--editor sec--game", label: T("editorTitle"), render: () => editorPage() },
+    { id: "editor", cls: "page--editor sec--game", label: T("editorTitle"), anchors: ["kunye"], render: () => editorPage() },
   ] });
 
+  // Bölüm: öne çıkan proje iki sayfalık açılım (bölüm bandı ilk sayfada), diğerleri ikişer ikişer
+  // aynı sayfada; tek kalan kart kısa kısa ile aynı sayfayı paylaşır.
   const sectionBlocks = (items, track, id, secTitle, secDeck, briefsTitle) => {
-    const full = items.filter((p) => p.tier !== "compact");
+    const featured = items.filter((p) => p.tier === "featured");
+    const cards = items.filter((p) => p.tier === "card");
     const briefs = items.filter((p) => p.tier === "compact");
-    add({ pages: [
-      { id, cls: `page--opener sec--${track}`, label: secTitle, render: () => openerPage(secTitle, secDeck, full, briefs.length ? `${id}-kisa` : null, briefsTitle) },
-    ] });
-    let single = 0;
-    full.forEach((p) => {
-      if (p.tier === "featured") {
-        const lead = track === "code";
-        add({ even: true, pages: [
-          { id: p.id, cls: `page--${lead ? "lead-a" : "feature-a"} sec--${track}`, label: esc(p.title), render: () => (lead ? leadA(p) : featureA(p)) },
-          { id: `${p.id}-2`, cls: `page--${lead ? "lead-b" : "feature-b"} sec--${track}`, label: `${esc(p.title)} (2)`, render: () => (lead ? leadB(p) : featureB(p)) },
-        ] });
-      } else {
-        const variant = single++ % 2 === 0 ? "a" : "b";
-        add({ pages: [
-          { id: p.id, cls: `page--review page--review-${variant} sec--${track}${p.image ? "" : " has-art"}`, label: esc(p.title), render: () => reviewPage(p, variant) },
-        ] });
-      }
+    const band = { id, title: secTitle, deck: secDeck };
+    let bandUsed = false;
+    featured.forEach((p) => {
+      const lead = track === "code";
+      const b = bandUsed ? null : band; bandUsed = true;
+      add({ even: true, pages: [
+        { id: p.id, cls: `page--${lead ? "lead-a" : "feature-a"} sec--${track}`, label: esc(p.title), anchors: b ? [id] : [], render: () => (lead ? leadA(p, b) : featureA(p, b)) },
+        { id: `${p.id}-2`, cls: `page--${lead ? "lead-b" : "feature-b"} sec--${track}`, label: `${esc(p.title)} (2)`, render: () => (lead ? leadB(p) : featureB(p)) },
+      ] });
     });
+    let n = 0;
+    for (let i = 0; i < cards.length; i += 2) {
+      const pair = cards.slice(i, i + 2);
+      const withBriefs = pair.length === 1 && briefs.length;
+      const b = bandUsed ? null : band; bandUsed = true;
+      const anchors = pair.map((p) => p.id).concat(b ? [id] : []).concat(withBriefs ? [`${id}-kisa`] : []);
+      const briefList = withBriefs ? briefs.slice() : null;
+      n++;
+      add({ pages: [{
+        id: `${id}-${n}`, cls: `page--duo sec--${track}${withBriefs ? " page--duo-briefs" : ""}`,
+        label: pair.map((p) => esc(p.title)).join(", ") + (withBriefs ? `, ${briefsTitle}` : ""), anchors,
+        render: () => duoPage(pair, b, briefList ? { title: briefsTitle, id: `${id}-kisa`, list: briefList } : null),
+      }] });
+      if (withBriefs) briefs.length = 0;
+    }
     if (briefs.length) {
       add({ pages: [{ id: `${id}-kisa`, cls: `page--briefs sec--${track}`, label: briefsTitle, render: () => briefsPage(briefsTitle, briefs) }] });
     }
@@ -129,15 +139,14 @@ function page(lang) {
   sectionBlocks(games, "game", "oyun", T("secGame"), T("secGameDeck"), T("briefsGame"));
   sectionBlocks(code, "code", "yazilim", T("secCode"), T("secCodeDeck"), T("briefsCode"));
 
-  const half = Math.ceil(C.quests.length / 2);
   add({ even: true, pages: [
-    { id: "yolculuk", cls: "page--journey sec--ink", label: T("journeyTitle"), render: () => journeyPage(C.quests.slice(0, half), true) },
-    { id: "yolculuk-2", cls: "page--journey sec--ink", label: `${T("journeyTitle")} (2)`, render: () => journeyPage(C.quests.slice(half), false) },
+    { id: "yolculuk", cls: "page--journey sec--ink", label: T("journeyTitle"), render: () => journeyPage(C.quests, true) },
+    { id: "rozetler", cls: "page--awards sec--game", label: T("awardsTitle"), render: () => awardsPage() },
   ] });
-  add({ pages: [{ id: "rozetler", cls: "page--awards sec--game", label: T("awardsTitle"), render: () => awardsPage() }] });
-  add({ pages: [{ id: "rehber", cls: "page--guide sec--code", label: T("guideTitle"), render: () => guidePage() }] });
-  add({ pages: [{ id: "mektup", cls: "page--letters sec--game", label: T("lettersTitle"), render: () => lettersPage() }] });
-  add({ pages: [{ id: "kunye", cls: "page--imprint sec--ink", label: T("imprintTitle"), render: () => imprintPage() }] });
+  add({ even: true, pages: [
+    { id: "rehber", cls: "page--guide sec--code", label: T("guideTitle"), render: () => guidePage() },
+    { id: "mektup", cls: "page--letters sec--game", label: T("lettersTitle"), render: () => lettersPage() },
+  ] });
 
   // ---------- Sayfalama: açılımlar çift sayfadan başlar, arka kapak tek ve çift numaralı kalır ----------
   const pages = [{ id: "kapak", cls: "page--cover", label: T("coverPage"), render: () => coverPage(), foot: false }];
@@ -155,7 +164,7 @@ function page(lang) {
   pages.push({ id: "arka-kapak", cls: "page--back", label: T("backCover"), render: () => backPage(), foot: false });
   const total = pages.length;
   const pageOf = {};
-  pages.forEach((p, i) => { pageOf[p.id] = i + 1; });
+  pages.forEach((p, i) => { pageOf[p.id] = i + 1; (p.anchors || []).forEach((x) => { pageOf[x] = i + 1; }); });
   const pn = (id) => pageOf[id];
 
   // ---------- Sayfa şablonları ----------
@@ -213,7 +222,12 @@ function page(lang) {
       <p class="editor-sign">${T("editorSign")}</p>
       <p class="editor-cv">
         <a class="btn btn--solid" href="/cv/Salih_Yazitas_CV_${lang === "tr" ? "TR" : "EN"}.pdf" download>${icon("download")}<span>${T(lang === "tr" ? "cvTr" : "cvEn")}</span></a>
-      </p>`;
+      </p>
+      <section class="imprint-box" aria-labelledby="kunye-h">
+        <h3 class="imprint-title" id="kunye-h">${T("imprintTitle")}</h3>
+        <dl class="imprint">${C.ui.imprint.map((r) => `<div><dt>${esc(L(r.k))}</dt><dd>${esc(L(r.v))}</dd></div>`).join("")}</dl>
+        <p class="imprint-hint">${T("footer")} ${T("footerHint")}</p>
+      </section>`;
   }
 
   function openerPage(secTitle, deck, full, briefsId, briefsTitle) {
@@ -228,9 +242,38 @@ function page(lang) {
       </div>`;
   }
 
+  // Bölüm bandı: bölümün ilk sayfasının üstünde, bölüm renginde
+  const bandHtml = (b) => b ? `<header class="sec-band" id="${b.id}"><h2 class="sec-band-title">${b.title}</h2><p class="sec-band-deck">${b.deck}</p></header>` : "";
+
+  // İkili sayfa: iki proje aynı sayfada (ya da bir proje ve kısa kısa)
+  function duoPage(pair, band, briefsBlock) {
+    const half = (p) => {
+      const stats = (p.stats || []).map((s) => `<li><b>${esc(L(s.v))}</b> ${esc(L(s.k))}</li>`).join("");
+      return `
+      <article class="duo" id="${esc(p.id)}" aria-labelledby="${esc(p.id)}-h">
+        <div class="rv-frame duo-frame">${media(p)}</div>
+        <div class="duo-text">
+          <h3 class="${titleCls(p, "rv-title")}" id="${esc(p.id)}-h" translate="no" lang="${titleLang(p.title)}">${esc(p.title)}</h3>
+          <p class="duo-meta">${esc(L(p.kind))}${L(p.date) ? `, ${esc(L(p.date))}` : ""}</p>
+          <p class="rv-deck">${esc(L(p.pitch))}</p>
+          ${body(p)}
+          ${stats ? `<ul class="duo-stats" aria-label="${T("numbersTitle")}">${stats}</ul>` : ""}
+          <p class="duo-tech">${p.tech.map(esc).join(", ")}</p>
+          ${actions(p)}
+        </div>
+      </article>`;
+    };
+    return `${bandHtml(band)}${pair.map(half).join("")}${briefsBlock ? `
+      <section class="duo-briefs" aria-labelledby="${briefsBlock.id}-h">
+        <h3 class="briefs-title" id="${briefsBlock.id}-h">${briefsBlock.title}</h3>
+        <ul class="brief-list brief-list--rows">${briefsBlock.list.map(briefItem).join("")}</ul>
+      </section>` : ""}`;
+  }
+
   // Yayılım (oyun): sol sayfa tam görsel ve başlık, sağ sayfa metin ve künye
-  function featureA(p) {
+  function featureA(p, band) {
     return `
+      ${bandHtml(band)}
       <div class="fa-art">${media(p)}</div>
       <div class="fa-head">${title(p, "h3", "rv-title")}<p class="rv-deck">${esc(L(p.pitch))}</p></div>
       ${p.gallery && p.gallery.length ? `<ul class="rv-gallery">${p.gallery.map((g) => `<li>${img({ ...g, w: g.w || 1200, h: g.h || 675 })}</li>`).join("")}</ul>` : ""}`;
@@ -239,8 +282,8 @@ function page(lang) {
     return `${body(p)}${spec(p)}${actions(p)}`;
   }
   // Lead (yazılım): sol sayfa büyük başlık ve görsel, sağ sayfa metin ve künye
-  function leadA(p) {
-    return `${title(p, "h3", "rv-title")}<p class="rv-deck">${esc(L(p.pitch))}</p><div class="rv-frame">${media(p)}</div>`;
+  function leadA(p, band) {
+    return `${bandHtml(band)}${title(p, "h3", "rv-title")}<p class="rv-deck">${esc(L(p.pitch))}</p><div class="rv-frame">${media(p)}</div>`;
   }
   function leadB(p) {
     return `${body(p)}${spec(p)}${actions(p)}`;
@@ -254,21 +297,24 @@ function page(lang) {
       : `${head}${frame}<div class="rv-cols">${body(p)}${spec(p)}</div>${actions(p)}`;
   }
 
+  function briefItem(p) {
+    const sub = L(p.subtitle);
+    return `
+        <li class="brief" id="${esc(p.id)}">
+          <div class="brief-frame">${media(p)}</div>
+          <div class="brief-text">
+            <h4 class="${titleCls(p, "brief-title")}" translate="no" lang="${titleLang(p.title)}">${esc(p.title)}</h4>
+            ${sub ? `<p class="brief-sub" lang="${titleLang(sub)}">${esc(sub)}</p>` : ""}
+            <p class="brief-meta">${esc(L(p.kind))}${L(p.date) ? `, ${esc(L(p.date))}` : ""}</p>
+            <p class="brief-pitch">${esc(L(p.pitch))}</p>
+            ${p.links.length ? `<p class="brief-links">${p.links.map((l) => extLink(l.href, esc(L(C.ui.links[l.label])))).join("")}</p>` : ""}
+          </div>
+        </li>`;
+  }
   function briefsPage(briefsTitle, briefs) {
     return `
       <h3 class="briefs-title">${briefsTitle}</h3>
-      <ul class="brief-list">${briefs.map((p) => {
-        const sub = L(p.subtitle);
-        return `
-        <li class="brief" id="${esc(p.id)}">
-          <div class="brief-frame">${media(p)}</div>
-          <h4 class="${titleCls(p, "brief-title")}" translate="no" lang="${titleLang(p.title)}">${esc(p.title)}</h4>
-          ${sub ? `<p class="brief-sub" lang="${titleLang(sub)}">${esc(sub)}</p>` : ""}
-          <p class="brief-meta">${esc(L(p.kind))}${L(p.date) ? `, ${esc(L(p.date))}` : ""}</p>
-          <p class="brief-pitch">${esc(L(p.pitch))}</p>
-          ${p.links.length ? `<p class="brief-links">${p.links.map((l) => extLink(l.href, esc(L(C.ui.links[l.label])))).join("")}</p>` : ""}
-        </li>`;
-      }).join("")}
+      <ul class="brief-list">${briefs.map(briefItem).join("")}
       </ul>`;
   }
 
