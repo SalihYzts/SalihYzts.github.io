@@ -6,13 +6,40 @@ Bu yön 2000'lerin Türk oyun ve bilgisayar dergilerinin baskı geleneğinden ge
 
 **Kaçınılanlar:** koyu zemin üstüne tek neon vurgu, oyun menüsü veya HUD kostümü, "kahraman başlık + eş kartlar" iskeleti, başlık üstü etiket (eyebrow), sert ofset gölge, kostüm olarak mono yazı, renkli kalın sol kenarlık.
 
+## Okuyucu: gerçek dergi sayfaları
+
+Site uzun bir sayfa değil, sayfalara bölünmüş bir sayıdır (`src/build.js` sayfalara böler, `assets/js/site.js` okur).
+
+- **Sayfa oranı 4:5.** Bütün sayfa içi ölçüler `--u` birimindedir. Masaüstünde 1u = sayfa genişliği / 600; telefonda ve JS kapalıyken 1u = 1.08px. Bir sayfa her ekranda aynı oranda dizilir.
+- **Görünümler** (pencereye göre JS seçer):
+  - *Açılım:* iki sayfa yan yana, sırtta gölge. Kapak tek başına sağda, arka kapak tek başına solda durur.
+  - *Tek sayfa:* iki sayfa sığmayan dar masaüstü.
+  - *Telefon:* tam ekran sayfa; sayfa kendi içinde kayar, yatay kaydırma sayfa çevirir.
+  - *JS kapalı:* sayfalar alt alta.
+- **Sayfa çevirme:**
+  - Açılımda sağ sayfa sırttan 3B döner (0.9 sn). Arkasında bir sonraki açılımın sol sayfası görünür ve gölgesi döndükçe değişir.
+  - Tek sayfa görünümünde sayfa sola döner, telefonda yana kayar.
+  - `prefers-reduced-motion` iken çevirme animasyonsuzdur.
+- **Sayfalama kuralları:**
+  - Kapak s. 1'dir; açılımlar çift sayfadan başlar.
+  - Öne çıkan projeler iki sayfalık gerçek açılımdır.
+  - Gerekirse araya reklam sayfası girer (Volpen, Kralın Sözü itch.io, CV), böylece arka kapak çift sayfada tek kalır.
+  - Sayfa sayısı projelerden otomatik çıkar.
+- **Gezinme:**
+  - Ok tuşları, PageUp/PageDown, Home/End.
+  - Alttaki yuvarlak sayfa çubuğu: önceki, sayfa listesi, sonraki.
+  - Her sayfanın bağlantısı vardır (`#s12` ya da `#kralin-sozu`). İçindekiler, bölüm açılışları ve üst menü ilgili sayfayı açar.
+  - Görünmeyen sayfalar `inert`'tir; ekran okuyucuya yalnızca açık sayfalar okunur, sayfa değişimi `aria-live` ile duyurulur.
+- **Sığdırma:** Bir sayfanın içeriği taşarsa o sayfanın `--fit` çarpanı en çok %72'ye kadar düşürülür. Proje metinleri uzarsa sayfa küçülerek sığar.
+
 ## Renk
 
 Strateji: **tam palet**. Baskının üç işlem rengi, kâğıt ve mürekkep. Renkler bölgelere sahip çıkar: tam genişlik bölüm açılışları, kapak, çıkartmalar. Bütün değerler `assets/css/site.css` içindeki `:root` değişkenlerindedir.
 
 | Token | Gündüz baskısı | Gece baskısı | Rol |
 |---|---|---|---|
-| `--paper` | `#fbfbf9` | `#16171a` | Sayfa zemini (parlak beyaz kâğıt) |
+| `--desk` | `#d9d8d2` | `#0e0f11` | Derginin durduğu masa (sayfaların arkası) |
+| `--paper` | `#fbfbf9` | `#1a1b1f` | Sayfa zemini (parlak beyaz kâğıt) |
 | `--paper-2` | `#f0f0eb` | `#202227` | Künye kutuları, editörden kutusu, tablo zebra satırı |
 | `--ink` | `#161616` | `#f3f2ee` | Metin, kalın çizgiler, alt bilgi zemini |
 | `--ink-2` | `#4a4a47` | `#b8b6ae` | İkincil metin, künye etiketleri, sayfa numaraları |
