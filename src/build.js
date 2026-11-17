@@ -59,20 +59,36 @@ function page(lang) {
 
   // ---------- Küçük parçalar ----------
 
-  const img = (im, cls = "") =>
-    `<img${cls ? ` class="${cls}"` : ""} src="/assets/img/${esc(im.src)}" width="${im.w}" height="${im.h}" alt="${esc(L(im.alt))}" loading="lazy" decoding="async">`;
+  // Görselin odak noktası (focus) ve sığdırma biçimi (fit: "contain") projects.json'dan gelir
+  const img = (im, cls = "") => {
+    const c = [cls, im.fit === "contain" ? "is-contain" : ""].filter(Boolean).join(" ");
+    return `<img${c ? ` class="${c}"` : ""} src="/assets/img/${esc(im.src)}" width="${im.w}" height="${im.h}" alt="${esc(L(im.alt))}"${im.focus ? ` style="object-position:${esc(im.focus)}"` : ""} loading="lazy" decoding="async">`;
+  };
   const media = (p) => (p.image ? img(p.image) : `<div class="rv-art">${art[p.art] || ""}</div>`);
-  const titleCls = (p, base) => `${base}${longWord(p.title) ? ` ${base}--long` : ""}`;
+  // İç harfi büyük adlar (MyEverythingList, NeRoBoT) kendi yazımıyla kalır, büyük harfe çevrilmez
+  const keepCase = (t) => /[a-zçğıöşü][A-ZÇĞİÖŞÜ]/.test(t);
+  const titleCls = (p, base) => `${base}${longWord(p.title) ? ` ${base}--long` : ""}${keepCase(p.title) ? ` ${base}--keep` : ""}`;
   const title = (p, tag, base) => {
     const sub = L(p.subtitle);
     return `<${tag} class="${titleCls(p, base)}" translate="no" lang="${titleLang(p.title)}">${esc(p.title)}${sub ? `<span class="rv-sub" lang="${titleLang(sub)}">${esc(sub)}</span>` : ""}</${tag}>`;
   };
-  const body = (p) => {
+  // Gövde: öne çıkanlarda damla harf, ikili sayfalarda ilk sözcükler kalın (run-in)
+  const body = (p, mode = "cap") => {
     const points = L(p.points) || [];
     if (!points.length) return "";
-    const nocap = /^[IİlJ1]/.test(points[0]) ? " rv-body--nocap" : "";
-    return `<div class="rv-body${nocap}">${points.map((x) => `<p>${esc(x)}</p>`).join("")}</div>`;
+    const ps = points.map((x, i) => {
+      if (mode === "runin" && i === 0) {
+        const w = x.split(" ");
+        return `<p><b class="runin">${esc(w.slice(0, 4).join(" "))}</b> ${esc(w.slice(4).join(" "))}</p>`;
+      }
+      return `<p>${esc(x)}</p>`;
+    }).join("");
+    const nocap = mode !== "cap" || /^[IİlJ1]/.test(points[0]) ? " rv-body--nocap" : "";
+    return `<div class="rv-body${nocap}">${ps}</div>`;
   };
+  const caption = (im, n) => im ? `<p class="fig">${lang === "tr" ? "Görsel" : "Fig."} ${n}. ${esc(L(im.alt))}</p>` : "";
+  const quote = (p) => L(p.quote) ? `<blockquote class="pull"><p>${esc(L(p.quote))}</p>${L(p.quoteSource) ? `<cite>${esc(L(p.quoteSource))}</cite>` : ""}</blockquote>` : "";
+
   const spec = (p) => {
     const stats = p.stats || [];
     return `
@@ -97,8 +113,8 @@ function page(lang) {
 
   // İçindekiler + Editörden ve künye (s. 2-3)
   add({ even: true, pages: [
-    { id: "icindekiler", cls: "page--contents sec--ink", label: T("tocTitle"), render: () => contentsPage() },
-    { id: "editor", cls: "page--editor sec--game", label: T("editorTitle"), anchors: ["kunye"], render: () => editorPage() },
+    { id: "icindekiler", cls: "page--contents sec--ink", label: T("tocTitle"), run: T("tocTitle"), render: () => contentsPage() },
+    { id: "editor", cls: "page--editor sec--game", label: T("editorTitle"), run: T("editorTitle"), anchors: ["kunye"], render: () => editorPage() },
   ] });
 
   // Bölüm: öne çıkan proje iki sayfalık açılım (bölüm bandı ilk sayfada), diğerleri ikişer ikişer
@@ -113,8 +129,8 @@ function page(lang) {
       const lead = track === "code";
       const b = bandUsed ? null : band; bandUsed = true;
       add({ even: true, pages: [
-        { id: p.id, cls: `page--${lead ? "lead-a" : "feature-a"} sec--${track}`, label: esc(p.title), anchors: b ? [id] : [], render: () => (lead ? leadA(p, b) : featureA(p, b)) },
-        { id: `${p.id}-2`, cls: `page--${lead ? "lead-b" : "feature-b"} sec--${track}`, label: `${esc(p.title)} (2)`, render: () => (lead ? leadB(p) : featureB(p)) },
+        { id: p.id, cls: `page--${lead ? "lead-a" : "feature-a"} sec--${track}`, label: esc(p.title), run: secTitle, anchors: b ? [id] : [], render: () => (lead ? leadA(p, b) : featureA(p, b)) },
+        { id: `${p.id}-2`, cls: `page--${lead ? "lead-b" : "feature-b"} sec--${track}`, label: `${esc(p.title)} (2)`, run: secTitle, render: () => (lead ? leadB(p) : featureB(p)) },
       ] });
     });
     let n = 0;
@@ -127,25 +143,25 @@ function page(lang) {
       n++;
       add({ pages: [{
         id: `${id}-${n}`, cls: `page--duo sec--${track}${withBriefs ? " page--duo-briefs" : ""}`,
-        label: pair.map((p) => esc(p.title)).join(", ") + (withBriefs ? `, ${briefsTitle}` : ""), anchors,
+        label: pair.map((p) => esc(p.title)).join(", ") + (withBriefs ? `, ${briefsTitle}` : ""), run: secTitle, anchors,
         render: () => duoPage(pair, b, briefList ? { title: briefsTitle, id: `${id}-kisa`, list: briefList } : null),
       }] });
       if (withBriefs) briefs.length = 0;
     }
     if (briefs.length) {
-      add({ pages: [{ id: `${id}-kisa`, cls: `page--briefs sec--${track}`, label: briefsTitle, render: () => briefsPage(briefsTitle, briefs) }] });
+      add({ pages: [{ id: `${id}-kisa`, cls: `page--briefs sec--${track}`, label: briefsTitle, run: secTitle, render: () => briefsPage(briefsTitle, briefs) }] });
     }
   };
   sectionBlocks(games, "game", "oyun", T("secGame"), T("secGameDeck"), T("briefsGame"));
   sectionBlocks(code, "code", "yazilim", T("secCode"), T("secCodeDeck"), T("briefsCode"));
 
   add({ even: true, pages: [
-    { id: "yolculuk", cls: "page--journey sec--ink", label: T("journeyTitle"), render: () => journeyPage(C.quests, true) },
-    { id: "rozetler", cls: "page--awards sec--game", label: T("awardsTitle"), render: () => awardsPage() },
+    { id: "yolculuk", cls: "page--journey sec--ink", label: T("journeyTitle"), run: T("journeyTitle"), render: () => journeyPage(C.quests, true) },
+    { id: "rozetler", cls: "page--awards sec--game", label: T("awardsTitle"), run: T("awardsTitle"), render: () => awardsPage() },
   ] });
   add({ even: true, pages: [
-    { id: "rehber", cls: "page--guide sec--code", label: T("guideTitle"), render: () => guidePage() },
-    { id: "mektup", cls: "page--letters sec--game", label: T("lettersTitle"), render: () => lettersPage() },
+    { id: "rehber", cls: "page--guide sec--code", label: T("guideTitle"), run: T("guideTitle"), render: () => guidePage() },
+    { id: "mektup", cls: "page--letters sec--game", label: T("lettersTitle"), run: T("lettersTitle"), render: () => lettersPage() },
   ] });
 
   // ---------- Sayfalama: açılımlar çift sayfadan başlar, arka kapak tek ve çift numaralı kalır ----------
@@ -195,7 +211,7 @@ function page(lang) {
             <a class="toc-sec" href="#${sid}"><span>${secTitle}</span><span class="toc-pg">${pn(sid)}</span></a>
             <ul>${full.map((p) => `
               <li><a href="#${esc(p.id)}"><span lang="${titleLang(p.title)}">${esc(p.title)}</span><span class="toc-pg">${pn(p.id)}</span></a></li>`).join("")}
-              ${items.some((p) => p.tier === "compact") ? `<li><a href="#${sid}-kisa"><span>${lang === "tr" ? "Kısa kısa" : "In brief"}</span><span class="toc-pg">${pn(sid + "-kisa")}</span></a></li>` : ""}
+              ${items.some((p) => p.tier === "compact") ? `<li><a href="#${sid}-kisa"><span>${lang === "tr" ? "Kısa kısa" : "In brief"}</span><span class="toc-pg">${pn(sid + "-kisa")}</span></a><p class="toc-briefs" translate="no">${items.filter((p) => p.tier === "compact").map((p) => esc(p.title)).join(", ")}</p></li>` : ""}
             </ul>
           </li>`;
     };
@@ -205,13 +221,18 @@ function page(lang) {
         ${group(T("secGame"), "oyun", games)}
         ${group(T("secCode"), "yazilim", code)}
         <li class="toc-group toc-group--misc"><ul>
+          <li><a href="#editor"><span>${lang === "tr" ? "Editörden ve künye" : "From the editor, masthead"}</span><span class="toc-pg">${pn("editor")}</span></a></li>
           <li><a href="#yolculuk"><span>${T("journeyTitle")}</span><span class="toc-pg">${pn("yolculuk")}</span></a></li>
           <li><a href="#rozetler"><span>${T("awardsTitle")}</span><span class="toc-pg">${pn("rozetler")}</span></a></li>
           <li><a href="#rehber"><span>${T("guideTitle")}</span><span class="toc-pg">${pn("rehber")}</span></a></li>
           <li><a href="#mektup"><span>${T("lettersTitle")}</span><span class="toc-pg">${pn("mektup")}</span></a></li>
-          <li><a href="#kunye"><span>${T("imprintTitle")}</span><span class="toc-pg">${pn("kunye")}</span></a></li>
         </ul></li>
-      </ol>`;
+      </ol>
+      <a class="toc-cover" href="#kralin-sozu">
+        <img src="/assets/img/kralin-sozu-wolves.webp" width="1200" height="675" alt="" loading="lazy" decoding="async">
+        <span class="toc-cover-k">${lang === "tr" ? "Kapak konusu" : "Cover story"} · ${pn("kralin-sozu")}</span>
+        <span class="toc-cover-t">${T("coverTitle")}</span>
+      </a>`;
   }
 
   function editorPage() {
@@ -256,7 +277,7 @@ function page(lang) {
           <h3 class="${titleCls(p, "rv-title")}" id="${esc(p.id)}-h" translate="no" lang="${titleLang(p.title)}">${esc(p.title)}</h3>
           <p class="duo-meta">${esc(L(p.kind))}${L(p.date) ? `, ${esc(L(p.date))}` : ""}</p>
           <p class="rv-deck">${esc(L(p.pitch))}</p>
-          ${body(p)}
+          ${body(p, "runin")}
           ${stats ? `<ul class="duo-stats" aria-label="${T("numbersTitle")}">${stats}</ul>` : ""}
           <p class="duo-tech">${p.tech.map(esc).join(", ")}</p>
           ${actions(p)}
@@ -266,7 +287,7 @@ function page(lang) {
     return `${bandHtml(band)}${pair.map(half).join("")}${briefsBlock ? `
       <section class="duo-briefs" aria-labelledby="${briefsBlock.id}-h">
         <h3 class="briefs-title" id="${briefsBlock.id}-h">${briefsBlock.title}</h3>
-        <ul class="brief-list brief-list--rows">${briefsBlock.list.map(briefItem).join("")}</ul>
+        <ul class="brief-list brief-list--rows">${briefsBlock.list.map((p) => briefItem(p, true)).join("")}</ul>
       </section>` : ""}`;
   }
 
@@ -274,19 +295,22 @@ function page(lang) {
   function featureA(p, band) {
     return `
       ${bandHtml(band)}
-      <div class="fa-art">${media(p)}</div>
-      <div class="fa-head">${title(p, "h3", "rv-title")}<p class="rv-deck">${esc(L(p.pitch))}</p></div>
-      ${p.gallery && p.gallery.length ? `<ul class="rv-gallery">${p.gallery.map((g) => `<li>${img({ ...g, w: g.w || 1200, h: g.h || 675 })}</li>`).join("")}</ul>` : ""}`;
+      <figure class="fa-art">${media(p)}</figure>
+      ${caption(p.image, 1)}
+      <div class="fa-head">${title(p, "h3", "rv-title")}<p class="rv-deck">${esc(L(p.pitch))}</p></div>`;
   }
+  // Sağ sayfa: oyunun kendi metninden alıntı, iki sütun metin, galeri, künye
   function featureB(p) {
-    return `${body(p)}${spec(p)}${actions(p)}`;
+    return `${quote(p)}${body(p)}
+      ${p.gallery && p.gallery.length ? `<ul class="rv-gallery">${p.gallery.map((g) => `<li>${img({ ...g, w: g.w || 1200, h: g.h || 675 })}</li>`).join("")}</ul>` : ""}
+      ${spec(p)}${actions(p)}`;
   }
   // Lead (yazılım): sol sayfa büyük başlık ve görsel, sağ sayfa metin ve künye
   function leadA(p, band) {
-    return `${bandHtml(band)}${title(p, "h3", "rv-title")}<p class="rv-deck">${esc(L(p.pitch))}</p><div class="rv-frame">${media(p)}</div>`;
+    return `${bandHtml(band)}${title(p, "h3", "rv-title")}<p class="rv-deck">${esc(L(p.pitch))}</p><figure class="rv-frame lead-frame">${media(p)}</figure>${caption(p.image, 2)}`;
   }
   function leadB(p) {
-    return `${body(p)}${spec(p)}${actions(p)}`;
+    return `${quote(p)}${body(p)}${spec(p)}${actions(p)}`;
   }
   // Tek sayfa inceleme: iki varyant (a: görsel üstte, b: başlık üstte, görsel ortada)
   function reviewPage(p, variant) {
@@ -297,8 +321,10 @@ function page(lang) {
       : `${head}${frame}<div class="rv-cols">${body(p)}${spec(p)}</div>${actions(p)}`;
   }
 
-  function briefItem(p) {
+  // short: ikili sayfanın altındaki satırlarda yalnızca ilk cümle (kısa kısa)
+  function briefItem(p, short) {
     const sub = L(p.subtitle);
+    const pitch = short ? L(p.pitch).replace(/^(.{40,}?[.!?])\s.*$/s, "$1") : L(p.pitch);
     return `
         <li class="brief" id="${esc(p.id)}">
           <div class="brief-frame">${media(p)}</div>
@@ -306,7 +332,7 @@ function page(lang) {
             <h4 class="${titleCls(p, "brief-title")}" translate="no" lang="${titleLang(p.title)}">${esc(p.title)}</h4>
             ${sub ? `<p class="brief-sub" lang="${titleLang(sub)}">${esc(sub)}</p>` : ""}
             <p class="brief-meta">${esc(L(p.kind))}${L(p.date) ? `, ${esc(L(p.date))}` : ""}</p>
-            <p class="brief-pitch">${esc(L(p.pitch))}</p>
+            <p class="brief-pitch">${esc(pitch)}</p>
             ${p.links.length ? `<p class="brief-links">${p.links.map((l) => extLink(l.href, esc(L(C.ui.links[l.label])))).join("")}</p>` : ""}
           </div>
         </li>`;
@@ -314,24 +340,25 @@ function page(lang) {
   function briefsPage(briefsTitle, briefs) {
     return `
       <h3 class="briefs-title">${briefsTitle}</h3>
-      <ul class="brief-list">${briefs.map(briefItem).join("")}
+      <ul class="brief-list">${briefs.map((p) => briefItem(p)).join("")}
       </ul>`;
   }
 
   const statusIcon = { active: "flag", done: "check", locked: "lock" };
   function journeyPage(list, first) {
-    const entry = (q) => {
+    const entry = (q, i) => {
       if (q.status === "locked") {
         return `<li class="entry entry--locked"><p class="entry-date">${esc(L(C.ui.status.locked))}</p><div class="entry-body"><h3 class="entry-title">${T("lockedTitle")}</h3><p class="entry-org">${T("lockedText")}</p></div></li>`;
       }
-      const goals = L(q.goals) || [];
+      // Sayfaya sığsın diye sürenler iki, bitenler tek satırla anlatılır
+      const goals = (L(q.goals) || []).slice(0, q.status === "active" ? 2 : i < 2 ? 1 : 0);
       return `
         <li class="entry entry--${q.status}">
           <p class="entry-date">${esc(L(q.date)) || "&nbsp;"}<span class="entry-status">${icon(statusIcon[q.status])}${esc(L(C.ui.status[q.status]))}</span></p>
           <div class="entry-body">
             <h3 class="entry-title">${esc(L(q.title))}</h3>
             <p class="entry-org">${esc(L(q.org))}</p>
-            ${goals.length ? `<ul class="entry-goals">${goals.map((g) => `<li>${esc(g)}</li>`).join("")}</ul>` : ""}
+            ${goals.length ? `<p class="entry-goals">${goals.map((g) => esc(g)).join('<span class="entry-sep" aria-hidden="true"> · </span>')}</p>` : ""}
           </div>
         </li>`;
     };
@@ -364,17 +391,23 @@ function page(lang) {
   }
 
   function lettersPage() {
-    const cv = (which, cls) => `<a class="${cls}" href="/cv/Salih_Yazitas_CV_${which}.pdf" download>${icon("download")}<span>${T(which === "TR" ? "cvTr" : "cvEn")}</span></a>`;
-    const first = lang === "tr" ? "TR" : "EN", second = lang === "tr" ? "EN" : "TR";
+    const tile = (which) => `<a class="cv-tile" href="/cv/Salih_Yazitas_CV_${which}.pdf" download><span class="cv-tile-lang">${which}</span><span class="cv-tile-text">${T(which === "TR" ? "cvTr" : "cvEn")}</span>${icon("download", "px cv-tile-icon")}</a>`;
+    const [user, domain] = C.links.email.split("@");
     return `
       <h2 class="feature-title">${T("lettersTitle")}</h2>
       <p class="feature-deck">${T("lettersDeck")}</p>
-      <p class="mail"><a class="mail-link" href="mailto:${C.links.email}">${C.links.email}</a></p>
+      <p class="mail"><a class="mail-link" href="mailto:${C.links.email}">${user}<wbr>@${domain}</a></p>
       <p class="letters-actions">
         <button type="button" class="btn" data-copy="${C.links.email}" data-ok="${T("copied")}" data-fail="${T("copyFailed")}">${icon("copy")}<span>${T("copyEmail")}</span></button>
-        ${cv(first, "btn btn--solid")}
-        ${cv(second, "btn")}
       </p>
+      <div class="cv-tiles">${tile(lang === "tr" ? "TR" : "EN")}${tile(lang === "tr" ? "EN" : "TR")}</div>
+      <div class="coupon">
+        <p class="coupon-h">${lang === "tr" ? "Okur kuponu: konunu seç, mektup hazır gelsin" : "Reader coupon: pick a subject, the letter starts itself"}</p>
+        <ul class="coupon-list">${(lang === "tr"
+          ? [["Staj teklifi", "Staj teklifi"], ["Ekip ya da jam", "Ekip / jam daveti"], ["Proje konuşalım", "Proje hakkında"]]
+          : [["Internship offer", "Internship offer"], ["Team or jam", "Team / jam invite"], ["Let's talk projects", "About a project"]])
+          .map(([label, subject]) => `<li><a href="mailto:${C.links.email}?subject=${encodeURIComponent(subject)}"><span class="coupon-box" aria-hidden="true"></span>${label}</a></li>`).join("")}</ul>
+      </div>
       <ul class="socials">
         <li>${extLink(C.links.github, `${brand("github")}<span>GitHub</span>`)}</li>
         <li>${extLink(C.links.linkedin, `${brand("linkedin")}<span>LinkedIn</span>`)}</li>
@@ -408,6 +441,7 @@ function page(lang) {
 
   function backPage() {
     return `
+      <div class="back-art"><img src="/assets/img/last-dawn.webp" width="960" height="600" alt="" loading="lazy" decoding="async"></div>
       <p class="back-mast" lang="tr" translate="no">YAZITAŞ</p>
       <h2 class="back-title">${T("nextTitle")}</h2>
       <ul class="back-next">${L(C.ui.next).map((n) => `<li>${esc(n)}</li>`).join("")}</ul>
@@ -423,9 +457,9 @@ function page(lang) {
     const n = i + 1;
     const side = n % 2 === 0 ? "left" : "right";
     const foot = pg.foot === false ? "" : `
-    <footer class="page-foot" aria-hidden="true"><span class="page-run" translate="no">YAZITAŞ · ${T("issueDate")}</span><span class="page-no">${n}</span></footer>`;
+    <footer class="page-foot" aria-hidden="true"><span class="page-run"><span translate="no">YAZITAŞ</span> · ${pg.run || T("issueDate")}</span><span class="page-no">${n}</span></footer>`;
     return `
-  <section class="page ${pg.cls} page--${side}" id="${pg.id}" data-page="${n}" aria-label="${T("pageWord")} ${n}: ${pg.label}">
+  <section class="page ${pg.cls} page--${side}" id="${pg.id}" data-page="${n}" role="group" aria-roledescription="${lang === "tr" ? "sayfa" : "page"}" aria-label="${pg.label}, ${n} ${T("ofWord")} ${total}">
     <div class="page-inner">${pg.render()}</div>${foot}
   </section>`;
   }).join("");
@@ -492,7 +526,7 @@ function page(lang) {
     try { t = localStorage.getItem("theme"); } catch (e) {}
     if (t !== "light" && t !== "dark") t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
     d.dataset.theme = t;
-    d.classList.add("reader");
+    d.classList.add("reader", innerWidth < 720 || innerHeight < 512 ? "app" : "print");
   })();
 </script>
 <script type="application/ld+json">${JSON.stringify(jsonld)}</script>
@@ -505,6 +539,14 @@ function page(lang) {
   <nav class="topnav" aria-label="${T("navLabel")}">
     <ul>${navItems.map(([id, label]) => `<li><a href="#${id}" data-nav="${id}">${label}</a></li>`).join("")}</ul>
   </nav>
+  <nav class="pager" aria-label="${T("readerLabel")}">
+    <button type="button" class="pager-btn" data-prev aria-label="${T("prevPage")}" aria-keyshortcuts="ArrowLeft">${icon("arrowL", "px")}</button>
+    <label class="pager-jump"><span class="sr">${T("jumpTo")}</span>
+      <select data-jump>${pages.map((pg, i) => `<option value="${i + 1}">${i + 1}. ${pg.label}</option>`).join("")}</select>
+    </label>
+    <button type="button" class="pager-btn" data-next aria-label="${T("nextPage")}" aria-keyshortcuts="ArrowRight">${icon("arrowR", "px")}</button>
+    <p class="sr" aria-live="polite" data-status></p>
+  </nav>
   <div class="tools">
     <a class="tool" href="${otherHome}" hreflang="${other}" lang="${other}" aria-label="${T("langSwitch")}">${T("langSwitchShort")}</a>
     <button type="button" class="tool" data-theme-toggle aria-label="${T("themeToggle")}">${icon("sun", "px only-dark")}${icon("moon", "px only-light")}</button>
@@ -514,14 +556,6 @@ function page(lang) {
 <main id="main" class="book" aria-label="${T("readerLabel")}" data-total="${total}"><div class="world">${html}
 </div></main>
 
-<nav class="pager" aria-label="${T("readerLabel")}">
-  <button type="button" class="pager-btn" data-prev aria-label="${T("prevPage")}" aria-keyshortcuts="ArrowLeft">${icon("arrowL", "px")}</button>
-  <label class="pager-jump"><span class="sr">${T("jumpTo")}</span>
-    <select data-jump>${pages.map((pg, i) => `<option value="${i + 1}">${i + 1}. ${pg.label}</option>`).join("")}</select>
-  </label>
-  <button type="button" class="pager-btn" data-next aria-label="${T("nextPage")}" aria-keyshortcuts="ArrowRight">${icon("arrowR", "px")}</button>
-  <p class="sr" aria-live="polite" data-status></p>
-</nav>
 
 <div class="toast" role="status" aria-live="polite" hidden></div>
 <template id="icon-star">${icon("star")}</template>

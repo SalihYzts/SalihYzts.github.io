@@ -14,18 +14,19 @@
   function store(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
   function read(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
 
-  var TOP = 52;
+  var TOP = 52, BAR = 48, FIT_MIN = 0.76;
   var view = "";
   var current = 1;
-  var busy = false, queued = null;
+  var busy = false, queued = null, running = [], pendingTo = 1;
 
   // ---------- Görünüm ve boyut: sayfa ekranı doldurur ----------
   function layout() {
-    var w = window.innerWidth, h = window.innerHeight - TOP;
+    var w = window.innerWidth, h = window.innerHeight;
     var m = 10, pw, ph;
-    if (w < 720 || h < 460) { view = "app"; pw = w; ph = h; }
+    // Eşik, boyamadan önce çalışan baş betiğiyle aynı
+    if (w < 720 || h < 512) { view = "app"; pw = w; ph = h - TOP; }
     else {
-      h -= 64; // alttaki sayfa çubuğunun yeri
+      h -= BAR; // alttaki ince şerit
       var spread = Math.floor(Math.min((w - m * 2) / 2, (h - m * 2) / 1.25));
       if (spread >= 360) { view = "spread"; pw = spread; }
       else { view = "single"; pw = Math.floor(Math.min(w - m * 2, (h - m * 2) / 1.25)); }
@@ -40,22 +41,40 @@
     show(current, true);
   }
 
-  // Taşan sayfayı küçült: bütün ölçüler --u'ya bağlı olduğu için oran ekran boyundan bağımsız
+  // Taşan sayfayı küçült (gövde yazısının piksel tabanı var, küçülen başlık ve boşluklar);
+  // yine de sığmazsa sayfa kendi içinde kayar
   function fitAll() {
-    pages.forEach(function (p) { p.style.removeProperty("--fit"); });
+    pages.forEach(function (p) {
+      p.style.removeProperty("--fit"); p.classList.remove("is-scroll");
+      // Telefonda sayfanın kendisi kayar
+      if (view === "app") p.setAttribute("tabindex", "0"); else p.removeAttribute("tabindex");
+    });
     if (view === "app") return;
     pages.forEach(function (p) {
       var inner = p.querySelector(".page-inner");
       var off = p.classList.contains("is-off");
       if (off) { p.classList.remove("is-off"); p.style.visibility = "hidden"; }
       var fit = 1;
-      while (inner && inner.scrollHeight > inner.clientHeight + 2 && fit > 0.7) {
+      while (inner && inner.scrollHeight > inner.clientHeight + 2 && fit > FIT_MIN) {
         fit = Math.round((fit - 0.03) * 100) / 100;
         p.style.setProperty("--fit", fit);
       }
+      var scroll = inner && inner.scrollHeight > inner.clientHeight + 2;
+      p.classList.toggle("is-scroll", !!scroll);
+      // Kayan alan klavyeyle de kaydırılabilsin
+      if (scroll) inner.setAttribute("tabindex", "0"); else if (inner) inner.removeAttribute("tabindex");
+      if (inner) p.classList.toggle("at-end", !scroll);
       if (off) { p.classList.add("is-off"); p.style.removeProperty("visibility"); }
     });
   }
+
+  // Kayan sayfanın altındaki "devamı" işareti sona gelince kalkar
+  pages.forEach(function (p) {
+    var inner = p.querySelector(".page-inner");
+    if (inner) inner.addEventListener("scroll", function () {
+      p.classList.toggle("at-end", inner.scrollTop + inner.clientHeight >= inner.scrollHeight - 4);
+    }, { passive: true });
+  });
 
   // ---------- Açılımlar ----------
   function spreadOf(n) {
@@ -78,15 +97,26 @@
       if (view === "spread") p.classList.add(num !== 1 && num % 2 === 0 ? "is-left" : "is-right");
     });
     frame(on);
-    if (view === "app") pages[current - 1].scrollTop = 0;
+    root.classList.toggle("on-cover", current === 1);
+    on.forEach(function (n) { pages[n - 1].scrollTop = 0; var inner = pages[n - 1].querySelector(".page-inner"); if (inner) inner.scrollTop = 0; });
     loadNear();
     updateChrome(!silent);
   }
   function loadNear() {
-    for (var n = current - 3; n <= current + 4; n++) {
-      var p = pages[n - 1];
-      if (p) p.querySelectorAll('img[loading="lazy"]').forEach(function (im) { im.loading = "eager"; });
-    }
+    for (var n = current - 2; n <= current + 3; n++) imagesOf(n).forEach(function (im) { im.loading = "eager"; });
+  }
+  function imagesOf(n) {
+    var p = pages[n - 1];
+    return p ? Array.prototype.slice.call(p.querySelectorAll("img")) : [];
+  }
+  // Çevirmeden önce hedef sayfanın görselleri çözülsün; yavaş ağda en çok 250 ms bekle
+  function ready(list, cb) {
+    var imgs = [];
+    list.forEach(function (n) { imagesOf(n).forEach(function (im) { im.loading = "eager"; if (im.decode) imgs.push(im.decode().catch(function () {})); }); });
+    if (!imgs.length || !window.Promise) { cb(); return; }
+    var called = false, once = function () { if (!called) { called = true; cb(); } };
+    Promise.all(imgs).then(once);
+    setTimeout(once, 250);
   }
 
   // ---------- Çubuklar ----------
@@ -102,10 +132,12 @@
     if (prevBtn) prevBtn.disabled = current <= 1;
     if (nextBtn) nextBtn.disabled = last >= total;
     if (history.replaceState) history.replaceState(null, "", current === 1 ? location.pathname : "#" + pages[current - 1].id);
+    // Görünen açılımda başlayan bölüm öne çıkar; yoksa içinde bulunulan bölüm
     var best = null, bestN = 0;
     navLinks.forEach(function (a) {
       var n = pageFor(a.dataset.nav);
-      if (n && n <= last && n > bestN) { best = a; bestN = n; }
+      var visible = on.indexOf(n) >= 0;
+      if (n > 1 && (visible || n <= on[0]) && (visible ? n + 1000 : n) > bestN) { best = a; bestN = visible ? n + 1000 : n; }
     });
     navLinks.forEach(function (a) { if (a === best) a.setAttribute("aria-current", "true"); else a.removeAttribute("aria-current"); });
   }
@@ -150,26 +182,44 @@
   }
   // Sahne hafifçe geri çekilip yaklaşır: sayfanın elde çevrildiği hissi
   function breathe(duration, depth) {
-    world.animate([{ transform: "scale(1)" }, { transform: "scale(" + depth + ")", offset: 0.45 }, { transform: "scale(1)" }], { duration: duration, easing: "cubic-bezier(.45,0,.35,1)" });
+    return world.animate([{ transform: "scale(1)" }, { transform: "scale(" + depth + ")", offset: 0.45 }, { transform: "scale(1)" }], { duration: duration, easing: "cubic-bezier(.45,0,.35,1)" });
   }
 
-  function go(target, focusPage) {
+  // Çevirme sürerken gelen yeni istek beklemez: süren yaprak hemen yerine oturur, sonra yenisi çevrilir
+  function go(target, focusPage, instant) {
     target = Math.max(1, Math.min(total, target));
     var to = firstOf(target);
-    if (busy) { queued = [target, focusPage]; return; }
+    if (busy) {
+      queued = [target, focusPage, instant];
+      running.forEach(function (a) { try { a.finish(); } catch (e) {} });
+      return;
+    }
     if (to === current) { if (focusPage) focusOn(target); return; }
     var forward = to > current;
     var finish = function () {
+      running = [];
       busy = false;
       show(to);
       if (focusPage) focusOn(target);
-      if (queued) { var q = queued; queued = null; go(q[0], q[1]); }
+      if (queued) { var q = queued; queued = null; go(q[0], q[1], q[2]); }
     };
-    if (reduce.matches || !("animate" in Element.prototype)) { show(to); if (focusPage) focusOn(target); return; }
+    if (!("animate" in Element.prototype)) { show(to); if (focusPage) focusOn(target); return; }
+    // Basılı tutulan tuş: animasyonsuz geç
+    if (instant) { show(to); if (focusPage) focusOn(target); return; }
+    // Hareket azaltma: çevirme yerine kısa bir geçiş
+    if (reduce.matches) {
+      show(to);
+      world.animate([{ opacity: 0.2 }, { opacity: 1 }], { duration: 180, easing: "ease-out" });
+      if (focusPage) focusOn(target);
+      return;
+    }
     busy = true;
+    pendingTo = to;
     var far = Math.abs(to - current) > 2;
-    if (view === "spread") turnSpread(forward, to, far, finish);
-    else turnSingle(forward, to, far, finish);
+    ready(spreadOf(to), function () {
+      if (view === "spread") turnSpread(forward, to, far, finish);
+      else turnSingle(forward, to, far, finish);
+    });
   }
 
   function turnSpread(forward, to, far, done) {
@@ -195,10 +245,11 @@
     world.appendChild(leaf);
     frame(dest);
     var d = far ? 1100 : 900;
-    breathe(d, far ? 0.9 : 0.955);
+    var b = breathe(d, far ? 0.9 : 0.955);
     var anim = leaf.animate([{ transform: "rotateY(0deg)" }, { transform: "rotateY(" + (forward ? -180 : 180) + "deg)" }], { duration: d, easing: "cubic-bezier(.62,.04,.3,1)" });
-    front.querySelector(".leaf-shade").animate([{ opacity: 0 }, { opacity: 0.85 }], { duration: d, easing: "ease-in" });
-    back.querySelector(".leaf-shade").animate([{ opacity: 0.85 }, { opacity: 0 }], { duration: d, easing: "ease-out" });
+    var s1 = front.querySelector(".leaf-shade").animate([{ opacity: 0 }, { opacity: 0.85 }], { duration: d, easing: "ease-in" });
+    var s2 = back.querySelector(".leaf-shade").animate([{ opacity: 0.85 }, { opacity: 0 }], { duration: d, easing: "ease-out" });
+    running = [b, s1, s2, anim];
     anim.onfinish = function () { leaf.remove(); done(); };
   }
 
@@ -213,25 +264,30 @@
     leaf.appendChild(front); leaf.appendChild(back);
     world.appendChild(leaf);
     var d = view === "app" ? 620 : 800;
-    breathe(d, far ? 0.9 : 0.96);
+    var b = breathe(d, far ? 0.9 : 0.96);
     var kf = forward
       ? [{ transform: "rotateY(0deg)" }, { transform: "rotateY(-100deg)", opacity: 0.2 }]
       : [{ transform: "rotateY(-100deg)", opacity: 0.2 }, { transform: "rotateY(0deg)" }];
     var anim = leaf.animate(kf, { duration: d, easing: "cubic-bezier(.62,.04,.3,1)" });
-    front.querySelector(".leaf-shade").animate(forward ? [{ opacity: 0 }, { opacity: 0.8 }] : [{ opacity: 0.8 }, { opacity: 0 }], { duration: d });
+    var s1 = front.querySelector(".leaf-shade").animate(forward ? [{ opacity: 0 }, { opacity: 0.8 }] : [{ opacity: 0.8 }, { opacity: 0 }], { duration: d });
+    running = [b, s1, anim];
     anim.onfinish = function () { leaf.remove(); done(); };
   }
 
+  // Ekran okuyucu ve klavye için odak, açılan sayfanın ilk başlığına gider
   function focusOn(n) {
-    var el = pages[n - 1];
-    if (!el) return;
-    el.setAttribute("tabindex", "-1");
+    var page = pages[n - 1];
+    if (!page) return;
+    var el = page.querySelector("h1, h2, h3") || page;
+    if (el !== page) el.setAttribute("tabindex", "-1");
     el.focus({ preventScroll: true });
     book.scrollTop = 0; book.scrollLeft = 0;
   }
-  function step(d) {
-    var on = spreadOf(current);
-    go(d > 0 ? on[on.length - 1] + 1 : current - 1);
+  function step(d, instant) {
+    // Çevirme sürerken basılırsa hedef, kuyruktaki sayfadan hesaplanır
+    var base = busy && queued ? firstOf(queued[0]) : busy ? pendingTo : current;
+    var on = spreadOf(base);
+    go(d > 0 ? on[on.length - 1] + 1 : base - 1, false, instant);
   }
 
   // ---------- Girdiler ----------
@@ -242,8 +298,8 @@
     var t = e.target;
     if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
     if (e.altKey || e.ctrlKey || e.metaKey) return;
-    if (e.key === "ArrowRight" || e.key === "PageDown") { e.preventDefault(); step(1); }
-    else if (e.key === "ArrowLeft" || e.key === "PageUp") { e.preventDefault(); step(-1); }
+    if (e.key === "ArrowRight" || e.key === "PageDown") { e.preventDefault(); step(1, e.repeat); }
+    else if (e.key === "ArrowLeft" || e.key === "PageUp") { e.preventDefault(); step(-1, e.repeat); }
     else if (e.key === "Home") { e.preventDefault(); go(1); }
     else if (e.key === "End") { e.preventDefault(); go(total); }
   });
@@ -253,7 +309,7 @@
     if (Math.abs(e.deltaX) < Math.abs(e.deltaY) * 1.2 || Math.abs(e.deltaX) < 18) return;
     e.preventDefault();
     if (Date.now() < wheelLock) return;
-    wheelLock = Date.now() + 900;
+    wheelLock = Date.now() + 600;
     step(e.deltaX > 0 ? 1 : -1);
   }, { passive: false });
   // Dokunmatik: yatay kaydırma sayfa çevirir, dikey kaydırma sayfanın içinde kalır

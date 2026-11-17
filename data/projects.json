@@ -139,7 +139,15 @@
           "label": "source",
           "href": "https://github.com/SalihYzts/kralin-sozu"
         }
-      ]
+      ],
+      "quote": {
+        "tr": "Beni soğuk değil, sözünüz öldürdü.",
+        "en": "It wasn't the cold that killed me. It was your promise."
+      },
+      "quoteSource": {
+        "tr": "Donmuş nöbetçinin yanında bulunan not, oyunun hikâyesinden",
+        "en": "The note found by the frozen sentry, from the game's story"
+      }
     },
     {
       "id": "under-the-counter",
@@ -249,7 +257,8 @@
         "alt": {
           "tr": "LAST DAWN tanıtım sitesinin ana ekranı",
           "en": "Home screen of the LAST DAWN promo site"
-        }
+        },
+        "focus": "0% 45%"
       },
       "art": null,
       "gallery": [],
@@ -299,7 +308,8 @@
         "alt": {
           "tr": "Pati Rotası tanıtım ekranı ve iki telefon görüntüsü",
           "en": "Pati Rotası promo screen with two phone screenshots"
-        }
+        },
+        "focus": "0% 50%"
       },
       "art": null,
       "gallery": [],
@@ -349,7 +359,8 @@
         "alt": {
           "tr": "Let's Cook a Mask logosu: tavada iki tiyatro maskesi",
           "en": "Let's Cook a Mask logo: two theatre masks in a frying pan"
-        }
+        },
+        "fit": "contain"
       },
       "art": null,
       "gallery": [],
@@ -729,7 +740,11 @@
           "label": "open",
           "href": "https://liste-programi.yazitassalih0.workers.dev/"
         }
-      ]
+      ],
+      "quote": {
+        "tr": "Tek başıma geliştirip 19 dilde yayına aldım.",
+        "en": "I built it on my own and shipped it in 19 languages."
+      }
     },
     {
       "id": "nerobot",

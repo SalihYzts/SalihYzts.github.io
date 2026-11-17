@@ -34,14 +34,14 @@ const ui = {
   issueDate: { tr: "Kasım 2026", en: "November 2026" },
   issueTag: { tr: "Oyun ve yazılım dergisi", en: "Games & software magazine" },
   coverKicker: { tr: "Kapak konusu", en: "Cover story" },
-  coverTitle: { tr: "Arayüzsüz bir nöbet", en: "A watch with no interface" },
+  coverTitle: { tr: "Arayüzsüz bir nöbet", en: "A night watch with no HUD" },
   coverDeck: {
-    tr: "Kralın Sözü'nü yapan Salih Yazıtaş, ekranında tek bir gösterge olmayan oyunu 2000 gecelik bir simülasyonla nasıl dengelediğini anlatıyor.",
-    en: "Salih Yazıtaş, who made Kralın Sözü, on balancing a game with no on-screen interface through a 2,000-night simulation.",
+    tr: "Kralın Sözü: ekranında tek bir gösterge olmayan, 2000 gecelik bir simülasyonla dengelenmiş birinci şahıs nöbet oyunu.",
+    en: "Kralın Sözü: a first-person guard game with no on-screen interface, balanced with a 2,000-night simulation.",
   },
   coverAlt: { tr: "Kralın Sözü: karlı bir gecede iki nöbet kulesi arasındaki kapı", en: "Kralın Sözü: the gate between two watchtowers on a snowy night" },
-  stickerTop: { tr: "Bu sayıda", en: "Free with" },
-  stickerMain: { tr: "CV hediye", en: "CV inside" },
+  stickerTop: { tr: "Bu sayıda", en: "Inside" },
+  stickerMain: { tr: "CV hediye", en: "Free CV" },
   readIssue: { tr: "Sayıyı oku", en: "Read the issue" },
 
   // İçindekiler ve editörden
